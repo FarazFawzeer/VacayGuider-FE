@@ -122,6 +122,17 @@
         .space-bottom {
             padding-bottom: 0;
         }
+
+        .demo-container {
+            position: relative;
+            height: 200px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            padding: 10px
+        }
     </style>
 
 
@@ -228,19 +239,18 @@
                                                 <!-- Right Section -->
                                                 <div class="price-features-section"
                                                     style="flex: 1; padding-left: 20px; display: flex; align-items: center; justify-content: center;">
-                                                    <div
-                                                        style="background: linear-gradient(135deg, rgba(19,19,30,0.8) 0%, rgba(30,30,47,0.8) 100%); padding: 20px 25px; border-radius: 16px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.3); max-width: 180px; border: 1px solid rgba(0,162,255,0.2);">
 
+
+                                                    <div class="demo-container">
                                                         <div
-                                                            style="font-family: 'Montserrat', sans-serif; color: #00A2FF; font-weight: 800; font-size: 46px; line-height: 1; margin-bottom: 4px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
-                                                            <span
-                                                                style="font-size: 30px; vertical-align: top; margin-right: 2px;">$</span>{{ $vehicle->price }}
+                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 8px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                            <span style="font-size: 28px;">$ {{ $vehicle->price }}</span>
+                                                            <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                                                         </div>
-                                                        <div
-                                                            style="font-family: 'Poppins', sans-serif; color: #AAAAAA; font-size: 15px; font-weight: 500;">
-                                                            per day</div>
                                                     </div>
                                                 </div>
+
+
                                             </div>
 
                                             <!-- Specifications Section -->
@@ -516,7 +526,7 @@
     </script>
 
 
-    <script>
+    {{-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         try {
             // Initialize Swiper
@@ -568,6 +578,6 @@
             console.error('Swiper initialization error:', error);
         }
     });
-</script>
+</script> --}}
 
 @endsection
