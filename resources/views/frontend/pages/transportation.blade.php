@@ -225,9 +225,6 @@
                 font-size: 20px;
             }
 
-            .container {
-                padding: 20px 10px;
-            }
         }
 
         .pagination .page-item.active .page-link {

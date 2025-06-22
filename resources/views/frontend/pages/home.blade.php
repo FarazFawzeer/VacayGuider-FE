@@ -251,7 +251,7 @@
             line-height: 18px;
         }
 
-      
+
 
         .header-layout1 .currency-menu {
             border: 1px solid var(--light-color);
@@ -880,7 +880,7 @@
             width: 0;
         }
 
-        
+
         .demo-container {
             position: relative;
             height: 200px;
@@ -925,11 +925,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                    unforgetable pleasure with us</span>
-                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                    Let’s make your best trip with us </h1>
-                                                                                                                                            </div> -->
+                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                        Let’s make your best trip with us </h1>
+                                                                                                                                                </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -945,19 +945,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                    <div class="hero-inner">
-                                                                                                                                        <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                        </div>
-                                                                                                                                        <div class="container">
-                                                                                                                                            <div class="hero-style1">
-                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                    unforgetable pleasure with us</span>
-                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                    Explore beauty of the whole world </h1>
+                                                                                                                                        <div class="hero-inner">
+                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                            </div>
+                                                                                                                                            <div class="container">
+                                                                                                                                                <div class="hero-style1">
+                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                        Explore beauty of the whole world </h1>
+                                                                                                                                                </div>
                                                                                                                                             </div>
                                                                                                                                         </div>
-                                                                                                                                    </div>
-                                                                                                                                </div> -->
+                                                                                                                                    </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -980,14 +980,14 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 mb-md-0">
-                               <select id="serviceSelect" class="custom-select px-4" style="height: 55px;">
-    <option selected disabled>Services</option>
-    <option value="inbound">Inbound Tour</option>
-    <option value="outbound">Outbound Tour</option>
-    <option value="airport">Airport Transport</option>
-    <option value="rent">Rent Vehicles</option>
-    <option value="tickets">Air Tickets</option>
-</select>
+                                    <select id="serviceSelect" class="custom-select px-4" style="height: 55px;">
+                                        <option selected disabled>Services</option>
+                                        <option value="inbound">Inbound Tour</option>
+                                        <option value="outbound">Outbound Tour</option>
+                                        <option value="airport">Airport Transport</option>
+                                        <option value="rent">Rent Vehicles</option>
+                                        <option value="tickets">Air Tickets</option>
+                                    </select>
 
                                 </div>
                             </div>
@@ -995,7 +995,7 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="departDate" class="form-control p-4 bg-white"
-                                            placeholder="Depart Date">
+                                            placeholder="Depart Date" style="  height: 56px;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white" style="height: 56px; "><i
                                                     class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
@@ -1008,7 +1008,7 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="returnDate" class="form-control p-4 bg-white"
-                                            placeholder="Return Date">
+                                            placeholder="Return Date" style="  height: 56px;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white " style="height: 56px;"><i
                                                     class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
@@ -1022,7 +1022,7 @@
                         </div>
                     </div>
                     <div class="form-btn col-md-12 col-lg-auto text-center text-lg-start mt-3 mt-lg-0">
-                        <button class="th-btn custom-btn"  type="button" id="getQuoteBtn">GET QUOTE</button>
+                        <button class="th-btn custom-btn" type="button" id="getQuoteBtn">GET QUOTE</button>
                     </div>
                 </div>
             </div>
@@ -1267,164 +1267,163 @@
     </section>
 
 
-        <section id="transportation" class="py-5 bg-smoke" style="margin-bottom: 70px; margin-top: 30px;">
-            <div class="container">
+    <section id="transportation" class="py-5 bg-smoke" style="margin-bottom: 70px; margin-top: 30px;">
+        <div class="container">
 
 
-                <!-- Title Section with improved typography -->
-                <div class="title-area text-center mb-5" style="">
-                    <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                    <span class="sub-title fw-semibold">Travel Sri Lanka</span>
-                    <h2 class="sec-title"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; margin-bottom: 20px;">
-                        Transport Solutions</h2>
-                    <div class="title-separator"
-                        style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
-                    </div>
+            <!-- Title Section with improved typography -->
+            <div class="title-area text-center mb-5" style="">
+                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
+                <span class="sub-title fw-semibold">Travel Sri Lanka</span>
+                <h2 class="sec-title"
+                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; margin-bottom: 20px;">
+                    Transport Solutions</h2>
+                <div class="title-separator"
+                    style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
                 </div>
+            </div>
 
-                <!-- Main Content Row: Left Services - Center Image - Right Services -->
-                <div class="row align-items-center">
-                    <!-- Left Side: 2 Service Boxes -->
-                    <div class="col-lg-4">
-                        <div class="services-container" style="font-family: 'Poppins', sans-serif;">
-                            <div class="row g-4">
-                                <!-- Service Box 1 -->
-                                <div class="col-12 d-flex">
-                                    <div class="service-box h-100 shadow"
-                                        style="background: linear-gradient(135deg, #f9f9ff 0%, #eaeaff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
-                                        <div class="content-overlay d-flex flex-column align-items-center">
-                                            <div class="icon-container mb-4"
-                                                style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-car" style="font-size: 28px; color: #4e54c8;"></i>
-                                            </div>
-                                            <h3 style="font-size: 21px; font-weight: 600; color: #333;">Airport Pickups
-                                            </h3>
-                                            <p style="font-size: 15px; color: #555;">
-                                                Hassle-free airport transfers anytime. We monitor your flight and ensure
-                                                prompt, reliable rides.
-                                            </p>
+            <!-- Main Content Row: Left Services - Center Image - Right Services -->
+            <div class="row align-items-center">
+                <!-- Left Side: 2 Service Boxes -->
+                <div class="col-lg-4">
+                    <div class="services-container" style="font-family: 'Poppins', sans-serif;">
+                        <div class="row g-4">
+                            <!-- Service Box 1 -->
+                            <div class="col-12 d-flex">
+                                <div class="service-box h-100 shadow"
+                                    style="background: linear-gradient(135deg, #f9f9ff 0%, #eaeaff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
+                                    <div class="content-overlay d-flex flex-column align-items-center">
+                                        <div class="icon-container mb-4"
+                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-car" style="font-size: 28px; color: #4e54c8;"></i>
                                         </div>
-                                        <div class="decorative-shape"
-                                            style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(78, 84, 200, 0.07); z-index: 1;">
-                                        </div>
+                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Airport Pickups
+                                        </h3>
+                                        <p style="font-size: 15px; color: #555;">
+                                            Hassle-free airport transfers anytime. We monitor your flight and ensure
+                                            prompt, reliable rides.
+                                        </p>
                                     </div>
-                                </div>
-
-                                <!-- Service Box 2 -->
-                                <div class="col-12 d-flex">
-                                    <div class="service-box h-100 shadow"
-                                        style="background: linear-gradient(135deg, #fff9f6 0%, #ffe8dd 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
-                                        <div class="content-overlay d-flex flex-column align-items-center">
-                                            <div class="icon-container mb-4"
-                                                style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-shield-alt" style="font-size: 28px; color: #ff7a50;"></i>
-                                            </div>
-                                            <h3 style="font-size: 21px; font-weight: 600; color: #333;">Safe & Reliable
-                                            </h3>
-                                            <p style="font-size: 15px; color: #555;">
-                                                Certified service with insured, well-maintained vehicles and licensed,
-                                                professional drivers.
-                                            </p>
-                                        </div>
-                                        <div class="decorative-shape"
-                                            style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(255, 122, 80, 0.07); z-index: 1;">
-                                        </div>
+                                    <div class="decorative-shape"
+                                        style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(78, 84, 200, 0.07); z-index: 1;">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Center: Map Image -->
-                    <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                        <img src="assets/img/map-car.png" alt="Sri Lanka Transport Map" class="img-fluid rounded"
-                            style="max-width: 100%; height: auto;">
-                    </div>
 
-                    <!-- Right Side: 2 Service Boxes -->
-                    <div class="col-lg-4">
-                        <div class="services-container" style="font-family: 'Poppins', sans-serif;">
-                            <div class="row g-4">
-                                <!-- Service Box 3 -->
-                                <div class="col-12 d-flex">
-                                    <div class="service-box h-100 shadow"
-                                        style="background: linear-gradient(135deg, #f6fff9 0%, #ddffe8 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
-                                        <div class="content-overlay d-flex flex-column align-items-center">
-                                            <div class="icon-container mb-4"
-                                                style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-credit-card"
-                                                    style="font-size: 28px; color: #2ecc71;"></i>
-                                            </div>
-                                            <h3 style="font-size: 21px; font-weight: 600; color: #333;">Booking Made Easy
-                                            </h3>
-                                            <p style="font-size: 15px; color: #555;">
-                                                Simple booking with flexible hourly or distance-based packages tailored to
-                                                your journey.
-                                            </p>
+                            <!-- Service Box 2 -->
+                            <div class="col-12 d-flex">
+                                <div class="service-box h-100 shadow"
+                                    style="background: linear-gradient(135deg, #fff9f6 0%, #ffe8dd 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    <div class="content-overlay d-flex flex-column align-items-center">
+                                        <div class="icon-container mb-4"
+                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-shield-alt" style="font-size: 28px; color: #ff7a50;"></i>
                                         </div>
-                                        <div class="decorative-shape"
-                                            style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(46, 204, 113, 0.07); z-index: 1;">
-                                        </div>
+                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Safe & Reliable
+                                        </h3>
+                                        <p style="font-size: 15px; color: #555;">
+                                            Certified service with insured, well-maintained vehicles and licensed,
+                                            professional drivers.
+                                        </p>
                                     </div>
-                                </div>
-
-                                <!-- Service Box 4 -->
-                                <div class="col-12 d-flex">
-                                    <div class="service-box h-100 shadow"
-                                        style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
-                                        <div class="content-overlay d-flex flex-column align-items-center">
-                                            <div class="icon-container mb-4"
-                                                style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-user-tie" style="font-size: 28px; color: #3498db;"></i>
-                                            </div>
-                                            <h3 style="font-size: 21px; font-weight: 600; color: #333;">Experienced Drivers
-                                            </h3>
-                                            <p style="font-size: 15px; color: #555;">
-                                                Skilled local drivers with courteous service, island knowledge, and
-                                                multilingual support.
-                                            </p>
-                                        </div>
-                                        <div class="decorative-shape"
-                                            style="position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                        </div>
+                                    <div class="decorative-shape"
+                                        style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(255, 122, 80, 0.07); z-index: 1;">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Centered Show More Button -->
-                <div class="text-center mt-5">
-                    <a href="{{ url('/transportation') }}" class="th-btn"
-                        style="outline: 2px solid #000; background-color: black; color: white;">
-                        Show More
-                    </a>
+                <!-- Center: Map Image -->
+                <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                    <img src="assets/img/map-car.png" alt="Sri Lanka Transport Map" class="img-fluid rounded"
+                        style="max-width: 100%; height: auto;">
                 </div>
-            </div>
-        </section>
 
+                <!-- Right Side: 2 Service Boxes -->
+                <div class="col-lg-4">
+                    <div class="services-container" style="font-family: 'Poppins', sans-serif;">
+                        <div class="row g-4">
+                            <!-- Service Box 3 -->
+                            <div class="col-12 d-flex">
+                                <div class="service-box h-100 shadow"
+                                    style="background: linear-gradient(135deg, #f6fff9 0%, #ddffe8 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    <div class="content-overlay d-flex flex-column align-items-center">
+                                        <div class="icon-container mb-4"
+                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-credit-card" style="font-size: 28px; color: #2ecc71;"></i>
+                                        </div>
+                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Booking Made Easy
+                                        </h3>
+                                        <p style="font-size: 15px; color: #555;">
+                                            Simple booking with flexible hourly or distance-based packages tailored to
+                                            your journey.
+                                        </p>
+                                    </div>
+                                    <div class="decorative-shape"
+                                        style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(46, 204, 113, 0.07); z-index: 1;">
+                                    </div>
+                                </div>
+                            </div>
 
-        <!-- Rent vehicles -->
-        <section class="position-relative bg-top-center  overflow-hidden space" id="service-sec"
-            style="margin-top: -75px; padding-bottom: 52px;background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);">
-            <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
-            </div>
-
-            <div class="container position-relative" style="z-index: 1;">
-                <!-- Title Section with improved typography -->
-                <div class="title-area text-center mb-5" style="margin-top: -55px;">
-                    <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                    <span class="sub-title fw-semibold" style="color: #AAAAAA;">Premium Car Rentals</span>
-                    <h2 class="sec-title"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
-                        Find Your Perfect Ride</h2>
-                    <div class="title-separator"
-                        style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
+                            <!-- Service Box 4 -->
+                            <div class="col-12 d-flex">
+                                <div class="service-box h-100 shadow"
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    <div class="content-overlay d-flex flex-column align-items-center">
+                                        <div class="icon-container mb-4"
+                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-user-tie" style="font-size: 28px; color: #3498db;"></i>
+                                        </div>
+                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Experienced Drivers
+                                        </h3>
+                                        <p style="font-size: 15px; color: #555;">
+                                            Skilled local drivers with courteous service, island knowledge, and
+                                            multilingual support.
+                                        </p>
+                                    </div>
+                                    <div class="decorative-shape"
+                                        style="position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-               <div class="tab-content" id="nav-tabContent">
+            <!-- Centered Show More Button -->
+            <div class="text-center mt-5">
+                <a href="{{ url('/transportation') }}" class="th-btn"
+                    style="outline: 2px solid #000; background-color: black; color: white;">
+                    Show More
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Rent vehicles -->
+    <section class="position-relative bg-top-center  overflow-hidden space" id="service-sec"
+        style="margin-top: -75px; padding-bottom: 52px;background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);">
+        <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
+        </div>
+
+        <div class="container position-relative" style="z-index: 1;">
+            <!-- Title Section with improved typography -->
+            <div class="title-area text-center mb-5" style="margin-top: -55px;">
+                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
+                <span class="sub-title fw-semibold" style="color: #AAAAAA;">Premium Car Rentals</span>
+                <h2 class="sec-title"
+                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
+                    Find Your Perfect Ride</h2>
+                <div class="title-separator"
+                    style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
+                </div>
+            </div>
+
+            <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
                     <div class="slider-area tour-slider slider-drag-wrap">
 
@@ -1501,7 +1500,7 @@
                                                 </div>
 
 
-                                              <div class="price-features-section"
+                                                <div class="price-features-section"
                                                     style="flex: 1; padding-left: 20px; display: flex; align-items: center; justify-content: center;">
 
 
@@ -1594,59 +1593,59 @@
 
 
 
-                <div class="text-center  " style="margin-top: 70px;">
-                    <a href="{{ url('/rent') }}" class="th-btn"
-                        style="outline: 2px solid #000; background-color: black; color: white;">
-                        Show More
-                    </a>
-                </div>
+            <div class="text-center  " style="margin-top: 70px;">
+                <a href="{{ url('/rent') }}" class="th-btn"
+                    style="outline: 2px solid #000; background-color: black; color: white;">
+                    Show More
+                </a>
             </div>
-        </section>
-        <!-- Ari Line -->
+        </div>
+    </section>
+    <!-- Ari Line -->
 
-        <section class=" overflow-hidden space bg-smoke" id="blog-sec">
-            <div class="container">
-                <div class="mb-30 text-center text-md-start" style="margin-top: -60px;">
-                    <div class="row align-items-center justify-content-between">
-                        <div class="col-md-7 airlin-mob">
-                            <div class="title-area mb-md-0">
-                                {{-- <span class="sub-title" style="color: #AAAAAA;">Airline Tickets</span>
+    <section class=" overflow-hidden space bg-smoke" id="blog-sec">
+        <div class="container">
+            <div class="mb-30 text-center text-md-start" style="margin-top: -60px;">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md-7 airlin-mob">
+                        <div class="title-area mb-md-0">
+                            {{-- <span class="sub-title" style="color: #AAAAAA;">Airline Tickets</span>
                                 <h2 class="sec-title"  style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">Your Gateway to the World</h2> --}}
-                                    <span class="sub-title fw-semibold" >Airline Ticket</span>
-                    <h2 class="sec-title"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700;color: #1a2b49; margin-bottom: 20px; ">
-                        Your Gateway to the World</h2>
-               
-
-                            </div>
+                            <span class="sub-title fw-semibold">Airline Ticket</span>
+                            <h2 class="sec-title"
+                                style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700;color: #1a2b49; margin-bottom: 20px; ">
+                                Your Gateway to the World</h2>
 
 
-                              <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                
-                        </div>
-                        <!-- <div class="col-md-auto">
-                                                                                        <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                            Get Tickets
-                                                                                        </a>
-                                                                                    </div> -->
-                        <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
-                            <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
-                            <a class="fancy" href="air-line.html">
-                                <span class="top-key"></span>
-                                <span class="text">Buy Tickets</span>
-                                <span class="bottom-key-1"></span>
-                                <span class="bottom-key-2"></span>
-                            </a>
                         </div>
 
+
+                        <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
 
                     </div>
-                </div>
+                    <!-- <div class="col-md-auto">
+                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                Get Tickets
+                                                                                            </a>
+                                                                                        </div> -->
+                    <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
+                        <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
+                        <a class="fancy" href="air-line.html">
+                            <span class="top-key"></span>
+                            <span class="text">Buy Tickets</span>
+                            <span class="bottom-key-1"></span>
+                            <span class="bottom-key-2"></span>
+                        </a>
+                    </div>
 
-                <div class="brand-area overflow-hidden space-bottom">
-                    <div class="container th-container">
-                        <div class="swiper th-slider brandSlider1" id="brandSlider1"
-                            data-slider-options='{
+
+                </div>
+            </div>
+
+            <div class="brand-area overflow-hidden space-bottom">
+                <div class="container th-container">
+                    <div class="swiper th-slider brandSlider1" id="brandSlider1"
+                        data-slider-options='{
                         "breakpoints": {
                             "0": {"slidesPerView": 1},
                             "576": {"slidesPerView": 1},
@@ -1656,365 +1655,363 @@
                             "1400": {"slidesPerView": 4}
                         }
                     }'>
-                            <div class="swiper-wrapper">
+                        <div class="swiper-wrapper">
 
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/air india.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/air india.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/air india.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/air india.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/azur air.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/azur air.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/azur air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/azur air.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/china.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/china.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/china.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/china.png" alt="Brand Logo">
+                                    </a>
                                 </div>
+                            </div>
 
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/Emirates.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/Emirates.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/Emirates.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/Emirates.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/Etihad.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/Etihad.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/Etihad.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/Etihad.png" alt="Brand Logo">
+                                    </a>
                                 </div>
+                            </div>
 
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/flydubai.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/flydubai.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/flydubai.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/flydubai.png" alt="Brand Logo">
+                                    </a>
                                 </div>
+                            </div>
 
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/indigo.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/indigo.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/indigo.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/indigo.png" alt="Brand Logo">
+                                    </a>
                                 </div>
+                            </div>
 
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/jazeera.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/jazeera.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/jazeera.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/jazeera.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/malaysia.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/malaysia.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/malaysia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/malaysia.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/Qatar Airways.jpeg"
-                                                alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/Qatar Airways.jpeg"
-                                                alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/Qatar Airways.jpeg" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/Qatar Airways.jpeg" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/salam air.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/salam air.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/salam air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/salam air.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/seychelle.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/seychelle.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/seychelle.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/seychelle.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/singapore.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/singapore.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/singapore.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/singapore.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/thai.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/thai.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/thai.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/thai.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="brand-box">
-                                        <a href="">
-                                            <img class="original" src="assets/img/brand/turkish.png" alt="Brand Logo">
-                                            <img class="gray" src="assets/img/brand/turkish.png" alt="Brand Logo">
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/brand/turkish.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/brand/turkish.png" alt="Brand Logo">
+                                    </a>
                                 </div>
-
                             </div>
 
                         </div>
+
                     </div>
-                </div>
-                <div class="col-12 d-block d-md-none d-flex justify-content-center form-btn "
-                    style="margin-top: 10px;margin-bottom: 18px;">
-                    <a class="fancy" href="air-line.html">
-                        <span class="top-key"></span>
-                        <span class="text">Buy Tickets</span>
-                        <span class="bottom-key-1"></span>
-                        <span class="bottom-key-2"></span>
-                    </a>
                 </div>
             </div>
+            <div class="col-12 d-block d-md-none d-flex justify-content-center form-btn "
+                style="margin-top: 10px;margin-bottom: 18px;">
+                <a class="fancy" href="air-line.html">
+                    <span class="top-key"></span>
+                    <span class="text">Buy Tickets</span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+            </div>
+        </div>
 
-        </section>
+    </section>
 
 
 
-        <section class="testimonials-section py-5">
-            <div class="container">
-                <div class="heading white-heading text-center mb-4">Testimonial</div>
+    <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="heading white-heading text-center mb-4">Testimonial</div>
 
-                <div id="testimonial4"
-                    class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
-                    data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+            <div id="testimonial4"
+                class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
+                data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
 
-                    <div class="row">
-                        <div class="col-12" style="margin-top: 34px;">
-                            <div class="slider-area testimonial-slider slider-drag-wrap">
-                                <div class="swiper th-slider"
-                                    data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
-                                    <div class="swiper-wrapper">
+                <div class="row">
+                    <div class="col-12" style="margin-top: 34px;">
+                        <div class="slider-area testimonial-slider slider-drag-wrap">
+                            <div class="swiper th-slider"
+                                data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
+                                <div class="swiper-wrapper">
 
-                                        <!-- Review 1 -->
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-card card h-100">
-                                                <div class="card-body" style="height: 240px; ">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                            class="avatar rounded-circle me-3" alt="User"
-                                                            style="height: 48px;">
-                                                        <div>
-                                                            <h6 class="mb-0">Sarah Johnson</h6>
-                                                            <small class="text-muted"><i
-                                                                    class="bi bi-google text-danger me-1"></i>
-                                                                Google</small>
-                                                        </div>
+                                    <!-- Review 1 -->
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-card card h-100">
+                                            <div class="card-body" style="height: 240px; ">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                                                        class="avatar rounded-circle me-3" alt="User"
+                                                        style="height: 48px;">
+                                                    <div>
+                                                        <h6 class="mb-0">Sarah Johnson</h6>
+                                                        <small class="text-muted"><i
+                                                                class="bi bi-google text-danger me-1"></i>
+                                                            Google</small>
                                                     </div>
-                                                    <div class="stars mb-3">
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i>
-                                                    </div>
-                                                    <p class="review-text">"Great experience from start to finish.
-                                                        The attention to detail was impressive."</p>
-                                                    <small class="text-muted">Posted on: Jan 15, 2024</small>
                                                 </div>
+                                                <div class="stars mb-3">
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </div>
+                                                <p class="review-text">"Great experience from start to finish.
+                                                    The attention to detail was impressive."</p>
+                                                <small class="text-muted">Posted on: Jan 15, 2024</small>
                                             </div>
                                         </div>
-
-                                        <!-- Review 2 -->
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-card card h-100">
-                                                <div class="card-body" style="height: 240px;">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-                                                            class="avatar rounded-circle me-3" alt="User"
-                                                            style="height: 48px;">
-                                                        <div>
-                                                            <h6 class="mb-0">Michael Chen</h6>
-                                                            <small class="text-muted"><i
-                                                                    class="bi bi-facebook text-primary me-1"></i>
-                                                                Facebook</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="stars mb-3">
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-half"></i>
-                                                    </div>
-                                                    <p class="review-text">"Great experience from start to finish.
-                                                        The attention to detail was impressive."</p>
-                                                    <small class="text-muted">Posted on: Jan 12, 2024</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Review 3 -->
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-card card h-100">
-                                                <div class="card-body" style="height: 240px;">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                            class="avatar rounded-circle me-3" alt="User"
-                                                            style="height: 48px;">
-                                                        <div>
-                                                            <h6 class="mb-0">Emma Wilson</h6>
-                                                            <small class="text-muted"><i
-                                                                    class="bi bi-twitter text-info me-1"></i>
-                                                                Twitter</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="stars mb-3">
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i>
-                                                    </div>
-                                                    <p class="review-text">"Absolutely fantastic! The team was
-                                                        professional and courteous."</p>
-                                                    <small class="text-muted">Posted on: Jan 10, 2024</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Review 4 -->
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-card card h-100">
-                                                <div class="card-body" style="height: 240px; ">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                                            class="avatar rounded-circle me-3" alt="User"
-                                                            style="height: 48px;">
-                                                        <div>
-                                                            <h6 class="mb-0">David Thompson</h6>
-                                                            <small class="text-muted"><i
-                                                                    class="bi bi-google text-danger me-1"></i>
-                                                                Google</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="stars mb-3">
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star"></i>
-                                                    </div>
-                                                    <p class="review-text">"Very satisfied with the quality of
-                                                        service.
-                                                        The staff was knowledgeable."</p>
-                                                    <small class="text-muted">Posted on: Jan 8, 2024</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
 
-                                    <!-- Pagination -->
-                                    <div class="slider-pagination mt-4"></div>
+                                    <!-- Review 2 -->
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-card card h-100">
+                                            <div class="card-body" style="height: 240px;">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                                                        class="avatar rounded-circle me-3" alt="User"
+                                                        style="height: 48px;">
+                                                    <div>
+                                                        <h6 class="mb-0">Michael Chen</h6>
+                                                        <small class="text-muted"><i
+                                                                class="bi bi-facebook text-primary me-1"></i>
+                                                            Facebook</small>
+                                                    </div>
+                                                </div>
+                                                <div class="stars mb-3">
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-half"></i>
+                                                </div>
+                                                <p class="review-text">"Great experience from start to finish.
+                                                    The attention to detail was impressive."</p>
+                                                <small class="text-muted">Posted on: Jan 12, 2024</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Review 3 -->
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-card card h-100">
+                                            <div class="card-body" style="height: 240px;">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                                                        class="avatar rounded-circle me-3" alt="User"
+                                                        style="height: 48px;">
+                                                    <div>
+                                                        <h6 class="mb-0">Emma Wilson</h6>
+                                                        <small class="text-muted"><i
+                                                                class="bi bi-twitter text-info me-1"></i>
+                                                            Twitter</small>
+                                                    </div>
+                                                </div>
+                                                <div class="stars mb-3">
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </div>
+                                                <p class="review-text">"Absolutely fantastic! The team was
+                                                    professional and courteous."</p>
+                                                <small class="text-muted">Posted on: Jan 10, 2024</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Review 4 -->
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-card card h-100">
+                                            <div class="card-body" style="height: 240px; ">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                                        class="avatar rounded-circle me-3" alt="User"
+                                                        style="height: 48px;">
+                                                    <div>
+                                                        <h6 class="mb-0">David Thompson</h6>
+                                                        <small class="text-muted"><i
+                                                                class="bi bi-google text-danger me-1"></i>
+                                                            Google</small>
+                                                    </div>
+                                                </div>
+                                                <div class="stars mb-3">
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star"></i>
+                                                </div>
+                                                <p class="review-text">"Very satisfied with the quality of
+                                                    service.
+                                                    The staff was knowledgeable."</p>
+                                                <small class="text-muted">Posted on: Jan 8, 2024</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+
+                                <!-- Pagination -->
+                                <div class="slider-pagination mt-4"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-        </section>
+            </div>
+    </section>
 
 
-        <script>
-            window.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('departDate').value = '';
-                document.getElementById('returnDate').value = '';
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('departDate').value = '';
+            document.getElementById('returnDate').value = '';
 
-                flatpickr("#departDate", {
-                    dateFormat: "Y-m-d",
-                    disableMobile: true
-                });
-
-                flatpickr("#returnDate", {
-                    dateFormat: "Y-m-d",
-                    disableMobile: true
-                });
+            flatpickr("#departDate", {
+                dateFormat: "Y-m-d",
+                disableMobile: true
             });
-        </script>
 
-<script>
-    document.getElementById('getQuoteBtn').addEventListener('click', function () {
-        const selectedValue = document.getElementById('serviceSelect').value;
+            flatpickr("#returnDate", {
+                dateFormat: "Y-m-d",
+                disableMobile: true
+            });
+        });
+    </script>
 
-        switch (selectedValue) {
-            case 'inbound':
-                window.location.href = '/inbound-tours';
-                break;
-            case 'outbound':
-                window.location.href = '/';
-                break;
-            case 'airport':
-                window.location.href = '/transportation';
-                break;
-            case 'rent':
-                window.location.href = '/rent';
-                break;
-            case 'tickets':
-                window.location.href = '/airline';
-                break;
-            default:
-                alert('Please select a service to continue.');
-                break;
-        }
-    });
-</script>
+    <script>
+        document.getElementById('getQuoteBtn').addEventListener('click', function() {
+            const selectedValue = document.getElementById('serviceSelect').value;
 
-    @endsection
+            switch (selectedValue) {
+                case 'inbound':
+                    window.location.href = '/inbound-tours';
+                    break;
+                case 'outbound':
+                    window.location.href = '/';
+                    break;
+                case 'airport':
+                    window.location.href = '/transportation';
+                    break;
+                case 'rent':
+                    window.location.href = '/rent';
+                    break;
+                case 'tickets':
+                    window.location.href = '/airline';
+                    break;
+                default:
+                    alert('Please select a service to continue.');
+                    break;
+            }
+        });
+    </script>
+
+@endsection
