@@ -64,16 +64,41 @@
             padding: 5px 0;
             background-color: #262A36;
         }
+
         .sub-title {
-  display: block;
-  color: var(--title-color);
-  font-size: 20px;
-  line-height: 40px;
-  font-weight: 700;
-  font-family: 'Dancing Script', cursive;
-  position: relative;
-  margin-bottom: -4px;
-}
+            display: block;
+            color: var(--title-color);
+            font-size: 20px;
+            line-height: 40px;
+            font-weight: 700;
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            margin-bottom: -4px;
+        }
+
+        element {}
+
+        .scroll-top.show {
+            opacity: 1;
+
+            visibility: visible;
+
+            -webkit-transform: translateY(0);
+
+            -ms-transform: translateY(0);
+
+            transform: translateY(0);
+
+        }
+
+        .scroll-top {
+
+
+            right: 0px !important;
+            left: 30px;
+
+
+        }
     </style>
     <footer class="footer-wrapper footer-layout1" style="background-color: #262A36;">
         <div class="widget-area">
@@ -152,15 +177,16 @@
                 </div>
             </div>
         </div>
-     <div class="copyright-wrap text-center " style="background-color: #028ccc;">
-    <div class="container">
-        <div class="d-flex justify-content-center align-items-center" style="">
-            <p class="copyright-text m-0 text-white">
-                Copyright 2025 <a href="home-travel.html" class="text-white text-decoration-underline">VaccayGuider</a>. All Rights Reserved.
-            </p>
+        <div class="copyright-wrap text-center " style="background-color: #028ccc;">
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center" style="">
+                    <p class="copyright-text m-0 text-white">
+                        Copyright 2025 <a href="home-travel.html"
+                            class="text-white text-decoration-underline">VaccayGuider</a>. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 
     </footer>

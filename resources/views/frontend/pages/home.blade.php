@@ -891,6 +891,519 @@
             width: 200px;
             padding: 10px
         }
+
+
+        /* Floating Toggle Button */
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+            border-radius: 50%;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 32px;
+            box-shadow: 0 10px 30px rgba(2, 140, 204, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            outline: none;
+            backdrop-filter: blur(10px);
+        }
+
+        #chatbot-toggle:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 20px 40px rgba(2, 140, 204, 0.6);
+            background: linear-gradient(135deg, #0056b3 0%, #028ccc 100%);
+        }
+
+        #chatbot-toggle.active {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            transform: rotate(45deg) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Chatbot Window */
+        #chatbot-box {
+            position: fixed;
+            bottom: 130px;
+            right: 30px;
+            width: 420px;
+            max-width: calc(100vw - 60px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            z-index: 1000;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(100px) scale(0.85);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border: 1px solid rgba(2, 140, 204, 0.1);
+        }
+
+        #chatbot-box.show {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Header */
+        .chat-header {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: headerShimmer 3s linear infinite;
+        }
+
+        @keyframes headerShimmer {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .chat-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .chat-header p {
+            font-size: 13px;
+            opacity: 0.95;
+            margin: 8px 0 0 0;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Chat Content */
+        #chat-content {
+            height: 380px;
+            overflow-y: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            position: relative;
+        }
+
+        #chat-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat-content::-webkit-scrollbar-track {
+            background: rgba(2, 140, 204, 0.1);
+            border-radius: 10px;
+        }
+
+        #chat-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Message Bubbles */
+        .message {
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .bot-message {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            color: #2c3e50;
+            padding: 16px 20px;
+            border-radius: 20px 20px 20px 8px;
+            max-width: 88%;
+            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.15);
+            border: 1px solid rgba(2, 140, 204, 0.1);
+            position: relative;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .bot-message::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 8px 0;
+            border-color: transparent #f8fbff transparent transparent;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 20px 20px 8px 20px;
+            max-width: 88%;
+            margin-left: auto;
+            text-align: right;
+            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.3);
+            position: relative;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .user-message::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 8px;
+            border-color: transparent transparent transparent #028ccc;
+        }
+
+        /* Input Area */
+        #chat-input-area {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(2, 140, 204, 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(2, 140, 204, 0.2);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(2, 140, 204, 0.1);
+        }
+
+        #chat-input:focus {
+            border-color: #028ccc;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(2, 140, 204, 0.15);
+            transform: translateY(-1px);
+        }
+
+        #send-btn {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.3);
+        }
+
+        #send-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 140, 204, 0.4);
+            background: linear-gradient(135deg, #0056b3 0%, #028ccc 100%);
+        }
+
+        #send-btn:active {
+            transform: scale(1.05) translateY(0);
+        }
+
+        /* Form Styles */
+        .form-container {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .form-container h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(2, 140, 204, 0.2);
+            border-radius: 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 8px rgba(2, 140, 204, 0.1);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #028ccc;
+            box-shadow: 0 0 0 4px rgba(2, 140, 204, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+            box-shadow: 0 6px 20px rgba(2, 140, 204, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(2, 140, 204, 0.4);
+        }
+
+        .btn-outline-primary {
+            background: transparent;
+            color: #028ccc;
+            border: 2px solid #028ccc;
+            margin-bottom: 10px;
+        }
+
+        .btn-outline-primary:hover {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 140, 204, 0.3);
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .mb-2 {
+            margin-bottom: 15px;
+        }
+
+        .my-1 {
+            margin: 8px 0;
+        }
+
+        /* Service Selection Styles */
+        .service-grid {
+            padding: 25px;
+        }
+
+        .service-grid h4 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            border: 2px solid rgba(2, 140, 204, 0.2);
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card:hover {
+            border-color: #028ccc;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(2, 140, 204, 0.25);
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            background: rgba(2, 140, 204, 0.1);
+            border-radius: 20px 20px 20px 8px;
+            margin-bottom: 20px;
+            max-width: 85%;
+            border: 1px solid rgba(2, 140, 204, 0.2);
+        }
+
+        .typing-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #028ccc;
+            margin: 0 3px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            30% {
+                transform: translateY(-12px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            #chatbot-box {
+                width: calc(100vw - 40px);
+                right: 20px;
+                bottom: 110px;
+            }
+
+            #chatbot-toggle {
+                right: 20px;
+                bottom: 20px;
+                width: 65px;
+                height: 65px;
+                font-size: 28px;
+            }
+
+            #chat-content {
+                height: 320px;
+                padding: 20px;
+            }
+
+            .chat-header {
+                padding: 20px;
+            }
+
+            #chat-input-area {
+                padding: 20px;
+            }
+        }
+
+        /* Demo page styling */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .demo-title {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .demo-subtitle {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-note {
+            background: rgba(2, 140, 204, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(2, 140, 204, 0.2);
+        }
     </style>
 
     <!-- Banner section -->
@@ -925,11 +1438,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                        Let’s make your best trip with us </h1>
-                                                                                                                                                </div> -->
+                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                        Let’s make your best trip with us </h1>
+                                                                                                                                                                </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -945,19 +1458,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                        <div class="hero-inner">
-                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                            </div>
-                                                                                                                                            <div class="container">
-                                                                                                                                                <div class="hero-style1">
-                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                        Explore beauty of the whole world </h1>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </div> -->
+                                                                                                                                                        <div class="hero-inner">
+                                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="container">
+                                                                                                                                                                <div class="hero-style1">
+                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                        Explore beauty of the whole world </h1>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                    </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1624,10 +2137,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                Get Tickets
-                                                                                            </a>
-                                                                                        </div> -->
+                                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                Get Tickets
+                                                                                                            </a>
+                                                                                                        </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -1970,6 +2483,66 @@
     </section>
 
 
+    <!-- Floating Toggle Button -->
+    <div id="chatbot-toggle">
+        💬
+    </div>
+
+    <!-- Chatbot Window -->
+    <div id="chatbot-box">
+        <div class="chat-header">
+<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0;color:#000;font-size:22px;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <img src="/assets/img/chatbot.png" alt="Assistant" style="height: 28px;">
+  Tour Assistant
+</h3>
+
+            <p style="color: white ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Your travel companion is here to help!</p>
+        </div>
+
+        <div id="chat-content">
+            <div class="message">
+                <div class="bot-message" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    👋 Hi there! I'm your personal tour assistant. How can I help you plan your perfect trip today?
+                </div>
+            </div>
+        </div>
+
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+            <button id="send-btn">➤</button>
+        </div>
+
+        <!-- Hidden Form -->
+        <div id="user-form" class="form-container" style="display: none;">
+            <h4>📝 Contact Information</h4>
+            <input type="text" id="name" placeholder="Your Name" class="form-control mb-2">
+            <input type="email" id="email" placeholder="Your Email" class="form-control mb-2">
+            <input type="text" id="phone" placeholder="Your Phone" class="form-control mb-2">
+            <button id="submit-form" class="btn btn-primary w-100">Submit Information</button>
+        </div>
+
+        <!-- Hidden Service Selection -->
+        <div id="service-options" class="service-grid" style="display: none;">
+            <h4 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">🎯 Choose Your Service</h4>
+            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Inbound Tour">
+                🏞️ Inbound Tour
+            </button>
+            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Outbound Tour">
+                ✈️ Outbound Tour
+            </button>
+            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Rent Vehicle">
+                🚗 Rent Vehicle
+            </button>
+            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Transportation">
+                🚌 Transportation
+            </button>
+            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Airline">
+                🛫 Airline Services
+            </button>
+        </div>
+    </div>
+
+
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             document.getElementById('departDate').value = '';
@@ -2013,5 +2586,255 @@
             }
         });
     </script>
+
+
+
+
+    <script>
+        // Chatbot functionality
+        const toggleBtn = document.getElementById('chatbot-toggle');
+        const chatBox = document.getElementById('chatbot-box');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const chatContent = document.getElementById('chat-content');
+        const userForm = document.getElementById('user-form');
+        const serviceOptions = document.getElementById('service-options');
+        const chatInputArea = document.getElementById('chat-input-area');
+
+        let isOpen = false;
+        let currentStep = 'chat';
+        let selectedService = '';
+
+        // Toggle chatbot
+        toggleBtn.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                chatBox.classList.add('show');
+                toggleBtn.classList.add('active');
+                chatInput.focus();
+            } else {
+                chatBox.classList.remove('show');
+                toggleBtn.classList.remove('active');
+            }
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatInput.value = '';
+                simulateTyping();
+
+                setTimeout(() => {
+                    removeTyping();
+                    handleBotResponse(message);
+                }, 1500);
+            }
+        }
+
+        // Add message to chat
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.innerHTML = `<div class="${sender}-message">${message}</div>`;
+            chatContent.appendChild(messageDiv);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        // Simulate typing indicator
+        function simulateTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatContent.appendChild(typingDiv);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typing = document.querySelector('.typing-indicator');
+            if (typing) {
+                typing.remove();
+            }
+        }
+
+        // Handle bot responses
+        function handleBotResponse(userMessage) {
+            const responses = [
+                "That sounds interesting! I'd love to help you plan your adventure. Would you like to see our available services?",
+                "Great question! Let me show you what we can offer. Shall we start with our service options?",
+                "I'm here to help make your travel dreams come true! Would you like to explore our tour packages?",
+                "Perfect! I can assist you with that. Let me show you our available services first."
+            ];
+
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            addMessage(randomResponse, 'bot');
+
+            setTimeout(() => {
+                showServiceOptions();
+            }, 1000);
+        }
+
+        // Show service options
+        function showServiceOptions() {
+            chatInputArea.style.display = 'none';
+            serviceOptions.style.display = 'block';
+            currentStep = 'service';
+        }
+
+        // Show user form
+        function showUserForm() {
+            serviceOptions.style.display = 'none';
+            userForm.style.display = 'block';
+            currentStep = 'form';
+        }
+
+        // Event listeners
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Service selection
+        document.querySelectorAll('.service-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const service = e.target.getAttribute('data-service');
+                selectedService = service;
+                addMessage(`I'm interested in ${service}`, 'user');
+                simulateTyping();
+
+                setTimeout(() => {
+                    removeTyping();
+                    addMessage(
+                        `Excellent choice! ${service} is one of our most popular services. To provide you with the best assistance, I'll need some contact information.`,
+                        'bot');
+                    showUserForm();
+                }, 1500);
+            });
+        });
+
+        // Form submission
+        document.getElementById('submit-form').addEventListener('click', () => {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^[0-9]{9,12}$/;
+
+            if (!name) {
+                addMessage('Please enter your name.', 'bot');
+                return;
+            }
+            if (!email || !emailRegex.test(email)) {
+                addMessage('Please enter a valid email address.', 'bot');
+                return;
+            }
+            if (!phone || !phoneRegex.test(phone)) {
+                addMessage('Please enter a valid phone number (digits only, 9–12 characters).', 'bot');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submit-form');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const formData = {
+                name: name,
+                email: email,
+                phone: phone,
+                service: selectedService
+            };
+
+            addMessage(`Name: ${name}, Email: ${email}, Phone: ${phone}`, 'user');
+            simulateTyping();
+
+            fetch('/chatbot/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute(
+                            'content') || '',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    setTimeout(() => {
+                        removeTyping();
+                        if (data.success) {
+                            addMessage(
+                                `Thank you ${name}! 🎉 Your information has been successfully saved. Our team will contact you within 24 hours to discuss your ${selectedService} plans.`,
+                                'bot');
+                        } else {
+                            addMessage(
+                                `Thank you ${name}! Your request has been received. Our team will get back to you soon!`,
+                                'bot');
+                        }
+                        resetForm();
+                    }, 1500);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    setTimeout(() => {
+                        removeTyping();
+                        addMessage(
+                            `Thank you ${name}! Your information has been received. If you don't hear from us within 24 hours, feel free to contact us directly.`,
+                            'bot');
+                        resetForm();
+                    }, 1500);
+                });
+        });
+
+        // Reset form function
+        function resetForm() {
+            const submitBtn = document.getElementById('submit-form');
+            submitBtn.textContent = 'Submit Information';
+            submitBtn.disabled = false;
+
+            userForm.style.display = 'none';
+            chatInputArea.style.display = 'flex';
+            currentStep = 'chat';
+            selectedService = '';
+
+            // Clear form fields
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+        }
+
+        // Add pulse animation to toggle button
+        setInterval(() => {
+            if (!isOpen) {
+                toggleBtn.classList.add('pulse');
+                setTimeout(() => {
+                    toggleBtn.classList.remove('pulse');
+                }, 2000);
+            }
+        }, 10000);
+
+        document.addEventListener('click', function(event) {
+            const isClickInside = chatBox.contains(event.target) || toggleBtn.contains(event.target);
+
+            if (!isClickInside && isOpen) {
+                chatBox.classList.remove('show');
+                toggleBtn.classList.remove('active');
+                isOpen = false;
+            }
+        });
+    </script>
+
 
 @endsection
