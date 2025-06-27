@@ -319,7 +319,7 @@
         /* Grid Layout */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+             grid-template-columns: repeat(2, 1fr);
             gap: 32px;
             position: relative;
             z-index: 1;
@@ -464,6 +464,12 @@
             transition: var(--transition);
             background-color: #028ccc;
         }
+
+.th-menu-toggle {
+  
+    background-color: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+  
+}
 
         .avatar-status {
             position: absolute;
