@@ -1,4 +1,6 @@
-<div class="col-md-4 mb-4">
+<div class="row">
+    @forelse($packages as $package)
+        <div class="col-md-4 mb-4">
     <a href="{{ route('tour.details', $package->id) }}" class="tour-box-link"
         style="text-decoration: none; color: inherit;">
         <div class="tour-box shadow style2 th-ani"
@@ -49,3 +51,16 @@
         </div>
     </a>
 </div>
+    @empty
+        <div class="col-12 text-center">No matching tours found.</div>
+    @endforelse
+</div>
+
+<!-- Pagination -->
+@if ($packages->hasPages())
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            {{ $packages->links() }}
+        </div>
+    </div>
+@endif

@@ -138,7 +138,7 @@
 
 
     <section class="position-relative bg-top-center overflow-hidden space" id="service-sec"
-        style="margin-top: -150px; padding-bottom: 60px; background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);">
+        style="margin-top: -150px; padding-bottom: 60px;background-color: #F5F5F5 ;">
         <div class="bg-overlay"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: url('assets/img/pattern-dark.png') repeat; opacity: 0.05;">
         </div>
@@ -148,9 +148,9 @@
             <div class="title-area text-center mb-5" style="margin-top: -60px; padding-top: 130px;">
                 <!-- Enhanced SELECT YOUR VEHICLE Heading -->
                 <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                <span class="sub-title fw-semibold" style="color: #AAAAAA;">Premium Car Rentals</span>
+                <span class="sub-title fw-semibold" style="">Premium Car Rentals</span>
                 <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
+                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
                     Select Your Vehicle</h2>
                 <div class="title-separator"
                     style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
@@ -196,7 +196,7 @@
                                 @foreach ($vehicles as $vehicle)
                                     <div class="swiper-slide">
                                         <div class="cars-slider__item"
-                                            style="background: linear-gradient(135deg, rgba(19,19,30,0.95) 0%, rgba(30,30,47,0.95) 100%); border-radius: 18px; overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 60px rgba(0,162,255,0.1) inset; border: 1px solid rgba(0,162,255,0.1);">
+                                            style="background: linear-gradient(135deg, rgba(19,19,30,0.95) 0%, rgba(30,30,47,0.95) 100%); border-radius: 18px; overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);">
 
                                             <!-- Main Row Layout -->
                                             <div class="horizontal-layout"

@@ -33,10 +33,10 @@
         <div class="container" style="margin-top: -82px;">
             <div class="row">
                 <!-- <div class="col-lg-6 offset-lg-3" style="margin-bottom: -55px;">
-                                                    <div class="title-area text-center">
-                                                        <h2 class="sec-title" style="font-weight: bold;">Discover the Wonders of Sri Lanka</h2>
-                                                    </div>
-                                                </div> -->
+                                                        <div class="title-area text-center">
+                                                            <h2 class="sec-title" style="font-weight: bold;">Discover the Wonders of Sri Lanka</h2>
+                                                        </div>
+                                                    </div> -->
             </div>
 
             <div class="row mt-5">
@@ -50,7 +50,7 @@
                             <!-- Days Range Filter -->
                             <div class="filter-section mb-4">
                                 <h5 class="filter-heading">
-                                    <i class="fas fa-tag me-2"></i>Number of Days
+                                   </i>Number of Days
                                 </h5>
 
                                 <div class="d-flex justify-content-between mb-2">
@@ -72,12 +72,12 @@
 
                             <div class="filter-section mb-4">
                                 <h5 class="filter-heading">
-                                    <i class="fas fa-tag me-2"></i>Theme
+                                   </i>Theme
                                 </h5>
                                 <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
                                     @foreach ($allThemes as $theme)
                                         <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input" name="themes[]" value="{{ $theme }}"
+                                            <input class="form-check-input" name="theme[]" value="{{ $theme }}"
                                                 type="checkbox" id="theme_{{ $loop->index }}">
                                             <label class="form-check-label ms-2" for="theme_{{ $loop->index }}">
                                                 {{ ucfirst($theme) }}
@@ -90,12 +90,12 @@
                             <!-- Type of Tours Filter -->
                             <div class="filter-section mb-4">
                                 <h5 class="filter-heading">
-                                    <i class="fas fa-tag me-2"></i>Tour Type
+                                    </i>Tour Type
                                 </h5>
                                 <div class="ps-2">
                                     @foreach ($allTypes as $type)
                                         <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input" name="types[]" value="{{ $type }}"
+                                            <input class="form-check-input" name="type[]" value="{{ $type }}"
                                                 type="checkbox" id="type_{{ $loop->index }}">
                                             <label class="form-check-label ms-2" for="type_{{ $loop->index }}">
                                                 {{ ucfirst($type) }}
@@ -110,7 +110,7 @@
 
                 <!-- Tour Cards Section - 3/4 width -->
                 <div class="col-md-9" id="filteredResults">
-                    <div class="row">
+                    {{-- <div class="row">
 
 
                         @foreach ($packages as $package)
@@ -186,8 +186,40 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --}}
 
+                    <div class="row">
+                        <!-- Special Tours -->
+<h1 class="page-title" style="color: #113d48;">Special Tours</h1>
+                        @forelse ($specialTours as $package)
+                            @include('frontend.components.tour-cards', ['package' => $package])
+                        @empty
+                            <div class="col-12 text-center">No special tours found.</div>
+                        @endforelse
+
+                        <!-- Special Tours Pagination -->
+                        <div class="row justify-content-center my-4">
+                            <div class="col-auto">
+                                {{ $specialTours->appends(request()->except('special_page'))->links() }}
+                            </div>
+                        </div>
+
+                        <!-- Day Tours -->
+               
+<h1 class="page-title" style="color: #113d48; margin-top: 20px">Day Tours</h1>
+                        @forelse ($dayTours as $package)
+                            @include('frontend.components.tour-cards', ['package' => $package])
+                        @empty
+                            <div class="col-12 text-center">No day tours found.</div>
+                        @endforelse
+
+                        <!-- Day Tours Pagination -->
+                        <div class="row justify-content-center my-4">
+                            <div class="col-auto">
+                                {{ $dayTours->appends(request()->except('day_page'))->links() }}
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -383,13 +415,13 @@
             margin-left: -26px;
         }
 
- 
 
-       
 
-      
 
-     
+
+
+
+
         .tour-country {
             font-size: 14px;
             font-weight: 600;
@@ -462,9 +494,9 @@
 
         /*
 
-                                    .space, .space-top {
-                                      padding-top: 20px;
-                                    } */
+                                        .space, .space-top {
+                                          padding-top: 20px;
+                                        } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -538,11 +570,7 @@
         .tour-box {
             position: relative;
             background-color: var(--white-color);
-            border: 1px solid #BCCED2;
-            border-top-width: 1px;
-            border-top-style: solid;
-            border-top-color: rgb(188, 206, 210);
-            border-top: transparent;
+            border: none ;
             border-radius: 16px;
             overflow: hidden;
         }
@@ -984,7 +1012,22 @@
             color: white;
         }
 
+        select, .form-control, .form-select, textarea, input {
 
+  border: none;
+
+}
+
+  .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
     </style>
 
 
@@ -1005,13 +1048,13 @@
             const params = new URLSearchParams();
 
             // Tour types
-            form.querySelectorAll('input[name="types[]"]:checked').forEach(input => {
-                params.append('types[]', input.value);
+            form.querySelectorAll('input[name="type[]"]:checked').forEach(input => {
+                params.append('type[]', input.value);
             });
 
             // Themes
-            form.querySelectorAll('input[name="themes[]"]:checked').forEach(input => {
-                params.append('themes[]', input.value);
+            form.querySelectorAll('input[name="theme[]"]:checked').forEach(input => {
+                params.append('theme[]', input.value);
             });
 
             // Only append 'days' if user interacted

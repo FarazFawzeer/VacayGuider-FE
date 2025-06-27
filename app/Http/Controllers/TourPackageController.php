@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\TourSummary;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class TourPackageController extends Controller
 {
@@ -17,40 +18,48 @@ class TourPackageController extends Controller
 
     public function index(Request $request)
     {
-        // Get filter values from the request
-        $themes = $request->input('themes', []);
-        $types = $request->input('types', []);
-        $days = $request->input('days');
+        // Detect if request is AJAX for filtering
+        $isAjax = $request->ajax();
 
-        // Base query with join
+        // Prepare the base query
         $query = Package::select('packages.*')
             ->where('packages.status', 1)
-            ->where('packages.type', 'inbound') 
-            ->with('tourSummaries') // optional, if you want eager load
+            ->where('packages.type', 'inbound')
+            ->with('tourSummaries')
             ->leftJoin('tour_summaries', 'tour_summaries.package_id', '=', 'packages.id');
 
-        // Filter by days
-        if (!empty($days)) {
-            $query->where('packages.days', '>=', (int)$days);
+        // Filters only if it's an AJAX request (filtering)
+        if ($isAjax) {
+            if (!empty($request->days)) {
+                $query->where('packages.days', '>=', (int) $request->days);
+            }
+
+            if (!empty($request->themes)) {
+                $query->whereIn('tour_summaries.theme', $request->themes);
+            }
+
+            if (!empty($request->types)) {
+                $query->whereIn('packages.tour_type', $request->types);
+            }
+
+            $query->distinct();
+
+            $packages = $query->paginate(6);
+
+            return view('frontend.components.filtered-results', compact('packages'))->render(); // partial view
         }
 
-        // Filter by theme (from tour_summaries)
-        if (!empty($themes)) {
-            $query->whereIn('tour_summaries.theme', $themes);
-        }
+        // ✅ Initial page load: fetch special & day tours using `tour_category`
+        $specialTours = Package::where('status', 1)
+            ->where('type', 'inbound')
+            ->where('tour_category', 'special')
+            ->paginate(6, ['*'], 'special_page'); // name the page param
 
-        // Filter by tour type (from packages)
-        if (!empty($types)) {
-            $query->whereIn('packages.tour_type', $types);
-        }
-
-        // Avoid duplicate packages due to join
-        $query->distinct('packages.id');
-
-        // Paginate results
-        $packages = $query->paginate(6);
-
-        // Get distinct filter data for sidebar
+        $dayTours = Package::where('status', 1)
+            ->where('type', 'inbound')
+            ->where('tour_category', 'day')
+            ->paginate(6, ['*'], 'day_page');
+        // Sidebar filters
         $allThemes = TourSummary::whereNotNull('theme')
             ->where('theme', '!=', '')
             ->distinct()
@@ -64,14 +73,19 @@ class TourPackageController extends Controller
         $minDay = Package::whereNotNull('days')->min('days');
         $maxDay = Package::whereNotNull('days')->max('days');
 
+        $packages = $query->get();
+
         return view('frontend.pages.inbound', compact(
-            'packages',
+            'specialTours',
+            'dayTours',
             'allThemes',
             'allTypes',
             'minDay',
-            'maxDay'
+            'maxDay',
+            'packages'
         ));
     }
+
 
     /**
      * Show detailed view of a specific tour package
@@ -122,11 +136,12 @@ class TourPackageController extends Controller
 
         return view('frontend.pages.tour-detail', compact('package', 'tourSummaries'));
     }
+
+
     public function filter(Request $request)
-    
     {
 
-        
+            Log::info('Filter request', $request->all());
         $query = Package::select('packages.*')
             ->leftJoin('tour_summaries', 'tour_summaries.package_id', '=', 'packages.id')
             ->where('packages.status', 1)
@@ -136,16 +151,16 @@ class TourPackageController extends Controller
             $query->where('packages.days', '>=', (int) $request->days);
         }
 
-        if ($request->filled('themes')) {
-            $query->whereIn('tour_summaries.theme', (array) $request->themes);
+        if ($request->has('theme') && is_array($request->themes)) {
+            $query->whereIn('tour_summaries.theme', $request->themes);
         }
 
-        if ($request->filled('types')) {
-            $query->whereIn('packages.tour_type', (array) $request->types);
+        if ($request->has('type') && is_array($request->types)) {
+            $query->whereIn('packages.tour_type', $request->types);
         }
 
         $packages = $query->distinct()->paginate(6);
 
-        return view('frontend.components.tour-cards', compact('packages'))->render();
+        return view('frontend.components.filtered-results', compact('packages'))->render();
     }
 }

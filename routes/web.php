@@ -8,6 +8,7 @@ use App\Http\Controllers\TransportaionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ChatBotController;
+use App\Http\Controllers\TestimonialController;
 
 Route::get('/', function () {
     return view('frontend.pages.home');
@@ -70,9 +71,13 @@ Route::get('/filter-transportation', [TransportaionController::class, 'filterVeh
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 
 Route::post('/chatbot', [ChatBotController::class, 'handle'])->name('chatbot');
 Route::post('/chatbot/save', [ChatbotController::class, 'store'])->name('chatbot.save');
 
+Route::get('/blog', [TestimonialController::class, 'index'])->name('blog');
+
+Route::get('/tours/load-more/{category}', [TourPackageController::class, 'loadMore'])->name('tour.load_more');

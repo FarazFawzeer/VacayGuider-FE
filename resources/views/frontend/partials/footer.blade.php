@@ -90,17 +90,16 @@
             transform: translateY(0);
 
         }
+.scroll-top {
+  position: fixed;
+  bottom: 120px; /* Adjust to be above chatbot toggle */
+  right: 45px !important;
+    z-index: 1050;
+}
 
-        .scroll-top {
-
-
-            right: 0px !important;
-            left: 30px;
-
-
-        }
+        
     </style>
-    <footer class="footer-wrapper footer-layout1" style="background-color: #262A36;">
+    <footer class="footer-wrapper footer-layout1" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
         <div class="widget-area">
             <div class="container">
                 <div class="row justify-content-between" style="border-top: 1px solid #E1E4E6; padding: 36px;">
@@ -112,7 +111,7 @@
                                             alt="Tourm"></a>
                                 </div>
 
-                                <p class="about-text" style="color: #888C97;">Rapidiously myocardinate cross-platform
+                                <p class="about-text" style=" color:#fff;">Rapidiously myocardinate cross-platform
                                     intellectual capital
                                     model. Appropriately create interactive infrastructures</p>
                                 <div class="th-social">
@@ -128,13 +127,13 @@
                     <div class="col-md-6 col-xl-auto">
                         <div class="widget widget_nav_menu footer-widget mob-links">
                             <h3 class="widget_title" style="color: whitesmoke;">Quick Links</h3>
-                            <div class="menu-all-pages-container">
+                            <div class="menu-all-pages-container" style=" color:#fff;">
                                 <ul class="menu">
-                                    <li class="mob-li"><a href="{{ url('/') }}">Home</a></li>
-                                    <li class="mob-li"><a href="{{ url('/about') }}">About us</a></li>
-                                    <li class="mob-li"><a href="{{ url('/inbound') }}">Tour Packages</a></li>
-                                    <li class="mob-li"><a href="{{ url('/rent') }}">Rent Vehicles</a></li>
-                                    <li class="mob-li"><a href="{{ url('/contact') }}">Tour Booking Now</a></li>
+                                    <li class="mob-li" ><a href="{{ url('/') }}" style=" color:#fff;">Home</a></li>
+                                    <li class="mob-li"><a href="{{ url('/about') }}" style=" color:#fff;">About us</a></li>
+                                    <li class="mob-li"><a href="{{ url('/inbound') }}" style=" color:#fff;">Tour Packages</a></li>
+                                    <li class="mob-li"><a href="{{ url('/rent') }}" style=" color:#fff;">Rent Vehicles</a></li>
+                                    <li class="mob-li"><a href="{{ url('/contact') }}" style=" color:#fff;">Tour Booking Now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -149,9 +148,9 @@
                                     </div>
 
                                     <div class="details">
-                                        <p><a href="tel:+01234567890" class="info-box_link">+94 114 272 372</a></p>
-                                        <p><a href="tel:+09876543210" class="info-box_link">+94 711 999 444</a></p>
-                                        <p><a href="tel:+09876543210" class="info-box_link">+94 777 035 325 </a></p>
+                                        <p><a href="tel:+01234567890" class="info-box_link" style=" color:#fff;">+94 114 272 372</a></p>
+                                        <p><a href="tel:+09876543210" class="info-box_link" style=" color:#fff;">+94 711 999 444</a></p>
+                                        <p><a href="tel:+09876543210" class="info-box_link" style=" color:#fff;">+94 777 035 325 </a></p>
                                     </div>
                                 </div>
                                 <div class="info-box_text">
@@ -161,14 +160,14 @@
 
                                     <div class="details">
                                         <p><a href="mailto:info@vacayguider.com "
-                                                class="info-box_link">info@vacayguider.com </a></p>
+                                                class="info-box_link" style=" color:#fff;">info@vacayguider.com </a></p>
                                     </div>
                                 </div>
                                 <div class="info-box_text">
                                     <div class="icon"><img src="{{ asset('assets/img/icon/location-dot.svg') }}"
                                             alt="img"></div>
-                                    <div class="details">
-                                        <p>22/14C, Asarappa Road, Negombo, Sri Lanka</p>
+                                    <div class="details" >
+                                        <p style=" color:#fff;">22/14C, Asarappa Road, Negombo, Sri Lanka</p>
                                     </div>
                                 </div>
                             </div>
@@ -177,12 +176,12 @@
                 </div>
             </div>
         </div>
-        <div class="copyright-wrap text-center " style="background-color: #028ccc;">
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center" style="">
+        <div class="copyright-wrap text-center " style="background-color: #0a3d52">
+            <div class="container" >
+                <div class="d-flex justify-content-center align-items-center">
                     <p class="copyright-text m-0 text-white">
                         Copyright 2025 <a href="home-travel.html"
-                            class="text-white text-decoration-underline">VaccayGuider</a>. All Rights Reserved.
+                            class="text-white text-decoration-underline">VacayGuider</a>. All Rights Reserved.
                     </p>
                 </div>
             </div>

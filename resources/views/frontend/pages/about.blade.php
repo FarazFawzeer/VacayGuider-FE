@@ -1601,160 +1601,60 @@
 
 
 
-    <section class="testimonials-section py-5">
-        <div class="container-fluid ">
-            <div class="heading white-heading">
-                Testimonial
-            </div>
+  <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="heading white-heading text-center mb-4">Testimonial</div>
+
             <div id="testimonial4"
                 class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
                 data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
 
-                <div class="  ">
-                    <div class="row">
-
-
-                        <div class="col-lg-12 col-md-6 ">
-                            <div class="row">
-                                <div class="slider-area testimonial-slider slider-drag-wrap">
-                                    <div class="swiper th-slider "
-                                        data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":3},"992":{"slidesPerView":3}}}'>
-                                        <div class="swiper-wrapper">
-
-                                            <!-- Review 1 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px; ">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">Sarah Johnson</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-google text-danger me-1"></i>
-                                                                    Google</small>
-                                                            </div>
+                <div class="row">
+                    <div class="col-12" style="margin-top: 34px;">
+                        <div class="slider-area testimonial-slider slider-drag-wrap">
+                            <div class="swiper th-slider"
+                                data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
+                                <div class="swiper-wrapper">
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class="swiper-slide">
+                                            <div class="testimonial-card card h-100">
+                                                <div class="card-body" style="height: 240px;">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
+                                                            class="avatar rounded-circle me-3"
+                                                            alt="{{ $testimonial->name }}" style="height: 48px;">
+                                                        <div>
+                                                            <h6 class="mb-0">{{ $testimonial->name }}</h6>
+                                                            <small class="text-muted">
+                                                                <i
+                                                                    class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
+                                                                {{ $testimonial->source }}
+                                                            </small>
                                                         </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i>
-                                                        </div>
-                                                        <p class="review-text">"Exceptional service! The team went above
-                                                            and
-                                                            beyond to ensure our satisfaction."</p>
-                                                        <small class="text-muted">Posted on: Jan 15, 2024</small>
                                                     </div>
+                                                    <div class="stars mb-3">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i
+                                                                class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"></i>
+                                                        @endfor
+                                                    </div>
+                                                    <p class="review-text">"{{ $testimonial->message }}"</p>
+                                                    <small class="text-muted">Posted on:
+                                                        {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}</small>
                                                 </div>
                                             </div>
-
-                                            <!-- Review 2 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px;">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">Michael Chen</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-facebook text-primary me-1"></i>
-                                                                    Facebook</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-half"></i>
-                                                        </div>
-                                                        <p class="review-text">"Great experience from start to finish.
-                                                            The
-                                                            attention to detail was impressive."</p>
-                                                        <small class="text-muted">Posted on: Jan 12, 2024</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 3 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px;">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">Emma Wilson</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-twitter text-info me-1"></i>
-                                                                    Twitter</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i>
-                                                        </div>
-                                                        <p class="review-text">"Absolutely fantastic! The team was
-                                                            professional and courteous."</p>
-                                                        <small class="text-muted">Posted on: Jan 10, 2024</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 4 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px; ">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">David Thompson</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-google text-danger me-1"></i>
-                                                                    Google</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star"></i>
-                                                        </div>
-                                                        <p class="review-text">"Very satisfied with the quality of
-                                                            service.
-                                                            The staff was knowledgeable."</p>
-                                                        <small class="text-muted">Posted on: Jan 8, 2024</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
-
-                                        <!-- Pagination -->
-                                        <div class="slider-pagination " style="margin-top: 50px;margin-bottom: -10px;">
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            </div>
 
+                                <!-- Pagination -->
+                                <div class="slider-pagination mt-4"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
     </section>
-
 
 
 @endsection

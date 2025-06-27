@@ -413,11 +413,7 @@
         .tour-box {
             position: relative;
             background-color: var(--white-color);
-            border: 1px solid #BCCED2;
-            border-top-width: 1px;
-            border-top-style: solid;
-            border-top-color: rgb(188, 206, 210);
-            border-top: transparent;
+
             border-radius: 16px;
             overflow: hidden;
         }
@@ -899,7 +895,7 @@
             bottom: 30px;
             right: 30px;
             z-index: 1000;
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
             border-radius: 50%;
             width: 75px;
@@ -928,8 +924,17 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+   #chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Make sure it's higher than header (usually 1000+) */
+}
+
+
         /* Chatbot Window */
         #chatbot-box {
+
             position: fixed;
             bottom: 130px;
             right: 30px;
@@ -946,6 +951,7 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
             border: 1px solid rgba(2, 140, 204, 0.1);
+            z-index: 1100;
         }
 
         #chatbot-box.show {
@@ -956,7 +962,7 @@
 
         /* Header */
         .chat-header {
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
             padding: 25px;
             text-align: center;
@@ -1438,11 +1444,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                        Let’s make your best trip with us </h1>
-                                                                                                                                                                </div> -->
+                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                Let’s make your best trip with us </h1>
+                                                                                                                                                                                        </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1458,19 +1464,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                        <div class="hero-inner">
-                                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                            </div>
-                                                                                                                                                            <div class="container">
-                                                                                                                                                                <div class="hero-style1">
-                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                        Explore beauty of the whole world </h1>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div> -->
+                                                                                                                                                                                <div class="hero-inner">
+                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    <div class="container">
+                                                                                                                                                                                        <div class="hero-style1">
+                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                Explore beauty of the whole world </h1>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </div>
+                                                                                                                                                                            </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1508,6 +1514,7 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="departDate" class="form-control p-4 bg-white"
+                                            style="border: 1px solid #ced4da;border-radius: 0;height: 56px;"
                                             placeholder="Depart Date" style="  height: 56px;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white" style="height: 56px; "><i
@@ -1521,7 +1528,8 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="returnDate" class="form-control p-4 bg-white"
-                                            placeholder="Return Date" style="  height: 56px;">
+                                            placeholder="Return Date"
+                                            style="border: 1px solid #ced4da;border-radius: 0;height: 56px;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white " style="height: 56px;"><i
                                                     class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
@@ -1575,7 +1583,7 @@
                                     <div class="swiper-slide">
                                         <a href="{{ route('tour.details', $package->id) }}" class="tour-box-link"
                                             style="text-decoration: none; color: inherit;">
-                                            <div class="tour-box style2 th-ani"
+                                            <div class="tour-box style2 th-ani shadow"
                                                 style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
 
                                                 @php
@@ -1694,7 +1702,7 @@
                                     <div class="swiper-slide">
                                         <a href="{{ route('tour.details', $inboundPackage->id) }}" class="tour-box-link"
                                             style="text-decoration: none; color: inherit;">
-                                            <div class="tour-box style2 th-ani"
+                                            <div class="tour-box style2 th-ani shadow"
                                                 style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
 
                                                 @php
@@ -1919,7 +1927,7 @@
 
     <!-- Rent vehicles -->
     <section class="position-relative bg-top-center  overflow-hidden space" id="service-sec"
-        style="margin-top: -75px; padding-bottom: 52px;background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);">
+        style="margin-top: -75px; padding-bottom: 52px;">
         <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
         </div>
 
@@ -1927,9 +1935,9 @@
             <!-- Title Section with improved typography -->
             <div class="title-area text-center mb-5" style="margin-top: -55px;">
                 <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                <span class="sub-title fw-semibold" style="color: #AAAAAA;">Premium Car Rentals</span>
+                <span class="sub-title fw-semibold" style="">Premium Car Rentals</span>
                 <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
+                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
                     Find Your Perfect Ride</h2>
                 <div class="title-separator"
                     style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
@@ -1951,7 +1959,7 @@
                         </div>
 
                         <!-- Swiper Container with enhanced styling -->
-                        <div class="swiper th-slider has-shadow"
+                        <div class="swiper th-slider "
                             data-slider-options='{
                         "navigation": {
                           "nextEl": ".swiper-button-next-rental",
@@ -1973,7 +1981,7 @@
                                 @foreach ($vehicles as $vehicle)
                                     <div class="swiper-slide">
                                         <div class="cars-slider__item"
-                                            style="background: linear-gradient(135deg, rgba(19,19,30,0.95) 0%, rgba(30,30,47,0.95) 100%); border-radius: 18px; overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 60px rgba(0,162,255,0.1) inset; border: 1px solid rgba(0,162,255,0.1);">
+                                            style="background: linear-gradient(135deg, rgba(19,19,30,0.95) 0%, rgba(30,30,47,0.95) 100%); border-radius: 18px; overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);">
 
                                             <!-- Main Row Layout -->
                                             <div class="horizontal-layout"
@@ -2137,10 +2145,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                Get Tickets
-                                                                                                            </a>
-                                                                                                        </div> -->
+                                                                                                                                    <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                        Get Tickets
+                                                                                                                                    </a>
+                                                                                                                                </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -2361,116 +2369,36 @@
                             <div class="swiper th-slider"
                                 data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
                                 <div class="swiper-wrapper">
-
-                                    <!-- Review 1 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px; ">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">Sarah Johnson</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-google text-danger me-1"></i>
-                                                            Google</small>
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class="swiper-slide">
+                                            <div class="testimonial-card card h-100">
+                                                <div class="card-body" style="height: 240px;">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
+                                                            class="avatar rounded-circle me-3"
+                                                            alt="{{ $testimonial->name }}" style="height: 48px;">
+                                                        <div>
+                                                            <h6 class="mb-0">{{ $testimonial->name }}</h6>
+                                                            <small class="text-muted">
+                                                                <i
+                                                                    class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
+                                                                {{ $testimonial->source }}
+                                                            </small>
+                                                        </div>
                                                     </div>
+                                                    <div class="stars mb-3">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i
+                                                                class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"></i>
+                                                        @endfor
+                                                    </div>
+                                                    <p class="review-text">"{{ $testimonial->message }}"</p>
+                                                    <small class="text-muted">Posted on:
+                                                        {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}</small>
                                                 </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <p class="review-text">"Great experience from start to finish.
-                                                    The attention to detail was impressive."</p>
-                                                <small class="text-muted">Posted on: Jan 15, 2024</small>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Review 2 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px;">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">Michael Chen</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-facebook text-primary me-1"></i>
-                                                            Facebook</small>
-                                                    </div>
-                                                </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-half"></i>
-                                                </div>
-                                                <p class="review-text">"Great experience from start to finish.
-                                                    The attention to detail was impressive."</p>
-                                                <small class="text-muted">Posted on: Jan 12, 2024</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Review 3 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px;">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">Emma Wilson</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-twitter text-info me-1"></i>
-                                                            Twitter</small>
-                                                    </div>
-                                                </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <p class="review-text">"Absolutely fantastic! The team was
-                                                    professional and courteous."</p>
-                                                <small class="text-muted">Posted on: Jan 10, 2024</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Review 4 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px; ">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">David Thompson</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-google text-danger me-1"></i>
-                                                            Google</small>
-                                                    </div>
-                                                </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star"></i>
-                                                </div>
-                                                <p class="review-text">"Very satisfied with the quality of
-                                                    service.
-                                                    The staff was knowledgeable."</p>
-                                                <small class="text-muted">Posted on: Jan 8, 2024</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @endforeach
                                 </div>
 
                                 <!-- Pagination -->
@@ -2482,67 +2410,68 @@
             </div>
     </section>
 
-
-    <!-- Floating Toggle Button -->
-    <div id="chatbot-toggle">
-        💬
-    </div>
-
-    <!-- Chatbot Window -->
-    <div id="chatbot-box">
-        <div class="chat-header">
-<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0;color:#000;font-size:22px;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <img src="/assets/img/chatbot.png" alt="Assistant" style="height: 28px;">
-  Tour Assistant
-</h3>
-
-            <p style="color: white ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Your travel companion is here to help!</p>
+    <div id="chatbot-container">
+        <!-- Floating Toggle Button -->
+        <div id="chatbot-toggle">
+            💬
         </div>
 
-        <div id="chat-content">
-            <div class="message">
-                <div class="bot-message" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                    👋 Hi there! I'm your personal tour assistant. How can I help you plan your perfect trip today?
+        <!-- Chatbot Window -->
+        <div id="chatbot-box">
+            <div class="chat-header">
+                <h3
+                    style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0;color:#fff;font-size:22px;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    <img src="/assets/img/chatbot.png" alt="Assistant"
+                        style="height: 28px; color: #ffff; margin-top: 6px;">
+                    Tour Assistant
+                </h3>
+
+            </div>
+
+            <div id="chat-content">
+                <div class="message">
+                    <div class="bot-message" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        👋 Hi there! I'm your personal tour assistant. How can I help you plan your perfect trip today?
+                    </div>
                 </div>
+            </div>
+
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+                <button id="send-btn">➤</button>
+            </div>
+
+            <!-- Hidden Form -->
+            <div id="user-form" class="form-container" style="display: none;">
+                <h4>Contact Information</h4>
+                <input type="text" id="name" placeholder="Your Name" class="form-control mb-2">
+                <input type="email" id="email" placeholder="Your Email" class="form-control mb-2">
+                <input type="text" id="phone" placeholder="Your Phone" class="form-control mb-2">
+                <button id="submit-form" class="btn btn-primary w-100">Submit Information</button>
+            </div>
+
+            <!-- Hidden Service Selection -->
+            <div id="service-options" class="service-grid" style="display: none;">
+                <h4 style="text-align: center; color: #2c3e50; margin-bottom: 15px;"> Choose Your Service</h4>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Inbound Tour">
+                    Inbound Tour
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Outbound Tour">
+                    Outbound Tour
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Rent Vehicle">
+                    Rent Vehicle
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Transportation">
+                    Transportation
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Airline">
+                    Airline Services
+                </button>
             </div>
         </div>
 
-        <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
-            <button id="send-btn">➤</button>
-        </div>
-
-        <!-- Hidden Form -->
-        <div id="user-form" class="form-container" style="display: none;">
-            <h4>📝 Contact Information</h4>
-            <input type="text" id="name" placeholder="Your Name" class="form-control mb-2">
-            <input type="email" id="email" placeholder="Your Email" class="form-control mb-2">
-            <input type="text" id="phone" placeholder="Your Phone" class="form-control mb-2">
-            <button id="submit-form" class="btn btn-primary w-100">Submit Information</button>
-        </div>
-
-        <!-- Hidden Service Selection -->
-        <div id="service-options" class="service-grid" style="display: none;">
-            <h4 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">🎯 Choose Your Service</h4>
-            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Inbound Tour">
-                🏞️ Inbound Tour
-            </button>
-            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Outbound Tour">
-                ✈️ Outbound Tour
-            </button>
-            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Rent Vehicle">
-                🚗 Rent Vehicle
-            </button>
-            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Transportation">
-                🚌 Transportation
-            </button>
-            <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Airline">
-                🛫 Airline Services
-            </button>
-        </div>
     </div>
-
-
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             document.getElementById('departDate').value = '';
@@ -2833,6 +2762,17 @@
                 toggleBtn.classList.remove('active');
                 isOpen = false;
             }
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (!isOpen) {
+                    isOpen = true;
+                    chatBox.classList.add('show');
+                    toggleBtn.classList.add('active');
+                    chatInput.focus();
+                }
+            }, 5000); // 5000 ms = 5 seconds
         });
     </script>
 
