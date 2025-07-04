@@ -44,7 +44,7 @@ class TourPackageController extends Controller
 
             $query->distinct();
 
-            $packages = $query->paginate(6);
+            $packages = $query->paginate(8);
 
             return view('frontend.components.filtered-results', compact('packages'))->render(); // partial view
         }
@@ -53,12 +53,12 @@ class TourPackageController extends Controller
         $specialTours = Package::where('status', 1)
             ->where('type', 'inbound')
             ->where('tour_category', 'special')
-            ->paginate(6, ['*'], 'special_page'); // name the page param
+            ->paginate(8, ['*'], 'special_page'); // name the page param
 
         $dayTours = Package::where('status', 1)
             ->where('type', 'inbound')
             ->where('tour_category', 'day')
-            ->paginate(6, ['*'], 'day_page');
+            ->paginate(8, ['*'], 'day_page');
         // Sidebar filters
         $allThemes = TourSummary::whereNotNull('theme')
             ->where('theme', '!=', '')

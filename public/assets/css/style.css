@@ -2985,14 +2985,14 @@ input[type=time]::-webkit-calendar-picker-indicator {
 
 .scroll-top {
   position: fixed;
-  right: 30px;
-  bottom: 30px;
+  right: 43px;
+  bottom: 160px;
   height: 50px;
   width: 50px;
   cursor: pointer;
   display: block;
   border-radius: 50px;
-  z-index: 10000;
+  z-index: 1000;
   opacity: 1;
   visibility: hidden;
   -webkit-transform: translateY(45px);

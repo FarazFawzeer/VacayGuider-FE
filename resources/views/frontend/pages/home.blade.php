@@ -5,7 +5,20 @@
 @section('content')
 
     <style>
+
+                .map-section {
+  /* background-color: var(--secondary);
+  background:  url('/assets/img/map-bg-3.jpg'); */
+}
         @media (max-width: 767.98px) {
+
+              .swiper-button-prev-rental {
+            left: -10px;
+        }
+
+        .swiper-button-next-rental {
+            right: -10px;
+        }
 
             .inbound-title {
                 margin-top: 80px
@@ -60,9 +73,7 @@
                 margin-top: -134px;
             }
 
-            .tour-margin-inbound {
-                margin-top: -68px;
-            }
+
         }
 
         @media (min-width: 768px) {
@@ -75,9 +86,21 @@
 
             }
 
-            .tour-margin-inbound {
-                margin-top: -98px;
+            .alirlin-title{
+                margin-top: 10px;
             }
+
+
+        }
+
+        #departDate,
+        #departDate::placeholder {
+            color: #000 !important;
+        }
+
+        #returnDate,
+        #returnDate::placeholder {
+            color: #000 !important;
         }
 
         .inbound-title #blog-sec .mb-30 {
@@ -554,24 +577,24 @@
             color: #1e1e1e;
             font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      
             transition: all 0.3s ease;
         }
 
         .swiper-button-prev-inbound {
-            left: -60px;
+            left: -45px;
             /* adjust as needed */
         }
 
         .swiper-button-next-inbound {
-            right: -60px;
+            right: -45px;
             /* adjust as needed */
         }
 
         .swiper-button-prev-inbound:hover,
         .swiper-button-next-inbound:hover {
-            background: #FFFFFF;
-            color: #60D522;
+            background: #efefef;
+  
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -892,7 +915,7 @@
         /* Floating Toggle Button */
         #chatbot-toggle {
             position: fixed;
-            bottom: 30px;
+            bottom: 80px;
             right: 30px;
             z-index: 1000;
             background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
@@ -924,35 +947,36 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-   #chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999; /* Make sure it's higher than header (usually 1000+) */
-}
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            /* Make sure it's higher than header (usually 1000+) */
+        }
 
 
         /* Chatbot Window */
-        #chatbot-box {
-
-            position: fixed;
-            bottom: 130px;
-            right: 30px;
-            width: 420px;
-            max-width: calc(100vw - 60px);
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(25px);
-            border-radius: 25px;
-            z-index: 1000;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            transform: translateY(100px) scale(0.85);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            border: 1px solid rgba(2, 140, 204, 0.1);
-            z-index: 1100;
-        }
+      #chatbot-box {
+    position: fixed;
+    bottom: 165px;
+    right: 30px;
+    width: 420px;
+    max-width: calc(100vw - 60px);
+    max-height: calc(100vh - 174px); /* prevent from overflowing screen */
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    z-index: 1101;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(100px) scale(0.85);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* allow inner sections to flow vertically */
+}
 
         #chatbot-box.show {
             transform: translateY(0) scale(1);
@@ -1010,13 +1034,13 @@
         }
 
         /* Chat Content */
-        #chat-content {
-            height: 380px;
-            overflow-y: auto;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.95);
-            position: relative;
-        }
+       #chat-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
 
         #chat-content::-webkit-scrollbar {
             width: 8px;
@@ -1065,7 +1089,7 @@
         }
 
         .user-message {
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
             color: white;
             padding: 16px 20px;
             border-radius: 20px 20px 8px 20px;
@@ -1121,7 +1145,7 @@
         }
 
         #send-btn {
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
             color: white;
             border: none;
             border-radius: 50%;
@@ -1139,7 +1163,7 @@
         #send-btn:hover {
             transform: scale(1.1) translateY(-2px);
             box-shadow: 0 8px 25px rgba(2, 140, 204, 0.4);
-            background: linear-gradient(135deg, #0056b3 0%, #028ccc 100%);
+            background: linear-gradient(135deg, #0a3d52 0%, #028ccc 100%);
         }
 
         #send-btn:active {
@@ -1160,6 +1184,12 @@
             font-weight: 600;
         }
 
+        .form-container,
+.service-grid {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
         .form-control {
             width: 100%;
             padding: 15px 20px;
@@ -1179,6 +1209,17 @@
             transform: translateY(-1px);
         }
 
+        @media (max-height: 700px) {
+    #chatbot-box {
+        max-height: calc(100vh - 172px);
+        bottom: 163px;
+    }
+
+    .alirlin-title{
+                margin-top: 10px;
+            }
+}
+
         .btn {
             padding: 15px 25px;
             border: none;
@@ -1194,28 +1235,28 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
             color: white;
             box-shadow: 0 6px 20px rgba(2, 140, 204, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(2, 140, 204, 0.4);
+    
         }
 
         .btn-outline-primary {
             background: transparent;
-            color: #028ccc;
-            border: 2px solid #028ccc;
+            color: #000000;
+            border: 2px solid #000000;
             margin-bottom: 10px;
         }
 
         .btn-outline-primary:hover {
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+        
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(2, 140, 204, 0.3);
+        
         }
 
         .w-100 {
@@ -1355,6 +1396,10 @@
 
         /* Responsive Design */
         @media (max-width: 480px) {
+                .alirlin-title{
+                margin-top: 30px;
+            }
+
             #chatbot-box {
                 width: calc(100vw - 40px);
                 right: 20px;
@@ -1382,7 +1427,7 @@
                 padding: 20px;
             }
         }
-
+/* chat bot ending */
         /* Demo page styling */
         .demo-container {
             max-width: 1200px;
@@ -1410,6 +1455,20 @@
             margin-bottom: 2rem;
             border: 1px solid rgba(2, 140, 204, 0.2);
         }
+
+
+        .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            background-color: #000000;
+
+            border-color: #000000;
+
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet {
+            border-color: #000000;
+        }
+        
+
     </style>
 
     <!-- Banner section -->
@@ -1426,11 +1485,11 @@
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
-                                    style="font-family: cursive; font-size:20px;margin-bottom: -15px;">
+                                    style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
                                     Let us take you beyond the ordinary
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
-                                    style="font-size: 60px;font-weight: 900;">
+                                    style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
                                     Natural Wonder
                                 </h1>
                             </div>
@@ -1444,19 +1503,19 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                unforgetable pleasure with us</span>
-                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                Let’s make your best trip with us </h1>
-                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                Let’s make your best trip with us </h1>
+                                                                                                                                                                                                        </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
-                                    style="font-family: cursive; font-size:20px;margin-bottom: -15px;">
+                                    style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
                                     Your next getaway is just a flight away
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
-                                    style="font-size: 60px;font-weight: 900;">
+                                    style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
                                     Where luxury meets the road
                                 </h1>
                             </div>
@@ -1464,19 +1523,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                <div class="hero-inner">
-                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                    <div class="container">
-                                                                                                                                                                                        <div class="hero-style1">
-                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                unforgetable pleasure with us</span>
-                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                Explore beauty of the whole world </h1>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                </div>
-                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                <div class="hero-inner">
+                                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                    <div class="container">
+                                                                                                                                                                                                        <div class="hero-style1">
+                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                Explore beauty of the whole world </h1>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                            </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1499,13 +1558,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 mb-md-0">
-                                    <select id="serviceSelect" class="custom-select px-4" style="height: 55px;">
+                                    <select id="serviceSelect" class="custom-select px-4" style="height: 55px;color:#000;">
                                         <option selected disabled>Services</option>
                                         <option value="inbound">Inbound Tour</option>
-                                        <option value="outbound">Outbound Tour</option>
-                                        <option value="airport">Airport Transport</option>
-                                        <option value="rent">Rent Vehicles</option>
-                                        <option value="tickets">Air Tickets</option>
+                                        {{-- <option value="outbound">Outbound Tour</option> --}}
+                                        <option value="airport">Rent Vehicle</option>
+                                        <option value="rent">Transportaion</option>
+                                        <option value="tickets">Airline</option>
                                     </select>
 
                                 </div>
@@ -1514,11 +1573,11 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="departDate" class="form-control p-4 bg-white"
-                                            style="border: 1px solid #ced4da;border-radius: 0;height: 56px;"
-                                            placeholder="Depart Date" style="  height: 56px;">
+                                            style="box-shadow:none; border: 1px solid #ced4da;color:#000 !important; font-size: 1rem;font-weight: 400;border-radius: 0;height: 56px;font-family:'Inter', sans-serif !important;"
+                                            placeholder="Departure Date" style="  height: 56px;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white" style="height: 56px; "><i
-                                                    class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
+                                                    class="fa fa-calendar-alt" style="color:#000;"></i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1529,10 +1588,10 @@
                                     <div class="input-group">
                                         <input type="text" id="returnDate" class="form-control p-4 bg-white"
                                             placeholder="Return Date"
-                                            style="border: 1px solid #ced4da;border-radius: 0;height: 56px;">
+                                            style="box-shadow:none; border: 1px solid #ced4da;color:#000; font-size: 1rem;font-weight: 400;border-radius: 0;height: 56px;font-family:'Inter', sans-serif !important;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white " style="height: 56px;"><i
-                                                    class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
+                                                    class="fa fa-calendar-alt" style="color:#000;"></i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1543,7 +1602,8 @@
                         </div>
                     </div>
                     <div class="form-btn col-md-12 col-lg-auto text-center text-lg-start mt-3 mt-lg-0">
-                        <button class="th-btn custom-btn" type="button" id="getQuoteBtn">GET QUOTE</button>
+                        <button class="th-btn custom-btn" type="button" id="getQuoteBtn" style="height: 56px;">GET
+                            QUOTE</button>
                     </div>
                 </div>
             </div>
@@ -1552,7 +1612,7 @@
 
 
     <!-- Tour Packagen Outbound -->
-    <section class="position-relative bg-top-center overflow-hidden space tour-margin " id="service-sec" style="">
+    {{-- <section class="position-relative bg-top-center overflow-hidden space tour-margin " id="service-sec" style="">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -1664,123 +1724,133 @@
 
 
         </div>
-    </section>
+    </section> --}}
 
     <!-- Tour Package Inbound -->
-    <section class="position-relative  overflow-hidden space tour-margin-inbound " id="service-sec" data-bg-src="">
+    <section class="position-relative  overflow-hidden space tour-margin-inbound " id="service-sec" data-bg-src=""
+        style="margin-top: -270px;">
 
 
-        <div class="container tour-margin-inbound" style="">
+        <div class="container-fluid tour-margin-inbound" style="">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="title-area text-center inbound-title">
-                        <span class="sub-title" style="font-size: 20px;">Inbound Tours</span>
-                        <h2 class="sec-title" style="font-size: 42px;">Discover the Wonders of Sri Lanka </h2>
+                        <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Inbound
+                            Tours</span>
+                        <h2 class="sec-title"
+                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                            Discover the Wonders of Sri Lanka </h2>
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
+                            <div class="slider-area tour-slider slider-drag-wrap position-relative">
+                                <div class="swiper-button-prev-inbound ">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="swiper-button-next-inbound">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
 
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
-                    <div class="slider-area tour-slider slider-drag-wrap">
-                        <div class="swiper-button-prev-inbound">
-                            <i class="fas fa-chevron-left"></i>
-                        </div>
-                        <div class="swiper-button-next-inbound">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
-
-                        <div class="swiper th-slider has-shadow"
-                            data-slider-options='{ "navigation": {
+                                <div class="swiper th-slider has-shadow"
+                                    data-slider-options='{ "navigation": {
                                 "nextEl": ".swiper-button-next-inbound",
                                 "prevEl": ".swiper-button-prev-inbound"
                             },"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"},"1400":{"slidesPerView":"4"}}}'>
-                            <div class="swiper-wrapper">
+                                    <div class="swiper-wrapper">
 
 
-                                @foreach ($inboundPackages as $inboundPackage)
-                                    <div class="swiper-slide">
-                                        <a href="{{ route('tour.details', $inboundPackage->id) }}" class="tour-box-link"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="tour-box style2 th-ani shadow"
-                                                style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
+                                        @foreach ($inboundPackages as $inboundPackage)
+                                            <div class="swiper-slide">
+                                                <a href="{{ route('tour.details', $inboundPackage->id) }}"
+                                                    class="tour-box-link" style="text-decoration: none; color: inherit;">
+                                                    <div class="tour-box style2 th-ani shadow"
+                                                        style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
 
-                                                @php
-                                                    $imagePath = $inboundPackage->picture
-                                                        ? 'storage/' . $inboundPackage->picture
-                                                        : null;
-                                                    $fallbackImage = asset('assets/img/tour/yala.jpg'); // Your dummy tour image
-                                                    $imageUrl =
-                                                        $imagePath && file_exists(public_path($imagePath))
-                                                            ? asset($imagePath)
-                                                            : $fallbackImage;
-                                                @endphp
-                                                <!-- Image Section -->
-                                                <div class="tour-box_img global-img" style="position: relative;">
-                                                    <img src="{{ $imageUrl }}" alt="{{ $inboundPackage->place }}"
-                                                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
-                                                </div>
+                                                        @php
+                                                            $imagePath = $inboundPackage->picture
+                                                                ? 'storage/' . $inboundPackage->picture
+                                                                : null;
+                                                            $fallbackImage = asset('assets/img/tour/yala.jpg'); // Your dummy tour image
+                                                            $imageUrl =
+                                                                $imagePath && file_exists(public_path($imagePath))
+                                                                    ? asset($imagePath)
+                                                                    : $fallbackImage;
+                                                        @endphp
+                                                        <!-- Image Section -->
+                                                        <div class="tour-box_img global-img" style="position: relative;">
+                                                            <img src="{{ $imageUrl }}"
+                                                                alt="{{ $inboundPackage->place }}"
+                                                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                                                        </div>
 
-                                                <!-- Content Section -->
-                                                <div class="tour-content" style="padding: 15px;">
-                                                    <!-- Country & Rating -->
-                                                    <div class="tour-header d-flex align-items-center justify-content-between"
-                                                        style="margin-top: -12px; margin-bottom: -8px;">
-                                                        <p class="tour-country m-0 d-flex align-items-center">
-                                                            {{ $inboundPackage->country_name ?? 'Sri Lanka' }}
-                                                        </p>
-                                                        <div class="tour-rating d-flex align-items-center"
-                                                            style="margin-top: 13px;">
-                                                            <i class="fas fa-star text-warning"></i>
-                                                            <span class="ms-1"
-                                                                style="font-weight: 600; font-size: 14px; color: #333;">{{ $inboundPackage->ratings }}</span>
+                                                        <!-- Content Section -->
+                                                        <div class="tour-content" style="padding: 15px;">
+                                                            <!-- Country & Rating -->
+                                                            <div class="tour-header d-flex align-items-center justify-content-between"
+                                                                style="margin-top: -12px; margin-bottom: -8px;">
+                                                                <p class="tour-country m-0 d-flex align-items-center">
+                                                                    {{ $inboundPackage->country_name ?? 'Sri Lanka' }}
+                                                                </p>
+                                                                <div class="tour-rating d-flex align-items-center"
+                                                                    style="margin-top: 13px;">
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <span class="ms-1"
+                                                                        style="font-weight: 600; font-size: 14px; color: #333;">{{ $inboundPackage->ratings }}</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Title -->
+                                                            <h3 class="box-title mt-2"
+                                                                style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
+                                                                {{ $inboundPackage->heading }}
+                                                            </h3>
+
+                                                            <!-- Small Description -->
+                                                            <p class="text-dark  small mt-1 mb-1"
+                                                                style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                                                {{ Str::limit($inboundPackage->description, 90) }}
+                                                            </p>
+
+                                                            <a href="{{ route('tour.details', $inboundPackage->id) }}"
+                                                                class="text-primary small" style="font-weight: 500;">View
+                                                                More</a>
+                                                        </div>
+
+                                                        <!-- Tour Info -->
+                                                        <div class="d-flex align-items-right"
+                                                            style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
+                                                            {{-- <i class="fas fa-calendar-check text-danger me-2"></i> --}}
+                                                            <span class="text-dark " style="font-weight: bold;">
+                                                                {{ $inboundPackage->days }} Days,
+                                                                {{ $inboundPackage->nights }}
+                                                                Nights
+                                                            </span>
                                                         </div>
                                                     </div>
-
-                                                    <!-- Title -->
-                                                    <h3 class="box-title mt-2"
-                                                        style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
-                                                        {{ $inboundPackage->heading }}
-                                                    </h3>
-
-                                                    <!-- Small Description -->
-                                                    <p class="text-muted small mt-1 mb-1"
-                                                        style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                                        {{ Str::limit($inboundPackage->description, 90) }}
-                                                    </p>
-
-                                                    <a href="{{ route('tour.details', $inboundPackage->id) }}"
-                                                        class="text-primary small" style="font-weight: 500;">View More</a>
-                                                </div>
-
-                                                <!-- Tour Info -->
-                                                <div class="d-flex align-items-right"
-                                                    style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
-                                                    <i class="fas fa-calendar-check text-danger me-2"></i>
-                                                    <span class="text-dark fw-semibold">
-                                                        {{ $inboundPackage->days }} Days, {{ $inboundPackage->nights }}
-                                                        Nights
-                                                    </span>
-                                                </div>
+                                                </a>
                                             </div>
-                                        </a>
+                                        @endforeach
+
+
+
                                     </div>
-                                @endforeach
-
-
-
+                                    {{-- <div class="slider-pagination" style="margin-top: 20px;margin-bottom: 58px;"></div> --}}
+                                </div>
                             </div>
-                            <div class="slider-pagination" style="margin-top: 20px;margin-bottom: 58px;"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
-
-
-            <div class="text-center mt-4">
+            <div class="text-center ">
                 <a href="{{ url('/inbound-tours') }}" class="th-btn "
-                    style="outline: 2px solid #000; background-color: black; color: white;">
+                    style="outline: 2px solid #000; background-color: black; color: white; margin-top: 40px;">
                     Show More
                 </a>
             </div>
@@ -1788,21 +1858,23 @@
     </section>
 
 
-    <section id="transportation" class="py-5 bg-smoke" style="margin-bottom: 70px; margin-top: 30px;">
-        <div class="container">
+    <section id="transportation" class="py-5 bg-smoke map-section" style="margin-bottom: 70px; margin-top: 30px;">
+        <div class="container-fluid">
 
 
             <!-- Title Section with improved typography -->
             <div class="title-area text-center mb-5" style="">
-                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                <span class="sub-title fw-semibold">Travel Sri Lanka</span>
+                <span class="sub-title"
+                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Travel
+                    Sri Lanka</span>
                 <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; margin-bottom: 20px;">
-                    Transport Solutions</h2>
-                <div class="title-separator"
-                    style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
-                </div>
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    Transport Solutions </h2>
             </div>
+
+
+
+
 
             <!-- Main Content Row: Left Services - Center Image - Right Services -->
             <div class="row align-items-center">
@@ -1819,7 +1891,7 @@
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-car" style="font-size: 28px; color: #4e54c8;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Airport Pickups
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Airport Pickups
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Hassle-free airport transfers anytime. We monitor your flight and ensure
@@ -1841,7 +1913,7 @@
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-shield-alt" style="font-size: 28px; color: #ff7a50;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Safe & Reliable
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Safe & Reliable
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Certified service with insured, well-maintained vehicles and licensed,
@@ -1875,7 +1947,7 @@
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-credit-card" style="font-size: 28px; color: #2ecc71;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Booking Made Easy
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Booking Made Easy
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Simple booking with flexible hourly or distance-based packages tailored to
@@ -1897,7 +1969,7 @@
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-user-tie" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Experienced Drivers
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Experienced Drivers
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Skilled local drivers with courteous service, island knowledge, and
@@ -1933,29 +2005,27 @@
 
         <div class="container position-relative" style="z-index: 1;">
             <!-- Title Section with improved typography -->
-            <div class="title-area text-center mb-5" style="margin-top: -55px;">
-                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                <span class="sub-title fw-semibold" style="">Premium Car Rentals</span>
+            <div class="title-area text-center mb-5" style="margin-top: -75px;">
+                <span class="sub-title"
+                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium
+                    Car Rentals</span>
                 <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
-                    Find Your Perfect Ride</h2>
-                <div class="title-separator"
-                    style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
-                </div>
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    Find Your Perfect Ride </h2>
             </div>
 
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
+                <div class="tab-pane fade active show" id="nav-step1" role="tabpanel" style="margin-top: -20px;">
                     <div class="slider-area tour-slider slider-drag-wrap">
 
                         <!-- Navigation Buttons with improved styling -->
                         <div class="swiper-button-prev-rental"
-                            style="background-color: rgba(0,162,255,0.1); width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 3px 12px rgba(0,162,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; border: 1px solid rgba(0,162,255,0.3); backdrop-filter: blur(5px);">
-                            <i class="fas fa-chevron-left" style="color: #00A2FF; font-size: 16px;"></i>
+                            style="background-color: rgba(255, 252, 252, 0.1); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;  backdrop-filter: blur(5px);">
+                            <i class="fas fa-chevron-left" style="color: #000000; font-size: 20px;"></i>
                         </div>
                         <div class="swiper-button-next-rental"
-                            style="background-color: rgba(0,162,255,0.1); width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 3px 12px rgba(0,162,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; border: 1px solid rgba(0,162,255,0.3); backdrop-filter: blur(5px);">
-                            <i class="fas fa-chevron-right" style="color: #00A2FF; font-size: 16px;"></i>
+                            style="background-color: rgba(255, 255, 255, 0.1); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(5px);">
+                            <i class="fas fa-chevron-right" style="color: #000000; font-size: 20px;"></i>
                         </div>
 
                         <!-- Swiper Container with enhanced styling -->
@@ -1981,7 +2051,7 @@
                                 @foreach ($vehicles as $vehicle)
                                     <div class="swiper-slide">
                                         <div class="cars-slider__item"
-                                            style="background: linear-gradient(135deg, rgba(19,19,30,0.95) 0%, rgba(30,30,47,0.95) 100%); border-radius: 18px; overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);">
+                                            style="background: linear-gradient(135deg, #071f2b 0%, #000000 100%);   overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);">
 
                                             <!-- Main Row Layout -->
                                             <div class="horizontal-layout"
@@ -2012,12 +2082,12 @@
                                                 <div class="image-section"
                                                     style="flex: 1; display: flex; justify-content: center; align-items: center; position: relative; height: 100%;">
                                                     <div
-                                                        style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,162,255,0.15) 0%, rgba(0,162,255,0) 70%); z-index: 1;">
+                                                        style="position: absolute; width: 300px; height: 300px; border-radius: 50%; z-index: 1;">
                                                     </div>
 
                                                     <img src="{{ $vehicle->image ? asset('storage/' . $vehicle->image) : asset('assets/img/bike3.png') }}"
                                                         alt="{{ $vehicle->brand }} {{ $vehicle->model }}"
-                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease; filter: drop-shadow(0 10px 25px rgba(0,162,255,0.25));">
+                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease; ">
                                                 </div>
 
 
@@ -2027,7 +2097,7 @@
 
                                                     <div class="demo-container">
                                                         <div
-                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 8px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 15px 20px; border-radius: 60px; font-size: 14px; font-weight: 800; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                                                             <span style="font-size: 28px;">$ {{ $vehicle->price }}</span>
                                                             <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                                                         </div>
@@ -2039,13 +2109,13 @@
                                             <!-- Specifications Section -->
                                             <!-- Specifications Section -->
                                             <div class="specification priority-mobile"
-                                                style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px; padding: 20px; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(19,19,30,0.7) 0%, rgba(30,30,47,0.7) 100%); backdrop-filter: blur(5px); border: 1px solid rgba(0,162,255,0.1);">
+                                                style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px; padding: 20px;  box-shadow: 0 8px 20px rgba(0,0,0,0.2);  background-color: rgba(0, 0, 0, 0.6);">
 
                                                 <!-- Helmets -->
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #00A2FF; font-weight: 700; font-size: 18px;">
                                                     <i class="fas fa-helmet-safety"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Helmets</span>
@@ -2059,7 +2129,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-kit-medical"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">First-Aid
@@ -2075,7 +2145,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-cogs"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Transmission</span>
@@ -2090,7 +2160,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-road"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Mileage</span>
@@ -2114,7 +2184,7 @@
 
 
 
-            <div class="text-center  " style="margin-top: 70px;">
+            <div class="text-center  " style="margin-top:40px;">
                 <a href="{{ url('/rent') }}" class="th-btn"
                     style="outline: 2px solid #000; background-color: black; color: white;">
                     Show More
@@ -2125,30 +2195,33 @@
     <!-- Ari Line -->
 
     <section class=" overflow-hidden space bg-smoke" id="blog-sec">
-        <div class="container">
+        <div class="container-fluid">
             <div class="mb-30 text-center text-md-start" style="margin-top: -60px;">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-md-7 airlin-mob">
-                        <div class="title-area mb-md-0">
+                        <div class="title-area mb-md-0 alirlin-title">
                             {{-- <span class="sub-title" style="color: #AAAAAA;">Airline Tickets</span>
                                 <h2 class="sec-title"  style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">Your Gateway to the World</h2> --}}
-                            <span class="sub-title fw-semibold">Airline Ticket</span>
+                            <span class="sub-title "
+                                style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Airline
+                                Ticket</span>
                             <h2 class="sec-title"
-                                style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700;color: #1a2b49; margin-bottom: 20px; ">
+                                style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                                 Your Gateway to the World</h2>
 
 
                         </div>
 
 
+
                         <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                    <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                        Get Tickets
-                                                                                                                                    </a>
-                                                                                                                                </div> -->
+                                                                                                                                                    <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                        Get Tickets
+                                                                                                                                                    </a>
+                                                                                                                                                </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -2181,40 +2254,40 @@
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air Asia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air Asia.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/air india.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/air india.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air India.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air India.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air Arabia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air Arabia.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/azur air.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/azur air.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/azur air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/azur air.png" alt="Brand Logo">
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/china.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/china.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air China.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air China.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
@@ -2222,16 +2295,16 @@
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Emirates.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Emirates.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Emirates.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Emirates.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Etihad.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Etihad.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Etihad.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Etihad.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
@@ -2239,101 +2312,110 @@
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Fits Air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Fits Air.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/flydubai.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/flydubai.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/fly Dubai.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/fly dubai.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/indigo.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/indigo.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/indigo.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/indigo.png" alt="Brand Logo">
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/jazeera.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/jazeera.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Jazeera Airways.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Jazeera Airways.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/malaysia.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/malaysia.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Malaysia Airlines.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Malaysia Airliness.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Qatar Airways.jpeg" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Qatar Airways.jpeg" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Qatar Airways.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Qatar Airways.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/salam air.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/salam air.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Salam Air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Salam Air.png" alt="Brand Logo">
+                                    </a>
+                                </div>
+                            </div>
+                            {{-- <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/airline/seychelle.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/seychelle.png" alt="Brand Logo">
+                                    </a>
+                                </div>
+                            </div> --}}
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/airline/Singapore Airlines.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Singapore Airlines.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/seychelle.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/seychelle.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Sri Lankan Airlines.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Sri Lankan Airlines.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/singapore.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/singapore.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Thai Airways.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Thai Airways.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/turkish.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/turkish.png" alt="Brand Logo">
                                     </a>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="brand-box">
-                                    <a href="">
-                                        <img class="original" src="assets/img/brand/thai.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/thai.png" alt="Brand Logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="brand-box">
-                                    <a href="">
-                                        <img class="original" src="assets/img/brand/turkish.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/turkish.png" alt="Brand Logo">
-                                    </a>
-                                </div>
-                            </div>
+                            </div> --}}
 
                         </div>
 
@@ -2356,7 +2438,7 @@
 
 
     <section class="testimonials-section py-5">
-        <div class="container">
+        <div class="container-fluid">
             <div class="heading white-heading text-center mb-4">Testimonial</div>
 
             <div id="testimonial4"
@@ -2421,8 +2503,8 @@
             <div class="chat-header">
                 <h3
                     style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0;color:#fff;font-size:22px;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                    <img src="/assets/img/chatbot.png" alt="Assistant"
-                        style="height: 28px; color: #ffff; margin-top: 6px;">
+                    {{-- <img src="/assets/img/chatbot.png" alt="Assistant"
+                        style="height: 28px; color: #ffff; margin-top: 6px;"> --}}
                     Tour Assistant
                 </h3>
 

@@ -69,6 +69,187 @@
         }
     </script>
     <style>
+         .steps-container {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        input,
+        select {
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.05);
+            border: 2px dashed #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            color: #ffff;
+            transform: translateY(-3px);
+
+        }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            justify-self: center;
+            margin-top: 30px;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .payment-info p {
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+
+        .success-section {
+            background: #6dab3c;
+            color: white;
+            text-align: center;
+        }
+
+        .success-section .step-number {
+            background: linear-gradient(135deg, #00cec9, #00b894);
+        }
+
+        .ps-2 {
+            padding-left: 0 !important;
+        }
+
+        .form-check {
+            padding-left: 0;
+        }
+
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
         .glass-effect {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -100,7 +281,7 @@
         }
     </style>
 
-    <div class="container-fluid about-hero text-white position-relative"
+    {{-- <div class="container-fluid about-hero text-white position-relative"
         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('assets/img/architecture-1837176_1920.jpg') }}') center center / cover no-repeat; 
      display: flex;
      align-items: center;">
@@ -116,18 +297,75 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+
+    <div class="w-full ">
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Inbound Tours Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/transportaion') }}"
+                                class="breadcrumb-item text-gray-500 hover:text-blue-600 px-2 py-1.5 rounded transition-all duration-200">
+                                Transportaion
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Tour Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                {{ $vehicle->model ?? 'Tour Details' }}
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </div>
 
     <section id="transportation" class="relative py-20 overflow-hidden">
         <!-- Background Elements -->
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+        {{-- <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
         <div
             class="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float">
         </div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"
             style="animation-delay: 2s;"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"
-            style="animation-delay: 4s;"></div>
+            style="animation-delay: 4s;"></div> --}}
 
         <div class="relative container mx-auto px-4 z-10">
             <!-- Section Header -->
@@ -160,7 +398,7 @@
                     @endphp
 
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-8 group">
-                        <div class="gradient-border p-1 rounded-3xl">
+                        <div class=" rounded-3xl">
                             <div class="bg-white rounded-3xl overflow-hidden">
                                 <div
                                     class="bg-gradient-to-br from-gray-100 to-gray-200 h-80 flex items-center justify-center relative overflow-hidden">
@@ -197,7 +435,7 @@
                             <div class="flex-1 min-w-0">
                                 <h1
                                     class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-3 text-shadow leading-tight">
-                                    {{ $vehicle->make }} {{ $vehicle->model }}
+                                    {{ $vehicle->make }} {{ $vehicle->name }}
                                 </h1>
                                 <div
                                     class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white text-sm font-semibold shadow-lg">
@@ -445,7 +683,7 @@
                         <!-- Enhanced Action Button -->
                         <div class="pt-6">
                             <button
-                                class="relative w-full group overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 text-white font-bold text-xl py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-[1.02] transition-all duration-300 bg-size-200 hover:bg-pos-100"
+                                class="relative w-full group overflow-hidden bg-black text-white font-bold text-xl py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-[1.02] transition-all duration-300 bg-size-200 hover:bg-pos-100"
                                 style="background-size: 200% 100%; background-position: 0% 0%;"
                                 onmouseover="this.style.backgroundPosition = '100% 0%'"
                                 onmouseout="this.style.backgroundPosition = '0% 0%'">
@@ -547,144 +785,136 @@
         </div>
 
 
-        <div class="max-w-4xl mx-auto">
+        <div class="">
 
 
-            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-blue-900 mb-4">Check Your Reservation</h2>
-                <p class="text-center text-gray-600 mb-6 sm:mb-8">Fill out the form below to check availability and receive
-                    a personalized quote.</p>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-header text-center">
+                        <div class="step-number">01</div>
+                        <h2 class="step-title text-blue-900 text-center">Check Your Reservation</h2>
+                    </div>
 
+                    <p class="text-center text-gray-600 mb-4">
+                        .
+                    </p>
 
-                <div id="success-message"
-                    class="bg-green-100 text-green-800 p-4 rounded mb-4 transition-opacity duration-500">
-                    {{ session('success') }}
+                    @if (session('success'))
+                        <div class="alert alert-success" id="success-message">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('transport.booking.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+
+                        <div class="form-grid">
+                            <!-- Full Name -->
+                            <div class="form-group md:col-span-2">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="example@mail.com">
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    placeholder="+1 123-456-7890">
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp *</label>
+                                <input type="text" id="whatsapp" name="whatsapp" required
+                                    placeholder="+1 123-456-7890">
+                            </div>
+
+                            <!-- Country -->
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <input type="text" id="country" name="country" required placeholder="USA">
+                            </div>
+
+                            <!-- Start Date -->
+                            <div class="form-group">
+                                <label for="startDate">Start Date *</label>
+                                <input type="date" id="startDate" name="startDate" required>
+                            </div>
+
+                            <!-- Start Time -->
+                            <div class="form-group">
+                                <label for="startTime">Start Time *</label>
+                                <input type="time" id="startTime" name="startTime" required>
+                            </div>
+
+                            <!-- End Date -->
+                            <div class="form-group">
+                                <label for="endDate">End Date *</label>
+                                <input type="date" id="endDate" name="endDate" required>
+                            </div>
+
+                            <!-- End Time -->
+                            <div class="form-group">
+                                <label for="endTime">End Time *</label>
+                                <input type="time" id="endTime" name="endTime" required>
+                            </div>
+
+                            <!-- Pickup Location -->
+                            <div class="form-group">
+                                <label for="pickupLocation">Pickup Location *</label>
+                                <input type="text" id="pickupLocation" name="pickupLocation" required
+                                    placeholder="Enter pickup address">
+                            </div>
+
+                            <!-- Drop Location -->
+                            <div class="form-group">
+                                <label for="dropLocation">Drop Location *</label>
+                                <input type="text" id="dropLocation" name="dropLocation" required
+                                    placeholder="Enter drop-off address">
+                            </div>
+
+                            <!-- Service Type -->
+                            <div class="form-group">
+                                <label for="serviceType">Service Type *</label>
+                                <select id="serviceType" name="serviceType" required>
+                                    <option value="">Select Service</option>
+                                    <option value="transport">Transport</option>
+                                    <option value="hourly">Hourly Based</option>
+                                </select>
+                            </div>
+
+                            <!-- Hour Count (for Hourly Based) -->
+                            <div id="hourInputWrapper" class="form-group hidden">
+                                <label for="hourCount">Hours</label>
+                                <input type="number" id="hourCount" name="hourCount" min="1"
+                                    placeholder="e.g. 3">
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-group md:col-span-3">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group md:col-span-3 text-center pt-4">
+                                <button type="submit" class="btn btn-submit">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-
-                <form form action="{{ route('transport.booking.store') }}" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                     @csrf
-                    <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-                    <!-- Full Name -->
-                    <div class="md:col-span-2">
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="John Doe"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-
-
-                    <!-- Email -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="example@mail.com"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Phone -->
-                    <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+1 123-456-7890"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- WhatsApp -->
-                    <div>
-                        <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp</label>
-                        <input type="text" id="whatsapp" name="whatsapp" required placeholder="+1 123-456-7890"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-                    <!-- Country -->
-                    <div>
-                        <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                        <input type="text" id="country" name="country" required placeholder="USA"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-
-                    <!-- Start Date -->
-                    <div>
-                        <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
-                        <input type="date" id="startDate" name="startDate" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Start Time -->
-                    <div>
-                        <label for="startTime" class="block text-sm font-medium text-gray-700 mb-1">Start Time</label>
-                        <input type="time" id="startTime" name="startTime" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- End Date -->
-                    <div>
-                        <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-                        <input type="date" id="endDate" name="endDate" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- End Time -->
-                    <div>
-                        <label for="endTime" class="block text-sm font-medium text-gray-700 mb-1">End Time</label>
-                        <input type="time" id="endTime" name="endTime" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Pickup Location -->
-                    <div>
-                        <label for="pickupLocation" class="block text-sm font-medium text-gray-700 mb-1">Pickup
-                            Location</label>
-                        <input type="text" id="pickupLocation" name="pickupLocation" required
-                            placeholder="Enter pickup address"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Drop Location -->
-                    <div>
-                        <label for="dropLocation" class="block text-sm font-medium text-gray-700 mb-1">Drop
-                            Location</label>
-                        <input type="text" id="dropLocation" name="dropLocation" required
-                            placeholder="Enter drop-off address"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Service Type -->
-                    <div>
-                        <label for="serviceType" class="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
-                        <select id="serviceType" name="serviceType" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none">
-                            <option value="">Select Service</option>
-                            <option value="transport">Transport</option>
-                            <option value="hourly">Hourly Based</option>
-                        </select>
-                    </div>
-
-                    <!-- Hour Count (for Hourly Based) -->
-                    <div id="hourInputWrapper" class=" hidden">
-                        <label for="hourCount" class="block text-sm font-medium text-gray-700 mb-1">Hours</label>
-                        <input type="number" id="hourCount" name="hourCount" min="1" placeholder="e.g. 3"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Message -->
-                    <div class="md:col-span-3">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="md:col-span-3 text-center pt-4">
-                        <button type="submit"
-                            class="w-full md:w-auto px-10 py-3 bg-black text-white font-bold rounded-xl bg-black transition duration-300">
-                            Submit Request
-                        </button>
-                    </div>
-                </form>
-
-
-
-
             </div>
+
 
             <div class="text-center " style="margin-top: 45px;">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
@@ -699,16 +929,16 @@
 
     </section>
 
-        <script>
-            document.getElementById('serviceType').addEventListener('change', function() {
-                const hourWrapper = document.getElementById('hourInputWrapper');
-                if (this.value === 'hourly') {
-                    hourWrapper.classList.remove('hidden');
-                } else {
-                    hourWrapper.classList.add('hidden');
-                }
-            });
-        </script>
+    <script>
+        document.getElementById('serviceType').addEventListener('change', function() {
+            const hourWrapper = document.getElementById('hourInputWrapper');
+            if (this.value === 'hourly') {
+                hourWrapper.classList.remove('hidden');
+            } else {
+                hourWrapper.classList.add('hidden');
+            }
+        });
+    </script>
 
 
     <script>

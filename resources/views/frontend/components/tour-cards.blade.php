@@ -1,4 +1,4 @@
-<div class="col-md-4 mb-4">
+<div class="col-md-3 mb-4">
     <a href="{{ route('tour.details', $package->id) }}" class="tour-box-link"
         style="text-decoration: none; color: inherit;">
         <div class="tour-box shadow style2 th-ani"
@@ -21,7 +21,8 @@
                     <p class="tour-country m-0 d-flex align-items-center">Sri Lanka</p>
                     <div class="tour-rating d-flex align-items-center" style="margin-top: 13px;">
                         <i class="fas fa-star text-warning"></i>
-                        <span class="ms-1" style="font-weight: 600; font-size: 14px; color: #333;">{{ $package->ratings }}</span>
+                        <span class="ms-1"
+                            style="font-weight: 600; font-size: 14px; color: #333;">{{ $package->ratings }}</span>
                     </div>
                 </div>
 
@@ -40,8 +41,8 @@
 
             <div class="d-flex align-items-right"
                 style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
-                <i class="fas fa-calendar-check text-danger me-2"></i>
-                <span class="text-dark fw-semibold">
+
+                <span class="text-dark " style="font-weight: bold;">
                     {{ $package->days }} Days,
                     {{ $package->nights }} Nights
                 </span>

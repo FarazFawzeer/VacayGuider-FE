@@ -5,6 +5,39 @@
 @section('content')
 
     <style>
+        .ps-2 {
+            padding-left: 0 !important;
+        }
+
+        .form-check {
+            padding-left: 0;
+        }
+
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
         .service-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -82,16 +115,6 @@
             padding-bottom: 10px;
         }
 
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, #1a5276, #3498db);
-        }
 
         h3 {
             color: #2980b9;
@@ -245,7 +268,7 @@
         }
     </style>
 
-    <div class="container-fluid about-hero text-white position-relative"
+    {{-- <div class="container-fluid about-hero text-white position-relative"
         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/architecture-1837176_1920.jpg') center center / cover no-repeat; 
      display: flex;
      align-items: center;">
@@ -254,31 +277,77 @@
                 <div class="col-lg-10">
                     <div class="hero-style7">
                         <span class="sub-title style1 text-white d-block mb-2">Tarnportation</span>
-                        <h1 class="hero-title text-white display-4 mb-0" style="font-weight: 700;">Airport Transfers & Island-Wide Rides
+                        <h1 class="hero-title text-white display-4 mb-0" style="font-weight: 700;">Airport Transfers &
+                            Island-Wide Rides
                         </h1>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+    <div class="w-full ">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <!-- Home Icon -->
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                <!-- About Icon -->
+
+                                <span>Tarnportation</span>
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
             </div>
         </div>
     </div>
 
 
 
-
     <section id="transportation" class="py-12  from-blue-50 to-green-50">
         <div class="container mx-auto px-4">
 
+            <div class="title-area text-center mb-5" style="margin-top: -50px; ">
 
-            <div class="title-area text-center mb-5" style=" padding-bottom: 20px">
-                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                {{-- <span class="sub-title fw-semibold">Tarnportation</span> --}}
-                <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; margin-bottom: 20px;">
-                    We deliver comfort every
-                            mile.
-                    </h2>
 
+                <div class="title-area text-center " style="">
+                    {{-- <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
+                    <h2 class="sec-title"
+                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        We deliver comfort every
+                        mile</h2>
+                </div>
             </div>
+
 
             <!-- Three Column Layout: Left Content | Map | Right Content -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -341,7 +410,8 @@
                     </div>
 
                     <!-- Service Type 3: City Tours & Day Trips -->
-                    <div class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
+                    <div
+                        class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
                         <div class="flex items-start">
                             <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
@@ -378,7 +448,8 @@
                 <!-- Right Content -->
                 <div class="lg:col-span-1 space-y-6">
                     <!-- Service Type 4: Hotel Transfers -->
-                    <div class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
+                    <div
+                        class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
                         <div class="flex items-start">
                             <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
@@ -462,18 +533,25 @@
     </section>
 
     <section class="position-relative overflow-hidden bg-smoke space" id="service-sec" data-bg-src="">
-        <div class="container" style="margin-top: -82px;">
+        <div class="containe-fluid" style="margin-top: -82px;">
             <div class="row">
-                <div class="title-area text-center mb-5" style="margin-top: -60px; padding-top: 100px;">
-                    <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                    <span class="sub-title fw-semibold">Premium Vehicles</span>
-                    <h2 class="sec-title"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; ">
-                        Find Your Perfect Ride</h2>
 
+
+                <div class="title-area text-center" style=" ">
+
+
+                    <div class="title-area text-center " style="">
+                        <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium
+                            Vehicles</span>
+                        <h2 class="sec-title"
+                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            Find Your Perfect Ride </h2>
+                    </div>
                 </div>
 
-                <div class="row mt-3">
+
+                <div class="row " style="margin-top: -45px;">
 
 
                     <!-- Sidebar Filter Section - 1/4 width -->
@@ -481,8 +559,8 @@
                         <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px; ">
                             <form id="vehicleFilterForm">
                                 <div class="filter-section mb-4">
-                                    <h5 style="font-size: 18px; font-weight: 700; color: #000000; margin-bottom: 15px;">
-                                        <i class="fas fa-tag me-2" style="color: #000000;"></i>Vehicle Type
+                                    <h5 class="filter-heading text-black" style="font-size: 16px">
+                                        Vehicle Type
                                     </h5>
                                     <div class="ps-2">
                                         <div class="ps-2"
@@ -491,9 +569,11 @@
                                                 <div class="form-check mb-2 d-flex align-items-center">
                                                     <input class="form-check-input" name="types[]"
                                                         value="{{ $type }}" type="checkbox"
-                                                        id="vehicle_type_{{ $loop->index }}">
+                                                        id="vehicle_type_{{ $loop->index }}"
+                                                        style="font-size: 14px; color:#000; border: 2px solid #000; ">
                                                     <label class="form-check-label ms-2"
-                                                        for="vehicle_type_{{ $loop->index }}">
+                                                        for="vehicle_type_{{ $loop->index }}"
+                                                        style="font-size: 14px; color:#000; ">
                                                         {{ ucfirst($type) }}
                                                     </label>
                                                 </div>
@@ -504,6 +584,7 @@
                             </form>
                         </div>
                     </div>
+
 
                     <!-- Results Section -->
                     <div class="col-md-9" id="filteredVehicleResults">
@@ -582,14 +663,16 @@
             <div class="booking-section  ">
 
 
-                <div class="title-area text-center mb-5" style="">
-                    <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                    <span class="sub-title fw-semibold">Services</span>
-                    <h2 class="sec-title"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; ">
-                        Pre-Booking Transportation </h2>
-
-                </div>
+             
+                
+                    <div class="title-area text-center " style="">
+                        <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
+                            Services</span>
+                        <h2 class="sec-title"
+                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                         Pre-Booking Transportation </h2>
+                    </div>
                 <p class="text-center mt-3 mb-3"> Ensure a smooth start to your journey with our <strong>Pre-Booking
                         Transportation Services</strong>. Whether you're arriving at the airport or planning day-to-day
                     travel during your stay, our reliable options are designed for convenience and peace of mind. Choose

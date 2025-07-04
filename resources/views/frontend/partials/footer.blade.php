@@ -3,103 +3,218 @@
 ==============================-->
 
     <style>
-        @media (max-width: 767.98px) {
-
-            .widget_title {
-                text-align: center;
-            }
-
-            .widget-mob {
-                text-align: center;
-            }
-
-            .widget-mob .about-logo {}
-
-            .widget-mob .th-social {
-                justify-content: center;
-                display: flex;
-                gap: 10px;
-                /* Optional: space between icons */
-            }
+        .footer-wrapper {
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            color: white;
         }
 
+        .footer-content {
+            padding: 50px 0 30px;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo-section img {
+            max-height: 120px;
+            width: auto;
+        }
+
+        .description-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .description-text {
+            color: #fff;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .quick-links-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quick-links-title {
+            color: #8a8a97;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .links-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .quick-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .quick-link:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .social-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .social-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .th-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
         .th-social a {
-            display: inline-block;
-            width: var(--icon-size, 32px);
-            height: var(--icon-size, 32px);
-            line-height: var(--icon-size, 32px);
-            background: none;
-            color: var(--theme-color);
-            font-size: 16px;
-            border-radius: 50%;
-            text-align: center;
-            margin-right: 5px;
-            -webkit-transition: all 0.4s ease;
-            transition: all 0.4s ease;
-        }
-
-        .info-box_text .icon {
-            color: var(--body-color);
-            -webkit-box-flex: 0;
-            -webkit-flex: none;
-            -ms-flex: none;
-            flex: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
-            line-height: 37px;
-            background: none;
+            color: #fff;
             border-radius: 50%;
-            text-align: center;
-            -webkit-transition: all 0.4s ease-in-out;
-            transition: all 0.4s ease-in-out;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        .widget-area {
-            padding-top: 0px;
-            padding-bottom: 0px;
+        /* Brand colors */
+        .th-social a.facebook {
+            background-color: #3b5998;
+        }
+
+        .th-social a.twitter {
+            background-color: #1da1f2;
+        }
+
+        .th-social a.linkedin {
+            background-color: #0077b5;
+        }
+
+        .th-social a.whatsapp {
+            background-color: #25d366;
+        }
+
+        .th-social a.instagram {
+            background-color: #e4405f;
+        }
+
+        .th-social a.tiktok {
+            background-color: #000000;
+        }
+
+        .th-social a.youtube {
+            background-color: #ff0000;
+        }
+
+        /* Hover effect: slight lift */
+        .th-social a:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
         }
 
         .copyright-wrap {
-            padding: 5px 0;
-            background-color: #262A36;
+            background-color: #0a3d52;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .sub-title {
-            display: block;
-            color: var(--title-color);
-            font-size: 20px;
-            line-height: 40px;
-            font-weight: 700;
-            font-family: 'Dancing Script', cursive;
-            position: relative;
-            margin-bottom: -4px;
+        .copyright-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        element {}
-
-        .scroll-top.show {
-            opacity: 1;
-
-            visibility: visible;
-
-            -webkit-transform: translateY(0);
-
-            -ms-transform: translateY(0);
-
-            transform: translateY(0);
-
+        .copyright-text {
+            color: white;
+            margin: 0;
+            font-size: 14px;
         }
-.scroll-top {
-  position: fixed;
-  bottom: 120px; /* Adjust to be above chatbot toggle */
-  right: 45px !important;
-    z-index: 1050;
-}
 
-        
+        .copyright-text a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .payment-logos {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .payment-logo {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            height: 30px;
+        }
+
+        .payment-logo img {
+            max-width: 100%;
+            max-height: 20px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .links-row {
+                gap: 20px;
+            }
+
+            .quick-link {
+                font-size: 14px;
+            }
+
+            .copyright-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .payment-logos {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .links-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-content {
+                padding: 30px 0 20px;
+            }
+        }
     </style>
-    <footer class="footer-wrapper footer-layout1" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
+    {{-- <footer class="footer-wrapper footer-layout1" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
         <div class="widget-area">
             <div class="container">
                 <div class="row justify-content-between" style="border-top: 1px solid #E1E4E6; padding: 36px;">
@@ -129,11 +244,15 @@
                             <h3 class="widget_title" style="color: whitesmoke;">Quick Links</h3>
                             <div class="menu-all-pages-container" style=" color:#fff;">
                                 <ul class="menu">
-                                    <li class="mob-li" ><a href="{{ url('/') }}" style=" color:#fff;">Home</a></li>
-                                    <li class="mob-li"><a href="{{ url('/about') }}" style=" color:#fff;">About us</a></li>
-                                    <li class="mob-li"><a href="{{ url('/inbound') }}" style=" color:#fff;">Tour Packages</a></li>
-                                    <li class="mob-li"><a href="{{ url('/rent') }}" style=" color:#fff;">Rent Vehicles</a></li>
-                                    <li class="mob-li"><a href="{{ url('/contact') }}" style=" color:#fff;">Tour Booking Now</a></li>
+                                    <li class="mob-li"><a href="{{ url('/') }}" style=" color:#fff;">Home</a></li>
+                                    <li class="mob-li"><a href="{{ url('/about') }}" style=" color:#fff;">About us</a>
+                                    </li>
+                                    <li class="mob-li"><a href="{{ url('/inbound') }}" style=" color:#fff;">Tour
+                                            Packages</a></li>
+                                    <li class="mob-li"><a href="{{ url('/rent') }}" style=" color:#fff;">Rent
+                                            Vehicles</a></li>
+                                    <li class="mob-li"><a href="{{ url('/contact') }}" style=" color:#fff;">Tour Booking
+                                            Now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -148,9 +267,12 @@
                                     </div>
 
                                     <div class="details">
-                                        <p><a href="tel:+01234567890" class="info-box_link" style=" color:#fff;">+94 114 272 372</a></p>
-                                        <p><a href="tel:+09876543210" class="info-box_link" style=" color:#fff;">+94 711 999 444</a></p>
-                                        <p><a href="tel:+09876543210" class="info-box_link" style=" color:#fff;">+94 777 035 325 </a></p>
+                                        <p><a href="tel:+01234567890" class="info-box_link" style=" color:#fff;">+94 114
+                                                272 372</a></p>
+                                        <p><a href="tel:+09876543210" class="info-box_link" style=" color:#fff;">+94 711
+                                                999 444</a></p>
+                                        <p><a href="tel:+09876543210" class="info-box_link" style=" color:#fff;">+94 777
+                                                035 325 </a></p>
                                     </div>
                                 </div>
                                 <div class="info-box_text">
@@ -159,14 +281,14 @@
                                     </div>
 
                                     <div class="details">
-                                        <p><a href="mailto:info@vacayguider.com "
-                                                class="info-box_link" style=" color:#fff;">info@vacayguider.com </a></p>
+                                        <p><a href="mailto:info@vacayguider.com " class="info-box_link"
+                                                style=" color:#fff;">info@vacayguider.com </a></p>
                                     </div>
                                 </div>
                                 <div class="info-box_text">
                                     <div class="icon"><img src="{{ asset('assets/img/icon/location-dot.svg') }}"
                                             alt="img"></div>
-                                    <div class="details" >
+                                    <div class="details">
                                         <p style=" color:#fff;">22/14C, Asarappa Road, Negombo, Sri Lanka</p>
                                     </div>
                                 </div>
@@ -177,7 +299,7 @@
             </div>
         </div>
         <div class="copyright-wrap text-center " style="background-color: #0a3d52">
-            <div class="container" >
+            <div class="container">
                 <div class="d-flex justify-content-center align-items-center">
                     <p class="copyright-text m-0 text-white">
                         Copyright 2025 <a href="home-travel.html"
@@ -188,6 +310,83 @@
         </div>
 
 
+    </footer> --}}
+
+    <footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="container-fluid">
+                <!-- Logo Section -->
+                <div class="logo-section  d-flex justify-content-center">
+                    <a href="home-travel.html" style=" text-align: center;">
+                        <img src="{{ asset('assets/img/vacayguider.png') }}" alt="VacayGuider Logo">
+                    </a>
+                </div>
+
+                <!-- Description Section -->
+                <div class="description-section">
+                    <p class="description-text">
+                        VacayGuider crafts unforgettable escapes, where hidden gems meet seamless journeys, and every trip becomes your best story.
+                    </p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="quick-links-section">
+                    <h3 class="quick-links-title">Quick Links</h3>
+                    <div class="links-row">
+                        <a href="{{ url('/') }}" class="quick-link">Home</a>
+                        <a href="{{ url('/about') }}" class="quick-link">About Us</a>
+                        <a href="{{ url('/outbound') }}" class="quick-link">Outbound Tours</a>
+                        <a href="{{ url('/rent') }}" class="quick-link">Rent Vehicle</a>
+                        <a href="{{ url('/transportation') }}" class="quick-link">Transportation</a>
+                        <a href="{{ url('/airline') }}" class="quick-link">Airline</a>
+                        <a href="{{ url('/blog') }}" class="quick-link">Blog</a>
+                        <a href="{{ url('/contact') }}" class="quick-link">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Social Media Section -->
+                <div class="social-section">
+                    <div class="th-social">
+                        <a href="https://web.facebook.com/profile.php?id=61550739082103" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/VacayGuider" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://lk.linkedin.com/in/vacay-guider-9035432aa" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/message/MJSQHL4GVAJMI1" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/vacayguider/" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@vacayguider" class="tiktok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@VacayGuider" class="youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="copyright-wrap">
+            <div class="container-fluid">
+                <div class="copyright-content">
+                    <p class="copyright-text">
+                        Copyright 2025 <a href="home-travel.html">VacayGuider</a>. All Rights Reserved.
+                    </p>
+                    <div class="payment-logos">
+                        <div class="payment-logo">
+                            <i class="fab fa-cc-visa" style="color: #1a1f71; font-size: 18px;"></i>
+                        </div>
+                        <div class="payment-logo">
+                            <i class="fab fa-cc-mastercard" style="color: #eb001b; font-size: 18px;"></i>
+                        </div>
+                        <div class="payment-logo">
+                            <i class="fab fa-cc-paypal" style="color: #003087; font-size: 18px;"></i>
+                        </div>
+                        <div class="payment-logo">
+                            <i class="fab fa-cc-amex" style="color: #006fcf; font-size: 18px;"></i>
+                        </div>
+                        <div class="payment-logo">
+                            <i class="fab fa-google-pay" style="color: #4285f4; font-size: 18px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!--********************************

@@ -25,7 +25,7 @@
                    <li><a href="{{ url('/inbound-tours') }}">Inbound</a></li>
                               <li><a href="{{ url('/rent') }}">Rent Vehicle</a></li>
                                   <li><a href="{{ url('/transportation') }}">Transportation</a></li>
-                                      <li><a href="{{ url('/airline') }}">Air Line</a></li>
+                                      <li><a href="{{ url('/airline') }}">Airline</a></li>
 
                   <li>
                       <a href="{{ url('/blog') }}">Blog</a>
@@ -40,7 +40,7 @@
   </div>
 
 <header class="header shadow" id="header">
-    <div class="container">
+    <div class="container-fluid">
         <div class="header-content">
             <div class="header-logo">
                 <a href="#">
@@ -67,7 +67,7 @@
                                 <li><a href="/transportation"
                                         class="{{ Request::is('transportation') ? 'active' : '' }}">Transportation</a>
                                 </li>
-                                <li><a href="/airline" class="{{ Request::is('airline') ? 'active' : '' }}">Airlines</a>
+                                <li><a href="/airline" class="{{ Request::is('airline') ? 'active' : '' }}">Airline</a>
                                 </li>
                             </ul>
                         </li>
@@ -77,33 +77,31 @@
 
                 </nav>
 
-                <div class="support-badge">
-                    <span>24/7 Support</span>
-                </div>
-
-                <div class="language-dropdown">
-                    <button class="language-btn">
-                        <img src="https://flagcdn.com/us.svg" alt="English" width="20" height="14"
-                            style="border-radius: 2px;">
-                        <span>Engligh</span>
-                        <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
-                    </button>
-                    <div class="language-menu">
-                        <a href="#"><img src="https://flagcdn.com/us.svg" alt="English" width="24">
-                            English</a>
-                        <a href="#"><img src="https://flagcdn.com/es.svg" alt="Español" width="24">
-                            Español</a>
-                        <a href="#"><img src="https://flagcdn.com/fr.svg" alt="Français" width="24">
-                            Français</a>
-                        <a href="#"><img src="https://flagcdn.com/de.svg" alt="Deutsch" width="24">
-                            Deutsch</a>
-                        <a href="#"><img src="https://flagcdn.com/cn.svg" alt="中文" width="24"> 中文</a>
-                    </div>
-
-                </div>
+             
 
              
             </div>
+
+            <div class="header-utility">
+    <div class="support-badge">
+        <span>24/7 Support</span>
+    </div>
+
+    <div class="language-dropdown">
+        <button class="language-btn">
+            <img src="https://flagcdn.com/us.svg" alt="English" width="20" height="14" style="border-radius: 2px;">
+            <span>English</span>
+            <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+        </button>
+        <div class="language-menu">
+            <a href="#"><img src="https://flagcdn.com/us.svg" alt="English" width="24"> English</a>
+            <a href="#"><img src="https://flagcdn.com/es.svg" alt="Español" width="24"> Español</a>
+            <a href="#"><img src="https://flagcdn.com/fr.svg" alt="Français" width="24"> Français</a>
+            <a href="#"><img src="https://flagcdn.com/de.svg" alt="Deutsch" width="24"> Deutsch</a>
+            <a href="#"><img src="https://flagcdn.com/cn.svg" alt="中文" width="24"> 中文</a>
+        </div>
+    </div>
+</div>
 
                 <button type="button" class="th-menu-toggle d-block d-xl-none" >
                               <i class="fas fa-bars"></i>
@@ -189,12 +187,12 @@
     }
 
     .language-btn img {
-        margin-right: 8px;
+  
         vertical-align: middle;
     }
 
     .language-menu a img {
-        margin-right: 10px;
+        
         border-radius: 2px;
         vertical-align: middle;
     }
@@ -220,7 +218,7 @@
     }
 
     .container {
-        max-width: 1200px;
+        /* max-width: 1200px; */
         margin: 0 auto;
         padding: 0 20px;
     }
@@ -229,7 +227,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 12px 0;
+        padding: 1px 0;
         min-height: 80px;
     }
 
@@ -350,11 +348,13 @@
     .support-badge {
         background: #94d106;
         /* Soft green background */
-        padding: 10px 18px;
-        border-radius: 25px;
+       
+        border-radius: 20px;
         color: #ffffff;
         /* Deep green text */
-        font-size: 14px;
+    font-size: 9px;
+  padding: 0px 8px;
+  border-radius: 20px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -364,10 +364,6 @@
         transition: all 0.3s ease;
     }
 
-    .support-badge:hover {
-        background: #dcedc8;
-        transform: translateY(-1px);
-    }
 
     .header-controls {
         display: flex;
@@ -388,15 +384,28 @@
 
 
     .language-dropdown .language-btn {
-        padding: 10px 18px;
-        border-radius: 25px;
-        font-size: 14px;
+        
+        font-size: 11px;
 
     }
 
     .language-menu {
         min-width: 180px;
     }
+
+
+    .header-utility {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  
+}
+
+/* Adjust size and spacing for the badge */
+
+
+/* Reduce size of language button */
+
 
     @keyframes pulse {
         0% {
@@ -419,18 +428,18 @@
     .language-btn {
 
         color: white;
-        padding: 10px 15px;
+        padding: 10px 1px;
         border-radius: 6px;
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 5px;
         font-weight: 500;
         transition: all 0.3s ease;
     }
 
     .language-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
+        
         transform: translateY(-2px);
     }
 
@@ -524,6 +533,20 @@
             display: none;
         } */
 
+        @media (max-width: 768px) {
+    .header-utility {
+        gap: 6px;
+    }
+
+    .language-btn span {
+        display: none;
+    }
+
+    .support-badge {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
         .language-btn span {
             display: none;
         }

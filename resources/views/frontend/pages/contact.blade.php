@@ -8,586 +8,465 @@
         /* Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
 
-        /* Apply Jost font and weight */
-        .contact-section h2,
-        .contact-section h5,
-        .contact-section h6 {
-            font-family: 'Jost', sans-serif;
-            font-weight: 700;
+
+        .contact-card {
+
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Colorful icon buttons */
-        .contact-section .btn-sm-square i {
-            font-size: 1rem;
-        }
-
-        .contact-section .btn-sm-square:nth-child(1) {
-            background-color: #3b5998;
-            /* Facebook */
-            border: none;
-        }
-
-        .contact-section .btn-sm-square:nth-child(2) {
-            background-color: #00acee;
-            /* Twitter */
-            border: none;
-        }
-
-        .contact-section .btn-sm-square:nth-child(3) {
-            background-color: #E1306C;
-            /* Instagram */
-            border: none;
-        }
-
-        .contact-section .btn-sm-square:nth-child(4) {
-            background-color: #0072b1;
-            /* LinkedIn */
-            border: none;
-        }
-
-        /* Icon block styling */
-        .contact-section .d-flex i {
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            line-height: 40px;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        /* Optional: Add some hover effects */
-        .contact-section .btn-sm-square:hover {
-            opacity: 0.9;
-        }
-
-        body {
-            font-family: var(--body-font);
-            font-size: 16px;
-            font-weight: 400;
-            color: var(--body-color);
-            line-height: 18px;
-        }
-
-  
-
-        .header-layout1 .currency-menu {
-            border: 1px solid var(--light-color);
-            border-radius: 100px;
-            padding: 3px 14px;
-            max-width: 98px;
-            text-transform: capitalize;
-        }
-
-        .currency-menu .nice-select {
-            font-family: var(--body-font);
-            color: #FFF;
-            font-weight: 400;
-            font-size: 11px;
-            line-height: 16px;
-        }
-
-        .tour-country {
-            font-size: 14px;
-            font-weight: 600;
-            color: #028CCC;
-            /* Matches your theme */
-            margin-bottom: 5px;
-        }
-
-        .tour-list {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0;
-        }
-
-        .tour-list li {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .tour-list i {
-            color: #909090;
-            margin-right: 5px;
-        }
-
-
-        .tour-box .tour-action .th-btn {
-            border: 1px solid #60D522;
-
-            font-weight: 500;
-
-            padding: 10px 19.5px;
-
-        }
-
-
-
-        .header-links li:not(:last-child)::after {
-            content: '';
-            height: 14px;
-            width: 1px;
-            background-color: #ffffff;
-            position: absolute;
-            top: 5px;
-            right: -27px;
-        }
-
-        .booking-form {
-            position: relative;
-            background-color: var(--white-color);
-            border: 2px solid var(--theme-color);
-            box-shadow: 0px 20px 20px rgba(204, 204, 204, 0.25);
-            border-radius: 0px;
-            padding: 14px 34px;
-            z-index: 3;
-            margin-top: -45px;
-        }
-
-        .space,
-        .space-bottom {
-            padding-bottom: 20px;
-        }
-
-        .custom-btn-with-arrow:after {
-            content: "\E800";
-            font-family: fontello;
-            font-size: 18px;
-            margin-left: 17px;
-        }
-
-        /*
-
-                .space, .space-top {
-                padding-top: 20px;
-                } */
-        .custom-btn {
-            background: linear-gradient(45deg, #60D522, #A3EB58);
-
-            /* Smooth gradient */
-            color: #fff;
-            /* White text */
-            font-size: 16px;
-            font-weight: 600;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            /* Soft rounded corners */
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .custom-btn:hover {
-            background: linear-gradient(45deg, #feb47b, #ff7e5f);
-            /* Reverse gradient */
-            transform: translateY(-3px);
-            /* Slight lift effect */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .box-title a {
-            font-size: 16px;
-        }
-
-        .custom-btn:active {
-            transform: translateY(1px);
-            /* Press-down effect */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-
-        .tour-header {
-            display: flex;
-            align-items: center;
-            /* Ensures vertical alignment */
-            justify-content: space-between;
-            /* Keeps spacing equal */
-        }
-
-        .copyright-wrap {
-            padding: 5px 0;
-            background-color: #262A36;
-        }
-
-        .tour-country {
-            font-size: 14px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            /* Centers icon & text */
-        }
-
-        .tour-rating {
-            display: flex;
-            align-items: center;
-            /* Ensures rating is vertically centered */
-        }
-
-        .small-star {
-            font-size: 12px;
-            /* Smaller stars */
-            color: rgb(251, 207, 0);
-            margin-left: 2px;
-            /* Adds slight spacing between stars */
-        }
-
-        .tour-box {
-            position: relative;
-            background-color: var(--white-color);
-            border: 1px solid #BCCED2;
-            border-top-width: 1px;
-            border-top-style: solid;
-            border-top-color: rgb(188, 206, 210);
-            border-top: transparent;
-            border-radius: 0px;
-            overflow: hidden;
-        }
-
-        .tour-box_img img {
-            width: 100%;
-            border-radius: 0px 0px 0 0;
-            -webkit-transition: 1.3s all ease;
-            transition: 1.3s all ease;
-        }
-
-        .tour-box_img {
-            position: relative;
-            border-radius: 0px 0px 0 0;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .carousel-inner {
-            height: 100%;
-        }
-
-        .carousel-item img {
-            object-fit: cover;
-            /* Ensures images cover the container */
-            width: 50%;
-            height: 50%;
-        }
-
-        /* Adjust the carousel control buttons to stand out better */
-        .carousel-control-prev,
-        .carousel-control-next {
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Dark background for better contrast */
-            border-radius: 50%;
-            /* Round buttons */
-            width: 40px;
-            /* Adjust the width */
-            height: 40px;
-            /* Adjust the height */
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: #fff;
-            width: 20px;
-            height: 20px;
-        }
-
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .header-layout1 .currency-menu .nice-select {
-            min-width: 104px;
-        }
-
-        .h2,
-        h2 {
-            font-size: 28px;
-            line-height: 1.327;
-        }
-
-        .sub-title {
-            display: block;
-            color: var(--title-color);
-            font-size: 25px;
-            line-height: 40px;
-            font-weight: 400;
-            font-family: var(--style-font);
-            position: relative;
-            margin-bottom: -4px;
-        }
-
-        .sec-text {
-            font-size: 15px;
-            line-height: 26px;
-        }
-
-        .box-title {
-            font-size: 20px;
-            line-height: 1.417;
-            font-weight: 600;
-            margin-top: -0.32em;
-        }
-
-        .widget-area {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-
-        .fa-map-marker-alt {
-            margin-right: 5px;
-        }
-
-        .tour-box_img img {
-            height: 200px;
-            object-fit: cover;
-            /* Ensures the image covers the area without distortion */
-            width: 100%;
-            /* Maintains responsiveness */
-        }
-
-        .services {
-            background-color: #f8f9fa;
-            /* Light gray background */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            /* Soft shadow */
-        }
-
-        .info-box_text a {
-            color: #888C97;
-        }
-
-        .info-box_text p {
-            color: #888C97;
-        }
-
-        .th-social a {
-            display: inline-block;
-            width: var(--icon-size, 32px);
-            height: var(--icon-size, 32px);
-            line-height: var(--icon-size, 32px);
-
-            color: var(--theme-color);
-            font-size: 16px;
-            border-radius: 50%;
-            text-align: center;
-            margin-right: 5px;
-            -webkit-transition: all 0.4s ease;
-            transition: all 0.4s ease;
-        }
-
-        .info-box_text .icon {
-            color: var(--body-color);
-            -webkit-box-flex: 0;
-            -webkit-flex: none;
-            -ms-flex: none;
-            flex: none;
-            width: 40px;
-            height: 40px;
-            line-height: 37px;
-            background-color: #262A36;
-            border-radius: 50%;
-            text-align: center;
-            -webkit-transition: all 0.4s ease-in-out;
-            transition: all 0.4s ease-in-out;
-        }
-
-
-        .bg-smoke {
-            background-color: #F5F5F5 !important;
-        }
-
-
-        .testimonials-section {
-            background-color: var(--secondary);
-        }
-
-        .card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover {
+        .contact-card:hover {
             transform: translateY(-5px);
+
         }
 
-        .review-summary .card-body {
-            padding: 2rem;
-        }
-
-        .stars {
-            color: #fbbf24;
-        }
-
-        .progress {
-            background-color: var(--secondary);
-            border-radius: var(--radius);
-        }
-
-        .progress-bar {
-            background-color: var(--primary);
-            border-radius: var(--radius);
-        }
-
-        .avatar {
-            width: 48px;
-            height: 48px;
-            object-fit: cover;
-        }
-
-        .platform-item {
-            padding: 0.5rem 0;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            color: var(--primary-foreground);
-
-            border-radius: var(--radius);
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        .review-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .review-summary {
-                margin-bottom: 2rem;
-            }
-
-            .testimonial-card {
-                margin-bottom: 1rem;
-            }
-        }
-
-        :root {
-            --primary: #0284c7;
-            --primary-foreground: #ffffff;
-            --secondary: #f1f5f9;
-            --secondary-foreground: #0f172a;
-            --background: #ffffff;
-            --foreground: #0f172a;
-            --card: #ffffff;
-            --card-foreground: #0f172a;
-            --border: #e2e8f0;
-            --ring: #0284c7;
-            --radius: 0.5rem;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-        }
-
-        /* body {
-                                background-color: var(--background);
-                                color: var(--foreground);
-                                font-family: system-ui, -apple-system, sans-serif;
-                            } */
-
-
-        breadcumb-wrapper {
+        .contact-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
             position: relative;
-            background-image: url('assets/img/hero/carousel-2.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
+            overflow: hidden;
         }
 
-        .breadcumb-wrapper::before {
-            content: "";
+        .contact-item::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            /* Adjust this for darker/lighter effect */
-            z-index: 1;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        .breadcumb-content {
-            position: relative;
-            z-index: 2;
-            /* Ensures text stays on top */
+        .contact-item:hover::before {
+            transform: scaleX(1);
         }
 
-        .breadcumb-title {
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-            /* Highlights text */
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .breadcumb-menu li a,
-        .breadcumb-menu li {
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #000000, #000000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        .contact-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .contact-content h6 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 8px;
             font-size: 18px;
-            color: white !important;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-            /* Highlights menu text */
         }
 
-        .tab-button {
+        .contact-content p {
+            color: #6c757d;
+            margin: 0;
             font-size: 16px;
-            font-weight: 600;
-            padding: 10px 20px;
-            background-color: #f5f5f5;
-            border-radius: 25px;
-            margin-right: 10px;
-            cursor: pointer;
+            line-height: 1.5;
         }
 
-        .tab-button[aria-selected="true"] {
-            background-color: #94d106;
+        .contact-content a {
+            color: #6c757d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-content a:hover {
+            color: #28a745;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
             color: white;
         }
 
-        .tabpanel {
-            padding: 30px;
-            background-color: #f5f5f5;
-            border-radius: 16px;
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 40px 0;
+            }
+
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .contact-item {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                margin-right: 15px;
+            }
+
+            .contact-icon i {
+                font-size: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-fade-in:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .animate-fade-in:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .animate-fade-in:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .social-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .social-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .th-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .th-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* Brand colors */
+        .th-social a.facebook {
+            background-color: #3b5998;
+        }
+
+        .th-social a.twitter {
+            background-color: #1da1f2;
+        }
+
+        .th-social a.linkedin {
+            background-color: #0077b5;
+        }
+
+        .th-social a.whatsapp {
+            background-color: #25d366;
+        }
+
+        .th-social a.instagram {
+            background-color: #e4405f;
+        }
+
+        .th-social a.tiktok {
+            background-color: #000000;
+        }
+
+        .th-social a.youtube {
+            background-color: #ff0000;
+        }
+
+        /* Hover effect: slight lift */
+        .th-social a:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
+        }
+
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+
+        .steps-container {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
-        .panel-content {
-            color: #333;
-            font-size: 18px;
+        .form-group {
+            display: flex;
+            flex-direction: column;
         }
 
-        .active-btn {
-            background-color: #ffffff !important;
-            /* Bootstrap success green */
-            color: #000 !important;
-            border: 2px solid #ffffff !important;
+        .form-group.full-width {
+            grid-column: 1 / -1;
         }
 
-        html {
-            scroll-behavior: smooth;
+        label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
 
-        .form-floating > .form-select {
-  padding-top:0;
-  padding-bottom:0;
-}
+        input,
+        select {
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+
+
+        .ps-2 {
+            padding-left: 0 !important;
+        }
+
+        .form-check {
+            padding-left: 0;
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.05);
+            border: 2px dashed #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            color: #ffff;
+            transform: translateY(-3px);
+
+        }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            justify-self: center;
+            margin-top: 30px;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .payment-info p {
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+
+        .success-section {
+            background: #6dab3c;
+            color: white;
+            text-align: center;
+        }
+
+        .success-section .step-number {
+            background: linear-gradient(135deg, #00cec9, #00b894);
+        }
     </style>
-    <div class="container-fluid about-hero text-white position-relative"
-        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/telephone-612061_1920.jpg') center center / cover no-repeat; 
-     display: flex;
-     align-items: center;">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="hero-style7">
-                        <span class="sub-title style1 text-white d-block mb-2">Home</span>
-                        <h1 class="hero-title text-white display-4 mb-0" style="font-weight: 700;">Contact Us</h1>
-                    </div>
-                </div>
+
+
+    <div class="w-full ">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <!-- Home Icon -->
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                <!-- About Icon -->
+
+                                <span>Contact Us</span>
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
             </div>
         </div>
     </div>
@@ -597,132 +476,201 @@
 
 
     <!-- Contact Start -->
-    <div class="container-fluid bg-light py-5 contact-section">
-        <div class="container py-5">
+    <div class="container-fluid  py-5 contact-section" style="margin-top: -100px;">
+        <div class="container-fluid py-5">
             <div class="row g-5 align-items-center">
                 <!-- Left Content -->
-                <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
-                    <h5 class="sub-title mb-3">Get In Touch</h5>
-                    <h2 class="display-5 mb-4">tart your conversation — reach out to us </h2>
-                    <p class="mb-4 text-muted">We’d love to hear from you. Whether you have questions regarding our
+                <div class="" data-wow-delay="0.2s">
+
+                    <div class="title-area text-center inbound-title">
+                        {{-- <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Get
+                            In Touch</span> --}}
+                        <h2 class="sec-title"
+                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            Sart your conversation </h2>
+                    </div>
+                    <p class="mb-4 text-center" >We’d love to hear from you. Whether you have questions regarding our
                         services, pricing
                         or else our dedicated team is ready to provide prompt and professional assistance at
                         every stage of your journey.</p>
 
-                    <div class="d-flex gap-3 mb-4">
-                        <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class="bg-white p-3 d-flex shadow">
-                                <i class="fas fa-map-marker-alt fa-2x text-success me-3"></i>
-                                <div>
-                                    <h6 class="mb-1">Address</h6>
-                                    <p class="mb-0 text-muted">22/14C, Asarappa Road, Negombo, Sri Lanka</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="bg-white p-3 d-flex shadow">
-                                <i class="fas fa-envelope fa-2x text-success me-3"></i>
-                                <div>
-                                    <h6 class="mb-1">Email</h6>
-                                    <p class="mb-0 text-muted">info@vacayguider.co</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="bg-white p-3 d-flex shadow">
-                                <i class="fa fa-phone-alt fa-2x text-success me-3"></i>
-                                <div>
-                                    <h6 class="mb-1">Phone</h6>
-                                    <p class="mb-0 text-muted">+94 114 272 372</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Form -->
-                <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
-                    <p class="mb-4 fs-5 text-secondary">
+                         <p class="mb-4  text-center">
                         Got a question or planning a trip?
                         Fill out the form and our team will get back to you soon. We’re here to help with inquiries,
                         feedback, or travel plans — let’s make your journey amazing!
                     </p>
 
-                    @if(session('success'))
-    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-                    <form method="POST" action="{{ route('contact.submit') }}">
-                        @csrf
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="form-floating shadow-sm rounded">
-                                    <input type="text" class="form-control"id="name" name="name" placeholder="Your Name"
-                                        required>
-                                    <label for="name" class="ps-3">Your Name</label>
-                                </div>
+                    <div class="social-section" style="margin-top: 50px;" >
+                        <div class="th-social">
+                            <a href="https://web.facebook.com/profile.php?id=61550739082103" class="facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/VacayGuider" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://lk.linkedin.com/in/vacay-guider-9035432aa" class="linkedin"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://wa.me/message/MJSQHL4GVAJMI1" class="whatsapp"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/vacayguider/" class="instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@vacayguider" class="tiktok"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.youtube.com/@VacayGuider" class="youtube"><i
+                                    class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+
+                    <div class="row justify-content-center" style="margin-top: 40px;">
+                        <div class="col-lg-10">
+                            <div class="contact-card">
+                                <div class="row g-4">
+                                    <!-- Visit Our Office -->
+                                    <div class="col-md-4  d-flex">
+                                        <div class="contact-item animate-fade-in w-100">
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Visit Our Office</h6>
+                                                    <p>22/14C, Asarappa Road, Negombo, Sri Lanka</p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email Us -->
+                                    <div class="col-md-4 d-flex">
+                                        <div class="contact-item animate-fade-in w-100">
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Email Us</h6>
+                                                    <p><a href="mailto:info@vacayguider.co">info@vacayguider.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Call Us -->
+                                    <div class="col-md-4 d-flex">
+                                        <div class="contact-item animate-fade-in w-100">
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Call Us</h6>
+                                                    <p><a href="tel:+94114272372">+94 114 272 372</a></p>
+                                                    <p><a href="tel:+94711999444">+94 711 999 444</a></p>
+                                                    <p><a href="tel:+94777035325">+94 777 035 325</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- .row -->
+                            </div> <!-- .contact-card -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Form -->
+                <div class="" data-wow-delay="0.4s" style="margin-top: -20px;">
+                    {{-- <p class="mb-4 fs-5 text-secondary">
+                        Got a question or planning a trip?
+                        Fill out the form and our team will get back to you soon. We’re here to help with inquiries,
+                        feedback, or travel plans — let’s make your journey amazing!
+                    </p> --}}
+
+                    @if (session('success'))
+                        <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <div class="steps-container">
+                        <div class="step-card bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                            <div class="step-header text-center mb-6">
+                                <div class="step-number">!</div>
+                                <h2 class="step-title text-blue-900 text-3xl sm:text-4xl font-extrabold">Check Your
+                                    Reservation
+                                </h2>
                             </div>
+                            <form method="POST" action="{{ route('contact.submit') }}"
+                                class="form-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+                                @csrf
 
-                            <div class="col-md-6">
-                                <div class="form-floating shadow-sm rounded">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email"
-                                        required>
-                                    <label for="email" class="ps-3">Your Email</label>
+                                <!-- Name -->
+                                <div class="form-group">
+                                    <label for="name" class="block font-semibold text-gray-700 mb-1">Your Name
+                                        *</label>
+                                    <input type="text" id="name" name="name" required placeholder="Your Name"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-floating shadow-sm rounded">
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
-                                    <label for="phone" class="ps-3">Your Phone</label>
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label for="email" class="block font-semibold text-gray-700 mb-1">Your Email
+                                        *</label>
+                                    <input type="email" id="email" name="email" required
+                                        placeholder="Your Email"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-floating shadow-sm rounded">
-                                    <input type="text" class="form-control" id="country" name="country" placeholder="Country">
-                                    <label for="country" class="ps-3">Country</label>
+                                <!-- Phone -->
+                                <div class="form-group">
+                                    <label for="phone" class="block font-semibold text-gray-700 mb-1">Your
+                                        Phone</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Phone"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
                                 </div>
-                            </div>
 
+                                <!-- Country -->
+                                <div class="form-group">
+                                    <label for="country" class="block font-semibold text-gray-700 mb-1">Country</label>
+                                    <input type="text" id="country" name="country" placeholder="Country"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
+                                </div>
 
-                            <div class="col-12">
-                                <div class="form-floating shadow-sm rounded">
-                                    <select class="form-select"  id="service" name="service" required>
+                                <!-- Service -->
+                                <div class="form-group md:col-span-2">
+                                    <label for="service" class="block font-semibold text-gray-700 mb-1">Select a Service
+                                        *</label>
+                                    <select id="service" name="service" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
                                         <option value="" disabled selected>Select a service</option>
                                         <option value="Inbound tours">Inbound tours</option>
-                                        <option value="Outbound tours">Outbound tours</option>
+                                        {{-- <option value="Outbound tours">Outbound tours</option> --}}
+                                                <option value="Rent Vehicles">Rent Vehicles</option>
                                         <option value="Transportations">Transportations</option>
-                                        <option value="Rent Vehicles">Rent Vehicles</option>
+                                
                                         <option value="Air tickets">Air tickets</option>
                                         <option value="Other">Other</option>
                                     </select>
-                                   
                                 </div>
-                            </div>
 
-                            <div class="col-12">
-                                <div class="form-floating shadow-sm rounded">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 130px;"></textarea>
-                                    <label for="message" class="ps-3">Message</label>
+                                <!-- Message -->
+                                <div class="form-group md:col-span-2">
+                                    <label for="message" class="block font-semibold text-gray-700 mb-1">Message</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Leave a message here"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                                        style="min-height: 130px;"></textarea>
                                 </div>
-                            </div>
 
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-dark w-100 py-3 shadow-sm fs-5">
-                                    Send Message
-                                </button>
-                            </div>
+                                <!-- Submit Button -->
+                                <div class="form-group md:col-span-2 text-center pt-4">
+                                    <button type="submit"
+                                       class="btn btn-submit">
+                                        Send Message
+                                    </button>
+                                </div>
+
+                            </form>
                         </div>
-                    </form>
+                    </div>
+
 
                 </div>
 
@@ -743,16 +691,16 @@
         </div>
     </div>
     <!-- Contact End -->
-<script>
-    setTimeout(function () {
-        let alert = document.getElementById('successAlert');
-        if (alert) {
-            alert.classList.remove('show');
-            alert.classList.add('fade');
-            alert.style.opacity = '0';
-        }
-    }, 5000); // 5000ms = 5 seconds
-</script>
+    <script>
+        setTimeout(function() {
+            let alert = document.getElementById('successAlert');
+            if (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                alert.style.opacity = '0';
+            }
+        }, 5000); // 5000ms = 5 seconds
+    </script>
 
 
 @endsection

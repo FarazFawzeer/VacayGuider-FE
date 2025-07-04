@@ -42,8 +42,8 @@
 
             <div class="d-flex align-items-right"
                 style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
-                <i class="fas fa-calendar-check text-danger me-2"></i>
-                <span class="text-dark fw-semibold">
+      
+                <span class="text-dark " style="font-weight: bold;">
                     {{ $package->days }} Days,
                     {{ $package->nights }} Nights
                 </span>

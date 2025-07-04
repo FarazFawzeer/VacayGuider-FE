@@ -12,28 +12,29 @@ class TestimonialController extends Controller
     //
 public function index(Request $request)
 {
-    // Normalize source: lowercase, trimmed, distinct
+    // Get distinct, normalized source list
     $sources = Testimonial::select(DB::raw('LOWER(TRIM(source)) as source_normalized'))
         ->whereNotNull('source')
         ->where('source', '!=', '')
         ->distinct()
         ->pluck('source_normalized');
 
-    // Normalize filter input
-    $sourceFilter = strtolower(trim($request->input('source')));
+    // Get selected sources (array or empty)
+    $sourceFilter = $request->input('source', []); // Will return array of selected sources or []
 
     $query = Testimonial::query();
 
-    if ($sourceFilter && in_array($sourceFilter, $sources->toArray())) {
-        $query->whereRaw('LOWER(TRIM(source)) = ?', [$sourceFilter]);
+    if (!empty($sourceFilter)) {
+        $sourceFilterNormalized = array_map(fn($s) => strtolower(trim($s)), $sourceFilter);
+        $query->whereIn(DB::raw('LOWER(TRIM(source))'), $sourceFilterNormalized);
     }
 
     $testimonials = $query->orderBy('postedate', 'desc')->paginate(4);
+    $blogPosts = BlogPost::orderBy('posted_time', 'desc')->get();
 
-     $blogPosts = BlogPost::orderBy('posted_time', 'desc')->get();
-
-    return view('frontend.pages.blog', compact('testimonials', 'sources', 'sourceFilter','blogPosts'));
+    return view('frontend.pages.blog', compact('testimonials', 'sources', 'sourceFilter', 'blogPosts'));
 }
+
 
 
 

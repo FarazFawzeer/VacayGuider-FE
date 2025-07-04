@@ -23,5 +23,8 @@ class BlogPost extends Model
     protected $casts = [
         'hashtags' => 'array',
         'posted_time' => 'datetime',
+            'image_post' => 'array',
     ];
+
+    
 }

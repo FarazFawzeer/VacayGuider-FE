@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\AirlineBookingController;
 
 Route::get('/', function () {
     return view('frontend.pages.home');
@@ -62,6 +63,7 @@ Route::get('/rent', [RentVehicleController::class, 'index'])->name('rent.vehicle
 Route::get('/rent-detail/{id}', [RentVehicleController::class, 'showDetails'])->name('rent.details');
 Route::get('/filter-vehicles', [RentVehicleController::class, 'filterVehicles'])->name('filter.vehicles');
 Route::post('/vehicle-booking', [RentVehicleController::class, 'store'])->name('vehicle.booking.store');
+Route::post('/driving-permit-request', [RentVehicleController::class, 'rentStore'])->name('driving-permit.store');
 
 
 Route::get('/transportation', [TransportaionController::class, 'index'])->name('transportation.vehicles');
@@ -81,3 +83,8 @@ Route::post('/chatbot/save', [ChatbotController::class, 'store'])->name('chatbot
 Route::get('/blog', [TestimonialController::class, 'index'])->name('blog');
 
 Route::get('/tours/load-more/{category}', [TourPackageController::class, 'loadMore'])->name('tour.load_more');
+
+
+
+
+Route::post('/airline-booking', [AirlineBookingController::class, 'store'])->name('airline.booking.store');

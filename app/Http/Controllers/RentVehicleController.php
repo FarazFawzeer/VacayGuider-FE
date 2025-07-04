@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\VehicleDetail;
 use App\Models\VehicleBooking;
 use Illuminate\Support\Facades\Mail;
+use App\Models\DrivingPermitRequest;
 
 
 class RentVehicleController extends Controller
@@ -15,12 +16,22 @@ class RentVehicleController extends Controller
     {
         $query = VehicleDetail::query();
 
-        // Get distinct vehicle types for the filter sidebar
-        $vehicleTypes = VehicleDetail::select('type')->distinct()->pluck('type');
+        // Get distinct vehicle types
+        $vehicleTypes = VehicleDetail::select('type')->distinct()->pluck('type')->map(function ($type) {
+            return strtolower($type); // Normalize casing
+        });
 
-        // Optionally, apply filtering by selected types here
+        // Define the desired custom order
+        $customOrder = ['cycle', 'electricbike', 'tuktuk', 'motorcycle', 'car', 'jeep', 'van'];
+
+        // Sort the vehicle types by the custom order
+        $vehicleTypes = collect($customOrder)->filter(function ($type) use ($vehicleTypes) {
+            return $vehicleTypes->contains($type);
+        })->values(); // Keeps only existing types in the correct order
+
+        // Apply filtering if vehicle types are selected
         if ($request->has('types')) {
-            $types = $request->input('types'); // expects array
+            $types = $request->input('types');
             $query->whereIn('type', $types);
         }
 
@@ -81,6 +92,39 @@ class RentVehicleController extends Controller
         $bookingData->load('vehicle');
         Mail::to($bookingData->email)->send(new \App\Mail\BookingConfirmationMail($bookingData));
 
-            return redirect()->back()->with('success', 'Booking submitted successfully!');
+        return redirect()->back()->with('success', 'Booking submitted successfully!');
+    }
+
+    public function rentStore(Request $request)
+    {
+        $validated = $request->validate([
+            'guest_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'license_no' => 'required|string|max:255',
+            'whatsapp' => 'required|string|max:20',
+            'license_front' => 'required|image',
+            'license_back' => 'required|image',
+            'selfie' => 'required|image',
+            'collection_method' => 'required|in:pick_up,delivery',
+        ]);
+
+        // Store uploaded files
+        $licenseFrontPath = $request->file('license_front')->store('licenses', 'public');
+        $licenseBackPath = $request->file('license_back')->store('licenses', 'public');
+        $selfiePath = $request->file('selfie')->store('selfies', 'public');
+
+        // Save to database
+        DrivingPermitRequest::create([
+            'guest_name' => $validated['guest_name'],
+            'email' => $validated['email'],
+            'license_no' => $validated['license_no'],
+            'whatsapp' => $validated['whatsapp'],
+            'license_front' => $licenseFrontPath,
+            'license_back' => $licenseBackPath,
+            'selfie' => $selfiePath,
+            'collection_method' => $validated['collection_method'],
+        ]);
+
+        return back()->with('success', 'Your driving permit request has been submitted successfully!');
     }
 }

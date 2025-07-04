@@ -6,6 +6,250 @@
 
 
     <style>
+        .testimonials-section {
+  background-color: var(--secondary);
+  background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
+}
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .modal-body {
+            padding: 0 !important;
+            min-height: 500px;
+        }
+
+        .image-section {
+            background: #000;
+            border-radius: 20px 0 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            height: 100%;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-control-prev {
+            left: 15px;
+        }
+
+        .carousel-control-next {
+            right: 15px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-size: 20px;
+            filter: invert(1);
+        }
+
+        .content-section {
+            padding: 40px 35px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 0 20px 20px 0;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .posted-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            background: rgba(103, 126, 234, 0.1);
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .posted-date i {
+            color: #6c757;
+        }
+
+        .modal-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #495057;
+            margin-bottom: 25px;
+        }
+
+        .engagement-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .stat-item i {
+            color: #667eea;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            color: #495057;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .modal-dialog {
+                margin: 10px;
+            }
+
+            .modal-content {
+                border-radius: 15px;
+            }
+
+            .image-section,
+            .content-section {
+                border-radius: 15px 15px 0 0;
+            }
+
+            .content-section {
+                border-radius: 0 0 15px 15px;
+                padding: 25px 20px;
+            }
+
+            .carousel-item {
+                height: 300px;
+            }
+        }
+
+        .image-count-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            padding: 4px 10px;
+
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .image-count-badge i {
+            font-size: 13px;
+        }
+
+        .ps-2 {
+            padding-left: 0 !important;
+        }
+
+        .form-check {
+            padding-left: 0;
+        }
+
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
         .page-title {
             text-align: center;
             margin-bottom: 40px;
@@ -56,7 +300,7 @@
         .post-title {
             font-size: 1.4rem;
             font-weight: 600;
-            color: #2c3e50;
+            color: #000000;
             margin-bottom: 12px;
             line-height: 1.3;
         }
@@ -137,25 +381,25 @@
         }
 
         /* .share-btn {
-                background: linear-gradient(45deg, #3498db, #028ccc);
-                color: white;
-            }
+                                            background: linear-gradient(45deg, #3498db, #028ccc);
+                                            color: white;
+                                        }
 
-            .share-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-            }
+                                        .share-btn:hover {
+                                            transform: translateY(-2px);
+                                            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                        }
 
-            .view-btn {
-                background: linear-gradient(45deg, #2ecc71, #94d106; );
-                background-color: #94d106;
-                color: white;
-            }
+                                        .view-btn {
+                                            background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                            background-color: #94d106;
+                                            color: white;
+                                        }
 
-            .view-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-            } */
+                                        .view-btn:hover {
+                                            transform: translateY(-2px);
+                                            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                        } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -319,7 +563,7 @@
         /* Grid Layout */
         .testimonials-grid {
             display: grid;
-             grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 32px;
             position: relative;
             z-index: 1;
@@ -465,11 +709,11 @@
             background-color: #028ccc;
         }
 
-.th-menu-toggle {
-  
-    background-color: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
-  
-}
+        .th-menu-toggle {
+
+            background-color: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+
+        }
 
         .avatar-status {
             position: absolute;
@@ -977,52 +1221,171 @@
         }
     </style>
 
-    <section class="overflow-hidden space bg-smoke"
-        style="padding-top: 40px;padding-bottom: 40px; background-color: #F5F5F5 !important;">
-        <div class="container ">
-            <h1 class="page-title" style="color: #113d48;">✨ Social Feed</h1>
 
-            <div class="posts-grid" id="postsGrid">
-                <!-- Sample posts - replace with your actual content -->
+    <div class="w-full ">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <!-- Home Icon -->
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                <!-- About Icon -->
+
+                                <span>Blog</span>
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="overflow-hidden space " style="padding-top: 40px;padding-bottom: 40px; ">
+        <div class="container">
+
+
+            <div class="title-area text-center mb-5" style="margin-top: -40px;">
+
+
+                <div class="title-area text-center " style="">
+                    {{-- <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
+                    <h2 class="sec-title"
+                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        Social Feed</h2>
+                </div>
+
+            </div>
+
+            <div class="posts-grid" id="postsGrid" style="margin-top: -20px;">
                 @foreach ($blogPosts as $index => $post)
-                    <article class="post-card {{ $index >= 6 ? 'd-none extra-post' : '' }}">
-                        {{-- Same post content as before --}}
-                        <img src="{{ $post->image_post ? asset('storage/' . $post->image_post) : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop' }}"
-                            alt="Post Image" class="post-image">
+                    <article class="post-card {{ $index >= 6 ? 'd-none extra-post' : '' }}" data-bs-toggle="modal"
+                        data-bs-target="#postModal" data-title="{{ $post->title }}"
+                        data-description="{{ $post->description }}" data-date="{{ $post->created_at->format('F j, Y') }}"
+                        data-likes="{{ $post->likes ?? 0 }}" data-comments="{{ $post->comments ?? 0 }}"
+                        data-shares="{{ $post->shares ?? 0 }}" data-images='@json(array_map(fn($img) => asset('storage/' . $img), $post->image_post ?? []))'>
 
-                        <div class="post-content">
-                            <h2 class="post-title">{{ $post->title }}</h2>
-                            <div class="post-meta">
+                        @php
+                            $imgArray = is_array($post->image_post) ? $post->image_post : [];
+                            $imgCount = count($imgArray);
+                            $firstImage = !empty($imgArray[0])
+                                ? asset('storage/' . $imgArray[0])
+                                : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop';
+                        @endphp
 
-                                <span class="">{{ $post->posted_time->diffForHumans() }}</span>
-                                <span class="post-likes">{{ $post->likes_count }}</span>
+                        <div class="position-relative">
+                            <img src="{{ $firstImage }}" alt="Post Image" class="post-image">
+
+                            <div class="image-count-badge">
+                                <i class="fas fa-image"></i>
+                                @if ($imgCount > 0)
+                                    {{ $imgCount }}
+                                @endif
                             </div>
-                            <p class="post-description clamp-2-lines">{{ $post->description }}</p>
-                            <div class="post-tags">
-                                @foreach ($post->hashtags as $tag)
-                                    <span class="tag">{{ $tag }}</span>
-                                @endforeach
-                            </div>
-                            <div class="post-actions">
-                                <button class="action-btn share-btn">Share</button>
-                                <button class="action-btn view-btn">View Full</button>
-                            </div>
+                        </div>
+
+                        <div class="post-content text-center">
+                            <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
                         </div>
                     </article>
                 @endforeach
-
             </div>
 
             <div class="load-more">
                 <button id="togglePostsBtn" class="load-more-btn" onclick="togglePosts()">Load More Posts</button>
             </div>
         </div>
+
+        <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content position-relative">
+                    <!-- Close button -->
+                    <button type="button" class="close-btn position-absolute top-0 end-0 m-3 btn btn-light"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="modal-body d-flex flex-wrap p-4">
+                        <!-- Left: Image Slider -->
+                        <div class="col-md-6 image-section position-relative" style="padding: 0px;">
+                            <div id="imageCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+                                <div class="carousel-inner h-100" id="carouselImages"></div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+
+                                <!-- Image counter -->
+                                <div
+                                    class="image-counter position-absolute bottom-0 end-0 m-2 bg-dark text-white px-2 py-1 rounded">
+                                    <span id="currentImage">1</span> / <span id="totalImages">1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Post Content -->
+                        <div class="col-md-6 content-section px-4">
+                            <h3 class="modal-title" id="modalTitle"></h3>
+
+                       
+
+                            <p class="modal-description" id="modalDescription"></p>
+
+                             <div class="posted-date my-2" id="postedDate">
+                                <i class="fas fa-calendar-alt me-1"></i>
+                                <span id="modalDate">Posted on --</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="overflow-hidden space" style="padding-top: 40px;padding-bottom: 40px;">
+    <section class="overflow-hidden space "
+        style="padding-top: 40px;padding-bottom: 40px;background-color: #F5F5F5 !important;">
 
         <div class="container py-4">
-            <h1 class="page-title" style="color: #113d48;"> What our client Says</h1>
+            {{-- <h1 class="page-title" style="color: #113d48;"> What our client Says</h1> --}}
+
+            <div class="title-area text-center " style="">
+                {{-- <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
+                <h2 class="sec-title"
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                    What our client Says</h2>
+            </div>
             <div class="row">
 
                 <!-- Sidebar filter -->
@@ -1031,27 +1394,34 @@
                         <form method="GET" action="{{ route('blog') }}" id="filterForm">
 
                             <div class="filter-section mb-4">
-                                <h5 class="filter-heading">
-                                    <i class="fas fa-filter me-2"></i>Source
+                                <h5 class="filter-heading text-black" style="font-size: 16px">
+                                    Source
                                 </h5>
                                 <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
                                     {{-- "All Sources" option --}}
                                     <div class="form-check mb-2 d-flex align-items-center">
-                                        <input class="form-check-input" type="radio" name="source" value=""
-                                            id="source_all" {{ !$sourceFilter ? 'checked' : '' }}>
-                                        <label class="form-check-label ms-2" for="source_all">All Sources</label>
+                                        <input class="form-check-input" type="checkbox" name="source" value=""
+                                            name="source[]" id="source_all" {{ !$sourceFilter ? 'checked' : '' }}
+                                            style="font-size: 14px; ">
+                                        <label class="form-check-label ms-2 text-black" for="source_all"
+                                            style="font-size: 14px; ">All Sources</label>
                                     </div>
 
                                     @foreach ($sources as $source)
                                         <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input" name="source" value="{{ $source }}"
-                                                type="radio" id="source_{{ $loop->index }}"
-                                                {{ $sourceFilter === $source ? 'checked' : '' }}>
-                                            <label class="form-check-label ms-2" for="source_{{ $loop->index }}">
+                                            <input class="form-check-input text-black" type="checkbox" name="source[]"
+                                                value="{{ $source }}" id="source_{{ $loop->index }}"
+                                                {{ is_array($sourceFilter) && in_array($source, $sourceFilter) ? 'checked' : '' }}
+                                                style="font-size: 14px;">
+
+                                            <label class="form-check-label ms-2 text-black"
+                                                for="source_{{ $loop->index }}" style="font-size: 14px;">
                                                 {{ ucfirst($source) }}
                                             </label>
                                         </div>
                                     @endforeach
+
+
                                 </div>
                             </div>
 
@@ -1061,7 +1431,7 @@
 
 
 
-                <div class="col-md-9" id="filteredResults">
+                <div class="col-md-9 " id="filteredResults">
                     <div class="testimonials-container">
                         <div class="testimonials-grid">
                             @forelse ($testimonials as $testimonial)
@@ -1086,7 +1456,7 @@
                                             <div class="user-section">
                                                 <div class="avatar-container">
                                                     <div class="avatar-ring"></div>
-                                                    <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=028ccc&color=fff&size=80' }}"
+                                                    <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
                                                         class="user-avatar" alt="{{ $testimonial->name }}">
                                                     <div class="avatar-status"></div>
                                                 </div>
@@ -1202,93 +1572,125 @@
 
 
     <script>
-        function togglePosts() {
-            const hiddenPosts = document.querySelectorAll('.extra-post');
-            const toggleBtn = document.getElementById('togglePostsBtn');
-            const isHidden = hiddenPosts[0].classList.contains('d-none');
+        document.addEventListener('DOMContentLoaded', function() {
+            const posts = document.querySelectorAll('.post-card');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalDate = document.getElementById('modalDate');
+            const likeCount = document.getElementById('likeCount');
+            const commentCount = document.getElementById('commentCount');
+            const shareCount = document.getElementById('shareCount');
+            const carouselImages = document.getElementById('carouselImages');
+            const currentImage = document.getElementById('currentImage');
+            const totalImages = document.getElementById('totalImages');
 
-            if (isHidden) {
-                // Show all extra posts
-                hiddenPosts.forEach(post => post.classList.remove('d-none'));
-                toggleBtn.textContent = 'Hide Posts';
-            } else {
-                // Hide all extra posts
-                hiddenPosts.forEach(post => post.classList.add('d-none'));
-                toggleBtn.textContent = 'Load More Posts';
-                window.scrollTo({
-                    top: document.getElementById('postsGrid').offsetTop - 100,
-                    behavior: 'smooth'
+            posts.forEach(post => {
+                post.addEventListener('click', function() {
+                    const title = post.dataset.title;
+                    const description = post.dataset.description;
+                    const date = post.dataset.date;
+                    const likes = post.dataset.likes || 0;
+                    const comments = post.dataset.comments || 0;
+                    const shares = post.dataset.shares || 0;
+                    let images = [];
+
+                    try {
+                        images = JSON.parse(post.dataset.images);
+                    } catch (e) {
+                        console.error('Invalid image JSON');
+                    }
+
+                    if (!Array.isArray(images) || images.length === 0) {
+                        images = [
+                            'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop'
+                        ];
+                    }
+
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    modalDate.textContent = `Posted on ${date}`;
+                    likeCount.textContent = `${likes} likes`;
+                    commentCount.textContent = `${comments} comments`;
+                    shareCount.textContent = `${shares} shares`;
+
+                    // Carousel images
+                    carouselImages.innerHTML = '';
+                    totalImages.textContent = images.length;
+                    currentImage.textContent = 1;
+
+                    images.forEach((img, index) => {
+                        carouselImages.innerHTML += `
+                        <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                            <img src="${img}" class="d-block w-100" alt="Slide ${index + 1}">
+                        </div>`;
+                    });
+
+                    // Update current image number on slide
+                    const carouselElement = document.querySelector('#imageCarousel');
+                    carouselElement.addEventListener('slid.bs.carousel', function(event) {
+                        currentImage.textContent = event.to + 1;
+                    });
                 });
-            }
-        }
-
-        function addNewPost() {
-            alert('Add new post functionality! (Connect to your upload system)');
-        }
-
-        // Add click handlers for share and view buttons
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('share-btn')) {
-                const postTitle = e.target.closest('.post-card').querySelector('.post-title').textContent;
-                if (navigator.share) {
-                    navigator.share({
-                        title: postTitle,
-                        text: 'Check out this amazing post!',
-                        url: window.location.href
-                    });
-                } else {
-                    // Fallback for browsers that don't support Web Share API
-                    const url = window.location.href;
-                    navigator.clipboard.writeText(url).then(() => {
-                        alert('Link copied to clipboard!');
-                    });
-                }
-            }
-
-            if (e.target.classList.contains('view-btn')) {
-                const postImage = e.target.closest('.post-card').querySelector('.post-image').src;
-                // Open image in new tab or modal
-                window.open(postImage, '_blank');
-            }
-        });
-
-        // Add some scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
             });
-        }, observerOptions);
-
-        // Observe all post cards for scroll animations
-        document.querySelectorAll('.post-card').forEach(card => {
-            observer.observe(card);
         });
+    </script>
 
 
-        function markHelpful(id, element) {
-            // Optional: prevent multiple clicks
-            if (element.classList.contains('clicked')) return;
 
-            // UI feedback
-            element.classList.add('clicked');
-            element.style.color = '#0d6efd'; // Bootstrap primary
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const posts = document.querySelectorAll('.post-card');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const carouselImages = document.getElementById('carouselImages');
 
-            // Optional: show a toast or feedback
-            // alert('Marked testimonial ID ' + id + ' as helpful');
+            // Default images (can be one or multiple)
+            const defaultImages = [
+                'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop',
+                'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop',
+                'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop'
+            ];
 
-            // TODO: Send AJAX request to backend
-            // fetch('/mark-helpful/' + id, { method: 'POST', headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' } })
+            posts.forEach(post => {
+                post.addEventListener('click', function() {
+                    const title = post.dataset.title;
+                    const description = post.dataset.description;
+                    let images = [];
 
-            // Optional: update a counter or icon state
-            element.querySelector('i').classList.replace('bi-hand-thumbs-up', 'bi-hand-thumbs-up-fill');
-        }
+                    try {
+                        images = JSON.parse(post.dataset.images);
+                    } catch (e) {
+                        console.error('Invalid image JSON');
+                    }
+
+                    // Use default if empty or invalid
+                    if (!Array.isArray(images) || images.length === 0) {
+                        images = defaultImages;
+                    }
+
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+
+                    // Build image carousel
+                    carouselImages.innerHTML = '';
+                    images.forEach((img, index) => {
+                        carouselImages.innerHTML += `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <img src="${img}" class="d-block w-100" alt="Slide ${index + 1}">
+                    </div>`;
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[name="source[]"]').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    document.getElementById('filterForm').submit();
+                });
+            });
+        });
     </script>
 @endsection
