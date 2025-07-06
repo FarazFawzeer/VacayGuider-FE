@@ -5,20 +5,27 @@
 @section('content')
 
     <style>
+        .map-section {
+            /* background-color: var(--secondary); */
+            /* background:  url('/assets/img/map-bg-3.jpg'); */
 
-                .map-section {
-  /* background-color: var(--secondary);
-  background:  url('/assets/img/map-bg-3.jpg'); */
-}
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('/assets/img/map-bg8.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         @media (max-width: 767.98px) {
 
-              .swiper-button-prev-rental {
-            left: -10px;
-        }
+            .swiper-button-prev-rental {
+                left: -10px;
+            }
 
-        .swiper-button-next-rental {
-            right: -10px;
-        }
+            .swiper-button-next-rental {
+                right: -10px;
+            }
 
             .inbound-title {
                 margin-top: 80px
@@ -86,7 +93,7 @@
 
             }
 
-            .alirlin-title{
+            .alirlin-title {
                 margin-top: 10px;
             }
 
@@ -363,7 +370,7 @@
         }
 
         .custom-btn {
-            background: linear-gradient(45deg, #60D522, #A3EB58);
+            background: linear-gradient(45deg, #000000, #000000);
 
             /* Smooth gradient */
             color: #fff;
@@ -372,14 +379,14 @@
             font-weight: 600;
             padding: 12px 24px;
             border: none;
-            border-radius: 8px;
+            border-radius: 0px;
             /* Soft rounded corners */
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .custom-btn:hover {
-            background: #0f172a;
+            background: #000000 !important;
             /* Reverse gradient */
             transform: translateY(-3px);
             /* Slight lift effect */
@@ -577,7 +584,7 @@
             color: #1e1e1e;
             font-size: 20px;
             cursor: pointer;
-      
+
             transition: all 0.3s ease;
         }
 
@@ -594,7 +601,7 @@
         .swiper-button-prev-inbound:hover,
         .swiper-button-next-inbound:hover {
             background: #efefef;
-  
+
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -957,26 +964,28 @@
 
 
         /* Chatbot Window */
-      #chatbot-box {
-    position: fixed;
-    bottom: 165px;
-    right: 30px;
-    width: 420px;
-    max-width: calc(100vw - 60px);
-    max-height: calc(100vh - 174px); /* prevent from overflowing screen */
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(25px);
-    border-radius: 25px;
-    z-index: 1101;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
-    transform: translateY(100px) scale(0.85);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column; /* allow inner sections to flow vertically */
-}
+        #chatbot-box {
+            position: fixed;
+            bottom: 165px;
+            right: 30px;
+            width: 420px;
+            max-width: calc(100vw - 60px);
+            max-height: calc(100vh - 174px);
+            /* prevent from overflowing screen */
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            z-index: 1101;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(100px) scale(0.85);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* allow inner sections to flow vertically */
+        }
 
         #chatbot-box.show {
             transform: translateY(0) scale(1);
@@ -1034,12 +1043,12 @@
         }
 
         /* Chat Content */
-       #chat-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.95);
-}
+        #chat-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+        }
 
 
         #chat-content::-webkit-scrollbar {
@@ -1185,10 +1194,10 @@
         }
 
         .form-container,
-.service-grid {
-    max-height: 300px;
-    overflow-y: auto;
-}
+        .service-grid {
+            max-height: 300px;
+            overflow-y: auto;
+        }
 
         .form-control {
             width: 100%;
@@ -1210,15 +1219,15 @@
         }
 
         @media (max-height: 700px) {
-    #chatbot-box {
-        max-height: calc(100vh - 172px);
-        bottom: 163px;
-    }
+            #chatbot-box {
+                max-height: calc(100vh - 172px);
+                bottom: 163px;
+            }
 
-    .alirlin-title{
+            .alirlin-title {
                 margin-top: 10px;
             }
-}
+        }
 
         .btn {
             padding: 15px 25px;
@@ -1242,7 +1251,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-    
+
         }
 
         .btn-outline-primary {
@@ -1253,10 +1262,10 @@
         }
 
         .btn-outline-primary:hover {
-        
+
             color: white;
             transform: translateY(-2px);
-        
+
         }
 
         .w-100 {
@@ -1396,7 +1405,7 @@
 
         /* Responsive Design */
         @media (max-width: 480px) {
-                .alirlin-title{
+            .alirlin-title {
                 margin-top: 30px;
             }
 
@@ -1427,7 +1436,8 @@
                 padding: 20px;
             }
         }
-/* chat bot ending */
+
+        /* chat bot ending */
         /* Demo page styling */
         .demo-container {
             max-width: 1200px;
@@ -1467,8 +1477,6 @@
         .swiper-pagination-bullets .swiper-pagination-bullet {
             border-color: #000000;
         }
-        
-
     </style>
 
     <!-- Banner section -->
@@ -1503,11 +1511,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                unforgetable pleasure with us</span>
-                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                Let’s make your best trip with us </h1>
-                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                    unforgetable pleasure with us</span>
+                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                    Let’s make your best trip with us </h1>
+                                                                                                                                                                                                            </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1523,19 +1531,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                <div class="hero-inner">
-                                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                    <div class="container">
-                                                                                                                                                                                                        <div class="hero-style1">
-                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                unforgetable pleasure with us</span>
-                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                Explore beauty of the whole world </h1>
+                                                                                                                                                                                                    <div class="hero-inner">
+                                                                                                                                                                                                        <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                        <div class="container">
+                                                                                                                                                                                                            <div class="hero-style1">
+                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                    unforgetable pleasure with us</span>
+                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                    Explore beauty of the whole world </h1>
+                                                                                                                                                                                                            </div>
                                                                                                                                                                                                         </div>
                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1602,8 +1610,7 @@
                         </div>
                     </div>
                     <div class="form-btn col-md-12 col-lg-auto text-center text-lg-start mt-3 mt-lg-0">
-                        <button class="th-btn custom-btn" type="button" id="getQuoteBtn" style="height: 56px;">GET
-                            QUOTE</button>
+                        <button class="custom-btn" type="button" id="getQuoteBtn" style="height: 56px;">Explore Now</button>
                     </div>
                 </div>
             </div>
@@ -1885,11 +1892,11 @@
                             <!-- Service Box 1 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f9f9ff 0%, #eaeaff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-car" style="font-size: 28px; color: #4e54c8;"></i>
+                                            <i class="fas fa-car" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
                                         <h3 style="font-size: 21px; font-weight: 700; color: #333;">Airport Pickups
                                         </h3>
@@ -1899,7 +1906,7 @@
                                         </p>
                                     </div>
                                     <div class="decorative-shape"
-                                        style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(78, 84, 200, 0.07); z-index: 1;">
+                                        style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -1907,11 +1914,11 @@
                             <!-- Service Box 2 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #fff9f6 0%, #ffe8dd 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-shield-alt" style="font-size: 28px; color: #ff7a50;"></i>
+                                            <i class="fas fa-shield-alt" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
                                         <h3 style="font-size: 21px; font-weight: 700; color: #333;">Safe & Reliable
                                         </h3>
@@ -1921,7 +1928,7 @@
                                         </p>
                                     </div>
                                     <div class="decorative-shape"
-                                        style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(255, 122, 80, 0.07); z-index: 1;">
+                                        style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -1941,11 +1948,11 @@
                             <!-- Service Box 3 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f6fff9 0%, #ddffe8 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-credit-card" style="font-size: 28px; color: #2ecc71;"></i>
+                                            <i class="fas fa-credit-card" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
                                         <h3 style="font-size: 21px; font-weight: 700; color: #333;">Booking Made Easy
                                         </h3>
@@ -1955,7 +1962,7 @@
                                         </p>
                                     </div>
                                     <div class="decorative-shape"
-                                        style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(46, 204, 113, 0.07); z-index: 1;">
+                                        style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07);z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -2218,10 +2225,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                    <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                        Get Tickets
-                                                                                                                                                    </a>
-                                                                                                                                                </div> -->
+                                                                                                                                                        <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                            Get Tickets
+                                                                                                                                                        </a>
+                                                                                                                                                    </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">

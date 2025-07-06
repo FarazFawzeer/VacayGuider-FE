@@ -743,9 +743,9 @@
 
         /*
 
-                .space, .space-top {
-                  padding-top: 20px;
-                } */
+                    .space, .space-top {
+                      padding-top: 20px;
+                    } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1418,7 +1418,8 @@
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                             </svg>
                         </div>
-                        <strong data-to="5" data-append="+" class="mb-2 d-block display-4" style="color: black; font-weight: 900;">0</strong>
+                        <strong data-to="5" data-append="+" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
                         <label style="color: black; font-weight: 700;">Years of Experience</label>
                         <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
                         </div>
@@ -1437,7 +1438,8 @@
                                     d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6z" />
                             </svg>
                         </div>
-                        <strong data-to="60" data-append="+" class="mb-2 d-block display-4" style="color: black; font-weight: 900;">0</strong>
+                        <strong data-to="60" data-append="+" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
                         <label style="color: black; font-weight: 700;">Tour Packages</label>
                         <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
                         </div>
@@ -1455,7 +1457,8 @@
                                     d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z" />
                             </svg>
                         </div>
-                        <strong data-to="75" data-append="+" class="mb-2 d-block display-4" style="color: black; font-weight: 900;">0</strong>
+                        <strong data-to="75" data-append="+" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
                         <label style="color: black; font-weight: 700;">Happy Customers</label>
                         <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
                         </div>
@@ -1472,7 +1475,8 @@
                                     d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z" />
                             </svg>
                         </div>
-                        <strong data-to="2" class="mb-2 d-block display-4" style="color: black; font-weight: 900;">0</strong>
+                        <strong data-to="2" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
                         <label style="color: black; font-weight: 700;">Award Winning Services</label>
                         <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
                         </div>
@@ -1488,11 +1492,11 @@
 
     <section class="counter-section " style="background-color: #ffffff;margin-top: -60px;">
         <div class="container-fluid">
-              <div class="title-area text-center " style="">
-                    <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                        The Team </h2>
-                </div>
+            <div class="title-area text-center " style="">
+                <h2 class="sec-title"
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                    The Team </h2>
+            </div>
             <div class="responsive-container-block outer-container ">
                 <div class="responsive-container-block inner-container" style="  min-height: 70vh; ">
 
@@ -1506,7 +1510,7 @@
 
                             <!-- Large CEO Image in the description section -->
                             <div class="ceo-main-image mb-4 mt-4">
-                                <img src="assets/img/ceo2.png" alt="CEO Portrait" class="img-fluid rounded shadow"
+                                <img src="assets/img/ceo.jpg" alt="CEO Portrait" class="img-fluid rounded shadow"
                                     style="width: 100%; ">
                             </div>
                         </div>
@@ -1559,20 +1563,20 @@
 
 
                 <div class="container-fluid mt-5 mb-5">
-                
-    <div class="title-area text-center mb-5" style="margin-top: -5px;">
-                <span class="sub-title"
-                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 600;color: #000000;">
-                    Meet Our Team</span>
-        
-            </div>
+
+                    <div class="title-area text-center mb-5" style="margin-top: -5px;">
+                        <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 600;color: #000000;">
+                            Meet Our Team</span>
+
+                    </div>
                     <div class="responsive-container-block team-cards-inner-container justify-content-center">
                         <!-- First Row -->
                         <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container ">
                             <div class="card"
                                 style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
                                 <div class="img-box">
-                                    <img class="person-img" src="assets/img/team1.jpg" alt="Team Member"
+                                    <img class="person-img" src="assets/img/male.jpg" alt="Team Member"
                                         style="width: 100%; height: auto;">
                                 </div>
 
@@ -1591,7 +1595,7 @@
                             <div class="card"
                                 style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
                                 <div class="img-box">
-                                    <img class="person-img" src="assets/img/team2.jpg" alt="Team Member"
+                                    <img class="person-img" src="assets/img/female.jpg" alt="Team Member"
                                         style="width: 100%; height: auto;">
                                 </div>
 
@@ -1600,7 +1604,7 @@
                                         Safra
                                     </p>
                                     <p class="text-blk person-info">
-                                        Travel Manager 
+                                        Travel Manager
                                     </p>
                                 </div>
                             </div>
@@ -1751,40 +1755,40 @@
     </section>
 
 
- <script>
-    function animateCount(el, target) {
-        let current = 0;
-        const speed = 20;
-        const increment = Math.ceil(target / 100);
+    <script>
+        function animateCount(el, target) {
+            let current = 0;
+            const speed = 20;
+            const increment = Math.ceil(target / 100);
 
-        const counter = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                el.textContent = target + (el.dataset.append || '');
-                clearInterval(counter);
-            } else {
-                el.textContent = current + (el.dataset.append || '');
-            }
-        }, speed);
-    }
-
-    const counters = document.querySelectorAll('.counter-card strong');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.getAttribute('data-to'));
-                if (!el.classList.contains('counted')) {
-                    animateCount(el, target);
-                    el.classList.add('counted');
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.textContent = target + (el.dataset.append || '');
+                    clearInterval(counter);
+                } else {
+                    el.textContent = current + (el.dataset.append || '');
                 }
-            }
-        });
-    }, {
-        threshold: 0.5
-    });
+            }, speed);
+        }
 
-    counters.forEach(counter => observer.observe(counter));
-</script>
+        const counters = document.querySelectorAll('.counter-card strong');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-to'));
+                    if (!el.classList.contains('counted')) {
+                        animateCount(el, target);
+                        el.classList.add('counted');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        counters.forEach(counter => observer.observe(counter));
+    </script>
 @endsection

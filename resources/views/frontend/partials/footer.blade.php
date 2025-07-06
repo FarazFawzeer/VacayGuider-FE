@@ -41,8 +41,8 @@
         }
 
         .quick-links-title {
-            color: #8a8a97;
-            font-size: 24px;
+            color: #888888;
+            font-size: 22px;
             font-weight: 600;
             margin-bottom: 25px;
         }
@@ -135,6 +135,63 @@
             filter: brightness(1.2);
         }
 
+        /* NEW: Contact Information Section Styles */
+        .contact-info-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .phone-numbers,
+        .email-info,
+        .address-info {
+            flex: 1;
+            min-width: 200px;
+            max-width: 400px;
+        }
+
+        .contact-title {
+            color: #888888;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-item i {
+            color: #8a8a97;
+            font-size: 14px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
         .copyright-wrap {
             background-color: #0a3d52;
             padding: 20px 0;
@@ -201,6 +258,27 @@
             .payment-logos {
                 justify-content: center;
             }
+
+            /* Contact section mobile styles */
+            .contact-details {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .phone-numbers,
+            .email-info,
+            .address-info {
+                min-width: auto;
+                max-width: 100%;
+            }
+
+            .contact-title {
+                font-size: 16px;
+            }
+
+            .contact-item {
+                font-size: 13px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -211,6 +289,15 @@
 
             .footer-content {
                 padding: 30px 0 20px;
+            }
+
+            /* Contact section small mobile styles */
+            .contact-details {
+                gap: 20px;
+            }
+
+            .contact-item {
+                font-size: 12px;
             }
         }
     </style>
@@ -325,7 +412,8 @@
                 <!-- Description Section -->
                 <div class="description-section">
                     <p class="description-text">
-                        VacayGuider crafts unforgettable escapes, where hidden gems meet seamless journeys, and every trip becomes your best story.
+                        VacayGuider crafts unforgettable escapes, where hidden gems meet seamless journeys, and every
+                        trip becomes your best story.
                     </p>
                 </div>
 
@@ -347,16 +435,54 @@
                 <!-- Social Media Section -->
                 <div class="social-section">
                     <div class="th-social">
-                        <a href="https://web.facebook.com/profile.php?id=61550739082103" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://web.facebook.com/profile.php?id=61550739082103" class="facebook"><i
+                                class="fab fa-facebook-f"></i></a>
                         <a href="https://x.com/VacayGuider" class="twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://lk.linkedin.com/in/vacay-guider-9035432aa" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/message/MJSQHL4GVAJMI1" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/vacayguider/" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://lk.linkedin.com/in/vacay-guider-9035432aa" class="linkedin"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/message/MJSQHL4GVAJMI1" class="whatsapp"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/vacayguider/" class="instagram"><i
+                                class="fab fa-instagram"></i></a>
                         <a href="https://www.tiktok.com/@vacayguider" class="tiktok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.youtube.com/@VacayGuider" class="youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@VacayGuider" class="youtube"><i
+                                class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
+
+                <!-- Contact Information Section -->
+                <div class="contact-info-section">
+                    <div class="contact-details">
+<div class="phone-numbers">
+                            <h4 class="contact-title">Phone</h4>
+                            <div class="contact-item">
+                                {{-- <i class="fas fa-phone"></i> --}}
+                                <a href="tel:+94114272372">+94 114 272 372</a> | <a href="tel:+94711999444">+94 711 999
+                                    444
+                            </div>
+
+
+                        </div>
+
+                        <div class="email-info">
+                            <h4 class="contact-title">Email</h4>
+                            <div class="contact-item">
+                                {{-- <i class="fas fa-envelope"></i> --}}
+                                <a href="mailto:info@vacayguider.com">info@vacayguider.com</a>
+                            </div>
+                        </div>
+
+                        
+                        <div class="address-info">
+                            <h4 class="contact-title">Address</h4>
+                            <div class="contact-item">
+                                {{-- <i class="fas fa-map-marker-alt"></i> --}}
+                                No : 22/14C, Asarappa Road, Negombo, Sri Lanka
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

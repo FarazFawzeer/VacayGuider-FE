@@ -24,16 +24,7 @@
 
         }
 
-        .contact-item {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+
 
         .contact-item::before {
             content: '';
@@ -525,7 +516,14 @@
                                 <div class="row g-4">
                                     <!-- Visit Our Office -->
                                     <div class="col-md-4  d-flex">
-                                        <div class="contact-item animate-fade-in w-100">
+                                        <div class="contact-item animate-fade-in w-100" style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;">
                                             <div class="d-flex align-items-center">
                                                 <div class="contact-icon">
                                                     <i class="fas fa-map-marker-alt"></i>
@@ -541,14 +539,21 @@
 
                                     <!-- Email Us -->
                                     <div class="col-md-4 d-flex">
-                                        <div class="contact-item animate-fade-in w-100">
+                                        <div class="contact-item animate-fade-in w-100" style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;">
                                             <div class="d-flex align-items-center">
                                                 <div class="contact-icon">
                                                     <i class="fas fa-envelope"></i>
                                                 </div>
                                                 <div class="contact-content">
                                                     <h6>Email Us</h6>
-                                                    <p><a href="mailto:info@vacayguider.co">info@vacayguider.com</a></p>
+                                                    <p><a href="mailto:info@vacayguider.co" style="color: #6c757d;">info@vacayguider.com</a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -556,16 +561,23 @@
 
                                     <!-- Call Us -->
                                     <div class="col-md-4 d-flex">
-                                        <div class="contact-item animate-fade-in w-100">
+                                        <div class="contact-item animate-fade-in w-100" style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;">
                                             <div class="d-flex align-items-center">
                                                 <div class="contact-icon">
                                                     <i class="fas fa-phone-alt"></i>
                                                 </div>
-                                                <div class="contact-content">
+                                                <div class="contact-content"  style="color: #6c757d;">
                                                     <h6>Call Us</h6>
-                                                    <p><a href="tel:+94114272372">+94 114 272 372</a></p>
-                                                    <p><a href="tel:+94711999444">+94 711 999 444</a></p>
-                                                    <p><a href="tel:+94777035325">+94 777 035 325</a></p>
+                                                    <p><a href="tel:+94114272372" style="color: #6c757d;">+94 114 272 372</a></p>
+                                                    <p><a href="tel:+94711999444" style="color: #6c757d;">+94 711 999 444</a></p>
+                                                    <p><a href="tel:+94777035325" style="color: #6c757d;">+94 777 035 325</a></p>
                                                 </div>
                                             </div>
                                         </div>

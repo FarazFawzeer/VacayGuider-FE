@@ -434,11 +434,11 @@
                             <!-- Vehicle Info -->
                             <div class="flex-1 min-w-0">
                                 <h1
-                                    class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-3 text-shadow leading-tight">
+                                    class="text-4xl lg:text-4xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
                                     {{ $vehicle->make }} {{ $vehicle->name }}
                                 </h1>
                                 <div
-                                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white text-sm font-semibold shadow-lg">
+                                    class="inline-flex items-center px-4 py-2 bg-blue-500 rounded-full text-white text-sm font-semibold shadow-lg">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                             d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
@@ -452,7 +452,7 @@
                             <!-- Price Info -->
                             <div class="relative">
                                 <div
-                                    class="bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                                    class="bg-red-500 text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden" style="border-radius: 58px;">
                                     <span class="relative z-10">${{ number_format($vehicle->price, 2) }}/day</span>
                                     <div
                                         class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-full hover:translate-x-[-100%] transition-transform duration-700">

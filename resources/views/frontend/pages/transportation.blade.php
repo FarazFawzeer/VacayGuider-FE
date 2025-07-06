@@ -5,6 +5,18 @@
 @section('content')
 
     <style>
+        .map-section {
+            /* background-color: var(--secondary); */
+            /* background:  url('/assets/img/map-bg-3.jpg'); */
+
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('/assets/img/map-bg8.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         .ps-2 {
             padding-left: 0 !important;
         }
@@ -287,52 +299,56 @@
     </div> --}}
 
 
-    <div class="w-full ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="py-3">
-                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
-                    <ol class="flex items-center space-x-1 text-sm font-medium">
-                        <!-- Home Link -->
-                        <li class="flex items-center">
-                            <a href="{{ url('/') }}"
-                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
-                                <!-- Home Icon -->
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
+
+
+
+
+    <section id="transportation" class="py-12  from-blue-50 to-green-50 map-section">
+
+        <div class="w-full " style="margin-top: -39px;
+  padding-bottom: 50px;">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="py-3">
+                    <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                        <ol class="flex items-center space-x-1 text-sm font-medium">
+                            <!-- Home Link -->
+                            <li class="flex items-center">
+                                <a href="{{ url('/') }}"
+                                    class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                    <!-- Home Icon -->
+                                    <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                    <span class="group-hover:text-blue-600">Home</span>
+                                </a>
+                            </li>
+
+                            <!-- Separator -->
+                            <li class="flex items-center">
+                                <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                        d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span class="group-hover:text-blue-600">Home</span>
-                            </a>
-                        </li>
+                            </li>
 
-                        <!-- Separator -->
-                        <li class="flex items-center">
-                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </li>
+                            <!-- Current Page -->
+                            <li class="flex items-center">
+                                <span
+                                    class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                    aria-current="page">
+                                    <!-- About Icon -->
 
-                        <!-- Current Page -->
-                        <li class="flex items-center">
-                            <span
-                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
-                                aria-current="page">
-                                <!-- About Icon -->
-
-                                <span>Tarnportation</span>
-                            </span>
-                        </li>
-                    </ol>
-                </nav>
+                                    <span>Tarnportation</span>
+                                </span>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-    <section id="transportation" class="py-12  from-blue-50 to-green-50">
         <div class="container mx-auto px-4">
 
             <div class="title-area text-center mb-5" style="margin-top: -50px; ">
@@ -368,11 +384,11 @@
                                 <h4 class="font-bold text-lg text-gray-800 mb-2">Airport Transfers</h4>
                                 <ul class="space-y-1 text-sm">
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         From/to International Airport
                                     </li>
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Meet service with flight tracking
                                     </li>
                                 </ul>
@@ -397,11 +413,11 @@
                                 <h4 class="font-bold text-lg text-gray-800 mb-2">Island-Wide Transfers</h4>
                                 <ul class="space-y-1 text-sm">
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Point-to-point travel anywhere
                                     </li>
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         24/7 availability
                                     </li>
                                 </ul>
@@ -424,11 +440,11 @@
                                 <h4 class="font-bold text-lg text-gray-800 mb-2">City Tours & Day Trips</h4>
                                 <ul class="space-y-1 text-sm">
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Customizable sightseeing tours
                                     </li>
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Half-day and full-day options
                                     </li>
                                 </ul>
@@ -462,11 +478,11 @@
                                 <h4 class="font-bold text-lg text-gray-800 mb-2">Hotel Transfers</h4>
                                 <ul class="space-y-1 text-sm">
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Reliable pickup/drop-off to hotels
                                     </li>
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Luggage assistance and coordination
                                     </li>
                                 </ul>
@@ -489,11 +505,11 @@
                                 <h4 class="font-bold text-lg text-gray-800 mb-2">Hourly/Distance Rentals</h4>
                                 <ul class="space-y-1 text-sm">
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Vehicles by hour or kilometer
                                     </li>
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         Ideal for meetings and events
                                     </li>
                                 </ul>
@@ -516,11 +532,11 @@
                                 <h4 class="font-bold text-lg text-gray-800 mb-2">Premium Features</h4>
                                 <ul class="space-y-1 text-sm">
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         GPS tracking and live updates
                                     </li>
                                     <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></span>
+                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
                                         English-speaking drivers
                                     </li>
                                 </ul>
@@ -663,16 +679,16 @@
             <div class="booking-section  ">
 
 
-             
-                
-                    <div class="title-area text-center " style="">
-                        <span class="sub-title"
-                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
-                            Services</span>
-                        <h2 class="sec-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                         Pre-Booking Transportation </h2>
-                    </div>
+
+
+                <div class="title-area text-center " style="">
+                    <span class="sub-title"
+                        style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
+                        Services</span>
+                    <h2 class="sec-title"
+                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        Pre-Booking Transportation </h2>
+                </div>
                 <p class="text-center mt-3 mb-3"> Ensure a smooth start to your journey with our <strong>Pre-Booking
                         Transportation Services</strong>. Whether you're arriving at the airport or planning day-to-day
                     travel during your stay, our reliable options are designed for convenience and peace of mind. Choose
