@@ -55,8 +55,21 @@ Route::get('/tour-detail/{id}', [TourPackageController::class, 'show'])->name('t
 Route::get('/tours/filter', [TourPackageController::class, 'filter'])->name('filter.tours');
 
 Route::post('/package-booking', [PackageBookingController::class, 'store'])->name('package.booking.store');
+Route::post('/payable-notify', [PackageBookingController::class, 'paymentNotify']);
+Route::get('/payable-return', [PackageBookingController::class, 'paymentReturn']);
+
+Route::get('/booking/payment-redirect', [PackageBookingController::class, 'redirectToPayment'])->name('booking.redirect');
+
+// Route::post('/payable-notify', [PackageBookingController::class, 'handleNotify'])->name('payable.notify');
+
+// Route::get('/payable-checkout', [App\Http\Controllers\PackageBookingController::class, 'showCheckout']);
+// Route::post('/payable-notify', [App\Http\Controllers\PackageBookingController::class, 'paymentNotify']);
+// Route::get('/payable-return', [App\Http\Controllers\PackageBookingController::class, 'paymentReturn']);
 
 
+Route::get('/thank-you', function () {
+    return view('frontend.pages.thank-you');
+})->name('thankyou.page');
 
 
 Route::get('/rent', [RentVehicleController::class, 'index'])->name('rent.vehicles');
