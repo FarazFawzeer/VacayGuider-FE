@@ -2359,7 +2359,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
   font-size: 20px;
   border: none;
   border-radius: 8px;
-  background-color: var(--theme-color);
+
   color: var(--white-color);
   display: inline-block;
 }
@@ -2985,14 +2985,14 @@ input[type=time]::-webkit-calendar-picker-indicator {
 
 .scroll-top {
   position: fixed;
-  right: 30px;
-  bottom: 30px;
+  right: 43px;
+  bottom: 160px;
   height: 50px;
   width: 50px;
   cursor: pointer;
   display: block;
   border-radius: 50px;
-  z-index: 10000;
+  z-index: 1000;
   opacity: 1;
   visibility: hidden;
   -webkit-transform: translateY(45px);
@@ -8841,7 +8841,7 @@ heding animation  end
 }
 
 .info-box_text .icon:hover {
-  background-color: var(--theme-color);
+
 }
 
 .info-box_text .icon:hover img {
@@ -25412,7 +25412,6 @@ span.select2-selection.select2-selection--single:focus {
 .tour-box {
   position: relative;
   background-color: var(--white-color);
-  border: 1px solid #BCCED2;
   border-top: transparent;
   border-radius: 16px;
   overflow: hidden;

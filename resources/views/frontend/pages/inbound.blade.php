@@ -3,9 +3,303 @@
 @section('title', 'Home')
 
 @section('content')
+    <style>
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        #daysRangeSlider::-webkit-slider-thumb {
+            background-color: #000000;
+            /* Blue */
+            border: none;
+        }
+
+        #daysRangeSlider::-moz-range-thumb {
+            background-color: #000000;
+            border: none;
+        }
+
+        #daysRangeSlider::-ms-thumb {
+            background-color: #000000;
+            border: none;
+        }
+
+        .form-check-label {
+            margin-bottom: 0;
+            font-size: 14px;
+            color: black;
+        }
+
+        input[type="checkbox"]:checked+label {
+            color: #000;
+        }
+
+        .form-check-input:checked {
+            background-color: #000;
+            border-color: #000;
+        }
+
+        .steps-container {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        input,
+        select {
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
 
 
 
+        .ps-2 {
+            padding-left: 0 !important;
+        }
+
+        .form-check {
+            padding-left: 0;
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.05);
+            border: 2px dashed #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            color: #ffff;
+            transform: translateY(-3px);
+
+        }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            justify-self: center;
+            margin-top: 30px;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .payment-info p {
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+
+        .success-section {
+            background: #6dab3c;
+            color: white;
+            text-align: center;
+        }
+
+        .success-section .step-number {
+            background: linear-gradient(135deg, #00cec9, #00b894);
+        }
+
+        .bottom-image {
+            text-align: center;
+            margin: 40px 0;
+
+        }
+
+        .bottom-image img {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: inline-block;
+
+            box-shadow: 0 20px 40px rgba(86, 58, 58, 0.2);
+        }
+
+        .bottom-image p {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-badge {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-badge p {
+            color: #2980b9;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+
+
+    {{-- 
     <div class="container-fluid about-hero text-white position-relative"
         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('assets/img/avenue-815297_1920.jpg') }}')  center center / cover no-repeat;;
      display: flex;
@@ -21,8 +315,50 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
+    <div class="w-full ">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <!-- Home Icon -->
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                <!-- About Icon -->
+
+                                <span>Inbound Tours</span>
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -30,16 +366,16 @@
 
     <!-- Tour Page with Sidebar Filter Section -->
     <section class="position-relative overflow-hidden space" id="service-sec" data-bg-src="">
-        <div class="container" style="margin-top: -82px;">
+        <div class="container-fluid" style="margin-top: -104px;">
             <div class="row">
-                <!-- <div class="col-lg-6 offset-lg-3" style="margin-bottom: -55px;">
-                                                    <div class="title-area text-center">
-                                                        <h2 class="sec-title" style="font-weight: bold;">Discover the Wonders of Sri Lanka</h2>
-                                                    </div>
-                                                </div> -->
+                <div class="title-area text-center " style="">
+                    <h2 class="sec-title"
+                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        Discover the Wonders of Sri Lanka </h2>
+                </div>
             </div>
 
-            <div class="row mt-5">
+            <div class="row " style="margin-top: -20px;">
 
                 <!-- Sidebar Filter Section - 1/4 width -->
                 <div class="col-md-3">
@@ -49,36 +385,38 @@
                             <!-- Number of Days Filter -->
                             <!-- Days Range Filter -->
                             <div class="filter-section mb-4">
-                                <h5 class="filter-heading">
-                                    <i class="fas fa-tag me-2"></i>Number of Days
+                                <h5 class="filter-heading text-black" style="font-size: 16px">
+                                    Number of Days
                                 </h5>
 
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span id="durationMinLabel">{{ $minDay }} Day</span>
-                                    <span id="durationMaxLabel">{{ $maxDay }} Days</span>
+                                    <span id="durationMinLabel" style="font-size: 14px;">{{ $minDay }} Day</span>
+                                    <span id="durationMaxLabel" style="font-size: 14px;">{{ $maxDay }} Days</span>
                                 </div>
 
-                                <div class="form-group" style="margin-bottom: -6px;">
+                                <div class="form-group" style="margin-bottom: -6px;color:#000;">
                                     <input type="range" class="form-range" id="daysRangeSlider" name="days"
                                         min="{{ $minDay }}" max="{{ $maxDay }}" value="{{ $minDay }}"
-                                        oninput="updateDayLabel(this.value)" />
+                                        oninput="updateDayLabel(this.value)"
+                                        style="font-size: 14px; color:#000;border: none;" />
                                 </div>
 
-                                <div class="text-center mt-1">
-                                    <small>Selected: <span id="selectedDay">{{ $minDay }}</span> Days</small>
+                                <div class="text-center ">
+                                    <small>Selected : <span id="selectedDay">{{ $minDay }}</span> Days</small>
                                 </div>
                             </div>
 
 
                             <div class="filter-section mb-4">
-                                <h5 class="filter-heading">
-                                    <i class="fas fa-tag me-2"></i>Theme
+                                <h5 class="filter-heading text-black" style="font-size: 16px">
+                                    </i>Theme
                                 </h5>
                                 <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
                                     @foreach ($allThemes as $theme)
                                         <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input" name="themes[]" value="{{ $theme }}"
-                                                type="checkbox" id="theme_{{ $loop->index }}">
+                                            <input class="form-check-input text-black" name="theme[]"
+                                                value="{{ $theme }}" type="checkbox" id="theme_{{ $loop->index }}"
+                                                style="font-size: 14px; ">
                                             <label class="form-check-label ms-2" for="theme_{{ $loop->index }}">
                                                 {{ ucfirst($theme) }}
                                             </label>
@@ -89,13 +427,13 @@
 
                             <!-- Type of Tours Filter -->
                             <div class="filter-section mb-4">
-                                <h5 class="filter-heading">
-                                    <i class="fas fa-tag me-2"></i>Tour Type
+                                <h5 class="filter-heading text-black" style="font-size: 16px;">
+                                    </i>Tour Type
                                 </h5>
                                 <div class="ps-2">
                                     @foreach ($allTypes as $type)
                                         <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input" name="types[]" value="{{ $type }}"
+                                            <input class="form-check-input" name="type[]" value="{{ $type }}"
                                                 type="checkbox" id="type_{{ $loop->index }}">
                                             <label class="form-check-label ms-2" for="type_{{ $loop->index }}">
                                                 {{ ucfirst($type) }}
@@ -110,7 +448,7 @@
 
                 <!-- Tour Cards Section - 3/4 width -->
                 <div class="col-md-9" id="filteredResults">
-                    <div class="row">
+                    {{-- <div class="row">
 
 
                         @foreach ($packages as $package)
@@ -186,8 +524,45 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --}}
 
+                    <div class="row">
+                        <!-- Special Tours -->
+                        <h1 class="page-title text-start ml-2"
+                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
+                            Special Tours</h1>
+
+                        @forelse ($specialTours as $package)
+                            @include('frontend.components.tour-cards', ['package' => $package])
+                        @empty
+                            <div class="col-12 text-center">No special tours found.</div>
+                        @endforelse
+
+                        <!-- Special Tours Pagination -->
+                        <div class="row justify-content-center my-4">
+                            <div class="col-auto">
+                                {{ $specialTours->appends(request()->except('special_page'))->links() }}
+                            </div>
+                        </div>
+
+                        <!-- Day Tours -->
+
+                        <h1 class="page-title text-start ml-2"
+                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
+                            Day Tours</h1>
+                        @forelse ($dayTours as $package)
+                            @include('frontend.components.tour-cards', ['package' => $package])
+                        @empty
+                            <div class="col-12 text-center">No day tours found.</div>
+                        @endforelse
+
+                        <!-- Day Tours Pagination -->
+                        <div class="row justify-content-center my-4">
+                            <div class="col-auto">
+                                {{ $dayTours->appends(request()->except('day_page'))->links() }}
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -198,7 +573,7 @@
 
 
 
-    <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8" style="padding-bottom: 20px;">
 
         <!-- 🔁 How It Works -->
         <div class="text-center " style="margin-bottom: 70px;">
@@ -233,10 +608,10 @@
         </div>
 
 
-        <div class="max-w-4xl mx-auto">
+        <div class="">
 
 
-            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+            {{-- <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-blue-900 mb-4">Check Your Reservation</h2>
                 <p class="text-center text-gray-600 mb-6 sm:mb-8">Fill out the form below to check availability and receive
                     a personalized quote.</p>
@@ -349,9 +724,133 @@
 
 
 
+            </div> --}}
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-header text-center">
+                        <div class="step-number">01</div>
+                        <h2 class="step-title text-blue-900 text-center">Check Your Reservation</h2>
+                    </div>
+
+                    {{-- <p class="text-center text-gray-600 mb-4">Fill out the form below to check availability and receive a
+                        personalized quote.</p> --}}
+
+                    <!-- Alerts -->
+                    @if (session('success'))
+                        <div class="alert alert-success" id="success-message">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger" id="alert-danger">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('package.booking.store') }}">
+                        @csrf
+                        <div class="form-grid">
+                            <!-- Full Name -->
+                            <div class="form-group md:col-span-2">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <!-- Country -->
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <input type="text" id="country" name="country" required placeholder="USA">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="example@mail.com">
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    placeholder="+1 123-456-7890">
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp *</label>
+                                <input type="text" id="whatsapp" name="whatsapp" required
+                                    placeholder="+1 123-456-7890">
+                            </div>
+
+                            <!-- Adults -->
+                            <div class="form-group">
+                                <label for="adults">Adults *</label>
+                                <input type="number" id="adults" name="adults" min="0" required
+                                    placeholder="2">
+                            </div>
+
+                            <!-- Children -->
+                            <div class="form-group">
+                                <label for="children">Children</label>
+                                <input type="number" id="children" name="children" min="0" placeholder="1">
+                            </div>
+
+                            <!-- Infants -->
+                            <div class="form-group">
+                                <label for="infants">Infants</label>
+                                <input type="number" id="infants" name="infants" min="0" placeholder="0">
+                            </div>
+
+                            <!-- Choose Package -->
+                            <div class="form-group">
+                                <label for="package">Choose Package *</label>
+                                <select id="package" name="package" required>
+                                    <option value="">Select a package</option>
+                                    @foreach ($packages as $package)
+                                        <option value="{{ $package->id }}">{{ $package->heading }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- Start Date -->
+                            <div class="form-group">
+                                <label for="startDate">Start Date *</label>
+                                <input type="date" id="startDate" name="startDate" required>
+                            </div>
+
+                            <!-- End Date -->
+                            <div class="form-group">
+                                <label for="endDate">End Date *</label>
+                                <input type="date" id="endDate" name="endDate" required>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-group md:col-span-3">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."></textarea>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="form-group md:col-span-3 text-center pt-4">
+                                <button type="submit" class="btn btn-submit">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                 
+                </div>
             </div>
 
-            <div class="text-center mt-10">
+            <div class="text-center mt-15">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
                 <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
             </div>
@@ -383,13 +882,15 @@
             margin-left: -26px;
         }
 
- 
+        .support-badge {
+            margin-top: 5px;
+        }
 
-       
 
-      
 
-     
+
+
+
         .tour-country {
             font-size: 14px;
             font-weight: 600;
@@ -462,9 +963,9 @@
 
         /*
 
-                                    .space, .space-top {
-                                      padding-top: 20px;
-                                    } */
+                                                                .space, .space-top {
+                                                                  padding-top: 20px;
+                                                                } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -538,11 +1039,7 @@
         .tour-box {
             position: relative;
             background-color: var(--white-color);
-            border: 1px solid #BCCED2;
-            border-top-width: 1px;
-            border-top-style: solid;
-            border-top-color: rgb(188, 206, 210);
-            border-top: transparent;
+            border: none;
             border-radius: 16px;
             overflow: hidden;
         }
@@ -984,7 +1481,25 @@
             color: white;
         }
 
+        select,
+        .form-control,
+        .form-select,
+        textarea,
+        input {
 
+            /* border: none; */
+
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+
+        }
     </style>
 
 
@@ -1005,13 +1520,13 @@
             const params = new URLSearchParams();
 
             // Tour types
-            form.querySelectorAll('input[name="types[]"]:checked').forEach(input => {
-                params.append('types[]', input.value);
+            form.querySelectorAll('input[name="type[]"]:checked').forEach(input => {
+                params.append('type[]', input.value);
             });
 
             // Themes
-            form.querySelectorAll('input[name="themes[]"]:checked').forEach(input => {
-                params.append('themes[]', input.value);
+            form.querySelectorAll('input[name="theme[]"]:checked').forEach(input => {
+                params.append('theme[]', input.value);
             });
 
             // Only append 'days' if user interacted

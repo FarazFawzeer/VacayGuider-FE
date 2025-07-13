@@ -7,6 +7,9 @@ use App\Http\Controllers\RentVehicleController;
 use App\Http\Controllers\TransportaionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChatBotController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\AirlineBookingController;
 
 Route::get('/', function () {
     return view('frontend.pages.home');
@@ -52,14 +55,28 @@ Route::get('/tour-detail/{id}', [TourPackageController::class, 'show'])->name('t
 Route::get('/tours/filter', [TourPackageController::class, 'filter'])->name('filter.tours');
 
 Route::post('/package-booking', [PackageBookingController::class, 'store'])->name('package.booking.store');
+Route::post('/payable-notify', [PackageBookingController::class, 'paymentNotify']);
+Route::get('/payable-return', [PackageBookingController::class, 'paymentReturn']);
+
+Route::get('/booking/payment-redirect', [PackageBookingController::class, 'redirectToPayment'])->name('booking.redirect');
+
+// Route::post('/payable-notify', [PackageBookingController::class, 'handleNotify'])->name('payable.notify');
+
+// Route::get('/payable-checkout', [App\Http\Controllers\PackageBookingController::class, 'showCheckout']);
+// Route::post('/payable-notify', [App\Http\Controllers\PackageBookingController::class, 'paymentNotify']);
+// Route::get('/payable-return', [App\Http\Controllers\PackageBookingController::class, 'paymentReturn']);
 
 
+Route::get('/thank-you', function () {
+    return view('frontend.pages.thank-you');
+})->name('thankyou.page');
 
 
 Route::get('/rent', [RentVehicleController::class, 'index'])->name('rent.vehicles');
 Route::get('/rent-detail/{id}', [RentVehicleController::class, 'showDetails'])->name('rent.details');
 Route::get('/filter-vehicles', [RentVehicleController::class, 'filterVehicles'])->name('filter.vehicles');
 Route::post('/vehicle-booking', [RentVehicleController::class, 'store'])->name('vehicle.booking.store');
+Route::post('/driving-permit-request', [RentVehicleController::class, 'rentStore'])->name('driving-permit.store');
 
 
 Route::get('/transportation', [TransportaionController::class, 'index'])->name('transportation.vehicles');
@@ -69,5 +86,18 @@ Route::get('/filter-transportation', [TransportaionController::class, 'filterVeh
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
+
+Route::post('/chatbot', [ChatBotController::class, 'handle'])->name('chatbot');
+Route::post('/chatbot/save', [ChatbotController::class, 'store'])->name('chatbot.save');
+
+Route::get('/blog', [TestimonialController::class, 'index'])->name('blog');
+
+Route::get('/tours/load-more/{category}', [TourPackageController::class, 'loadMore'])->name('tour.load_more');
+
+
+
+
+Route::post('/airline-booking', [AirlineBookingController::class, 'store'])->name('airline.booking.store');

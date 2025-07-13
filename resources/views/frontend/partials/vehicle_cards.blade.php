@@ -33,7 +33,7 @@
                         <!-- Vehicle Content -->
                         <div class="tour-content" style="padding: 20px 18px; text-align: center;">
                             <h3 class="box-title"
-                                style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; letter-spacing: -0.02em; line-height: 1.3;">
+                                style="font-size: 20px; font-weight: 700; margin-bottom: 5px; color: #1a1a1a; letter-spacing: -0.02em; line-height: 1.3;">
                                 {{ $vehicle->name }}
                             </h3>
 

@@ -8,6 +8,7 @@ use App\Models\TourSummary;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\VehicleDetail;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -22,13 +23,13 @@ class HomeController extends Controller
         $packages = Package::where('status', 1)
             ->where('type', 'outbound')
             ->with('tourSummaries') // eager loads related summaries
-            ->get();
+            ->paginate(10);
         // No pagination
 
         $inboundPackages = Package::where('status', 1)
             ->where('type', 'inbound')
             ->with('tourSummaries')
-            ->get()
+            ->paginate(10)
             ->map(function ($package) {
                 $imageExists = $package->picture && Storage::disk('public')->exists($package->picture);
                 $package->display_picture = $imageExists
@@ -37,12 +38,25 @@ class HomeController extends Controller
                 return $package;
             });
 
-              $vehicles = VehicleDetail::where('status', 1)->get();
-
-            
+        $vehicles = VehicleDetail::where('status', 1)->get();
 
 
+        $testimonials = Testimonial::orderBy('postedate', 'desc')->get();
 
-        return view('frontend.pages.home', compact('packages', 'inboundPackages','vehicles'));
+
+        return view('frontend.pages.home', compact('packages', 'inboundPackages', 'vehicles', 'testimonials'));
+    }
+
+
+
+    public function aboutus(Request $request)
+    {
+
+
+
+        $testimonials = Testimonial::orderBy('postedate', 'desc')->get();
+
+
+        return view('frontend.pages.about', compact('testimonials'));
     }
 }

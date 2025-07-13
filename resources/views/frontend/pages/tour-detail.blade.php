@@ -5,6 +5,182 @@
 @section('content')
 
     <style>
+        .steps-container {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        input,
+        select {
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.05);
+            border: 2px dashed #667eea;
+        }
+
+        .btn {
+           
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            color: #ffff;
+            transform: translateY(-3px);
+
+        }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            justify-self: center;
+            margin-top: 30px;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .payment-info p {
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+
+        .success-section {
+            background: #6dab3c;
+            color: white;
+            text-align: center;
+        }
+
+        .success-section .step-number {
+            background: linear-gradient(135deg, #00cec9, #00b894);
+        }
+
+
+
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+
+
         .bg-smoke {
             background-color: #F5F5F5 !important;
         }
@@ -17,6 +193,7 @@
             border-radius: 25px;
             margin-right: 10px;
             cursor: pointer;
+            color: #000;
         }
 
         .tab-button[aria-selected="true"] {
@@ -67,8 +244,7 @@
             align-items: center;
             justify-content: center;
             min-width: 160px;
-            color: #3284A4;
-
+            color: #0a3d52
         }
 
         .nav-button:hover {
@@ -78,7 +254,7 @@
         }
 
         .active {
-            background-color: #3284A4;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
         }
 
@@ -216,7 +392,7 @@
         }
     </style>
 
-    <div class="container-fluid about-hero text-white position-relative"
+    {{-- <div class="container-fluid about-hero text-white position-relative"
         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),  url('{{ asset('assets/img/avenue-815297_1920.jpg') }}') center center / cover no-repeat; 
      display: flex;
      align-items: center;">
@@ -230,11 +406,68 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+
+
+    <div class="w-full">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Inbound Tours Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/inbound-tours') }}"
+                                class="breadcrumb-item text-gray-500 hover:text-blue-600 px-2 py-1.5 rounded transition-all duration-200">
+                                Inbound Tours
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Tour Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                {{ $package->heading ?? 'Tour Details' }}
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </div>
 
 
     <!-- Blog Start -->
-    <div class="container py-5">
+    <div class="container py-5" style="margin-top: -20px;">
 
         <div class="row ">
             <div class="col-lg-8 ">
@@ -245,15 +478,17 @@
                         <div class="blog-date ">
                             <small class="text-uppercase text-success " style="font-size: 18px;font-weight: 900;">Sri
                                 Lanka</small>
-                            <h5 class="mt-2" style="font-size: 28px;">
-                                <strong style="font-weight: 900;">Tailor-Made</strong> Tour for {{ $package->days }} Nights
-                                & {{ $package->nights }}
-                                Days
+                            <h5 class="mt-2" style="font-size: 36px; font-weight:500;">
+                                Tour for <strong style="font-weight: 900;">{{ $package->days }} Nights</strong>
+                                & <strong style="font-weight: 900;"> {{ $package->nights }}
+                                    Days</strong>
                             </h5>
                         </div>
 
-
-                        <img class="img-fluid w-100 mt-3" src="{{ asset('storage/' . $package->picture) }}"
+                        <img class="img-fluid w-100 mt-3"
+                            src="{{ $package->picture && file_exists(public_path('storage/' . $package->picture))
+                                ? asset('storage/' . $package->picture)
+                                : asset('assets/img/tour/2.jpg') }}"
                             alt="{{ $package->place }}" style="height: 500px;">
                     </div>
                 </div>
@@ -264,12 +499,13 @@
 
                     <div class=" mb-3" style="padding: 30px;">
 
-                        <h2 class="mb-3">{{ $package->heading }}</h2>
+                        <h2 class="mb-3" style="font-size: 30px; color:#000; font-weight: bold;">{{ $package->heading }}
+                        </h2>
                         <p>{{ $package->description }}</p>
 
 
                         <div class="nav-container">
-                            <button id="summary-btn" class="nav-button active" onclick="showSection('summary')">
+                            <button id="summary-btn" class="nav-button active" sy onclick="showSection('summary')">
                                 Summary
                             </button>
                             <button id="itinerary-btn" class="nav-button" onclick="showSection('itinerary')">
@@ -278,50 +514,64 @@
                         </div>
 
                         <div class="tour-summaries  mt-5" id="summary-section" style="">
-                            <h2 class="mb-3 ml-3 mt-3" style="font-weight: bold;">Tour Summary</h2>
+                            <h2 class=" ml-3 mt-3" style="font-size: 30px; color:#000; font-weight: bold;">Tour Summary
+                            </h2>
                             @foreach ($tourSummaries as $summary)
-                                <div class="rounded-xl p-4">
+                                <div class="rounded-xl p-3">
                                     <!-- Tour Info: Day / City / Theme -->
                                     <div class="tour-summary-details flex flex-wrap items-center gap-4 mt-3">
                                         <!-- Day -->
                                         <div class="flex items-center space-x-3 text-gray-700">
-                                            <img width="26" height="26"
+                                            <img width="18" height="18"
                                                 src="https://img.icons8.com/laces/64/40C057/calendar.png" alt="calendar" />
                                             <div>
-                                                <span class="font-bold text-lg text-green-600">Day</span>
-                                                <span class="ml-2 font-semibold text-xl">{{ $summary->day }}</span>
+                                                <span class="font-bold text-lg text-green-600"
+                                                    style="font-size: 16px;">Day</span>
+                                                <span class="ml-2 font-semibold text-xl"
+                                                    style="font-size: 16px;">{{ $summary->day }}</span>
                                             </div>
                                         </div>
 
                                         <!-- City -->
                                         <div class="flex items-center space-x-3 text-gray-700">
-                                            <img width="26" height="26"
+                                            <img width="18" height="18"
                                                 src="https://img.icons8.com/laces/64/40C057/marker.png" alt="marker" />
                                             <div>
-                                                <span class="font-bold text-lg text-green-600">City</span>
-                                                <span class="ml-2 font-semibold text-xl">{{ $summary->city }}</span>
+                                                <span class="font-bold text-lg text-green-600"
+                                                    style="font-size: 16px;">City</span>
+                                                <span class="ml-2 font-semibold text-xl"
+                                                    style="font-size: 16px;">{{ $summary->city }}</span>
                                             </div>
                                         </div>
 
                                         <!-- Theme -->
                                         <div class="flex items-center space-x-3 text-gray-700">
-                                            <img width="26" height="26"
-                                                src="https://img.icons8.com/quill/100/40C057/trekking.png" alt="trekking" />
+                                            <img width="18" height="18"
+                                                src="https://img.icons8.com/quill/100/40C057/trekking.png"
+                                                alt="trekking" />
                                             <div>
-                                                <span class="font-bold text-lg text-green-600">Theme</span>
-                                                <span class="ml-2 font-semibold text-xl">{{ $summary->theme }}</span>
+                                                <span class="font-bold text-lg text-green-600"
+                                                    style="font-size: 16px;">Theme</span>
+                                                <span class="ml-2 font-semibold text-xl"
+                                                    style="font-size: 16px;">{{ $summary->theme }}</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Images & Key Activities -->
-                                    <div class="rounded-xl p-6">
+                                    <div class="rounded-xl " style="margin-top: 30px">
                                         <div class="flex flex-col space-y-6">
                                             <!-- Image Gallery -->
                                             @if (!empty($summary->images))
-                                                <div class="flex flex-wrap justify-center gap-4">
+                                                <div class="flex flex-wrap justify-center gap-5">
                                                     @foreach ($summary->images as $img)
-                                                        <img src="{{ asset($img) }}" alt="Tour Image"
+                                                        @php
+                                                            $imagePath = public_path($img);
+                                                            $imageUrl = file_exists($imagePath)
+                                                                ? asset($img)
+                                                                : asset('assets/img/tour/6.jpg');
+                                                        @endphp
+                                                        <img src="{{ $imageUrl }}" alt="Tour Image"
                                                             class="w-full sm:w-1/2 md:w-1/4 h-48 object-cover rounded-lg">
                                                     @endforeach
                                                 </div>
@@ -334,7 +584,7 @@
                                                     <ul class="space-y-2 text-gray-700">
                                                         @foreach ($summary->key_attributes as $activity)
                                                             <li class="flex items-center">
-                                                                <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor"
+                                                                <svg class="w-5 h-5 text-black mr-2" fill="currentColor"
                                                                     viewBox="0 0 20 20">
                                                                     <path fill-rule="evenodd"
                                                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
@@ -358,23 +608,25 @@
                         @foreach ($package->detailItineraries as $itinerary)
                             <div class="detail-itineraries mt-5" id="itinerary-section"
                                 style="display: none;padding: 28px; border-radius: 22px;">
-                                <h2 class="text-3xl font-bold text-start mb-6 text-gray-800">
-                                    • {{ strtoupper($itinerary->place_name) }}
+                                <h2 class="  text-start mb-6 " style="font-size: 30px; color:#000; font-weight: bold;">
+                                    {{ strtoupper($itinerary->place_name) }}
                                 </h2>
 
                                 <!-- Itinerary Images from Highlights -->
-                                @foreach ($itinerary->highlights->take(3) as $highlight)
-                                    <div class="flex justify-center space-x-4 mb-6">
+                                <div class="flex flex-wrap justify-center gap-4 mb-6">
+                                    @foreach ($itinerary->highlights->take(3) as $highlight)
                                         @foreach ($highlight->images as $img)
                                             <img src="{{ asset($img) }}" alt="Highlight Image"
-                                                class="rounded-lg shadow-lg w-1/3 h-40 object-cover">
+                                                class="rounded-lg shadow-lg w-1/4  object-cover"
+                                                onerror="this.onerror=null;this.src='{{ asset('assets/img/tour/7.jpg') }}';">
                                         @endforeach
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
 
-             
+
+
                                 <!-- Day Programme -->
-                                <h3 class="text-2xl font-semibold mb-4 text-gray-700">
+                                <h3 class=" font-semibold mb-4 text-black" style="font-size: 24px; margin-top: 40px;">
                                     Day {{ $itinerary->day }} Programme – {{ strtoupper($itinerary->place_name) }}
                                 </h3>
 
@@ -388,29 +640,33 @@
                                 @endif
 
                                 <!-- Overnight Stay and Details -->
-                                <div class="bg-green-50 p-6 rounded-lg border border-green-200"
-                                    style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                                <div class="bg-green-50 p-6 rounded-lg "
+                                    style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%); border: none;">
                                     <div class="flex items-center mb-3">
-                                        <i class="fas fa-bed text-xl text-gray-700 mr-3"></i>
-                                        <span class="font-semibold text-gray-900">
+                                        <i class="fas fa-bed  mr-3" style="font-size: 14px;"></i>
+                                        <span class="font-semibold text-gray-900" style="font-size: 14px;">
                                             Overnight Stay -
-                                            <span class="text-gray-700">{{ $itinerary->overnight_stay }}</span>
+                                            <span class="text-gray-700"
+                                                style="font-size: 14px;">{{ $itinerary->overnight_stay }}</span>
                                         </span>
                                     </div>
 
                                     <div class="flex items-center mb-3">
-                                        <i class="fas fa-utensils text-xl text-gray-700 mr-3"></i>
-                                        <span class="font-semibold text-gray-900">
+                                        <i class="fas fa-utensils text-xl text-gray-700 mr-3"
+                                            style="font-size: 14px;"></i>
+                                        <span class="font-semibold text-gray-900" style="font-size: 14px;">
                                             Meal Plan -
-                                            <span class="text-gray-700">{{ $itinerary->meal_plan }}</span>
+                                            <span class="text-gray-700"
+                                                style="font-size: 14px;">{{ $itinerary->meal_plan }}</span>
                                         </span>
                                     </div>
 
-                                    <div class="flex items-center">
-                                        <i class="fas fa-clock text-xl text-gray-700 mr-3"></i>
-                                        <span class="font-semibold text-gray-900">
+                                    <div class="flex items-center" style="font-size: 14px;">
+                                        <i class="fas fa-clock text-xl text-gray-700 mr-3" style="font-size: 14px;"></i>
+                                        <span class="font-semibold text-gray-900" style="font-size: 14px;">
                                             Approximate Travel Time -
-                                            <span class="text-gray-700">{{ $itinerary->approximate_travel_time }}</span>
+                                            <span class="text-gray-700"
+                                                style="font-size: 14px;">{{ $itinerary->approximate_travel_time }}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -418,7 +674,7 @@
                         @endforeach
 
 
-                    
+
 
 
 
@@ -440,7 +696,7 @@
                                         class="tab-button px-4 py-2 text-lg  shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105 active:bg-default-200"
                                         role="tab" id="tab-itinerary" data-key="itinerary"
                                         aria-controls="tabpanel-itinerary">
-                                        <span class="tab-content">Exclusions</span>
+                                        <span class="tab-content" style="color: ">Exclusions</span>
                                     </button>
                                     <!-- Tab Button 3 -->
                                     <button
@@ -600,7 +856,7 @@
             </div>
 
             <!-- Comment Form End -->
-            <div class="col-lg-4 mt-5 mt-lg-0">
+            <div class="col-lg-4  mt-lg-0">
                 <div class="position-sticky"style="top: 130px;">
                     <div class="row g-3 align-items-center bg-smoke shadow  p-4 rounded">
 
@@ -633,12 +889,12 @@
                         <div class="mt-4 mb-3 d-flex justify-content-center gap-2">
                             <button class="btn btn-sm px-3 py-2 shadow "
                                 onclick="scrollToSection('summary-section', this)"
-                                style="background-color: #d0d0d0; color: #555; border: 1px solid #555; font-weight: bold;font-size: 16px;border-radius: 25px;">
+                                style="background-color: #0a3d52; color: #fffafa;  font-weight: bold;font-size: 16px;border-radius: 25px;">
                                 Summary
                             </button>
 
                             <button class="btn btn-sm px-3 py-2 shadow" onclick="scrollToSection('tour-accordion', this)"
-                                style="background-color: #d0d0d0;color: #555; border: 1px solid #555;font-weight: bold;font-size: 16px; border-radius: 25px;">
+                                style="background-color: #0a3d52;color: #fffcfc; font-weight: bold;font-size: 16px; border-radius: 25px;">
                                 Inclusions
                             </button>
                         </div>
@@ -680,17 +936,17 @@
 
 
 
-    <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8" id="booking-section">
 
         <!-- 🔁 How It Works -->
         <div class="text-center " style="margin-bottom: 70px;">
-            <h2 class="sec-title" style="font-weight: bold;">How It Works</h3>
+            <h2 class="sec-title" style="font-weight: bold;font-size: clamp(1.75rem, 3vw, 2.5rem);">How It Works</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
 
                     <!-- Step 1 -->
                     <div class="rounded-2xl shadow-md p-6 transition hover:shadow-lg"
                         style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
-                        <div class="text-black-700 font-bold text-lg mb-2">1. Submit Your Request</div>
+                        <div class="text-black font-bold text-lg mb-2">1. Submit Your Request</div>
                         <p class="text-gray-600 text-base">Use the form below to tell us your travel dates and preferences.
                         </p>
                     </div>
@@ -698,7 +954,7 @@
                     <!-- Step 2 -->
                     <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
                         style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
-                        <div class="text-black-700 font-bold text-lg mb-2">2. Get a Quote</div>
+                        <div class="text-black font-bold text-lg mb-2">2. Get a Quote</div>
                         <p class="text-gray-600 text-base">We’ll send you a personalized package and price within 24 hours.
                         </p>
                     </div>
@@ -706,7 +962,7 @@
                     <!-- Step 3 -->
                     <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
                         style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
-                        <div class="text-black-700 font-bold text-lg mb-2">3. Confirm & Travel</div>
+                        <div class="text-black font-bold text-lg mb-2">3. Confirm & Travel</div>
                         <p class="text-gray-600 text-base">Once confirmed, we handle everything so you can enjoy your trip
                             worry-free.</p>
                     </div>
@@ -715,116 +971,109 @@
         </div>
 
 
-        <div class="max-w-4xl mx-auto">
+        <div class="">
 
 
-            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-blue-900 mb-4">Check Your Reservation</h2>
-                <p class="text-center text-gray-600 mb-6 sm:mb-8">Fill out the form below to check availability and receive
-                    a personalized quote.</p>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-header text-center">
+                        <div class="step-number">01</div>
+                        <h2 class="step-title text-blue-900 text-center">Check Your Reservation</h2>
+                    </div>
 
-     <div id="success-message"
-                    class="bg-green-100 text-green-800 p-4 rounded mb-4 transition-opacity duration-500">
-                    {{ session('success') }}
+
+                    @if (session('success'))
+                        <div class="alert alert-success" id="success-message">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger" id="alert-danger">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('package.booking.store') }}">
+                        @csrf
+                        <input type="hidden" name="package" value="{{ $package->id }}">
+
+                        <div class="form-grid">
+                            <div class="form-group md:col-span-2">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <input type="text" id="country" name="country" required placeholder="USA">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="example@mail.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    placeholder="+1 123-456-7890">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp *</label>
+                                <input type="text" id="whatsapp" name="whatsapp" required
+                                    placeholder="+1 123-456-7890">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="adults">Adults *</label>
+                                <input type="number" id="adults" name="adults" min="0" required
+                                    placeholder="2">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="children">Children</label>
+                                <input type="number" id="children" name="children" min="0" placeholder="1">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="infants">Infants</label>
+                                <input type="number" id="infants" name="infants" min="0" placeholder="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="startDate">Start Date *</label>
+                                <input type="date" id="startDate" name="startDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="endDate">End Date *</label>
+                                <input type="date" id="endDate" name="endDate" required>
+                            </div>
+
+                            <div class="form-group md:col-span-3">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."></textarea>
+                            </div>
+
+                            <div class="form-group md:col-span-3 text-center pt-4">
+                                <button type="submit" class="btn btn-submit"  style=" background: linear-gradient(135deg, #000000, #000000);
+            color: white;">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-
-                <form method="POST" action="{{ route('package.booking.store') }}" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      @csrf
-    <input type="hidden" name="package" value="{{ $package->id }}">
-                    <!-- Full Name -->
-                    <div class="md:col-span-2">
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="John Doe"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Country -->
-                    <div>
-                        <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                        <input type="text" id="country" name="country" required placeholder="USA"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Email -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="example@mail.com"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Phone -->
-                    <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+1 123-456-7890"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- WhatsApp -->
-                    <div>
-                        <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp</label>
-                        <input type="text" id="whatsapp" name="whatsapp" required placeholder="+1 123-456-7890"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Adults -->
-                    <div>
-                        <label for="adults" class="block text-sm font-medium text-gray-700 mb-1">Adults</label>
-                        <input type="number" id="adults" name="adults" min="0" required placeholder="2"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Children -->
-                    <div>
-                        <label for="children" class="block text-sm font-medium text-gray-700 mb-1">Children</label>
-                        <input type="number" id="children" name="children" min="0" placeholder="1"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Infants -->
-                    <div>
-                        <label for="infants" class="block text-sm font-medium text-gray-700 mb-1">Infants</label>
-                        <input type="number" id="infants" name="infants" min="0" placeholder="0"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Choose Package -->
-           
-
-                    <!-- Start Date -->
-                    <div>
-                        <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
-                        <input type="date" id="startDate" name="startDate" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- End Date -->
-                    <div>
-                        <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-                        <input type="date" id="endDate" name="endDate" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Message -->
-                    <div class="md:col-span-3">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"></textarea>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="md:col-span-3 text-center pt-4">
-                        <button type="submit"
-                            class="w-full md:w-auto px-10 py-3 bg-black text-white font-bold rounded-xl bg-black transition duration-300">
-                            Submit Request
-                        </button>
-                    </div>
-                </form>
-
-
-
             </div>
 
-            <div class="text-center mt-10">
+            <div class="text-center " style="margin-bottom: -40px;margin-top: 30px;">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
                 <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
             </div>
@@ -912,7 +1161,7 @@
             btn.classList.add('active-btn');
         }
 
-         setTimeout(() => {
+        setTimeout(() => {
             const msg = document.getElementById('success-message');
             if (msg) {
                 msg.classList.add('opacity-0');

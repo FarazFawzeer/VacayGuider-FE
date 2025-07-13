@@ -5,7 +5,27 @@
 @section('content')
 
     <style>
+        .map-section {
+            /* background-color: var(--secondary); */
+            /* background:  url('/assets/img/map-bg-3.jpg'); */
+
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('/assets/img/map-bg8.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         @media (max-width: 767.98px) {
+
+            .swiper-button-prev-rental {
+                left: -10px;
+            }
+
+            .swiper-button-next-rental {
+                right: -10px;
+            }
 
             .inbound-title {
                 margin-top: 80px
@@ -60,9 +80,7 @@
                 margin-top: -134px;
             }
 
-            .tour-margin-inbound {
-                margin-top: -68px;
-            }
+
         }
 
         @media (min-width: 768px) {
@@ -75,9 +93,21 @@
 
             }
 
-            .tour-margin-inbound {
-                margin-top: -98px;
+            .alirlin-title {
+                margin-top: 10px;
             }
+
+
+        }
+
+        #departDate,
+        #departDate::placeholder {
+            color: #000 !important;
+        }
+
+        #returnDate,
+        #returnDate::placeholder {
+            color: #000 !important;
         }
 
         .inbound-title #blog-sec .mb-30 {
@@ -340,7 +370,7 @@
         }
 
         .custom-btn {
-            background: linear-gradient(45deg, #60D522, #A3EB58);
+            background: linear-gradient(45deg, #000000, #000000);
 
             /* Smooth gradient */
             color: #fff;
@@ -349,14 +379,14 @@
             font-weight: 600;
             padding: 12px 24px;
             border: none;
-            border-radius: 8px;
+            border-radius: 0px;
             /* Soft rounded corners */
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .custom-btn:hover {
-            background: #0f172a;
+            background: #000000 !important;
             /* Reverse gradient */
             transform: translateY(-3px);
             /* Slight lift effect */
@@ -413,11 +443,7 @@
         .tour-box {
             position: relative;
             background-color: var(--white-color);
-            border: 1px solid #BCCED2;
-            border-top-width: 1px;
-            border-top-style: solid;
-            border-top-color: rgb(188, 206, 210);
-            border-top: transparent;
+
             border-radius: 16px;
             overflow: hidden;
         }
@@ -558,24 +584,24 @@
             color: #1e1e1e;
             font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
             transition: all 0.3s ease;
         }
 
         .swiper-button-prev-inbound {
-            left: -60px;
+            left: -45px;
             /* adjust as needed */
         }
 
         .swiper-button-next-inbound {
-            right: -60px;
+            right: -45px;
             /* adjust as needed */
         }
 
         .swiper-button-prev-inbound:hover,
         .swiper-button-next-inbound:hover {
-            background: #FFFFFF;
-            color: #60D522;
+            background: #efefef;
+
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -891,6 +917,566 @@
             width: 200px;
             padding: 10px
         }
+
+
+        /* Floating Toggle Button */
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            color: white;
+            border-radius: 50%;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 32px;
+            box-shadow: 0 10px 30px rgba(2, 140, 204, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            outline: none;
+            backdrop-filter: blur(10px);
+        }
+
+        #chatbot-toggle:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 20px 40px rgba(2, 140, 204, 0.6);
+            background: linear-gradient(135deg, #0056b3 0%, #028ccc 100%);
+        }
+
+        #chatbot-toggle.active {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            transform: rotate(45deg) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            /* Make sure it's higher than header (usually 1000+) */
+        }
+
+
+        /* Chatbot Window */
+        #chatbot-box {
+            position: fixed;
+            bottom: 165px;
+            right: 30px;
+            width: 420px;
+            max-width: calc(100vw - 60px);
+            max-height: calc(100vh - 174px);
+            /* prevent from overflowing screen */
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            z-index: 1101;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(100px) scale(0.85);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* allow inner sections to flow vertically */
+        }
+
+        #chatbot-box.show {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Header */
+        .chat-header {
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: headerShimmer 3s linear infinite;
+        }
+
+        @keyframes headerShimmer {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .chat-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .chat-header p {
+            font-size: 13px;
+            opacity: 0.95;
+            margin: 8px 0 0 0;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Chat Content */
+        #chat-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+
+        #chat-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat-content::-webkit-scrollbar-track {
+            background: rgba(2, 140, 204, 0.1);
+            border-radius: 10px;
+        }
+
+        #chat-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Message Bubbles */
+        .message {
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .bot-message {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            color: #2c3e50;
+            padding: 16px 20px;
+            border-radius: 20px 20px 20px 8px;
+            max-width: 88%;
+            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.15);
+            border: 1px solid rgba(2, 140, 204, 0.1);
+            position: relative;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .bot-message::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 8px 0;
+            border-color: transparent #f8fbff transparent transparent;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 20px 20px 8px 20px;
+            max-width: 88%;
+            margin-left: auto;
+            text-align: right;
+            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.3);
+            position: relative;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .user-message::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 8px;
+            border-color: transparent transparent transparent #028ccc;
+        }
+
+        /* Input Area */
+        #chat-input-area {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(2, 140, 204, 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(2, 140, 204, 0.2);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(2, 140, 204, 0.1);
+        }
+
+        #chat-input:focus {
+            border-color: #028ccc;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(2, 140, 204, 0.15);
+            transform: translateY(-1px);
+        }
+
+        #send-btn {
+            background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.3);
+        }
+
+        #send-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 140, 204, 0.4);
+            background: linear-gradient(135deg, #0a3d52 0%, #028ccc 100%);
+        }
+
+        #send-btn:active {
+            transform: scale(1.05) translateY(0);
+        }
+
+        /* Form Styles */
+        .form-container {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .form-container h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-container,
+        .service-grid {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(2, 140, 204, 0.2);
+            border-radius: 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 8px rgba(2, 140, 204, 0.1);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #028ccc;
+            box-shadow: 0 0 0 4px rgba(2, 140, 204, 0.15);
+            transform: translateY(-1px);
+        }
+
+        @media (max-height: 700px) {
+            #chatbot-box {
+                max-height: calc(100vh - 172px);
+                bottom: 163px;
+            }
+
+            .alirlin-title {
+                margin-top: 10px;
+            }
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            color: white;
+            box-shadow: 0 6px 20px rgba(2, 140, 204, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+
+        }
+
+        .btn-outline-primary {
+            background: transparent;
+            color: #000000;
+            border: 2px solid #000000;
+            margin-bottom: 10px;
+        }
+
+        .btn-outline-primary:hover {
+
+            color: white;
+            transform: translateY(-2px);
+
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .mb-2 {
+            margin-bottom: 15px;
+        }
+
+        .my-1 {
+            margin: 8px 0;
+        }
+
+        /* Service Selection Styles */
+        .service-grid {
+            padding: 25px;
+        }
+
+        .service-grid h4 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            border: 2px solid rgba(2, 140, 204, 0.2);
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card:hover {
+            border-color: #028ccc;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(2, 140, 204, 0.25);
+            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
+            color: white;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            background: rgba(2, 140, 204, 0.1);
+            border-radius: 20px 20px 20px 8px;
+            margin-bottom: 20px;
+            max-width: 85%;
+            border: 1px solid rgba(2, 140, 204, 0.2);
+        }
+
+        .typing-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #028ccc;
+            margin: 0 3px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            30% {
+                transform: translateY(-12px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .alirlin-title {
+                margin-top: 30px;
+            }
+
+            #chatbot-box {
+                width: calc(100vw - 40px);
+                right: 20px;
+                bottom: 110px;
+            }
+
+            #chatbot-toggle {
+                right: 20px;
+                bottom: 20px;
+                width: 65px;
+                height: 65px;
+                font-size: 28px;
+            }
+
+            #chat-content {
+                height: 320px;
+                padding: 20px;
+            }
+
+            .chat-header {
+                padding: 20px;
+            }
+
+            #chat-input-area {
+                padding: 20px;
+            }
+        }
+
+        /* chat bot ending */
+        /* Demo page styling */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .demo-title {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .demo-subtitle {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-note {
+            background: rgba(2, 140, 204, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(2, 140, 204, 0.2);
+        }
+
+
+        .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            background-color: #000000;
+
+            border-color: #000000;
+
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet {
+            border-color: #000000;
+        }
     </style>
 
     <!-- Banner section -->
@@ -907,11 +1493,11 @@
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
-                                    style="font-family: cursive; font-size:20px;margin-bottom: -15px;">
+                                    style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
                                     Let us take you beyond the ordinary
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
-                                    style="font-size: 60px;font-weight: 900;">
+                                    style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
                                     Natural Wonder
                                 </h1>
                             </div>
@@ -925,19 +1511,19 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                        Let’s make your best trip with us </h1>
-                                                                                                                                                </div> -->
+                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                    unforgetable pleasure with us</span>
+                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                    Let’s make your best trip with us </h1>
+                                                                                                                                                                                                            </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
-                                    style="font-family: cursive; font-size:20px;margin-bottom: -15px;">
+                                    style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
                                     Your next getaway is just a flight away
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
-                                    style="font-size: 60px;font-weight: 900;">
+                                    style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
                                     Where luxury meets the road
                                 </h1>
                             </div>
@@ -945,19 +1531,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                        <div class="hero-inner">
-                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                            </div>
-                                                                                                                                            <div class="container">
-                                                                                                                                                <div class="hero-style1">
-                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                        Explore beauty of the whole world </h1>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </div> -->
+                                                                                                                                                                                                    <div class="hero-inner">
+                                                                                                                                                                                                        <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                        <div class="container">
+                                                                                                                                                                                                            <div class="hero-style1">
+                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                    unforgetable pleasure with us</span>
+                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                    Explore beauty of the whole world </h1>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -980,13 +1566,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 mb-md-0">
-                                    <select id="serviceSelect" class="custom-select px-4" style="height: 55px;">
+                                    <select id="serviceSelect" class="custom-select px-4" style="height: 55px;color:#000;">
                                         <option selected disabled>Services</option>
                                         <option value="inbound">Inbound Tour</option>
-                                        <option value="outbound">Outbound Tour</option>
-                                        <option value="airport">Airport Transport</option>
-                                        <option value="rent">Rent Vehicles</option>
-                                        <option value="tickets">Air Tickets</option>
+                                        {{-- <option value="outbound">Outbound Tour</option> --}}
+                                        <option value="airport">Rent Vehicle</option>
+                                        <option value="rent">Transportaion</option>
+                                        <option value="tickets">Airline</option>
                                     </select>
 
                                 </div>
@@ -995,10 +1581,11 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="departDate" class="form-control p-4 bg-white"
-                                            placeholder="Depart Date" style="  height: 56px;">
+                                            style="box-shadow:none; border: 1px solid #ced4da;color:#000 !important; font-size: 1rem;font-weight: 400;border-radius: 0;height: 56px;font-family:'Inter', sans-serif !important;"
+                                            placeholder="Departure Date" style="  height: 56px;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white" style="height: 56px; "><i
-                                                    class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
+                                                    class="fa fa-calendar-alt" style="color:#000;"></i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1008,10 +1595,11 @@
                                 <div class="mb-3 mb-md-0">
                                     <div class="input-group">
                                         <input type="text" id="returnDate" class="form-control p-4 bg-white"
-                                            placeholder="Return Date" style="  height: 56px;">
+                                            placeholder="Return Date"
+                                            style="box-shadow:none; border: 1px solid #ced4da;color:#000; font-size: 1rem;font-weight: 400;border-radius: 0;height: 56px;font-family:'Inter', sans-serif !important;">
                                         <div class="input-group-append">
                                             <span class="input-group-text bg-white " style="height: 56px;"><i
-                                                    class="fa fa-calendar-alt" style="color: #6e7070;"></i></span>
+                                                    class="fa fa-calendar-alt" style="color:#000;"></i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1022,7 +1610,7 @@
                         </div>
                     </div>
                     <div class="form-btn col-md-12 col-lg-auto text-center text-lg-start mt-3 mt-lg-0">
-                        <button class="th-btn custom-btn" type="button" id="getQuoteBtn">GET QUOTE</button>
+                        <button class="custom-btn" type="button" id="getQuoteBtn" style="height: 56px;">Explore Now</button>
                     </div>
                 </div>
             </div>
@@ -1031,7 +1619,7 @@
 
 
     <!-- Tour Packagen Outbound -->
-    <section class="position-relative bg-top-center overflow-hidden space tour-margin " id="service-sec" style="">
+    {{-- <section class="position-relative bg-top-center overflow-hidden space tour-margin " id="service-sec" style="">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -1062,7 +1650,7 @@
                                     <div class="swiper-slide">
                                         <a href="{{ route('tour.details', $package->id) }}" class="tour-box-link"
                                             style="text-decoration: none; color: inherit;">
-                                            <div class="tour-box style2 th-ani"
+                                            <div class="tour-box style2 th-ani shadow"
                                                 style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
 
                                                 @php
@@ -1143,123 +1731,133 @@
 
 
         </div>
-    </section>
+    </section> --}}
 
     <!-- Tour Package Inbound -->
-    <section class="position-relative  overflow-hidden space tour-margin-inbound " id="service-sec" data-bg-src="">
+    <section class="position-relative  overflow-hidden space tour-margin-inbound " id="service-sec" data-bg-src=""
+        style="margin-top: -270px;">
 
 
-        <div class="container tour-margin-inbound" style="">
+        <div class="container-fluid tour-margin-inbound" style="">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="title-area text-center inbound-title">
-                        <span class="sub-title" style="font-size: 20px;">Inbound Tours</span>
-                        <h2 class="sec-title" style="font-size: 42px;">Discover the Wonders of Sri Lanka </h2>
+                        <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Inbound
+                            Tours</span>
+                        <h2 class="sec-title"
+                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                            Discover the Wonders of Sri Lanka </h2>
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
+                            <div class="slider-area tour-slider slider-drag-wrap position-relative">
+                                <div class="swiper-button-prev-inbound ">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="swiper-button-next-inbound">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
 
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
-                    <div class="slider-area tour-slider slider-drag-wrap">
-                        <div class="swiper-button-prev-inbound">
-                            <i class="fas fa-chevron-left"></i>
-                        </div>
-                        <div class="swiper-button-next-inbound">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
-
-                        <div class="swiper th-slider has-shadow"
-                            data-slider-options='{ "navigation": {
+                                <div class="swiper th-slider has-shadow"
+                                    data-slider-options='{ "navigation": {
                                 "nextEl": ".swiper-button-next-inbound",
                                 "prevEl": ".swiper-button-prev-inbound"
                             },"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"},"1400":{"slidesPerView":"4"}}}'>
-                            <div class="swiper-wrapper">
+                                    <div class="swiper-wrapper">
 
 
-                                @foreach ($inboundPackages as $inboundPackage)
-                                    <div class="swiper-slide">
-                                        <a href="{{ route('tour.details', $inboundPackage->id) }}" class="tour-box-link"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="tour-box style2 th-ani"
-                                                style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
+                                        @foreach ($inboundPackages as $inboundPackage)
+                                            <div class="swiper-slide">
+                                                <a href="{{ route('tour.details', $inboundPackage->id) }}"
+                                                    class="tour-box-link" style="text-decoration: none; color: inherit;">
+                                                    <div class="tour-box style2 th-ani shadow"
+                                                        style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
 
-                                                @php
-                                                    $imagePath = $inboundPackage->picture
-                                                        ? 'storage/' . $inboundPackage->picture
-                                                        : null;
-                                                    $fallbackImage = asset('assets/img/tour/yala.jpg'); // Your dummy tour image
-                                                    $imageUrl =
-                                                        $imagePath && file_exists(public_path($imagePath))
-                                                            ? asset($imagePath)
-                                                            : $fallbackImage;
-                                                @endphp
-                                                <!-- Image Section -->
-                                                <div class="tour-box_img global-img" style="position: relative;">
-                                                    <img src="{{ $imageUrl }}" alt="{{ $inboundPackage->place }}"
-                                                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
-                                                </div>
+                                                        @php
+                                                            $imagePath = $inboundPackage->picture
+                                                                ? 'storage/' . $inboundPackage->picture
+                                                                : null;
+                                                            $fallbackImage = asset('assets/img/tour/yala.jpg'); // Your dummy tour image
+                                                            $imageUrl =
+                                                                $imagePath && file_exists(public_path($imagePath))
+                                                                    ? asset($imagePath)
+                                                                    : $fallbackImage;
+                                                        @endphp
+                                                        <!-- Image Section -->
+                                                        <div class="tour-box_img global-img" style="position: relative;">
+                                                            <img src="{{ $imageUrl }}"
+                                                                alt="{{ $inboundPackage->place }}"
+                                                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                                                        </div>
 
-                                                <!-- Content Section -->
-                                                <div class="tour-content" style="padding: 15px;">
-                                                    <!-- Country & Rating -->
-                                                    <div class="tour-header d-flex align-items-center justify-content-between"
-                                                        style="margin-top: -12px; margin-bottom: -8px;">
-                                                        <p class="tour-country m-0 d-flex align-items-center">
-                                                            {{ $inboundPackage->country_name ?? 'Sri Lanka' }}
-                                                        </p>
-                                                        <div class="tour-rating d-flex align-items-center"
-                                                            style="margin-top: 13px;">
-                                                            <i class="fas fa-star text-warning"></i>
-                                                            <span class="ms-1"
-                                                                style="font-weight: 600; font-size: 14px; color: #333;">{{ $inboundPackage->ratings }}</span>
+                                                        <!-- Content Section -->
+                                                        <div class="tour-content" style="padding: 15px;">
+                                                            <!-- Country & Rating -->
+                                                            <div class="tour-header d-flex align-items-center justify-content-between"
+                                                                style="margin-top: -12px; margin-bottom: -8px;">
+                                                                <p class="tour-country m-0 d-flex align-items-center">
+                                                                    {{ $inboundPackage->country_name ?? 'Sri Lanka' }}
+                                                                </p>
+                                                                <div class="tour-rating d-flex align-items-center"
+                                                                    style="margin-top: 13px;">
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <span class="ms-1"
+                                                                        style="font-weight: 600; font-size: 14px; color: #333;">{{ $inboundPackage->ratings }}</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Title -->
+                                                            <h3 class="box-title mt-2"
+                                                                style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
+                                                                {{ $inboundPackage->heading }}
+                                                            </h3>
+
+                                                            <!-- Small Description -->
+                                                            <p class="text-dark  small mt-1 mb-1"
+                                                                style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                                                {{ Str::limit($inboundPackage->description, 90) }}
+                                                            </p>
+
+                                                            <a href="{{ route('tour.details', $inboundPackage->id) }}"
+                                                                class="text-primary small" style="font-weight: 500;">View
+                                                                More</a>
+                                                        </div>
+
+                                                        <!-- Tour Info -->
+                                                        <div class="d-flex align-items-right"
+                                                            style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
+                                                            {{-- <i class="fas fa-calendar-check text-danger me-2"></i> --}}
+                                                            <span class="text-dark " style="font-weight: bold;">
+                                                                {{ $inboundPackage->days }} Days,
+                                                                {{ $inboundPackage->nights }}
+                                                                Nights
+                                                            </span>
                                                         </div>
                                                     </div>
-
-                                                    <!-- Title -->
-                                                    <h3 class="box-title mt-2"
-                                                        style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
-                                                        {{ $inboundPackage->heading }}
-                                                    </h3>
-
-                                                    <!-- Small Description -->
-                                                    <p class="text-muted small mt-1 mb-1"
-                                                        style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                                        {{ Str::limit($inboundPackage->description, 90) }}
-                                                    </p>
-
-                                                    <a href="{{ route('tour.details', $inboundPackage->id) }}"
-                                                        class="text-primary small" style="font-weight: 500;">View More</a>
-                                                </div>
-
-                                                <!-- Tour Info -->
-                                                <div class="d-flex align-items-right"
-                                                    style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
-                                                    <i class="fas fa-calendar-check text-danger me-2"></i>
-                                                    <span class="text-dark fw-semibold">
-                                                        {{ $inboundPackage->days }} Days, {{ $inboundPackage->nights }}
-                                                        Nights
-                                                    </span>
-                                                </div>
+                                                </a>
                                             </div>
-                                        </a>
+                                        @endforeach
+
+
+
                                     </div>
-                                @endforeach
-
-
-
+                                    {{-- <div class="slider-pagination" style="margin-top: 20px;margin-bottom: 58px;"></div> --}}
+                                </div>
                             </div>
-                            <div class="slider-pagination" style="margin-top: 20px;margin-bottom: 58px;"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
-
-
-            <div class="text-center mt-4">
+            <div class="text-center ">
                 <a href="{{ url('/inbound-tours') }}" class="th-btn "
-                    style="outline: 2px solid #000; background-color: black; color: white;">
+                    style="outline: 2px solid #000; background-color: black; color: white; margin-top: 40px;">
                     Show More
                 </a>
             </div>
@@ -1267,21 +1865,23 @@
     </section>
 
 
-    <section id="transportation" class="py-5 bg-smoke" style="margin-bottom: 70px; margin-top: 30px;">
-        <div class="container">
+    <section id="transportation" class="py-5 bg-smoke map-section" style="margin-bottom: 70px; margin-top: 30px;">
+        <div class="container-fluid">
 
 
             <!-- Title Section with improved typography -->
             <div class="title-area text-center mb-5" style="">
-                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                <span class="sub-title fw-semibold">Travel Sri Lanka</span>
+                <span class="sub-title"
+                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Travel
+                    Sri Lanka</span>
                 <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #1a2b49; margin-bottom: 20px;">
-                    Transport Solutions</h2>
-                <div class="title-separator"
-                    style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
-                </div>
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    Transport Solutions </h2>
             </div>
+
+
+
+
 
             <!-- Main Content Row: Left Services - Center Image - Right Services -->
             <div class="row align-items-center">
@@ -1292,13 +1892,13 @@
                             <!-- Service Box 1 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f9f9ff 0%, #eaeaff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-car" style="font-size: 28px; color: #4e54c8;"></i>
+                                            <i class="fas fa-car" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Airport Pickups
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Airport Pickups
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Hassle-free airport transfers anytime. We monitor your flight and ensure
@@ -1306,7 +1906,7 @@
                                         </p>
                                     </div>
                                     <div class="decorative-shape"
-                                        style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(78, 84, 200, 0.07); z-index: 1;">
+                                        style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -1314,13 +1914,13 @@
                             <!-- Service Box 2 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #fff9f6 0%, #ffe8dd 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-shield-alt" style="font-size: 28px; color: #ff7a50;"></i>
+                                            <i class="fas fa-shield-alt" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Safe & Reliable
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Safe & Reliable
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Certified service with insured, well-maintained vehicles and licensed,
@@ -1328,7 +1928,7 @@
                                         </p>
                                     </div>
                                     <div class="decorative-shape"
-                                        style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(255, 122, 80, 0.07); z-index: 1;">
+                                        style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -1348,13 +1948,13 @@
                             <!-- Service Box 3 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f6fff9 0%, #ddffe8 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-credit-card" style="font-size: 28px; color: #2ecc71;"></i>
+                                            <i class="fas fa-credit-card" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Booking Made Easy
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Booking Made Easy
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Simple booking with flexible hourly or distance-based packages tailored to
@@ -1362,7 +1962,7 @@
                                         </p>
                                     </div>
                                     <div class="decorative-shape"
-                                        style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(46, 204, 113, 0.07); z-index: 1;">
+                                        style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07);z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -1376,7 +1976,7 @@
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-user-tie" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 600; color: #333;">Experienced Drivers
+                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Experienced Drivers
                                         </h3>
                                         <p style="font-size: 15px; color: #555;">
                                             Skilled local drivers with courteous service, island knowledge, and
@@ -1406,39 +2006,37 @@
 
     <!-- Rent vehicles -->
     <section class="position-relative bg-top-center  overflow-hidden space" id="service-sec"
-        style="margin-top: -75px; padding-bottom: 52px;background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);">
+        style="margin-top: -75px; padding-bottom: 52px;">
         <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
         </div>
 
         <div class="container position-relative" style="z-index: 1;">
             <!-- Title Section with improved typography -->
-            <div class="title-area text-center mb-5" style="margin-top: -55px;">
-                <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
-                <span class="sub-title fw-semibold" style="color: #AAAAAA;">Premium Car Rentals</span>
+            <div class="title-area text-center mb-5" style="margin-top: -75px;">
+                <span class="sub-title"
+                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium
+                    Car Rentals</span>
                 <h2 class="sec-title"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">
-                    Find Your Perfect Ride</h2>
-                <div class="title-separator"
-                    style="width: 80px; height: 3px; background: linear-gradient(90deg, #0069d9, #00a2ff); margin: 0 auto;">
-                </div>
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    Find Your Perfect Ride </h2>
             </div>
 
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
+                <div class="tab-pane fade active show" id="nav-step1" role="tabpanel" style="margin-top: -20px;">
                     <div class="slider-area tour-slider slider-drag-wrap">
 
                         <!-- Navigation Buttons with improved styling -->
                         <div class="swiper-button-prev-rental"
-                            style="background-color: rgba(0,162,255,0.1); width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 3px 12px rgba(0,162,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; border: 1px solid rgba(0,162,255,0.3); backdrop-filter: blur(5px);">
-                            <i class="fas fa-chevron-left" style="color: #00A2FF; font-size: 16px;"></i>
+                            style="background-color: rgba(255, 252, 252, 0.1); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;  backdrop-filter: blur(5px);">
+                            <i class="fas fa-chevron-left" style="color: #000000; font-size: 20px;"></i>
                         </div>
                         <div class="swiper-button-next-rental"
-                            style="background-color: rgba(0,162,255,0.1); width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 3px 12px rgba(0,162,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; border: 1px solid rgba(0,162,255,0.3); backdrop-filter: blur(5px);">
-                            <i class="fas fa-chevron-right" style="color: #00A2FF; font-size: 16px;"></i>
+                            style="background-color: rgba(255, 255, 255, 0.1); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(5px);">
+                            <i class="fas fa-chevron-right" style="color: #000000; font-size: 20px;"></i>
                         </div>
 
                         <!-- Swiper Container with enhanced styling -->
-                        <div class="swiper th-slider has-shadow"
+                        <div class="swiper th-slider "
                             data-slider-options='{
                         "navigation": {
                           "nextEl": ".swiper-button-next-rental",
@@ -1460,7 +2058,7 @@
                                 @foreach ($vehicles as $vehicle)
                                     <div class="swiper-slide">
                                         <div class="cars-slider__item"
-                                            style="background: linear-gradient(135deg, rgba(19,19,30,0.95) 0%, rgba(30,30,47,0.95) 100%); border-radius: 18px; overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 60px rgba(0,162,255,0.1) inset; border: 1px solid rgba(0,162,255,0.1);">
+                                            style="background: linear-gradient(135deg, #071f2b 0%, #000000 100%);   overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);">
 
                                             <!-- Main Row Layout -->
                                             <div class="horizontal-layout"
@@ -1491,12 +2089,12 @@
                                                 <div class="image-section"
                                                     style="flex: 1; display: flex; justify-content: center; align-items: center; position: relative; height: 100%;">
                                                     <div
-                                                        style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,162,255,0.15) 0%, rgba(0,162,255,0) 70%); z-index: 1;">
+                                                        style="position: absolute; width: 300px; height: 300px; border-radius: 50%; z-index: 1;">
                                                     </div>
 
                                                     <img src="{{ $vehicle->image ? asset('storage/' . $vehicle->image) : asset('assets/img/bike3.png') }}"
                                                         alt="{{ $vehicle->brand }} {{ $vehicle->model }}"
-                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease; filter: drop-shadow(0 10px 25px rgba(0,162,255,0.25));">
+                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease; ">
                                                 </div>
 
 
@@ -1506,7 +2104,7 @@
 
                                                     <div class="demo-container">
                                                         <div
-                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 8px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 15px 20px; border-radius: 60px; font-size: 14px; font-weight: 800; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                                                             <span style="font-size: 28px;">$ {{ $vehicle->price }}</span>
                                                             <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                                                         </div>
@@ -1518,13 +2116,13 @@
                                             <!-- Specifications Section -->
                                             <!-- Specifications Section -->
                                             <div class="specification priority-mobile"
-                                                style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px; padding: 20px; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(19,19,30,0.7) 0%, rgba(30,30,47,0.7) 100%); backdrop-filter: blur(5px); border: 1px solid rgba(0,162,255,0.1);">
+                                                style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px; padding: 20px;  box-shadow: 0 8px 20px rgba(0,0,0,0.2);  background-color: rgba(0, 0, 0, 0.6);">
 
                                                 <!-- Helmets -->
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #00A2FF; font-weight: 700; font-size: 18px;">
                                                     <i class="fas fa-helmet-safety"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Helmets</span>
@@ -1538,7 +2136,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-kit-medical"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">First-Aid
@@ -1554,7 +2152,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-cogs"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Transmission</span>
@@ -1569,7 +2167,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-road"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,162,255,0.2); border: 1px solid rgba(0,162,255,0.3);"></i>
+                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Mileage</span>
@@ -1593,7 +2191,7 @@
 
 
 
-            <div class="text-center  " style="margin-top: 70px;">
+            <div class="text-center  " style="margin-top:40px;">
                 <a href="{{ url('/rent') }}" class="th-btn"
                     style="outline: 2px solid #000; background-color: black; color: white;">
                     Show More
@@ -1604,30 +2202,33 @@
     <!-- Ari Line -->
 
     <section class=" overflow-hidden space bg-smoke" id="blog-sec">
-        <div class="container">
+        <div class="container-fluid">
             <div class="mb-30 text-center text-md-start" style="margin-top: -60px;">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-md-7 airlin-mob">
-                        <div class="title-area mb-md-0">
+                        <div class="title-area mb-md-0 alirlin-title">
                             {{-- <span class="sub-title" style="color: #AAAAAA;">Airline Tickets</span>
                                 <h2 class="sec-title"  style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">Your Gateway to the World</h2> --}}
-                            <span class="sub-title fw-semibold">Airline Ticket</span>
+                            <span class="sub-title "
+                                style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Airline
+                                Ticket</span>
                             <h2 class="sec-title"
-                                style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700;color: #1a2b49; margin-bottom: 20px; ">
+                                style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                                 Your Gateway to the World</h2>
 
 
                         </div>
 
 
+
                         <!-- <span class="sub-title" style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; color: #0069d9; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">Premium Car Rentals</span> -->
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                Get Tickets
-                                                                                            </a>
-                                                                                        </div> -->
+                                                                                                                                                        <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                            Get Tickets
+                                                                                                                                                        </a>
+                                                                                                                                                    </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -1660,40 +2261,40 @@
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Air Asia.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air Asia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air Asia.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/air india.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/air india.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air India.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air India.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Airarabia.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air Arabia.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air Arabia.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/azur air.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/azur air.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/azur air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/azur air.png" alt="Brand Logo">
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/china.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/china.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Air China.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Air China.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
@@ -1701,16 +2302,16 @@
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Emirates.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Emirates.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Emirates.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Emirates.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Etihad.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Etihad.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Etihad.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Etihad.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
@@ -1718,101 +2319,110 @@
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/FitsAir.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Fits Air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Fits Air.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/flydubai.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/flydubai.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/fly Dubai.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/fly dubai.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/indigo.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/indigo.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/indigo.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/indigo.png" alt="Brand Logo">
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/jazeera.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/jazeera.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Jazeera Airways.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Jazeera Airways.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/malaysia.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/malaysia.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Malaysia Airlines.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Malaysia Airliness.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/Qatar Airways.jpeg" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/Qatar Airways.jpeg" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Qatar Airways.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Qatar Airways.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/salam air.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/salam air.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Salam Air.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Salam Air.png" alt="Brand Logo">
+                                    </a>
+                                </div>
+                            </div>
+                            {{-- <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/airline/seychelle.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/seychelle.png" alt="Brand Logo">
+                                    </a>
+                                </div>
+                            </div> --}}
+                            <div class="swiper-slide">
+                                <div class="brand-box">
+                                    <a href="">
+                                        <img class="original" src="assets/img/airline/Singapore Airlines.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Singapore Airlines.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/seychelle.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/seychelle.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Sri Lankan Airlines.png"
+                                            alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Sri Lankan Airlines.png"
+                                            alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/singapore.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/singapore.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/Thai Airways.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/Thai Airways.png" alt="Brand Logo">
                                     </a>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="brand-box">
                                     <a href="">
-                                        <img class="original" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/SriLankan.png" alt="Brand Logo">
+                                        <img class="original" src="assets/img/airline/turkish.png" alt="Brand Logo">
+                                        <img class="gray" src="assets/img/airline/turkish.png" alt="Brand Logo">
                                     </a>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="brand-box">
-                                    <a href="">
-                                        <img class="original" src="assets/img/brand/thai.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/thai.png" alt="Brand Logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="brand-box">
-                                    <a href="">
-                                        <img class="original" src="assets/img/brand/turkish.png" alt="Brand Logo">
-                                        <img class="gray" src="assets/img/brand/turkish.png" alt="Brand Logo">
-                                    </a>
-                                </div>
-                            </div>
+                            </div> --}}
 
                         </div>
 
@@ -1835,7 +2445,7 @@
 
 
     <section class="testimonials-section py-5">
-        <div class="container">
+        <div class="container-fluid">
             <div class="heading white-heading text-center mb-4">Testimonial</div>
 
             <div id="testimonial4"
@@ -1848,116 +2458,36 @@
                             <div class="swiper th-slider"
                                 data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
                                 <div class="swiper-wrapper">
-
-                                    <!-- Review 1 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px; ">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">Sarah Johnson</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-google text-danger me-1"></i>
-                                                            Google</small>
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class="swiper-slide">
+                                            <div class="testimonial-card card h-100">
+                                                <div class="card-body" style="height: 240px;">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
+                                                            class="avatar rounded-circle me-3"
+                                                            alt="{{ $testimonial->name }}" style="height: 48px;">
+                                                        <div>
+                                                            <h6 class="mb-0">{{ $testimonial->name }}</h6>
+                                                            <small class="text-muted">
+                                                                <i
+                                                                    class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
+                                                                {{ $testimonial->source }}
+                                                            </small>
+                                                        </div>
                                                     </div>
+                                                    <div class="stars mb-3">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i
+                                                                class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"></i>
+                                                        @endfor
+                                                    </div>
+                                                    <p class="review-text">"{{ $testimonial->message }}"</p>
+                                                    <small class="text-muted">Posted on:
+                                                        {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}</small>
                                                 </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <p class="review-text">"Great experience from start to finish.
-                                                    The attention to detail was impressive."</p>
-                                                <small class="text-muted">Posted on: Jan 15, 2024</small>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Review 2 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px;">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">Michael Chen</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-facebook text-primary me-1"></i>
-                                                            Facebook</small>
-                                                    </div>
-                                                </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-half"></i>
-                                                </div>
-                                                <p class="review-text">"Great experience from start to finish.
-                                                    The attention to detail was impressive."</p>
-                                                <small class="text-muted">Posted on: Jan 12, 2024</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Review 3 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px;">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">Emma Wilson</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-twitter text-info me-1"></i>
-                                                            Twitter</small>
-                                                    </div>
-                                                </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <p class="review-text">"Absolutely fantastic! The team was
-                                                    professional and courteous."</p>
-                                                <small class="text-muted">Posted on: Jan 10, 2024</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Review 4 -->
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-card card h-100">
-                                            <div class="card-body" style="height: 240px; ">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                                        class="avatar rounded-circle me-3" alt="User"
-                                                        style="height: 48px;">
-                                                    <div>
-                                                        <h6 class="mb-0">David Thompson</h6>
-                                                        <small class="text-muted"><i
-                                                                class="bi bi-google text-danger me-1"></i>
-                                                            Google</small>
-                                                    </div>
-                                                </div>
-                                                <div class="stars mb-3">
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star"></i>
-                                                </div>
-                                                <p class="review-text">"Very satisfied with the quality of
-                                                    service.
-                                                    The staff was knowledgeable."</p>
-                                                <small class="text-muted">Posted on: Jan 8, 2024</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @endforeach
                                 </div>
 
                                 <!-- Pagination -->
@@ -1969,7 +2499,68 @@
             </div>
     </section>
 
+    <div id="chatbot-container">
+        <!-- Floating Toggle Button -->
+        <div id="chatbot-toggle">
+            💬
+        </div>
 
+        <!-- Chatbot Window -->
+        <div id="chatbot-box">
+            <div class="chat-header">
+                <h3
+                    style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0;color:#fff;font-size:22px;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    {{-- <img src="/assets/img/chatbot.png" alt="Assistant"
+                        style="height: 28px; color: #ffff; margin-top: 6px;"> --}}
+                    Tour Assistant
+                </h3>
+
+            </div>
+
+            <div id="chat-content">
+                <div class="message">
+                    <div class="bot-message" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        👋 Hi there! I'm your personal tour assistant. How can I help you plan your perfect trip today?
+                    </div>
+                </div>
+            </div>
+
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+                <button id="send-btn">➤</button>
+            </div>
+
+            <!-- Hidden Form -->
+            <div id="user-form" class="form-container" style="display: none;">
+                <h4>Contact Information</h4>
+                <input type="text" id="name" placeholder="Your Name" class="form-control mb-2">
+                <input type="email" id="email" placeholder="Your Email" class="form-control mb-2">
+                <input type="text" id="phone" placeholder="Your Phone" class="form-control mb-2">
+                <button id="submit-form" class="btn btn-primary w-100">Submit Information</button>
+            </div>
+
+            <!-- Hidden Service Selection -->
+            <div id="service-options" class="service-grid" style="display: none;">
+                <h4 style="text-align: center; color: #2c3e50; margin-bottom: 15px;"> Choose Your Service</h4>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Inbound Tour">
+                    Inbound Tour
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Outbound Tour">
+                    Outbound Tour
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Rent Vehicle">
+                    Rent Vehicle
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Transportation">
+                    Transportation
+                </button>
+                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Airline">
+                    Airline Services
+                </button>
+            </div>
+        </div>
+
+    </div>
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             document.getElementById('departDate').value = '';
@@ -2013,5 +2604,266 @@
             }
         });
     </script>
+
+
+
+
+    <script>
+        // Chatbot functionality
+        const toggleBtn = document.getElementById('chatbot-toggle');
+        const chatBox = document.getElementById('chatbot-box');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const chatContent = document.getElementById('chat-content');
+        const userForm = document.getElementById('user-form');
+        const serviceOptions = document.getElementById('service-options');
+        const chatInputArea = document.getElementById('chat-input-area');
+
+        let isOpen = false;
+        let currentStep = 'chat';
+        let selectedService = '';
+
+        // Toggle chatbot
+        toggleBtn.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                chatBox.classList.add('show');
+                toggleBtn.classList.add('active');
+                chatInput.focus();
+            } else {
+                chatBox.classList.remove('show');
+                toggleBtn.classList.remove('active');
+            }
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatInput.value = '';
+                simulateTyping();
+
+                setTimeout(() => {
+                    removeTyping();
+                    handleBotResponse(message);
+                }, 1500);
+            }
+        }
+
+        // Add message to chat
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.innerHTML = `<div class="${sender}-message">${message}</div>`;
+            chatContent.appendChild(messageDiv);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        // Simulate typing indicator
+        function simulateTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatContent.appendChild(typingDiv);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typing = document.querySelector('.typing-indicator');
+            if (typing) {
+                typing.remove();
+            }
+        }
+
+        // Handle bot responses
+        function handleBotResponse(userMessage) {
+            const responses = [
+                "That sounds interesting! I'd love to help you plan your adventure. Would you like to see our available services?",
+                "Great question! Let me show you what we can offer. Shall we start with our service options?",
+                "I'm here to help make your travel dreams come true! Would you like to explore our tour packages?",
+                "Perfect! I can assist you with that. Let me show you our available services first."
+            ];
+
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            addMessage(randomResponse, 'bot');
+
+            setTimeout(() => {
+                showServiceOptions();
+            }, 1000);
+        }
+
+        // Show service options
+        function showServiceOptions() {
+            chatInputArea.style.display = 'none';
+            serviceOptions.style.display = 'block';
+            currentStep = 'service';
+        }
+
+        // Show user form
+        function showUserForm() {
+            serviceOptions.style.display = 'none';
+            userForm.style.display = 'block';
+            currentStep = 'form';
+        }
+
+        // Event listeners
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Service selection
+        document.querySelectorAll('.service-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const service = e.target.getAttribute('data-service');
+                selectedService = service;
+                addMessage(`I'm interested in ${service}`, 'user');
+                simulateTyping();
+
+                setTimeout(() => {
+                    removeTyping();
+                    addMessage(
+                        `Excellent choice! ${service} is one of our most popular services. To provide you with the best assistance, I'll need some contact information.`,
+                        'bot');
+                    showUserForm();
+                }, 1500);
+            });
+        });
+
+        // Form submission
+        document.getElementById('submit-form').addEventListener('click', () => {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^[0-9]{9,12}$/;
+
+            if (!name) {
+                addMessage('Please enter your name.', 'bot');
+                return;
+            }
+            if (!email || !emailRegex.test(email)) {
+                addMessage('Please enter a valid email address.', 'bot');
+                return;
+            }
+            if (!phone || !phoneRegex.test(phone)) {
+                addMessage('Please enter a valid phone number (digits only, 9–12 characters).', 'bot');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submit-form');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const formData = {
+                name: name,
+                email: email,
+                phone: phone,
+                service: selectedService
+            };
+
+            addMessage(`Name: ${name}, Email: ${email}, Phone: ${phone}`, 'user');
+            simulateTyping();
+
+            fetch('/chatbot/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute(
+                            'content') || '',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    setTimeout(() => {
+                        removeTyping();
+                        if (data.success) {
+                            addMessage(
+                                `Thank you ${name}! 🎉 Your information has been successfully saved. Our team will contact you within 24 hours to discuss your ${selectedService} plans.`,
+                                'bot');
+                        } else {
+                            addMessage(
+                                `Thank you ${name}! Your request has been received. Our team will get back to you soon!`,
+                                'bot');
+                        }
+                        resetForm();
+                    }, 1500);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    setTimeout(() => {
+                        removeTyping();
+                        addMessage(
+                            `Thank you ${name}! Your information has been received. If you don't hear from us within 24 hours, feel free to contact us directly.`,
+                            'bot');
+                        resetForm();
+                    }, 1500);
+                });
+        });
+
+        // Reset form function
+        function resetForm() {
+            const submitBtn = document.getElementById('submit-form');
+            submitBtn.textContent = 'Submit Information';
+            submitBtn.disabled = false;
+
+            userForm.style.display = 'none';
+            chatInputArea.style.display = 'flex';
+            currentStep = 'chat';
+            selectedService = '';
+
+            // Clear form fields
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+        }
+
+        // Add pulse animation to toggle button
+        setInterval(() => {
+            if (!isOpen) {
+                toggleBtn.classList.add('pulse');
+                setTimeout(() => {
+                    toggleBtn.classList.remove('pulse');
+                }, 2000);
+            }
+        }, 10000);
+
+        document.addEventListener('click', function(event) {
+            const isClickInside = chatBox.contains(event.target) || toggleBtn.contains(event.target);
+
+            if (!isClickInside && isOpen) {
+                chatBox.classList.remove('show');
+                toggleBtn.classList.remove('active');
+                isOpen = false;
+            }
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (!isOpen) {
+                    isOpen = true;
+                    chatBox.classList.add('show');
+                    toggleBtn.classList.add('active');
+                    chatInput.focus();
+                }
+            }, 5000); // 5000 ms = 5 seconds
+        });
+    </script>
+
 
 @endsection

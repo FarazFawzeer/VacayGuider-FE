@@ -3,10 +3,39 @@
 @section('title', 'Home')
 
 @section('content')
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .breadcrumb-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .breadcrumb-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .breadcrumb-mobile::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
 
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
+
+
 
         *,
         *:before,
@@ -324,7 +353,7 @@
         }
 
         .card {
-            background-color: rgb(255, 255, 255);
+            background-color: #f8f9fa;
             display: flex;
             padding-top: 16px;
             padding-right: 16px;
@@ -358,7 +387,7 @@
         }
 
         .person-info {
-            font-size: 11px;
+            font-size: 14px;
             line-height: 15px;
         }
 
@@ -621,7 +650,7 @@
             line-height: 18px;
         }
 
-   
+
 
         .header-layout1 .currency-menu {
             border: 1px solid var(--light-color);
@@ -714,9 +743,9 @@
 
         /*
 
-    .space, .space-top {
-      padding-top: 20px;
-    } */
+                    .space, .space-top {
+                      padding-top: 20px;
+                    } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1118,7 +1147,7 @@
         }
     </style>
 
-    <div class="container-fluid about-hero text-white position-relative"
+    {{-- <div class="container-fluid about-hero text-white position-relative"
         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/avenue-815297_1920.jpg') center center / cover no-repeat; 
      display: flex;
      align-items: center;">
@@ -1127,69 +1156,136 @@
                 <div class="col-lg-10">
                     <div class="hero-style7">
                         <span class="sub-title style1 text-white d-block mb-2">About Us</span>
-                        <h1 class="hero-title text-white display-4 mb-0" style="font-weight: 700;">Welcome to Tourist</h1>
+                        <h1 class="hero-title text-white display-4 mb-0" style="font-weight: 700;">To Tourist</h1>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div> --}}
+    <!-- Simple Professional Breadcrumb -->
+    <div class="w-full ">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-3">
+                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                    <ol class="flex items-center space-x-1 text-sm font-medium">
+                        <!-- Home Link -->
+                        <li class="flex items-center">
+                            <a href="{{ url('/') }}"
+                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                <!-- Home Icon -->
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="group-hover:text-blue-600">Home</span>
+                            </a>
+                        </li>
+
+                        <!-- Separator -->
+                        <li class="flex items-center">
+                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+
+                        <!-- Current Page -->
+                        <li class="flex items-center">
+                            <span
+                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                aria-current="page">
+                                <!-- About Icon -->
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>About Us</span>
+                            </span>
+                        </li>
+                    </ol>
+                </nav>
             </div>
         </div>
     </div>
 
 
-    <section class="counter-section " id="about">
+
+
+
+    <section class="counter-section " id="about" style="margin-top: -10px;">
         <div class="container">
+
             <div class="row vertical_content_manage mt-5">
-                <div class="col-lg-12">
-                    <div class="about_header_main mt-3">
-                        <!-- <h4 class="about_heading text-capitalize font-weight-bold mt-4">
-                                Explore the World with Vacay Guider
-                            </h4> -->
+                <div class="title-area text-center " style="">
+                    <h2 class="sec-title"
+                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        Explore the World with Vacay Guider </h2>
+                </div>
+
+                <div class="col-lg-12" style="margin-top: -25px;">
+                    <div class="about_header_main ">
+                        {{-- <h4 class="about_heading text-capitalize text-center font-weight-bold mt-4">
+                                    Explore the World with Vacay Guider
+                                </h4>  --}}
 
                         <!-- <h1 class="mb-4 text-center" style="font-size:34px;">Welcome to Tourist</h1> -->
-                        <p class="text-center mt-3">
+                        <p class="text-center ">
                             Welcome to <strong><span style="color: #94d106 !important;">Vacay</span> <span
                                     style="color:#028ccc !important;">Guider</span>
-                            </strong>, your trusted partner in the travel and tourism industry. With
-                            over 5 years of certified experience, we take pride in delivering exceptional travel services
-                            that transform every journey into a lasting memory.
+                            </strong>, your passport to extraordinary worldwide journeys. With over five years of certified
+                            travel expertise, we specialize in crafting bespoke vacations that turn fleeting moments into
+                            timeless memories. As award-winning global travel designers, we pride ourselves on delivering
+                            seamless, personalized experiences that go beyond ordinary tourism – because every traveler
+                            deserves a journey as unique as they are.
                         </p>
                         <p class="text-center mt-3">
                             At <strong><span style="color: #94d106 !important;">Vacay</span> <span
                                     style="color:#028ccc !important;">Guider</span>
-                            </strong>, we specialize in tailor-made travel experiences designed for every type of
-                            traveler. Whether you’re seeking a tranquil escape to Sri Lanka’s scenic wonders or a
-                            thrilling international adventure, we’re here to make your dream trip a reality. Our expertly
-                            crafted Inbound and Outbound tour packages offer the perfect mix of relaxation,
-                            exploration, and cultural discovery.
+                            </strong>, we design complete travel experiences from custom tour packages and air ticketing to
+                            visa assistance, hotel bookings, airport transfers, car rentals, and travel insurance. Whether
+                            you crave luxury escapes, cultural adventures, or family getaways, our end-to-end solutions
+                            handle every detail. Relax knowing your journey is expertly planned, perfectly executed, and
+                            fully protected.
                         </p>
 
-              
-    <div class="text-center">
-        <p class="mt-3 text-muted">
-            Our passionate and experienced team is dedicated to providing personalized service,
-                            ensuring every detail is handled with care. At Vacay Guider, we don’t just plan trips — we
-                            create journeys that inspire, enrich, and delight..To ensure a seamless and stress-free travel experience, we offer a wide range of reliable services,
-            
-        </p>
-    </div>
+
+
+
+                        <div class="text-center">
+                            <p class="mt-3 text-muted">
+                                To ensure a seamless and stress-free travel experience, we offer a wide range of reliable
+                                services, including: 1. Custom Tour Packages – Experiences tailored to your interests 2. Air
+                                Ticketing – Hassle-free booking to your dream destinations 3. Visa Assistance – Expert help
+                                with travel documentation 4. Hotel Booking – Handpicked stays to suit your preferences and
+                                budget 5. Airport Transportation – Smooth and punctual airport transfers 6. Car Rental
+                                Services – Flexible options to suit your travel needs 7. Travel Insurance – Coverage for
+                                peace of mind on every trip
+
+                            </p>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="mt-3 text-muted">
+                                We’re not just planners – we’re your travel storytellers. With meticulous attention to
+                                detail and insider knowledge, we design soul-stirring journeys where every element sparks
+                                joy. Ready to experience stress-free travel? Contact us today and let’s create your perfect
+                                getaway together.
+
+                            </p>
+                        </div>
 
 
 
 
-                       
+
 
                     </div>
                 </div>
-                <!-- <div class="col-lg-6">
-              <div class="img_about mt-3">
-                <img src="assets/img/about2.jpg" alt="About Us" class="img-fluid mx-auto d-block">
-              </div>
-            </div> -->
-            </div>
-            <!-- .bg-\[\#EFF8F2\] {
-                    --tw-bg-opacity: 1;
-                    background-color: rgb(239 248 242 / var(--tw-bg-opacity));
-                } -->
 
+            </div>
+        </div>
+        <div class="container-fluid">
             <div class="vision-mission-container" style="padding: 40px 0; font-family: 'Poppins', sans-serif;">
                 <div class="row g-4" style="margin: 0;">
                     <!-- Vision Box -->
@@ -1276,20 +1372,17 @@
                                 <h2
                                     style="font-size: 32px; font-weight: 700; margin-bottom: 16px; color: #1565C0; text-transform: uppercase; letter-spacing: 1px;">
                                     Our Mission</h2>
-                                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #0D47A1;">Crafting
+                                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #0D47A1;">
+                                    Crafting
                                     Journeys, Curating Memories</h3>
                                 <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
-                                    At Vacay Guider, our mission is to deliver exceptional travel experiences by offering
-                                    personalized, reliable, and comprehensive travel solutions. We are committed to
-                                    understanding the unique needs of every traveler and turning their dreams into reality
-                                    through carefully crafted tour packages, trusted support services, and a passionate
-                                    team.
-                                    Whether it’s exploring the beauty of Sri Lanka or discovering destinations across the
-                                    globe,
-                                    we strive to make every journey smooth, enriching, and memorable. With a focus on
-                                    quality, customer satisfaction, and innovation, we aim to be a travel partner our
-                                    clients can
-                                    rely on — every step of the way.
+                                    At VacayGuider, we deliver exceptional travel experiences through personalized,
+                                    reliable, and comprehensive solutions. Committed to understanding each traveler's unique
+                                    needs, we transform dreams into reality with carefully crafted tours, trusted support
+                                    services, and our passionate team. Whether exploring Sri Lanka's beauty or discovering
+                                    global destinations, we ensure every journey is smooth, enriching, and memorable. With
+                                    our focus on quality, customer satisfaction, and innovation, we've become the trusted
+                                    travel partner clients rely on - every step of the way
                                 </p>
                             </div>
                             <div class="decorative-shape"
@@ -1302,7 +1395,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
 
 
         </div>
@@ -1310,445 +1403,351 @@
 
 
 
-    <section class="counter-section  " style="border-radius: 12px;margin-top:100px; margin-bottom: 80px; ">
-        <div class="container ">
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-6 text-center">
-                    <h2 class="mb-3" style="color: #333; font-weight: 600;">Our Achievements</h2>
-                    <div class="divider mx-auto" style="width: 80px; height: 3px; background-color: #3498db;"></div>
-                </div>
-            </div>
+    <section class="counter-section  " style="border-radius: 12px;margin-top: 25px; margin-bottom: 80px; ">
+        <div class="container">
 
             <div class="row counters text-center">
-                <!-- Years of Experience -->
+                <!-- Counter Item Template -->
                 <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                     <div class="counter-card p-4"
-                        style="background-color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2ecc71"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
                                 viewBox="0 0 16 16">
                                 <path
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                             </svg>
                         </div>
-                        <strong data-to="10" data-append="+" class="mb-2 d-block display-4"
-                            style="color: #2ecc71; font-weight: 700;">5+</strong>
-                        <label style="color: #333; font-weight: 500;">Years of Experience</label>
-                        <div class="counter-line mt-3 mx-auto"
-                            style="width: 50px; height: 3px; background-color: #2ecc71;"></div>
+                        <strong data-to="5" data-append="+" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
+                        <label style="color: black; font-weight: 700;">Years of Experience</label>
+                        <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Tour Packages -->
+                <!-- Repeat for other cards -->
+
                 <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                     <div class="counter-card p-4"
-                        style="background-color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3498db"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
                                 viewBox="0 0 16 16">
                                 <path
-                                    d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                                    d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6z" />
                             </svg>
                         </div>
-                        <strong data-to="100" data-append="+" class="mb-2 d-block display-4"
-                            style="color: #3498db; font-weight: 700;">50+</strong>
-                        <label style="color: #333; font-weight: 500;">Tour Packages</label>
-                        <div class="counter-line mt-3 mx-auto"
-                            style="width: 50px; height: 3px; background-color: #3498db;"></div>
+                        <strong data-to="60" data-append="+" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
+                        <label style="color: black; font-weight: 700;">Tour Packages</label>
+                        <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Happy Customers -->
                 <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
                     <div class="counter-card p-4"
-                        style="background-color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(241, 196, 15, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#f1c40f"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
                                 viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z" />
                             </svg>
                         </div>
-                        <strong data-to="100" data-append="+" class="mb-2 d-block display-4"
-                            style="color: #f1c40f; font-weight: 700;">50+</strong>
-                        <label style="color: #333; font-weight: 500;">Happy Customers</label>
-                        <div class="counter-line mt-3 mx-auto"
-                            style="width: 50px; height: 3px; background-color: #f1c40f;"></div>
+                        <strong data-to="75" data-append="+" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
+                        <label style="color: black; font-weight: 700;">Happy Customers</label>
+                        <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Award Winning Services -->
                 <div class="col-md-6 col-lg-3">
                     <div class="counter-card p-4"
-                        style="background-color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(231, 76, 60, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#e74c3c"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
                                 viewBox="0 0 16 16">
                                 <path
                                     d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z" />
                             </svg>
                         </div>
-                        <strong data-to="5" class="mb-2 d-block display-4"
-                            style="color: #e74c3c; font-weight: 700;">2</strong>
-                        <label style="color: #333; font-weight: 500;">Award Winning Services</label>
-                        <div class="counter-line mt-3 mx-auto"
-                            style="width: 50px; height: 3px; background-color: #e74c3c;"></div>
+                        <strong data-to="2" class="mb-2 d-block display-4"
+                            style="color: black; font-weight: 900;">0</strong>
+                        <label style="color: black; font-weight: 700;">Award Winning Services</label>
+                        <div class="counter-line mt-3 mx-auto" style="width: 50px; height: 3px; background-color: black;">
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
 
     </section>
 
 
-
-    <div class="responsive-container-block outer-container ">
-        <div class="responsive-container-block inner-container" style="  min-height: 70vh;">
-
-            <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-5 content-container"
-                style="background-color: #f8f9fa; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <div class="content-box">
-                    <div class="text-start text-lg-start">
-                        <h1 class="mb-4" style="font-size:36px;">Atheek Zuhair</h1>
-                        <footer class="blockquote-footer" style="font-weight: bold;">CEO & Founder</footer>
-                    </div>
-
-                    <!-- Large CEO Image in the description section -->
-                    <div class="ceo-main-image mb-4 mt-4">
-                        <img src="assets/img/ceo2.png" alt="CEO Portrait" class="img-fluid rounded shadow"
-                            style="width: 100%; border: 5px solid white;">
-                    </div>
-                </div>
+    <section class="counter-section " style="background-color: #ffffff;margin-top: -60px;">
+        <div class="container-fluid">
+            <div class="title-area text-center " style="">
+                <h2 class="sec-title"
+                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                    The Team </h2>
             </div>
+            <div class="responsive-container-block outer-container ">
+                <div class="responsive-container-block inner-container" style="  min-height: 70vh; ">
 
-            <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-8 team-cards-outer-container"
-                style="background-color:  #f8f9fa; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <div class="responsive-container-block">
-                    <!-- CEO Description and Quote -->
-                    <div class="ceo-content p-4">
-                        <p class="text-center">
-                            With over a decade of hands-on experience in the travel and tourism industry, Mohomed
-                            Atheek founded Vacay Guider with a bold vision — to redefine the way people explore the
-                            world. Drawing from his academic background in cultural anthropology and a deep-rooted
-                            passion for sustainable, meaningful travel, he set out to build more than just a travel
-                            company. He envisioned a platform that connects people to places through authentic,
-                            enriching, and responsible experiences.
-                        </p>
-                        <p class="text-center">
-                            Under his visionary leadership, Vacay Guider has evolved from a small local agency into a
-                            globally recognized brand, trusted for delivering immersive journeys that celebrate culture,
-                            nature, and personal discovery. Atheek’s unwavering commitment to integrity, innovation,
-                            and traveler satisfaction has shaped every aspect of our service. His belief that travel should
-                            inspire, educate, and empower continues to drive our mission — guiding explorers not just
-                            to see the world, but to truly experience it.
-                        </p>
+                    <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-5 content-container"
+                        style="background-color:  #f8f9fa; border-radius: 8px; padding: 25px; ">
+                        <div class="content-box">
+                            <div class="text-start text-lg-start">
+                                <h1 class="mb-4 text-black" style="font-size:36px; ">Atheek Zuhair</h1>
+                                <footer class="blockquote-footer" style="font-weight: bold;">CEO & Founder</footer>
+                            </div>
 
-                        <div class="quote-container my-4 p-4 rounded"
-                            style="background-color: #f0f7ff; border-left: 4px solid #007bff;">
-                            <blockquote class="blockquote">
-                                <p class="mb-0"><em>"The earth speaks in colors, flavors, and moments — only the curious
-                                        truly listen."</em>
+                            <!-- Large CEO Image in the description section -->
+                            <div class="ceo-main-image mb-4 mt-4">
+                                <img src="assets/img/ceo.jpg" alt="CEO Portrait" class="img-fluid rounded shadow"
+                                    style="width: 100%; ">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-8 team-cards-outer-container"
+                        style="background-color:  #f8f9fa; border-radius: 8px; padding: 25px; ">
+                        <div class="responsive-container-block">
+                            <!-- CEO Description and Quote -->
+                            <div class="ceo-content p-4">
+                                <p class="text-center">
+                                    With over a decade of hands-on experience in the travel and tourism industry, Mohomed
+                                    Atheek founded Vacay Guider with a bold vision — to redefine the way people explore the
+                                    world. Drawing from his academic background in cultural anthropology and a deep-rooted
+                                    passion for sustainable, meaningful travel, he set out to build more than just a travel
+                                    company. He envisioned a platform that connects people to places through authentic,
+                                    enriching, and responsible experiences.
                                 </p>
-                                <footer class="blockquote-footer mt-2">Atheek Zuhair, CEO & Founder</footer>
-                            </blockquote>
+                                <p class="text-center">
+                                    Under his visionary leadership, Vacay Guider has evolved from a small local agency into
+                                    a
+                                    globally recognized brand, trusted for delivering immersive journeys that celebrate
+                                    culture,
+                                    nature, and personal discovery. Atheek’s unwavering commitment to integrity, innovation,
+                                    and traveler satisfaction has shaped every aspect of our service. His belief that travel
+                                    should
+                                    inspire, educate, and empower continues to drive our mission — guiding explorers not
+                                    just
+                                    to see the world, but to truly experience it.
+                                </p>
+
+                                <div class="quote-container my-4 p-4 rounded"
+                                    style="background-color: #f0f7ff; border-left: 4px solid #007bff;">
+                                    <blockquote class="blockquote">
+                                        <p class="mb-0"><em>"The earth speaks in colors, flavors, and moments — only the
+                                                curious
+                                                truly listen."</em>
+                                        </p>
+                                        <footer class="blockquote-footer mt-2">Atheek Zuhair, CEO & Founder</footer>
+                                    </blockquote>
+                                </div>
+
+                                <p class="text-muted">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="container-fluid mt-5 mb-5">
+
+                    <div class="title-area text-center mb-5" style="margin-top: -5px;">
+                        <span class="sub-title"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 600;color: #000000;">
+                            Meet Our Team</span>
+
+                    </div>
+                    <div class="responsive-container-block team-cards-inner-container justify-content-center">
+                        <!-- First Row -->
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container ">
+                            <div class="card"
+                                style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
+                                <div class="img-box">
+                                    <img class="person-img" src="assets/img/male.jpg" alt="Team Member"
+                                        style="width: 100%; height: auto;">
+                                </div>
+
+                                <div class="card-content-box p-3">
+                                    <p class="text-black person-name">
+                                        Junaideen
+                                    </p>
+                                    <p class="text-blk person-info">
+                                        Director
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <p class="text-muted">
-                        </p>
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
+                            <div class="card"
+                                style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
+                                <div class="img-box">
+                                    <img class="person-img" src="assets/img/female.jpg" alt="Team Member"
+                                        style="width: 100%; height: auto;">
+                                </div>
+
+                                <div class="card-content-box p-3">
+                                    <p class="text-black person-name">
+                                        Safra
+                                    </p>
+                                    <p class="text-blk person-info">
+                                        Travel Manager
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Second Row -->
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
+                            <div class="card"
+                                style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                                <div class="img-box">
+                                    <img class="person-img" src="assets/img/shakir.jpg" alt="Team Member"
+                                        style="width: 100%; height: auto;">
+                                </div>
+
+                                <div class="card-content-box p-3">
+                                    <p class="text-black person-name">
+                                        Shakeer
+                                    </p>
+                                    <p class="text-blk person-info">
+                                        Tour Cordinator
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
+                            <div class="card"
+                                style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                                <div class="img-box">
+                                    <img class="person-img" src="assets/img/Rimshad.jpg" alt="Team Member"
+                                        style="width: 100%; height: auto;">
+                                </div>
+
+                                <div class="card-content-box p-3">
+                                    <p class="text-black person-name">
+                                        Rimshad
+                                    </p>
+                                    <p class="text-blk person-info">
+                                        Travel Executive
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
+                            <div class="card"
+                                style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                                <div class="img-box">
+                                    <img class="person-img" src="assets/img/Sabrin.jpg" alt="Team Member"
+                                        style="width: 100%; height: auto;">
+                                </div>
+
+
+                                <div class="card-content-box p-3">
+                                    <p class="text-black person-name">
+                                        Shabrin
+                                    </p>
+                                    <p class="text-blk person-info">
+                                        Tour Guider
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
+                            <div class="card"
+                                style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
+                                <div class="img-box">
+                                    <img class="person-img" src="assets/img/siraj.jpg" alt="Team Member"
+                                        style="width: 100%; height: auto;">
+                                </div>
+
+
+                                <div class="card-content-box p-3">
+                                    <p class="text-black person-name">
+                                        Siraj
+                                    </p>
+                                    <p class="text-blk person-info">
+                                        Tour Guider
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        <div class="container-fluid mt-5 mb-5">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center mb-4">
-                    <h2 class="section-title">Meet Our Team</h2>
-                    <div class="divider mx-auto mb-4" style="width: 80px; height: 3px; background-color: #007bff;"></div>
-                </div>
-            </div>
-
-            <div class="responsive-container-block team-cards-inner-container justify-content-center">
-                <!-- First Row -->
-                <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container ">
-                    <div class="card"
-                        style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
-                        <div class="img-box">
-                            <img class="person-img" src="assets/img/team1.jpg" alt="Team Member"
-                                style="width: 100%; height: auto;">
-                        </div>
-
-                        <div class="card-content-box p-3">
-                            <p class="text-blk person-name">
-                                Junaideen
-                            </p>
-                            <p class="text-blk person-info">
-                                Director
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
-                    <div class="card"
-                        style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
-                        <div class="img-box">
-                            <img class="person-img" src="assets/img/team2.jpg" alt="Team Member"
-                                style="width: 100%; height: auto;">
-                        </div>
-
-                        <div class="card-content-box p-3">
-                            <p class="text-blk person-name">
-                                Safra
-                            </p>
-                            <p class="text-blk person-info">
-                                Manager Travel Tourism
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Second Row -->
-                <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
-                    <div class="card"
-                        style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
-                        <div class="img-box">
-                            <img class="person-img" src="assets/img/test.jpeg" alt="Team Member"
-                                style="width: 100%; height: auto;">
-                        </div>
-
-                        <div class="card-content-box p-3">
-                            <p class="text-blk person-name">
-                                Shakeer
-                            </p>
-                            <p class="text-blk person-info">
-                                Tour Cordinator
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
-                    <div class="card"
-                        style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
-                        <div class="img-box">
-                            <img class="person-img" src="assets/img/team5.jpg" alt="Team Member"
-                                style="width: 100%; height: auto;">
-                        </div>
-
-                        <div class="card-content-box p-3">
-                            <p class="text-blk person-name">
-                                Rimshad
-                            </p>
-                            <p class="text-blk person-info">
-                                Travel Executive
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
-                    <div class="card"
-                        style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
-                        <div class="img-box">
-                            <img class="person-img" src="assets/img/team6.jpg" alt="Team Member"
-                                style="width: 100%; height: auto;">
-                        </div>
-
-
-                        <div class="card-content-box p-3">
-                            <p class="text-blk person-name">
-                                Shabrin
-                            </p>
-                            <p class="text-blk person-info">
-                                Tour Guider
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container">
-                    <div class="card"
-                        style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
-                        <div class="img-box">
-                            <img class="person-img" src="assets/img/team3.jpg" alt="Team Member"
-                                style="width: 100%; height: auto;">
-                        </div>
-
-
-                        <div class="card-content-box p-3">
-                            <p class="text-blk person-name">
-                                Siraj
-                            </p>
-                            <p class="text-blk person-info">
-                                Tour Guider
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-
+    </section>
 
     <section class="testimonials-section py-5">
-        <div class="container-fluid ">
-            <div class="heading white-heading">
-                Testimonial
-            </div>
+        <div class="container-fluid">
+            <div class="heading white-heading text-center mb-4">Testimonial</div>
+
             <div id="testimonial4"
                 class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
                 data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
 
-                <div class="  ">
-                    <div class="row">
-
-
-                        <div class="col-lg-12 col-md-6 ">
-                            <div class="row">
-                                <div class="slider-area testimonial-slider slider-drag-wrap">
-                                    <div class="swiper th-slider "
-                                        data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":3},"992":{"slidesPerView":3}}}'>
-                                        <div class="swiper-wrapper">
-
-                                            <!-- Review 1 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px; ">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">Sarah Johnson</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-google text-danger me-1"></i>
-                                                                    Google</small>
-                                                            </div>
+                <div class="row">
+                    <div class="col-12" style="margin-top: 34px;">
+                        <div class="slider-area testimonial-slider slider-drag-wrap">
+                            <div class="swiper th-slider"
+                                data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
+                                <div class="swiper-wrapper">
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class="swiper-slide">
+                                            <div class="testimonial-card card h-100">
+                                                <div class="card-body" style="height: 240px;">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
+                                                            class="avatar rounded-circle me-3"
+                                                            alt="{{ $testimonial->name }}" style="height: 48px;">
+                                                        <div>
+                                                            <h6 class="mb-0">{{ $testimonial->name }}</h6>
+                                                            <small class="text-muted">
+                                                                <i
+                                                                    class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
+                                                                {{ $testimonial->source }}
+                                                            </small>
                                                         </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i>
-                                                        </div>
-                                                        <p class="review-text">"Exceptional service! The team went above
-                                                            and
-                                                            beyond to ensure our satisfaction."</p>
-                                                        <small class="text-muted">Posted on: Jan 15, 2024</small>
                                                     </div>
+                                                    <div class="stars mb-3">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i
+                                                                class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"></i>
+                                                        @endfor
+                                                    </div>
+                                                    <p class="review-text">"{{ $testimonial->message }}"</p>
+                                                    <small class="text-muted">Posted on:
+                                                        {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}</small>
                                                 </div>
                                             </div>
-
-                                            <!-- Review 2 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px;">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">Michael Chen</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-facebook text-primary me-1"></i>
-                                                                    Facebook</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-half"></i>
-                                                        </div>
-                                                        <p class="review-text">"Great experience from start to finish.
-                                                            The
-                                                            attention to detail was impressive."</p>
-                                                        <small class="text-muted">Posted on: Jan 12, 2024</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 3 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px;">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">Emma Wilson</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-twitter text-info me-1"></i>
-                                                                    Twitter</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i>
-                                                        </div>
-                                                        <p class="review-text">"Absolutely fantastic! The team was
-                                                            professional and courteous."</p>
-                                                        <small class="text-muted">Posted on: Jan 10, 2024</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 4 -->
-                                            <div class="swiper-slide">
-                                                <div class="testimonial-card card h-100">
-                                                    <div class="card-body" style="height: 240px; ">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                                                class="avatar rounded-circle me-3" alt="User"
-                                                                style="height: 48px;">
-                                                            <div>
-                                                                <h6 class="mb-0">David Thompson</h6>
-                                                                <small class="text-muted"><i
-                                                                        class="bi bi-google text-danger me-1"></i>
-                                                                    Google</small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stars mb-3">
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i> <i
-                                                                class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star"></i>
-                                                        </div>
-                                                        <p class="review-text">"Very satisfied with the quality of
-                                                            service.
-                                                            The staff was knowledgeable."</p>
-                                                        <small class="text-muted">Posted on: Jan 8, 2024</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
-
-                                        <!-- Pagination -->
-                                        <div class="slider-pagination " style="margin-top: 50px;margin-bottom: -10px;">
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            </div>
 
+                                <!-- Pagination -->
+                                <div class="slider-pagination mt-4"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1756,5 +1755,40 @@
     </section>
 
 
+    <script>
+        function animateCount(el, target) {
+            let current = 0;
+            const speed = 20;
+            const increment = Math.ceil(target / 100);
 
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.textContent = target + (el.dataset.append || '');
+                    clearInterval(counter);
+                } else {
+                    el.textContent = current + (el.dataset.append || '');
+                }
+            }, speed);
+        }
+
+        const counters = document.querySelectorAll('.counter-card strong');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-to'));
+                    if (!el.classList.contains('counted')) {
+                        animateCount(el, target);
+                        el.classList.add('counted');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        counters.forEach(counter => observer.observe(counter));
+    </script>
 @endsection
