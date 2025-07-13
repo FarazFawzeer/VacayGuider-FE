@@ -128,8 +128,8 @@ return redirect()->route('payment.launch');
     
     
    
-    // protected $merchantKey = '5D253C3C5554E7B2';
-    // protected $merchantToken = '4058D13BA2E19E9D102978782B917846';
+    // protected $merchantKey = '';
+    // protected $merchantToken = ';
 
     // public function showCheckout()
     // {

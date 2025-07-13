@@ -1494,7 +1494,7 @@
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
                                     style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
-                                    Let us take you beyond the ordinary
+                                    Where every trip becomes a story worth remembering
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
                                     style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
@@ -1520,7 +1520,7 @@
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
                                     style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
-                                    Your next getaway is just a flight away
+                                    Travel smarter. Travel further. Travel with us.
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
                                     style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">

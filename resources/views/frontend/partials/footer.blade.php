@@ -452,12 +452,12 @@
 
 
                 <!-- Contact Information Section -->
-                <div class="contact-info-section">
+                {{-- <div class="contact-info-section">
                     <div class="contact-details">
-<div class="phone-numbers">
+                        <div class="phone-numbers">
                             <h4 class="contact-title">Phone</h4>
                             <div class="contact-item">
-                                {{-- <i class="fas fa-phone"></i> --}}
+            
                                 <a href="tel:+94114272372">+94 114 272 372</a> | <a href="tel:+94711999444">+94 711 999
                                     444
                             </div>
@@ -468,21 +468,21 @@
                         <div class="email-info">
                             <h4 class="contact-title">Email</h4>
                             <div class="contact-item">
-                                {{-- <i class="fas fa-envelope"></i> --}}
+  
                                 <a href="mailto:info@vacayguider.com">info@vacayguider.com</a>
                             </div>
                         </div>
 
-                        
+
                         <div class="address-info">
                             <h4 class="contact-title">Address</h4>
                             <div class="contact-item">
-                                {{-- <i class="fas fa-map-marker-alt"></i> --}}
+                  
                                 No : 22/14C, Asarappa Road, Negombo, Sri Lanka
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
