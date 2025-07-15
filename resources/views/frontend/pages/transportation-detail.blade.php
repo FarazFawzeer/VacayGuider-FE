@@ -301,7 +301,7 @@
 
     <div class="w-full ">
 
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -684,7 +684,7 @@
                         <div class="pt-6">
                             <button
                                 class="relative w-full group overflow-hidden bg-black text-white font-bold text-xl py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-[1.02] transition-all duration-300 bg-size-200 hover:bg-pos-100"
-                                style="background-size: 200% 100%; background-position: 0% 0%;"
+                                style="background-size: 200% 100%; background-position: 0% 0%;background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);"
                                 onmouseover="this.style.backgroundPosition = '100% 0%'"
                                 onmouseout="this.style.backgroundPosition = '0% 0%'">
                                 <span class="relative z-10 flex items-center justify-center space-x-3">
@@ -906,7 +906,7 @@
 
                             <!-- Submit Button -->
                             <div class="form-group md:col-span-3 text-center pt-4">
-                                <button type="submit" class="btn btn-submit">
+                                <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
                                     Submit Request
                                 </button>
                             </div>

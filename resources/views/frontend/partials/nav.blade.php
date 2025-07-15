@@ -346,7 +346,7 @@
     }
 
     .support-badge {
-        background: #94d106;
+        background: #94c73e;
         /* Soft green background */
        
         border-radius: 20px;

@@ -7,9 +7,10 @@
 
     <style>
         .testimonials-section {
-  background-color: var(--secondary);
-  background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
-}
+            background-color: var(--secondary);
+            background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
+        }
+
         .modal-content {
             border: none;
             border-radius: 20px;
@@ -269,7 +270,7 @@
 
         .post-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -381,25 +382,25 @@
         }
 
         /* .share-btn {
-                                            background: linear-gradient(45deg, #3498db, #028ccc);
-                                            color: white;
-                                        }
+                                                        background: linear-gradient(45deg, #3498db, #028ccc);
+                                                        color: white;
+                                                    }
 
-                                        .share-btn:hover {
-                                            transform: translateY(-2px);
-                                            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                        }
+                                                    .share-btn:hover {
+                                                        transform: translateY(-2px);
+                                                        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                                    }
 
-                                        .view-btn {
-                                            background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                            background-color: #94d106;
-                                            color: white;
-                                        }
+                                                    .view-btn {
+                                                        background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                                        background-color: #94d106;
+                                                        color: white;
+                                                    }
 
-                                        .view-btn:hover {
-                                            transform: translateY(-2px);
-                                            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                        } */
+                                                    .view-btn:hover {
+                                                        transform: translateY(-2px);
+                                                        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                                    } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -563,7 +564,7 @@
         /* Grid Layout */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            /* grid-template-columns: repeat(2, 1fr); */
             gap: 32px;
             position: relative;
             z-index: 1;
@@ -571,7 +572,7 @@
 
         @media (max-width: 768px) {
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                /* grid-template-columns: 1fr; */
                 gap: 24px;
             }
         }
@@ -1223,7 +1224,7 @@
 
 
     <div class="w-full ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -1267,7 +1268,7 @@
 
 
     <section class="overflow-hidden space " style="padding-top: 40px;padding-bottom: 40px; ">
-        <div class="container">
+        <div class="container-fluid">
 
 
             <div class="title-area text-center mb-5" style="margin-top: -40px;">
@@ -1283,42 +1284,74 @@
 
             </div>
 
-            <div class="posts-grid" id="postsGrid" style="margin-top: -20px;">
-                @foreach ($blogPosts as $index => $post)
-                    <article class="post-card {{ $index >= 6 ? 'd-none extra-post' : '' }}" data-bs-toggle="modal"
-                        data-bs-target="#postModal" data-title="{{ $post->title }}"
-                        data-description="{{ $post->description }}" data-date="{{ $post->created_at->format('F j, Y') }}"
-                        data-likes="{{ $post->likes ?? 0 }}" data-comments="{{ $post->comments ?? 0 }}"
-                        data-shares="{{ $post->shares ?? 0 }}" data-images='@json(array_map(fn($img) => asset('storage/' . $img), $post->image_post ?? []))'>
+            <div class="row">
 
-                        @php
-                            $imgArray = is_array($post->image_post) ? $post->image_post : [];
-                            $imgCount = count($imgArray);
-                            $firstImage = !empty($imgArray[0])
-                                ? asset('storage/' . $imgArray[0])
-                                : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop';
-                        @endphp
 
-                        <div class="position-relative">
-                            <img src="{{ $firstImage }}" alt="Post Image" class="post-image">
-
-                            <div class="image-count-badge">
-                                <i class="fas fa-image"></i>
-                                @if ($imgCount > 0)
-                                    {{ $imgCount }}
-                                @endif
+                <div class="col-md-3">
+                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px;">
+                        <form method="GET" action="{{ route('blog') }}" id="blogFilterForm">
+                            <div class="filter-section mb-4">
+                                {{-- <h5 class="filter-heading text-black" style="font-size: 16px">Post Type</h5> --}}
+                                <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
+                                    @foreach ($blogTypes as $index => $type)
+                                        <div class="form-check mb-2 d-flex align-items-center">
+                                            <input class="form-check-input text-black" type="checkbox" name="blog_type[]"
+                                                value="{{ $type }}" id="blog_type_{{ $index }}"
+                                                {{ is_array($blogTypeFilter) && in_array($type, $blogTypeFilter) ? 'checked' : '' }}
+                                                style="font-size: 14px;">
+                                            <label class="form-check-label ms-2 text-black"
+                                                for="blog_type_{{ $index }}" style="font-size: 14px;">
+                                                {{ ucfirst($type) }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
 
-                        <div class="post-content text-center">
-                            <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
 
-            <div class="load-more">
-                <button id="togglePostsBtn" class="load-more-btn" onclick="togglePosts()">Load More Posts</button>
+
+                <div class="posts-grid col-md-9 " id="postsGrid" style="margin-top: -20px;border-radius: 15px;">
+                    @foreach ($blogPosts as $index => $post)
+                        <article class="post-card {{ $index >= 6 ? 'd-none extra-post' : '' }}" data-bs-toggle="modal"
+                            data-bs-target="#postModal" data-title="{{ $post->title }}"
+                            data-description="{{ $post->description }}"
+                            data-date="{{ $post->created_at->format('F j, Y') }}" data-likes="{{ $post->likes ?? 0 }}"
+                            data-comments="{{ $post->comments ?? 0 }}" data-shares="{{ $post->shares ?? 0 }}"
+                            data-images='@json(array_map(fn($img) => asset('storage/' . $img), $post->image_post ?? []))'>
+
+                            @php
+                                $imgArray = is_array($post->image_post) ? $post->image_post : [];
+                                $imgCount = count($imgArray);
+                                $firstImage = !empty($imgArray[0])
+                                    ? asset('storage/' . $imgArray[0])
+                                    : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop';
+                            @endphp
+
+                            <div class="position-relative">
+                                <img src="{{ $firstImage }}" alt="Post Image" class="post-image">
+
+                                <div class="image-count-badge">
+                                    <i class="fas fa-image"></i>
+                                    @if ($imgCount > 0)
+                                        {{ $imgCount }}
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="post-content text-center">
+                                <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+
+                <div class="load-more">
+                    <button id="togglePostsBtn" class="load-more-btn" onclick="togglePosts()" style="   background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Load More Posts</button>
+                </div>
+
             </div>
         </div>
 
@@ -1358,11 +1391,11 @@
                         <div class="col-md-6 content-section px-4">
                             <h3 class="modal-title" id="modalTitle"></h3>
 
-                       
+
 
                             <p class="modal-description" id="modalDescription"></p>
 
-                             <div class="posted-date my-2" id="postedDate">
+                            <div class="posted-date my-2" id="postedDate">
                                 <i class="fas fa-calendar-alt me-1"></i>
                                 <span id="modalDate">Posted on --</span>
                             </div>
@@ -1376,7 +1409,7 @@
     <section class="overflow-hidden space "
         style="padding-top: 40px;padding-bottom: 40px;background-color: #F5F5F5 !important;">
 
-        <div class="container py-4">
+        <div class="container-fluid py-4">
             {{-- <h1 class="page-title" style="color: #113d48;"> What our client Says</h1> --}}
 
             <div class="title-area text-center " style="">
@@ -1390,13 +1423,13 @@
 
                 <!-- Sidebar filter -->
                 <div class="col-md-3">
-                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px;">
+                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa;border-radius: 15px;">
                         <form method="GET" action="{{ route('blog') }}" id="filterForm">
 
                             <div class="filter-section mb-4">
-                                <h5 class="filter-heading text-black" style="font-size: 16px">
+                                {{-- <h5 class="filter-heading text-black" style="font-size: 16px">
                                     Source
-                                </h5>
+                                </h5> --}}
                                 <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
                                     {{-- "All Sources" option --}}
                                     <div class="form-check mb-2 d-flex align-items-center">
@@ -1433,8 +1466,10 @@
 
                 <div class="col-md-9 " id="filteredResults">
                     <div class="testimonials-container">
-                        <div class="testimonials-grid">
+                        <div class="testimonials-grid" style="">
+                            <div class="row">
                             @forelse ($testimonials as $testimonial)
+                            <div class="col-md-4 mb-4">
                                 <div class="testimonial-wrapper">
                                     <div class="testimonial-card">
                                         <!-- Decorative elements -->
@@ -1517,6 +1552,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             @empty
                                 <div class="empty-state">
                                     <div class="empty-illustration">
@@ -1541,6 +1577,7 @@
                                     </div>
                                 </div>
                             @endforelse
+                        </div>
                         </div>
 
                         <!-- Premium pagination -->
@@ -1689,6 +1726,16 @@
             document.querySelectorAll('input[name="source[]"]').forEach(checkbox => {
                 checkbox.addEventListener('change', () => {
                     document.getElementById('filterForm').submit();
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[name="blog_type[]"]').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    document.getElementById('blogFilterForm').submit();
                 });
             });
         });

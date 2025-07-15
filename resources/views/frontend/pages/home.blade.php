@@ -370,7 +370,7 @@
         }
 
         .custom-btn {
-            background: linear-gradient(45deg, #000000, #000000);
+            background: linear-gradient(45deg, #94c73e, #94c73e);
 
             /* Smooth gradient */
             color: #fff;
@@ -1776,7 +1776,7 @@
                                                 <a href="{{ route('tour.details', $inboundPackage->id) }}"
                                                     class="tour-box-link" style="text-decoration: none; color: inherit;">
                                                     <div class="tour-box style2 th-ani shadow"
-                                                        style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
+                                                        style="cursor: pointer; transition: transform 0.3s ease; border-radius: 0px; overflow: hidden; min-height: 320px; position: relative;border-radius: 10px;">
 
                                                         @php
                                                             $imagePath = $inboundPackage->picture
@@ -1792,7 +1792,7 @@
                                                         <div class="tour-box_img global-img" style="position: relative;">
                                                             <img src="{{ $imageUrl }}"
                                                                 alt="{{ $inboundPackage->place }}"
-                                                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                                                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 0px;">
                                                         </div>
 
                                                         <!-- Content Section -->
@@ -1857,7 +1857,7 @@
 
             <div class="text-center ">
                 <a href="{{ url('/inbound-tours') }}" class="th-btn "
-                    style="outline: 2px solid #000; background-color: black; color: white; margin-top: 40px;">
+                    style=" background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); color: white; margin-top: 40px;">
                     Show More
                 </a>
             </div>
@@ -1996,7 +1996,7 @@
             <!-- Centered Show More Button -->
             <div class="text-center mt-5">
                 <a href="{{ url('/transportation') }}" class="th-btn"
-                    style="outline: 2px solid #000; background-color: black; color: white;">
+                    style=" background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); color: white;">
                     Show More
                 </a>
             </div>
@@ -2193,7 +2193,7 @@
 
             <div class="text-center  " style="margin-top:40px;">
                 <a href="{{ url('/rent') }}" class="th-btn"
-                    style="outline: 2px solid #000; background-color: black; color: white;">
+                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);  color: white;">
                     Show More
                 </a>
             </div>
@@ -2357,7 +2357,7 @@
                                     <a href="">
                                         <img class="original" src="assets/img/airline/Malaysia Airlines.png"
                                             alt="Brand Logo">
-                                        <img class="gray" src="assets/img/airline/Malaysia Airliness.png"
+                                        <img class="gray" src="assets/img/airline/Malaysia Airlines.png"
                                             alt="Brand Logo">
                                     </a>
                                 </div>

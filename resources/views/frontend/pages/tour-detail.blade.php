@@ -410,7 +410,7 @@
 
 
     <div class="w-full">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -467,7 +467,7 @@
 
 
     <!-- Blog Start -->
-    <div class="container py-5" style="margin-top: -20px;">
+    <div class="container-fluid py-5" style="margin-top: -20px;">
 
         <div class="row ">
             <div class="col-lg-8 ">

@@ -5,6 +5,9 @@
 @section('content')
 
     <style>
+        .service-card{
+            background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%);
+        }
         .map-section {
             /* background-color: var(--secondary); */
             /* background:  url('/assets/img/map-bg-3.jpg'); */
@@ -263,9 +266,9 @@
         }
 
         .pagination .page-item.active .page-link {
-            background-color: black;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
-            border-color: black;
+            border-color:  linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
         }
 
         .pagination .page-link {
@@ -305,9 +308,8 @@
 
     <section id="transportation" class="py-12  from-blue-50 to-green-50 map-section">
 
-        <div class="w-full " style="margin-top: -39px;
-  padding-bottom: 50px;">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="w-full " style="margin-top: -39px; padding-bottom: 50px;">
+            <div class="mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="py-3">
                     <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                         <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -362,6 +364,12 @@
                         We deliver comfort every
                         mile</h2>
                 </div>
+
+                <p class="text-center " style="margin-top: -40px;margin-bottom: 50px; color:#000; ">
+                    Enjoy professional and reliable transportation services from Bandaranaike International
+                    Airport to any destination across Sri Lanka — and from anywhere on the island back to the
+                    airport. Punctual, comfortable, and tailored to your travel needs.
+                </p>
             </div>
 
 
@@ -372,85 +380,95 @@
                     <!-- Service Type 1: Airport Transfers -->
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
-                        <div class="flex items-start">
-                            <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">Airport Transfers</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        From/to International Airport
-                                    </li>
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Meet service with flight tracking
-                                    </li>
-                                </ul>
-                            </div>
+
+                        <!-- Centered Icon + Heading -->
+                        <div class="flex justify-center items-center ">
+                            <!-- Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                                style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+
+                            <!-- Heading -->
+                            <h4 class="font-bold text-lg text-gray-800 leading-none">Airport Transfers</h4>
                         </div>
+
+                        <!-- Description List (aligned left) -->
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                From/to Bandaranaike International Airport
+                            </li>
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Meet & Greet service with flight tracking
+                            </li>
+                        </ul>
+
                     </div>
+
 
                     <!-- Service Type 2: Island-Wide Transfers -->
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
-                        <div class="flex items-start">
-                            <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">Island-Wide Transfers</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Point-to-point travel anywhere
-                                    </li>
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        24/7 availability
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- Centered Icon + Heading -->
+                        <div class="flex justify-center items-center mb-3">
+                            <!-- Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                                style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+
+                            <!-- Heading -->
+                            <h4 class="font-bold text-lg text-gray-800 leading-none">Island-Wide Transfers</h4>
                         </div>
+
+                        <!-- Description List -->
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Point-to-point travel anywhere in Sri Lanka
+                            </li>
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                24/7 availability
+                            </li>
+                        </ul>
                     </div>
 
                     <!-- Service Type 3: City Tours & Day Trips -->
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
-                        <div class="flex items-start">
-                            <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">City Tours & Day Trips</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Customizable sightseeing tours
-                                    </li>
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Half-day and full-day options
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- Centered Icon + Heading -->
+                        <div class="flex justify-center items-center mb-3">
+                            <!-- Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                                style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+
+                            <!-- Heading -->
+                            <h4 class="font-bold text-lg text-gray-800 leading-none">City Tours & Day Trips</h4>
                         </div>
+
+                        <!-- Description List -->
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Customizable sightseeing tours in cities like Colombo, Kandy, Galle, etc.
+                            </li>
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Half-day and full-day options
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
 
                 <!-- Center Map Section -->
@@ -466,83 +484,76 @@
                     <!-- Service Type 4: Hotel Transfers -->
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
-                        <div class="flex items-start">
-                            <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">Hotel Transfers</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Reliable pickup/drop-off to hotels
-                                    </li>
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Luggage assistance and coordination
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- Centered Icon + Heading -->
+                        <div class="flex justify-center items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                                style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <h4 class="font-bold text-lg text-gray-800 leading-none">Hotel Transfers</h4>
                         </div>
+
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Reliable pickup/drop-off to and from hotels and resorts
+                            </li>
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Luggage assistance and coordination
+                            </li>
+                        </ul>
                     </div>
 
-                    <!-- Service Type 5: Hourly/Distance-Based Rentals -->
+                    <!-- Service Type 5: Hourly/Distance Rentals -->
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
-                        <div class="flex items-start">
-                            <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">Hourly/Distance Rentals</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Vehicles by hour or kilometer
-                                    </li>
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        Ideal for meetings and events
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="flex justify-center items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                                style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h4 class="font-bold text-lg text-gray-800 leading-none">Hourly/Distance Rentals</h4>
                         </div>
+
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Vehicles available by the hour or kilometer
+                            </li>
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                Ideal for meetings, events, or flexible travel plans
+                            </li>
+                        </ul>
                     </div>
 
-                    <!-- Additional Features -->
+                    <!-- Service Type 6: Premium Features -->
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
-                        <div class="flex items-start">
-                            <div class="icon-container p-3 rounded-2xl mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">Premium Features</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        GPS tracking and live updates
-                                    </li>
-                                    <li class="text-gray-600 leading-relaxed flex items-center">
-                                        <span class="w-2 h-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
-                                        English-speaking drivers
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="flex justify-center items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                                style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                            <h4 class="font-bold text-lg text-gray-800 leading-none">Premium Features</h4>
                         </div>
+
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                GPS tracking and live updates
+                            </li>
+                            <li class="flex items-start text-gray-600 leading-relaxed">
+                                <span class="w-2 h-2 mt-2 bg-black rounded-full mr-2 flex-shrink-0"></span>
+                                English-speaking drivers
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -672,7 +683,51 @@
                 </div>
             </div>
     </section>
+    <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
 
+        <!-- 🔁 How It Works -->
+        <div class="text-center " style="margin-bottom: 70px;">
+            <h2 class="sec-title" style="font-weight: bold;">How It Works</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+
+                    <!-- Step 1 -->
+                    <div class="rounded-2xl shadow-md p-6 transition hover:shadow-lg"
+                        style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                        <div class="text-black-700 font-bold text-lg mb-2">1. Submit Your Request</div>
+                        <p class="text-gray-600 text-base">Reach out to our local representative via WhatsApp or email.
+                            Simply share your travel dates
+                            and preferences, and we’ll handle the rest
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
+                        style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                        <div class="text-black-700 font-bold text-lg mb-2">2. Get a Quote</div>
+                        <p class="text-gray-600 text-base">We’ll send you a personalized travel package and price tailored
+                            to your needs — sent to you
+                            as quickly as possible.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
+                        style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                        <div class="text-black-700 font-bold text-lg mb-2">3. Confirm & Travel</div>
+                        <p class="text-gray-600 text-base">Once you confirm, we take care of every detail — so you can sit
+                            back, relax, and enjoy a
+                            worry-free journey.</p>
+                    </div>
+
+                </div>
+        </div>
+
+
+
+
+
+
+    </section>
 
     <section id="transportation" class="py-5 bg-white">
         <div class="container mx-auto">

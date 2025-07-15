@@ -50,7 +50,7 @@
         .contact-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #000000, #000000);
+            background: linear-gradient(45deg, #94c73e, #94c73e);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -172,6 +172,13 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
+        .contact-item i {
+  color: #000000 !important;
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+}
 
         .social-section {
             text-align: center;
@@ -420,7 +427,7 @@
 
 
     <div class="w-full ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -481,18 +488,20 @@
                             style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                             Sart your conversation </h2>
                     </div>
-                    <p class="mb-4 text-center" >We’d love to hear from you. Whether you have questions regarding our
-                        services, pricing
-                        or else our dedicated team is ready to provide prompt and professional assistance at
-                        every stage of your journey.</p>
-
-                         <p class="mb-4  text-center">
+                    <p class="mb-4  text-center">
                         Got a question or planning a trip?
                         Fill out the form and our team will get back to you soon. We’re here to help with inquiries,
                         feedback, or travel plans — let’s make your journey amazing!
                     </p>
 
-                    <div class="social-section" style="margin-top: 50px;" >
+
+                    <p class="mb-4 text-center">We’d love to hear from you. Whether you have questions regarding our
+                        services, pricing
+                        or else our dedicated team is ready to provide prompt and professional assistance at
+                        every stage of your journey.</p>
+
+
+                    <div class="social-section" style="margin-top: 50px;">
                         <div class="th-social">
                             <a href="https://web.facebook.com/profile.php?id=61550739082103" class="facebook"><i
                                     class="fab fa-facebook-f"></i></a>
@@ -510,82 +519,6 @@
                     </div>
 
 
-                    <div class="row justify-content-center" style="margin-top: 40px;">
-                        <div class="col-lg-10">
-                            <div class="contact-card">
-                                <div class="row g-4">
-                                    <!-- Visit Our Office -->
-                                    <div class="col-md-4  d-flex">
-                                        <div class="contact-item animate-fade-in w-100" style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="contact-icon">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                </div>
-                                                <div class="contact-content">
-                                                    <h6>Visit Our Office</h6>
-                                                    <p>22/14C, Asarappa Road, Negombo, Sri Lanka</p>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Email Us -->
-                                    <div class="col-md-4 d-flex">
-                                        <div class="contact-item animate-fade-in w-100" style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="contact-icon">
-                                                    <i class="fas fa-envelope"></i>
-                                                </div>
-                                                <div class="contact-content">
-                                                    <h6>Email Us</h6>
-                                                    <p><a href="mailto:info@vacayguider.co" style="color: #6c757d;">info@vacayguider.com</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Call Us -->
-                                    <div class="col-md-4 d-flex">
-                                        <div class="contact-item animate-fade-in w-100" style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="contact-icon">
-                                                    <i class="fas fa-phone-alt"></i>
-                                                </div>
-                                                <div class="contact-content"  style="color: #6c757d;">
-                                                    <h6>Call Us</h6>
-                                                    <p><a href="tel:+94114272372" style="color: #6c757d;">+94 114 272 372</a></p>
-                                                    <p><a href="tel:+94711999444" style="color: #6c757d;">+94 711 999 444</a></p>
-                                                    <p><a href="tel:+94777035325" style="color: #6c757d;">+94 777 035 325</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- .row -->
-                            </div> <!-- .contact-card -->
-                        </div>
-                    </div>
 
                 </div>
 
@@ -655,9 +588,9 @@
                                         <option value="" disabled selected>Select a service</option>
                                         <option value="Inbound tours">Inbound tours</option>
                                         {{-- <option value="Outbound tours">Outbound tours</option> --}}
-                                                <option value="Rent Vehicles">Rent Vehicles</option>
+                                        <option value="Rent Vehicles">Rent Vehicles</option>
                                         <option value="Transportations">Transportations</option>
-                                
+
                                         <option value="Air tickets">Air tickets</option>
                                         <option value="Other">Other</option>
                                     </select>
@@ -673,8 +606,7 @@
 
                                 <!-- Submit Button -->
                                 <div class="form-group md:col-span-2 text-center pt-4">
-                                    <button type="submit"
-                                       class="btn btn-submit">
+                                    <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); ">
                                         Send Message
                                     </button>
                                 </div>
@@ -685,6 +617,93 @@
 
 
                 </div>
+
+
+                
+                    <div class="row justify-content-center" style="margin-top: 40px;">
+                        <div class="col-lg-10">
+                            <div class="contact-card">
+                                <div class="row g-4">
+                                    <!-- Visit Our Office -->
+                                    <div class="col-md-4  d-flex">
+                                        <div class="contact-item animate-fade-in w-100"
+                                            style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;">
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon" >
+                                                    <i class="fas fa-map-marker-alt" style=""></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Visit Our Office</h6>
+                                                    <p>22/14C, Asarappa Road, Negombo, Sri Lanka</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email Us -->
+                                    <div class="col-md-4 d-flex">
+                                        <div class="contact-item animate-fade-in w-100"
+                                            style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;">
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Email Us</h6>
+                                                    <p><a href="mailto:info@vacayguider.co"
+                                                            style="color: #6c757d;">info@vacayguider.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Call Us -->
+                                    <div class="col-md-4 d-flex">
+                                        <div class="contact-item animate-fade-in w-100"
+                                            style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;">
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                </div>
+                                                <div class="contact-content" style="color: #6c757d;">
+                                                    <h6>Call Us</h6>
+                                                    <p><a href="tel:+94114272372" style="color: #6c757d;">+94 114 272
+                                                            372</a></p>
+                                                    <p><a href="tel:+94711999444" style="color: #6c757d;">+94 711 999
+                                                            444</a></p>
+                                                    <p><a href="tel:+94777035325" style="color: #6c757d;">+94 777 035
+                                                            325</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- .row -->
+                            </div> <!-- .contact-card -->
+                        </div>
+                    </div>
+
 
                 <!-- Map -->
                 <div class="col-12 wow fadeInUp" data-wow-delay="0.6s">

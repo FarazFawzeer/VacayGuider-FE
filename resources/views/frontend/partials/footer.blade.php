@@ -217,6 +217,8 @@
         }
 
         .payment-logos {
+            text-align: center;
+            justify-content: center;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -224,7 +226,7 @@
         }
 
         .payment-logo {
-            background: white;
+          
             padding: 5px 10px;
             border-radius: 4px;
             display: flex;
@@ -236,7 +238,7 @@
 
         .payment-logo img {
             max-width: 100%;
-            max-height: 20px;
+            max-height: 90px;
             width: auto;
         }
 
@@ -483,6 +485,26 @@
                         </div>
                     </div>
                 </div> --}}
+
+                <div class="payment-logos d-flex align-items-center gap-3">
+                    <div class="payment-logo">
+                        <img src="{{ asset('assets/img/payment.png') }}" alt="Visa" style="">
+
+                    </div>
+                    {{-- <div class="payment-logo">
+                        <img src="/images/payments/mastercard.png" alt="MasterCard" style="height: 24px;">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="/images/payments/paypal.png" alt="PayPal" style="height: 24px;">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="/images/payments/amex.png" alt="Amex" style="height: 24px;">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="/images/payments/googlepay.png" alt="Google Pay" style="height: 24px;">
+                    </div> --}}
+                </div>
+
             </div>
         </div>
 
@@ -493,23 +515,7 @@
                     <p class="copyright-text">
                         Copyright 2025 <a href="home-travel.html">VacayGuider</a>. All Rights Reserved.
                     </p>
-                    <div class="payment-logos">
-                        <div class="payment-logo">
-                            <i class="fab fa-cc-visa" style="color: #1a1f71; font-size: 18px;"></i>
-                        </div>
-                        <div class="payment-logo">
-                            <i class="fab fa-cc-mastercard" style="color: #eb001b; font-size: 18px;"></i>
-                        </div>
-                        <div class="payment-logo">
-                            <i class="fab fa-cc-paypal" style="color: #003087; font-size: 18px;"></i>
-                        </div>
-                        <div class="payment-logo">
-                            <i class="fab fa-cc-amex" style="color: #006fcf; font-size: 18px;"></i>
-                        </div>
-                        <div class="payment-logo">
-                            <i class="fab fa-google-pay" style="color: #4285f4; font-size: 18px;"></i>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

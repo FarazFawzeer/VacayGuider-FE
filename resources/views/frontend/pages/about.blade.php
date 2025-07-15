@@ -1163,8 +1163,9 @@
         </div>
     </div> --}}
     <!-- Simple Professional Breadcrumb -->
+    <div>
     <div class="w-full ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">

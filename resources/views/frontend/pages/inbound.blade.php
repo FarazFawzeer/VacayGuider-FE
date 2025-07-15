@@ -115,6 +115,8 @@
             margin-top: 20px;
         }
 
+
+
         .form-group {
             display: flex;
             flex-direction: column;
@@ -379,190 +381,199 @@
 
                 <!-- Sidebar Filter Section - 1/4 width -->
                 <div class="col-md-3">
-                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px; ">
+                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px;">
                         <form id="filterForm">
-                            <!-- Days Filter - Improved with select buttons -->
-                            <!-- Number of Days Filter -->
-                            <!-- Days Range Filter -->
+                            <!-- Tour Category Selection -->
                             <div class="filter-section mb-4">
-                                <h5 class="filter-heading text-black" style="font-size: 16px">
-                                    Number of Days
-                                </h5>
+                                <div class="ps-1">
+                                    @php
+                                        $options = [
+                                            'special' => 'Special',
+                                            'city' => 'City',
+                                            'tailor' => 'Tailor Made',
+                                            'customize' => 'Customize',
+                                        ];
+                                    @endphp
+                                    @foreach ($options as $key => $label)
+                                        <div
+                                            class="form-check mb-2 d-flex align-items-start align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <input class="form-check-input tour-option-radio" type="checkbox"
+                                                    name="tour_category" id="category_{{ $key }}"
+                                                    value="{{ $key }}" {{ $loop->first ? 'checked' : '' }}
+                                                    data-section="{{ $key }}">
+                                                <label class="form-check-label ms-2" for="category_{{ $key }}">
+                                                    {{ $label }}
+                                                </label>
+                                            </div>
 
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span id="durationMinLabel" style="font-size: 14px;">{{ $minDay }} Day</span>
-                                    <span id="durationMaxLabel" style="font-size: 14px;">{{ $maxDay }} Days</span>
-                                </div>
-
-                                <div class="form-group" style="margin-bottom: -6px;color:#000;">
-                                    <input type="range" class="form-range" id="daysRangeSlider" name="days"
-                                        min="{{ $minDay }}" max="{{ $maxDay }}" value="{{ $minDay }}"
-                                        oninput="updateDayLabel(this.value)"
-                                        style="font-size: 14px; color:#000;border: none;" />
-                                </div>
-
-                                <div class="text-center ">
-                                    <small>Selected : <span id="selectedDay">{{ $minDay }}</span> Days</small>
-                                </div>
-                            </div>
-
-
-                            <div class="filter-section mb-4">
-                                <h5 class="filter-heading text-black" style="font-size: 16px">
-                                    </i>Theme
-                                </h5>
-                                <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
-                                    @foreach ($allThemes as $theme)
-                                        <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input text-black" name="theme[]"
-                                                value="{{ $theme }}" type="checkbox" id="theme_{{ $loop->index }}"
-                                                style="font-size: 14px; ">
-                                            <label class="form-check-label ms-2" for="theme_{{ $loop->index }}">
-                                                {{ ucfirst($theme) }}
-                                            </label>
+                                            @if ($key === 'tailor')
+                                                <span class="tailor-arrow" style="font-size: 16px;">&#9656;</span>
+                                                {{-- ▶ --}}
+                                            @endif
                                         </div>
+
+                                        @if ($key === 'tailor')
+                                            <!-- Tailor Made Sub-Filters (indented under Tailor) -->
+                                            <div id="tailor-section"
+                                                class="filter-section-content d-none ms-4 mt-2 border-start ps-3">
+                                                <!-- Days Filter -->
+                                                <div class="filter-section mb-3">
+                                                    <h6 class="text-black" style="font-size: 14px;">Number of Days</h6>
+                                                    <div class="d-flex justify-content-between mb-2">
+                                                        <span id="durationMinLabel"
+                                                            style="font-size: 13px;">{{ $minDay }} Day</span>
+                                                        <span id="durationMaxLabel"
+                                                            style="font-size: 13px;">{{ $maxDay }} Days</span>
+                                                    </div>
+                                                    <input type="range" class="form-range" id="daysRangeSlider"
+                                                        name="days" min="{{ $minDay }}" max="{{ $maxDay }}"
+                                                        value="" />
+                                                    <div class="text-center">
+                                                        <small>Selected: <span id="selectedDay">Not selected</span>
+                                                            Days</small>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Themes Filter -->
+                                                <div class="filter-section mb-2">
+                                                    <h6 class="text-black" style="font-size: 14px;">Theme</h6>
+                                                    <div class="ps-2">
+                                                        @foreach ($allThemes as $theme)
+                                                            <div class="form-check mb-2 d-flex align-items-center">
+                                                                <input class="form-check-input" name="theme[]"
+                                                                    value="{{ $theme }}" type="checkbox"
+                                                                    id="theme_{{ $loop->index }}">
+                                                                <label class="form-check-label ms-2"
+                                                                    for="theme_{{ $loop->index }}">
+                                                                    {{ ucfirst($theme) }}
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
 
-                            <!-- Type of Tours Filter -->
-                            <div class="filter-section mb-4">
-                                <h5 class="filter-heading text-black" style="font-size: 16px;">
-                                    </i>Tour Type
-                                </h5>
-                                <div class="ps-2">
-                                    @foreach ($allTypes as $type)
-                                        <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input" name="type[]" value="{{ $type }}"
-                                                type="checkbox" id="type_{{ $loop->index }}">
-                                            <label class="form-check-label ms-2" for="type_{{ $loop->index }}">
-                                                {{ ucfirst($type) }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
+
                         </form>
+
                     </div>
                 </div>
 
+
                 <!-- Tour Cards Section - 3/4 width -->
                 <div class="col-md-9" id="filteredResults">
-                    {{-- <div class="row">
+                    <div id="all-tours">
+                        {{-- Show all three on page load --}}
 
-
-                        @foreach ($packages as $package)
-                            <div class="col-md-4 mb-4">
-                                <a href="{{ route('tour.details', $package->id) }}" class="tour-box-link"
-                                    style="text-decoration: none; color: inherit;">
-                                    <div class="tour-box style2 th-ani"
-                                        style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
-
-                                        @php
-                                            $imagePath = $package->picture ? 'storage/' . $package->picture : null;
-                                            $fallbackImage = asset('assets/img/tour/yala.jpg'); // Your dummy tour image
-                                            $imageUrl =
-                                                $imagePath && file_exists(public_path($imagePath))
-                                                    ? asset($imagePath)
-                                                    : $fallbackImage;
-                                        @endphp
-                                        <!-- Image Section -->
-                                        <div class="tour-box_img global-img" style="position: relative;">
-                                            <img src="{{ $imageUrl }}" alt="{{ $package->place ?? 'Tour Image' }}"
-                                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
-                                        </div>
-                                        <!-- Content Section -->
-                                        <div class="tour-content" style="padding: 15px;">
-                                            <div class="tour-header d-flex align-items-center justify-content-between"
-                                                style="margin-top: -12px; margin-bottom: -8px;">
-                                                <p class="tour-country m-0 d-flex align-items-center">
-                                                    Sri Lanka
-                                                </p>
-                                                <div class="tour-rating d-flex align-items-center"
-                                                    style="margin-top: 13px;">
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <span class="ms-1"
-                                                        style="font-weight: 600; font-size: 14px; color: #333;">{{ $package->ratings }}</span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Title -->
-                                            <h3 class="box-title mt-2"
-                                                style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
-                                                {{ $package->heading }}
-                                            </h3>
-
-                                            <!-- Small Description -->
-                                            <p class="text-muted small mt-1 mb-1"
-                                                style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                                {{ Str::limit($package->description, 90) }}
-                                            </p>
-
-                                            <a href="{{ route('tour.details', $package->id) }}" class="text-primary small"
-                                                style="font-weight: 500;">View More</a>
-                                        </div>
-
-                                        <!-- Tour Info (Example: Days/Nights from summaries) -->
-                                        <div class="d-flex align-items-right"
-                                            style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
-                                            <i class="fas fa-calendar-check text-danger me-2"></i>
-                                            <span class="text-dark fw-semibold">
-                                                {{ $package->days }} Days,
-                                                {{ $package->nights }} Nights
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-
-
-                        <!-- Pagination -->
-                        <div class="row justify-content-center mt-4">
-                            <div class="col-auto">
-                                {{ $packages->links() }}
-                            </div>
-                        </div>
-
-                    </div> --}}
-
-                    <div class="row">
                         <!-- Special Tours -->
                         <h1 class="page-title text-start ml-2"
                             style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
                             Special Tours</h1>
-
-                        @forelse ($specialTours as $package)
-                            @include('frontend.components.tour-cards', ['package' => $package])
-                        @empty
-                            <div class="col-12 text-center">No special tours found.</div>
-                        @endforelse
-
-                        <!-- Special Tours Pagination -->
-                        <div class="row justify-content-center my-4">
-                            <div class="col-auto">
-                                {{ $specialTours->appends(request()->except('special_page'))->links() }}
-                            </div>
+                        <div class="row">
+                            @forelse ($specialTours as $package)
+                                @include('frontend.components.tour-cards', ['package' => $package])
+                            @empty
+                                <div class="col-12 text-center">No special tours found.</div>
+                            @endforelse
+                        </div>
+                        <!-- City Tours -->
+                        <h1 class="page-title text-start ml-2"
+                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;margin-top: 45px;">
+                            City Tours</h1>
+                        <div class="row">
+                            @forelse ($cityTours as $package)
+                                @include('frontend.components.tour-cards', ['package' => $package])
+                            @empty
+                                <div class="col-12 text-center">No city tours found.</div>
+                            @endforelse
                         </div>
 
-                        <!-- Day Tours -->
-
+                        <!-- Tailor Made Tours -->
                         <h1 class="page-title text-start ml-2"
-                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
-                            Day Tours</h1>
-                        @forelse ($dayTours as $package)
-                            @include('frontend.components.tour-cards', ['package' => $package])
-                        @empty
-                            <div class="col-12 text-center">No day tours found.</div>
-                        @endforelse
-
-                        <!-- Day Tours Pagination -->
-                        <div class="row justify-content-center my-4">
-                            <div class="col-auto">
-                                {{ $dayTours->appends(request()->except('day_page'))->links() }}
-                            </div>
+                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;margin-top: 45px;">
+                            Tailor Made Tours</h1>
+                        <div class="row">
+                            @forelse ($tailorTours as $package)
+                                @include('frontend.components.tour-cards', ['package' => $package])
+                            @empty
+                                <div class="col-12 text-center">No tailor-made tours found.</div>
+                            @endforelse
                         </div>
                     </div>
+
+                    <!-- Filtered Section (used when user clicks Special, City, Tailor) -->
+                    <div id="single-tour-section" class="d-none">
+                        <h1 class="page-title text-start ml-2" id="selectedTourTitle"
+                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
+                        </h1>
+                        <div id="tourPackageList"></div>
+                    </div>
+
+
+
+                    <!-- Customize Tour Form -->
+                    <div id="customize-tour-form" class="d-none">
+                        <div class="card p-4 shadow">
+                            <h3 class="mb-3"
+                                style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
+                                Customize Your Tour</h3>
+                            <form id="customizeForm" style="margin-top: 30px;">
+                                <!-- Row 1: Name + Email -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="custom_name" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" id="custom_name" name="custom_name"
+                                            placeholder="Ex: John" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="custom_email" class="form-label">Your Email</label>
+                                        <input type="email" class="form-control" id="custom_email" name="custom_email"
+                                            placeholder="Ex: john@gmail.com" required>
+                                    </div>
+                                </div>
+
+                                <!-- Row 2: Phone + Dates -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="custom_phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="custom_phone" name="custom_phone"
+                                            placeholder="Ex: 0xxxxxxxxx" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="custom_dates" class="form-label">Preferred Travel Dates</label>
+                                        <input type="text" class="form-control" id="custom_dates" name="custom_dates"
+                                            placeholder="e.g., 12th Dec to 18th Dec">
+                                    </div>
+                                </div>
+
+                                <!-- Row 3: Travelers + empty (optional future use) -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="custom_travelers" class="form-label">Number of Travelers</label>
+                                        <input type="number" class="form-control" id="custom_travelers"
+                                            name="custom_travelers" min="1" placeholder="e.g., 2 Adults, 1 Child">
+                                    </div>
+                                    <div class="col-md-6 mb-3"></div>
+                                </div>
+
+                                <!-- Message (Full Row) -->
+                                <div class="mb-3">
+                                    <label for="custom_message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="custom_message" name="custom_message" rows="4"
+                                        placeholder="Describe your tour..."></textarea>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -838,7 +849,7 @@
 
                             <!-- Button -->
                             <div class="form-group md:col-span-3 text-center pt-4">
-                                <button type="submit" class="btn btn-submit">
+                                <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
                                     Submit Request
                                 </button>
                             </div>
@@ -960,9 +971,9 @@
 
         /*
 
-                                                            .space, .space-top {
-                                                              padding-top: 20px;
-                                                            } */
+                                                                                                                    .space, .space-top {
+                                                                                                                      padding-top: 20px;
+                                                                                                                    } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1498,38 +1509,57 @@
 
         }
     </style>
+    <style>
+        .tour-option-box {
+            display: inline-block;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, color 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
 
+        .tour-option-radio {
+            display: none;
+        }
+
+        .tour-option-radio:checked+.tour-option-box {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .tour-option-wrapper {
+            margin-bottom: 10px;
+        }
+    </style>
 
 
 
     <script>
         let daysTouched = false;
 
-        const rangeSlider = document.getElementById('daysRangeSlider');
-        rangeSlider.addEventListener('input', (e) => {
-            updateDayLabel(e.target.value);
-            daysTouched = true;
-        });
+        function updateDayLabel(value) {
+            const label = document.getElementById('selectedDay');
+            label.innerText = value ? value : 'Not selected';
+        }
 
         function fetchFilteredResults() {
             const form = document.getElementById('filterForm');
-            const formData = new FormData(form);
             const params = new URLSearchParams();
 
-            // Tour types
-            form.querySelectorAll('input[name="type[]"]:checked').forEach(input => {
-                params.append('type[]', input.value);
-            });
 
-            // Themes
             form.querySelectorAll('input[name="theme[]"]:checked').forEach(input => {
                 params.append('theme[]', input.value);
             });
 
-            // Only append 'days' if user interacted
+            // ✅ Only include days if user touched the slider
             if (daysTouched) {
                 const days = form.querySelector('input[name="days"]');
-                if (days) {
+                if (days && days.value) {
                     params.append('days', days.value);
                 }
             }
@@ -1541,41 +1571,137 @@
                 })
                 .then(res => res.text())
                 .then(data => {
-                    document.getElementById('filteredResults').innerHTML = data;
+                    document.getElementById('tourPackageList').innerHTML = data;
                 });
         }
 
-        // Optional: handle range slider label update
-        function updateDayLabel(value) {
-            document.getElementById('selectedDay').innerText = value;
-        }
+        // 🔁 Handle Radio Button Selection
+        document.querySelectorAll('.tour-option-radio').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // ✅ Uncheck all others
+                document.querySelectorAll('.tour-option-radio').forEach(cb => {
+                    if (cb !== this) cb.checked = false;
+                });
 
-        // On page load: reset filters, but DO NOT trigger filter fetch
-        window.addEventListener('DOMContentLoaded', () => {
-            // Clear checkboxes
-            document.querySelectorAll('#filterForm input[type=checkbox]').forEach(checkbox => {
-                checkbox.checked = false;
+                const checkedBox = document.querySelector('.tour-option-radio:checked');
+
+                // Clear all UI sections
+                document.getElementById('all-tours').classList.add('d-none');
+                document.getElementById('single-tour-section').classList.add('d-none');
+                document.getElementById('customize-tour-form').classList.add('d-none');
+                document.getElementById('tailor-section')?.classList.add('d-none');
+                document.getElementById('selectedTourTitle').innerText = '';
+
+                if (!checkedBox) {
+                    // ✅ Nothing is selected - reset UI
+                    document.getElementById('all-tours').classList.remove('d-none');
+                    return;
+                }
+
+                const selected = checkedBox.value;
+
+                if (selected === 'customize') {
+                    document.getElementById('customize-tour-form').classList.remove('d-none');
+                } else {
+                    document.getElementById('single-tour-section').classList.remove('d-none');
+                    const label = document.querySelector(`label[for="category_${selected}"]`);
+                    document.getElementById('selectedTourTitle').innerText = label?.innerText ?? '';
+
+                    if (selected === 'tailor') {
+                        document.getElementById('tailor-section')?.classList.remove('d-none');
+                    }
+
+                    fetchCategoryTours(selected);
+                }
             });
-
-            // Reset range to minimum and update day label (without fetch call)
-            const rangeSlider = document.getElementById('daysRangeSlider');
-            rangeSlider.value = rangeSlider.min;
-            updateDayLabel(rangeSlider.value); // only update label, no fetch
-
-            // Attach event listener AFTER resetting
-            document.getElementById('filterForm').addEventListener('change', fetchFilteredResults);
         });
 
 
-        setTimeout(() => {
-            const msg = document.getElementById('success-message');
-            if (msg) {
-                msg.classList.add('opacity-0');
-                setTimeout(() => msg.remove(), 500);
-            }
-        }, 5000);
-    </script>
 
+
+        function fetchCategoryTours(category) {
+            fetch("{{ route('tours.by-category', ':category') }}".replace(':category', category), {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('tourPackageList').innerHTML = html;
+                });
+        }
+
+        // 🧹 Reset on page load
+        // 🧹 Reset on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Clear all checkboxes and radio buttons
+            document.querySelectorAll('#filterForm input[type=checkbox]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('#filterForm input[type=radio]').forEach(rb => rb.checked = false);
+
+            // ✅ Don't set range value; show "Not selected"
+            const rangeSlider = document.getElementById('daysRangeSlider');
+            if (rangeSlider) {
+                rangeSlider.value = ""; // <-- IMPORTANT: clear default
+                updateDayLabel(""); // <-- show "Not selected"
+                rangeSlider.addEventListener('input', (e) => {
+                    daysTouched = true;
+                    updateDayLabel(e.target.value);
+                });
+            }
+
+            // Show full list by default
+            document.getElementById('all-tours').classList.remove('d-none');
+
+            // Trigger fetch on form changes
+            document.getElementById('filterForm').addEventListener('change', fetchFilteredResults);
+        });
+
+        document.getElementById('customizeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch("{{ route('custom.tour.store') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json',
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Request Submitted!',
+                            text: 'Your custom tour request has been successfully sent.',
+                            confirmButtonColor: '#3085d6',
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                        form.reset();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops!',
+                            text: 'Something went wrong. Try again.',
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Server Error',
+                        text: 'Please try again later.',
+                    });
+                });
+        });
+    </script>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 @endsection

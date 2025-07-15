@@ -53,6 +53,9 @@ Route::get('/rent-detail', function () {
 Route::get('/inbound-tours', [TourPackageController::class, 'index'])->name('inbound.tours');
 Route::get('/tour-detail/{id}', [TourPackageController::class, 'show'])->name('tour.details');
 Route::get('/tours/filter', [TourPackageController::class, 'filter'])->name('filter.tours');
+Route::get('/tours/by-category/{category}', [TourPackageController::class, 'getToursByCategory'])->name('tours.by-category');
+Route::post('/custom-tour-request', [TourPackageController::class, 'storeCustomTourRequest'])->name('custom.tour.store');
+
 
 Route::post('/package-booking', [PackageBookingController::class, 'store'])->name('package.booking.store');
 Route::post('/payable-notify', [PackageBookingController::class, 'paymentNotify']);

@@ -1,4 +1,5 @@
 <div class="col-md-3 mb-4">
+
     <a href="{{ route('tour.details', $package->id) }}" class="tour-box-link"
         style="text-decoration: none; color: inherit;">
         <div class="tour-box shadow style2 th-ani"
@@ -49,4 +50,6 @@
             </div>
         </div>
     </a>
+
+    
 </div>

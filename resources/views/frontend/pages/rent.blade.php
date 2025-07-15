@@ -140,9 +140,9 @@
 
 
         .pagination .page-item.active .page-link {
-            background-color: black;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
-            border-color: black;
+            border-color:  linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
         }
 
         .pagination .page-link {
@@ -173,7 +173,7 @@
             padding: 40px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
             backdrop-filter: blur(10px);
         }
 
@@ -351,13 +351,13 @@
         }
 
         .success-section {
-            background: #6dab3c;
+
             color: white;
             text-align: center;
         }
 
         .success-section .step-number {
-            background: linear-gradient(135deg, #00cec9, #00b894);
+            background: #3596d3;
         }
 
         .bottom-image {
@@ -441,7 +441,7 @@
     </style>
 
     <div class="w-full ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -782,161 +782,178 @@
 
             <!-- Hero Section -->
             <div class="hero-section">
-                <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                    alt="Driving in Sri Lanka" class="hero-image">
-                {{-- <h1 class="hero-title">Get Your Sri Lanka Driving License</h1>
+                <div class="container">
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                        alt="Driving in Sri Lanka" class="hero-image">
+                    {{-- <h1 class="hero-title">Get Your Sri Lanka Driving License</h1>
                 <p class="hero-subtitle">Start your journey with confidence!</p> --}}
 
-                <div class="overview-text">
-                    <div class="info-badge">
-                        <p><strong>Important:</strong> Sri Lanka requires foreign nationals to verify their license locally.
-                            You cannot legally drive using an IDP or foreign license alone.</p>
-                    </div>
-                    <p>
-                        To help make your trip seamless, we assist in arranging your temporary driving license in advance.
-                        By choosing to arrange your license beforehand, you've made the right decision to save time and
-                        enjoy every moment of your stay.To help make your trip seamless, we assist in arranging your
-                        temporary driving license in advance. By choosing to arrange your license beforehand, you've made
-                        the right decision to save time and enjoy every moment of your stay
-                    </p>
-                </div>
-                <div class="bottom-image">
-                    <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                        alt="Sri Lanka scenic roads">
-
-                </div>
-
-            </div>
-
-
-            <!-- Steps Container -->
-            <div class="steps-container">
-                <!-- Step 1: Form -->
-                <div class="step-card">
-                    <div class="step-header">
-                        <div class="step-number">01</div>
-                        <h2 class="step-title">Fill the Request Form</h2>
-                    </div>
-                    <!-- Alerts -->
-                    @if (session('success'))
-                        <div class="alert alert-success" id="alert-success">
-                            {{ session('success') }}
+                    <div class="overview-text">
+                        <div class="info-badge">
+                            <p><strong>Important:</strong> Sri Lanka requires foreign nationals to verify their license
+                                locally.
+                                You cannot legally drive using an IDP or foreign license alone.</p>
                         </div>
-                    @endif
-
-                    @if ($errors->any())
-                        <div class="alert alert-danger" id="alert-danger">
-                            <ul style="margin: 0; padding-left: 20px;">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <form action="{{ route('driving-permit.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="guest_name">Guest Name *</label>
-                                <input type="text" id="guest_name" name="guest_name" required
-                                    placeholder="Enter your full name">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required
-                                    placeholder="your.email@example.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="license_no">License Number *</label>
-                                <input type="text" id="license_no" name="license_no" required
-                                    placeholder="Your license number">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="whatsapp">WhatsApp Number *</label>
-                                <input type="tel" id="whatsapp" name="whatsapp" required
-                                    placeholder="+1 234 567 8900">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="license_front">Front Side of Your License *</label>
-                                <input type="file" id="license_front" name="license_front" required accept="image/*">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="license_back">Back Side of Your License *</label>
-                                <input type="file" id="license_back" name="license_back" required accept="image/*">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="selfie">Picture of Yourself - Upper Body *</label>
-                                <input type="file" id="selfie" name="selfie" required accept="image/*">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="collection_method">Collection Method *</label>
-                                <select id="collection_method" name="collection_method" required>
-                                    <option value="">—Please choose an option—</option>
-                                    <option value="pick_up">Pick Up from Office</option>
-                                    <option value="delivery">Home/Hotel Delivery</option>
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-submit">Submit Application</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Step 2: Payment -->
-                <div class="step-card">
-                    <div class="step-header">
-                        <div class="step-number">02</div>
-                        <h2 class="step-title">Make the Payment</h2>
-                    </div>
-
-                    <div class="payment-info">
                         <p>
-                            <strong>Processing Fee: $40</strong><br>
-                            Processing Time: 2–3 business days
+                            To help make your trip seamless, we assist in arranging your temporary driving license in
+                            advance.
+                            By choosing to arrange your license beforehand, you've made the right decision to save time and
+                            enjoy every moment of your stay.To help make your trip seamless, we assist in arranging your
+                            temporary driving license in advance. By choosing to arrange your license beforehand, you've
+                            made
+                            the right decision to save time and enjoy every moment of your stay
                         </p>
-                        <p>Once you've submitted the form above, proceed with the secure payment to process your temporary
-                            driving license.</p>
+                    </div>
+                    <div class="bottom-image">
+                        <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Sri Lanka scenic roads">
+
                     </div>
 
-                    <div style="text-align: center;">
-                        <a href="https://payhere.lk/pay/o25bbd889" class="btn">Pay $40 </a>
+                </div>
+
+
+                <!-- Steps Container -->
+                <div class="steps-container">
+                    <!-- Step 1: Form -->
+                    <div class="step-card">
+                        <div class="step-header">
+                            <div class="step-number">01</div>
+                            <h2 class="step-title">Fill the Request Form</h2>
+                        </div>
+                        <!-- Alerts -->
+                        @if (session('success'))
+                            <div class="alert alert-success" id="alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger" id="alert-danger">
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('driving-permit.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="guest_name">Guest Name *</label>
+                                    <input type="text" id="guest_name" name="guest_name" required
+                                        placeholder="Enter your full name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required
+                                        placeholder="your.email@example.com">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="license_no">License Number *</label>
+                                    <input type="text" id="license_no" name="license_no" required
+                                        placeholder="Your license number">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="whatsapp">WhatsApp Number *</label>
+                                    <input type="tel" id="whatsapp" name="whatsapp" required
+                                        placeholder="+1 234 567 8900">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="license_front">Front Side of Your License *</label>
+                                    <input type="file" id="license_front" name="license_front" required
+                                        accept="image/*">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="license_back">Back Side of Your License *</label>
+                                    <input type="file" id="license_back" name="license_back" required
+                                        accept="image/*">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selfie">Picture of Yourself - Upper Body *</label>
+                                    <input type="file" id="selfie" name="selfie" required accept="image/*">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="collection_method">Collection Method *</label>
+                                    <select id="collection_method" name="collection_method" required>
+                                        <option value="">—Please choose an option—</option>
+                                        <option value="pick_up">Pick Up from Office</option>
+                                        <option value="delivery">Home/Hotel Delivery</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit Application</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <Div class="row" style="gap: 0px">
+                        <!-- Step 2: Payment -->
+                        <div class="step-card col-md-6" style="  box-shadow: none !important;">
+                            <div class="step-header">
+                                <div class="step-number">02</div>
+                                <h2 class="step-title">Make the Payment</h2>
+                            </div>
+
+                            <div class="payment-info">
+                                <p>
+                                    <strong>Processing Fee: $40</strong><br>
+                                    Processing Time: 2–3 business days
+                                </p>
+                                <p>Once you've submitted the form above, proceed with the secure payment to process your
+                                    temporary
+                                    driving license.</p>
+                            </div>
+
+                            {{-- <div style="text-align: center;">
+                        <a href="#" class="btn">Pay $40 </a>
                     </div>
 
                     <p style="margin-top: 20px; text-align: center; color: #7f8c8d;">
                         💬 Have questions? Contact us via WhatsApp for instant support.
-                    </p>
-                </div>
+                    </p> --}}
+                        </div>
 
-                <!-- Step 3: Enjoy -->
-                <div class="step-card success-section">
-                    <div class="step-header">
-                        <div class="step-number">03</div>
-                        <h2 class="step-title">Enjoy Your Ride</h2>
-                    </div>
+                        <!-- Step 3: Enjoy -->
+                        <div class="step-card success-section col-md-6" style="  box-shadow: none !important;">
+                            <div class="step-header">
+                                <div class="step-number">03</div>
+                                <h2 class="step-title">Enjoy Your Ride</h2>
+                            </div>
 
-                    <p style="font-size: 1.2rem; margin-bottom: 10px; color: #ffff;">
+                            {{-- <p style="font-size: 1.2rem; margin-bottom: 10px; color: #ffff;">
                         You will receive your driving license at the requested location on time.
                         For any clarifications, feel free to contact us.
                     </p>
 
                     <p style="font-size: 1.1rem; opacity: 0.9;color: #ffff;">
                         Ready to explore the beautiful roads of Sri Lanka with complete peace of mind!
-                    </p>
+                    </p> --}}
+
+                            <div class="payment-info" style="background: #96c83d;">
+                                <p>
+                                    You will receive your driving license at the requested location on time.
+                                    For any clarifications, feel free to contact us
+                                </p>
+                                <p> Ready to explore the beautiful roads of Sri Lanka with complete peace of mind!</p>
+                            </div>
+                        </div>
+                    </Div>
                 </div>
             </div>
-        </div>
-        <!-- Bottom Image -->
+            <!-- Bottom Image -->
     </section>
 
 
-    <section style="background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);">
+    <section style="background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);margin-top: -80px;">
         <div class="advantages-section"
             style="margin-top: 80px; background: linear-gradient(135deg, rgba(0,10,20,0.6) 0%, rgba(19,19,30,0.6) 100%); padding: 40px 0; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden; border: 1px solid rgba(0,162,255,0.15);">
             <div
