@@ -36,14 +36,22 @@
                     {{ Str::limit($package->description, 90) }}
                 </p>
 
-                <a href="{{ route('tour.details', $package->id) }}" class="text-primary small"
-                    style="font-weight: 500;">View More</a>
+                <a href="{{ route('tour.details', $package->id) }}" class="small"
+                    style="font-weight: 500; color:#3596d3;">View More</a>
             </div>
 
-            <div class="d-flex align-items-right"
-                style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
+              <!-- OPTION 3: Price in Bottom Section with Days/Nights -->
+            <div class="d-flex align-items-center justify-content-between"
+                style="margin-bottom: 5px; padding-right: 15px; padding-left: 15px; padding-bottom: 15px;">
+                
+                <div class="price-info">
+                    <span class="text-dark" style="font-weight: bold;">
+                        USD {{ number_format($package->price, 0) }}
+                    </span>
+      
+                </div>
 
-                <span class="text-dark " style="font-weight: bold;">
+                <span class="text-dark" style="font-weight: bold;">
                     {{ $package->days }} Days,
                     {{ $package->nights }} Nights
                 </span>

@@ -902,7 +902,7 @@
         .tour-country {
             font-size: 14px;
             font-weight: 600;
-            color: #028CCC;
+            color: #3596D3;
             /* Matches your theme */
             margin-bottom: 5px;
         }

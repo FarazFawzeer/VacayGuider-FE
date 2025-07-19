@@ -1494,11 +1494,12 @@
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
                                     style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
+
                                     Where every trip becomes a story worth remembering
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
                                     style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
-                                    Natural Wonder
+                                    Let us take you beyond the ordinary
                                 </h1>
                             </div>
 
@@ -1511,11 +1512,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                    unforgetable pleasure with us</span>
-                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                    Let’s make your best trip with us </h1>
-                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                        Let’s make your best trip with us </h1>
+                                                                                                                                                                                                                </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1524,26 +1525,27 @@
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
                                     style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
-                                    Where luxury meets the road
+
+                                    Your next getaway is just a flight away
                                 </h1>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                    <div class="hero-inner">
-                                                                                                                                                                                                        <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                        <div class="container">
-                                                                                                                                                                                                            <div class="hero-style1">
-                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                    unforgetable pleasure with us</span>
-                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                    Explore beauty of the whole world </h1>
+                                                                                                                                                                                                        <div class="hero-inner">
+                                                                                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div class="container">
+                                                                                                                                                                                                                <div class="hero-style1">
+                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                        Explore beauty of the whole world </h1>
+                                                                                                                                                                                                                </div>
                                                                                                                                                                                                             </div>
                                                                                                                                                                                                         </div>
-                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                    </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1570,9 +1572,9 @@
                                         <option selected disabled>Services</option>
                                         <option value="inbound">Inbound Tour</option>
                                         {{-- <option value="outbound">Outbound Tour</option> --}}
-                                        <option value="airport">Rent Vehicle</option>
+                                        <option value="airport">Vehicle Rental </option>
                                         <option value="rent">Transportaion</option>
-                                        <option value="tickets">Airline</option>
+                                        <option value="tickets">Air Ticketing</option>
                                     </select>
 
                                 </div>
@@ -1610,7 +1612,8 @@
                         </div>
                     </div>
                     <div class="form-btn col-md-12 col-lg-auto text-center text-lg-start mt-3 mt-lg-0">
-                        <button class="custom-btn" type="button" id="getQuoteBtn" style="height: 56px;">Explore Now</button>
+                        <button class="custom-btn" type="button" id="getQuoteBtn" style="height: 56px;">Explore
+                            Now</button>
                     </div>
                 </div>
             </div>
@@ -1821,21 +1824,28 @@
                                                             <p class="text-dark  small mt-1 mb-1"
                                                                 style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
                                                                 {{ Str::limit($inboundPackage->description, 90) }}
-                                                            </p>
+                                                           </p>
+
 
                                                             <a href="{{ route('tour.details', $inboundPackage->id) }}"
-                                                                class="text-primary small" style="font-weight: 500;">View
-                                                                More</a>
+                                                                class="small"
+                                                                style="font-weight: 500; color:#3596d3;">View More</a>
                                                         </div>
 
                                                         <!-- Tour Info -->
-                                                        <div class="d-flex align-items-right"
-                                                            style="justify-content: right; margin-bottom: 5px; padding-right: 15px; padding-bottom: 15px;">
-                                                            {{-- <i class="fas fa-calendar-check text-danger me-2"></i> --}}
-                                                            <span class="text-dark " style="font-weight: bold;">
+                                                        <div class="d-flex align-items-center justify-content-between"
+                                                            style="margin-bottom: 5px; padding-right: 15px; padding-left: 15px; padding-bottom: 15px;">
+
+                                                            <div class="price-info">
+                                                                <span class="text-dark" style="font-weight: bold;">
+                                                                    USD {{ number_format($inboundPackage->price, 0) }}
+                                                                </span>
+
+                                                            </div>
+
+                                                            <span class="text-dark" style="font-weight: bold;">
                                                                 {{ $inboundPackage->days }} Days,
-                                                                {{ $inboundPackage->nights }}
-                                                                Nights
+                                                                {{ $inboundPackage->nights }} Nights
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1922,7 +1932,7 @@
                                         </div>
                                         <h3 style="font-size: 21px; font-weight: 700; color: #333;">Safe & Reliable
                                         </h3>
-                                        <p style="font-size: 15px; color: #555;">
+                                        <p class="text-center" style="font-size: 15px; color: #555;">
                                             Certified service with insured, well-maintained vehicles and licensed,
                                             professional drivers.
                                         </p>
@@ -1956,7 +1966,7 @@
                                         </div>
                                         <h3 style="font-size: 21px; font-weight: 700; color: #333;">Booking Made Easy
                                         </h3>
-                                        <p style="font-size: 15px; color: #555;">
+                                        <p class="text-center" style="font-size: 15px; color: #555;">
                                             Simple booking with flexible hourly or distance-based packages tailored to
                                             your journey.
                                         </p>
@@ -1978,7 +1988,7 @@
                                         </div>
                                         <h3 style="font-size: 21px; font-weight: 700; color: #333;">Experienced Drivers
                                         </h3>
-                                        <p style="font-size: 15px; color: #555;">
+                                        <p class="text-center" style="font-size: 15px; color: #555;">
                                             Skilled local drivers with courteous service, island knowledge, and
                                             multilingual support.
                                         </p>
@@ -2225,10 +2235,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                        <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                            Get Tickets
-                                                                                                                                                        </a>
-                                                                                                                                                    </div> -->
+                                                                                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                                Get Tickets
+                                                                                                                                                            </a>
+                                                                                                                                                        </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">

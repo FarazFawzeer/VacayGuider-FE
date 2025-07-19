@@ -263,8 +263,7 @@
 
         .posts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+    
             padding: 20px 0;
         }
 
@@ -382,25 +381,25 @@
         }
 
         /* .share-btn {
-                                                        background: linear-gradient(45deg, #3498db, #028ccc);
-                                                        color: white;
-                                                    }
+                                                            background: linear-gradient(45deg, #3498db, #028ccc);
+                                                            color: white;
+                                                        }
 
-                                                    .share-btn:hover {
-                                                        transform: translateY(-2px);
-                                                        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                                    }
+                                                        .share-btn:hover {
+                                                            transform: translateY(-2px);
+                                                            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                                        }
 
-                                                    .view-btn {
-                                                        background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                                        background-color: #94d106;
-                                                        color: white;
-                                                    }
+                                                        .view-btn {
+                                                            background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                                            background-color: #94d106;
+                                                            color: white;
+                                                        }
 
-                                                    .view-btn:hover {
-                                                        transform: translateY(-2px);
-                                                        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                                    } */
+                                                        .view-btn:hover {
+                                                            transform: translateY(-2px);
+                                                            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                                        } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -449,7 +448,7 @@
 
         .load-more {
             text-align: center;
-            margin-top: 40px;
+        
         }
 
         .load-more-btn {
@@ -474,8 +473,7 @@
 
         @media (max-width: 768px) {
             .posts-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+        
             }
 
             .page-title {
@@ -1313,43 +1311,51 @@
 
 
 
-                <div class="posts-grid col-md-9 " id="postsGrid" style="margin-top: -20px;border-radius: 15px;">
-                    @foreach ($blogPosts as $index => $post)
-                        <article class="post-card {{ $index >= 6 ? 'd-none extra-post' : '' }}" data-bs-toggle="modal"
-                            data-bs-target="#postModal" data-title="{{ $post->title }}"
-                            data-description="{{ $post->description }}"
-                            data-date="{{ $post->created_at->format('F j, Y') }}" data-likes="{{ $post->likes ?? 0 }}"
-                            data-comments="{{ $post->comments ?? 0 }}" data-shares="{{ $post->shares ?? 0 }}"
-                            data-images='@json(array_map(fn($img) => asset('storage/' . $img), $post->image_post ?? []))'>
+                <div class="posts-grid col-md-9" id="postsGrid" style="margin-top: -20px; border-radius: 15px;">
+                    @foreach ($blogPosts->chunk(6) as $postChunk)
+                        <div class="row ">
+                            @foreach ($postChunk as $index => $post)
+                                @php
+                                    $imgArray = is_array($post->image_post) ? $post->image_post : [];
+                                    $imgCount = count($imgArray);
+                                    $firstImage = !empty($imgArray[0])
+                                        ? asset('storage/' . $imgArray[0])
+                                        : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop';
+                                @endphp
 
-                            @php
-                                $imgArray = is_array($post->image_post) ? $post->image_post : [];
-                                $imgCount = count($imgArray);
-                                $firstImage = !empty($imgArray[0])
-                                    ? asset('storage/' . $imgArray[0])
-                                    : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop';
-                            @endphp
+                                <div class="col-md-4 mb-4">
+                                    <article
+                                        class="post-card {{ $loop->parent->index * 3 + $index >= 6 ? 'd-none extra-post' : '' }}"
+                                        data-bs-toggle="modal" data-bs-target="#postModal" data-title="{{ $post->title }}"
+                                        data-description="{{ $post->description }}"
+                                        data-date="{{ $post->created_at->format('F j, Y') }}"
+                                        data-likes="{{ $post->likes ?? 0 }}" data-comments="{{ $post->comments ?? 0 }}"
+                                        data-shares="{{ $post->shares ?? 0 }}" data-images='@json(array_map(fn($img) => asset('storage/' . $img), $imgArray))'>
 
-                            <div class="position-relative">
-                                <img src="{{ $firstImage }}" alt="Post Image" class="post-image">
+                                        <div class="position-relative">
+                                            <img src="{{ $firstImage }}" alt="Post Image" class="post-image">
+                                            <div class="image-count-badge">
+                                                <i class="fas fa-image"></i>
+                                                @if ($imgCount > 0)
+                                                    {{ $imgCount }}
+                                                @endif
+                                            </div>
+                                        </div>
 
-                                <div class="image-count-badge">
-                                    <i class="fas fa-image"></i>
-                                    @if ($imgCount > 0)
-                                        {{ $imgCount }}
-                                    @endif
+                                        <div class="post-content text-center">
+                                            <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
+                                        </div>
+                                    </article>
                                 </div>
-                            </div>
-
-                            <div class="post-content text-center">
-                                <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
-                            </div>
-                        </article>
+                            @endforeach
+                        </div>
                     @endforeach
                 </div>
 
+
                 <div class="load-more">
-                    <button id="togglePostsBtn" class="load-more-btn" onclick="togglePosts()" style="   background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Load More Posts</button>
+                    <button id="togglePostsBtn" class="load-more-btn" onclick="togglePosts()"
+                        style="   background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Load More Posts</button>
                 </div>
 
             </div>
@@ -1468,116 +1474,117 @@
                     <div class="testimonials-container">
                         <div class="testimonials-grid" style="">
                             <div class="row">
-                            @forelse ($testimonials as $testimonial)
-                            <div class="col-md-4 mb-4">
-                                <div class="testimonial-wrapper">
-                                    <div class="testimonial-card">
-                                        <!-- Decorative elements -->
-                                        <div class="card-decoration">
-                                            <div class="decoration-dot"></div>
-                                            <div class="decoration-line"></div>
-                                        </div>
-
-                                        <!-- Quote background -->
-                                        <div class="quote-background">
-                                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                                <path
-                                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                                            </svg>
-                                        </div>
-
-                                        <!-- Header with premium styling -->
-                                        <div class="testimonial-header">
-                                            <div class="user-section">
-                                                <div class="avatar-container">
-                                                    <div class="avatar-ring"></div>
-                                                    <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
-                                                        class="user-avatar" alt="{{ $testimonial->name }}">
-                                                    <div class="avatar-status"></div>
+                                @forelse ($testimonials as $testimonial)
+                                    <div class="col-md-4 mb-4">
+                                        <div class="testimonial-wrapper">
+                                            <div class="testimonial-card">
+                                                <!-- Decorative elements -->
+                                                <div class="card-decoration">
+                                                    <div class="decoration-dot"></div>
+                                                    <div class="decoration-line"></div>
                                                 </div>
-                                                <div class="user-info">
-                                                    <h3 class="user-name">{{ $testimonial->name }}</h3>
-                                                    <div class="source-badge">
-                                                        <i class="bi bi-{{ strtolower($testimonial->source) }}"></i>
-                                                        <span>{{ $testimonial->source }}</span>
-                                                        <div class="verified-badge">
-                                                            <i class="bi bi-patch-check-fill"></i>
+
+                                                <!-- Quote background -->
+                                                <div class="quote-background">
+                                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                                        <path
+                                                            d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+                                                    </svg>
+                                                </div>
+
+                                                <!-- Header with premium styling -->
+                                                <div class="testimonial-header">
+                                                    <div class="user-section">
+                                                        <div class="avatar-container">
+                                                            <div class="avatar-ring"></div>
+                                                            <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
+                                                                class="user-avatar" alt="{{ $testimonial->name }}">
+                                                            <div class="avatar-status"></div>
+                                                        </div>
+                                                        <div class="user-info">
+                                                            <h3 class="user-name">{{ $testimonial->name }}</h3>
+                                                            <div class="source-badge">
+                                                                <i
+                                                                    class="bi bi-{{ strtolower($testimonial->source) }}"></i>
+                                                                <span>{{ $testimonial->source }}</span>
+                                                                <div class="verified-badge">
+                                                                    <i class="bi bi-patch-check-fill"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                            <!-- Enhanced rating display -->
-                                            <div class="rating-container">
-                                                <div class="rating-stars">
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        <div class="star-wrapper">
-                                                            <i class="bi bi-star-fill star-background"></i>
-                                                            <i
-                                                                class="bi bi-star-fill star-fill {{ $i <= $testimonial->rating ? 'active' : '' }}"></i>
+                                                    <!-- Enhanced rating display -->
+                                                    <div class="rating-container">
+                                                        <div class="rating-stars">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                <div class="star-wrapper">
+                                                                    <i class="bi bi-star-fill star-background"></i>
+                                                                    <i
+                                                                        class="bi bi-star-fill star-fill {{ $i <= $testimonial->rating ? 'active' : '' }}"></i>
+                                                                </div>
+                                                            @endfor
                                                         </div>
-                                                    @endfor
-                                                </div>
 
-                                            </div>
-                                        </div>
-
-                                        <!-- Premium content section -->
-                                        <div class="testimonial-content">
-                                            <div class="content-wrapper">
-                                                <p class="testimonial-text">{{ $testimonial->message }}</p>
-                                                <div class="content-fade"></div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Elegant footer -->
-                                        <div class="testimonial-footer">
-                                            <div class="footer-content">
-                                                <div class="date-section">
-                                                    <div class="date-icon">
-                                                        <i class="bi bi-calendar-event"></i>
-                                                    </div>
-                                                    <span
-                                                        class="date-text">{{ \Carbon\Carbon::parse($testimonial->postedate)->format('M j, Y') }}</span>
-                                                </div>
-                                                <div class="engagement-indicators">
-                                                    <div class="indicator helpful" style="cursor: pointer;"
-                                                        onclick="markHelpful({{ $testimonial->id }}, this)">
-                                                        <i class="bi bi-hand-thumbs-up"></i>
-                                                        <span>Helpful</span>
                                                     </div>
                                                 </div>
 
+                                                <!-- Premium content section -->
+                                                <div class="testimonial-content">
+                                                    <div class="content-wrapper">
+                                                        <p class="testimonial-text">{{ $testimonial->message }}</p>
+                                                        <div class="content-fade"></div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Elegant footer -->
+                                                <div class="testimonial-footer">
+                                                    <div class="footer-content">
+                                                        <div class="date-section">
+                                                            <div class="date-icon">
+                                                                <i class="bi bi-calendar-event"></i>
+                                                            </div>
+                                                            <span
+                                                                class="date-text">{{ \Carbon\Carbon::parse($testimonial->postedate)->format('M j, Y') }}</span>
+                                                        </div>
+                                                        <div class="engagement-indicators">
+                                                            <div class="indicator helpful" style="cursor: pointer;"
+                                                                onclick="markHelpful({{ $testimonial->id }}, this)">
+                                                                <i class="bi bi-hand-thumbs-up"></i>
+                                                                <span>Helpful</span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <div class="empty-state">
+                                        <div class="empty-illustration">
+                                            <div class="empty-circles">
+                                                <div class="circle circle-1"></div>
+                                                <div class="circle circle-2"></div>
+                                                <div class="circle circle-3"></div>
+                                            </div>
+                                            <div class="empty-icon">
+                                                <i class="bi bi-chat-square-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="empty-content">
+                                            <h3 class="empty-title">No Testimonials Yet</h3>
+                                            <p class="empty-subtitle">Be the first to share your experience</p>
+                                            <div class="empty-cta">
+                                                <button class="cta-button">
+                                                    <i class="bi bi-plus-circle"></i>
+                                                    <span>Add Testimonial</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforelse
                             </div>
-                            @empty
-                                <div class="empty-state">
-                                    <div class="empty-illustration">
-                                        <div class="empty-circles">
-                                            <div class="circle circle-1"></div>
-                                            <div class="circle circle-2"></div>
-                                            <div class="circle circle-3"></div>
-                                        </div>
-                                        <div class="empty-icon">
-                                            <i class="bi bi-chat-square-quote"></i>
-                                        </div>
-                                    </div>
-                                    <div class="empty-content">
-                                        <h3 class="empty-title">No Testimonials Yet</h3>
-                                        <p class="empty-subtitle">Be the first to share your experience</p>
-                                        <div class="empty-cta">
-                                            <button class="cta-button">
-                                                <i class="bi bi-plus-circle"></i>
-                                                <span>Add Testimonial</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforelse
-                        </div>
                         </div>
 
                         <!-- Premium pagination -->
@@ -1740,4 +1747,18 @@
             });
         });
     </script>
+
+
+
+<script>
+    function togglePosts() {
+        const extraPosts = document.querySelectorAll('.extra-post');
+        extraPosts.forEach(post => {
+            post.classList.remove('d-none');
+        });
+
+        // Optionally hide the Load More button after expanding
+        document.getElementById('togglePostsBtn').style.display = 'none';
+    }
+</script>
 @endsection

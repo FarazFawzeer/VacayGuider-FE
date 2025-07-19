@@ -30,7 +30,7 @@
         .description-text {
             color: #fff;
             font-size: 16px;
-            max-width: 600px;
+            max-width: 1000px;
             margin: 0 auto;
             line-height: 1.6;
         }
@@ -41,9 +41,9 @@
         }
 
         .quick-links-title {
-            color: #888888;
+            color: #ffffff;
             font-size: 22px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 25px;
         }
 
@@ -238,7 +238,7 @@
 
         .payment-logo img {
             max-width: 100%;
-            max-height: 90px;
+            max-height: 60px;
             width: auto;
         }
 
@@ -414,8 +414,7 @@
                 <!-- Description Section -->
                 <div class="description-section">
                     <p class="description-text">
-                        VacayGuider crafts unforgettable escapes, where hidden gems meet seamless journeys, and every
-                        trip becomes your best story.
+                        VacayGuider, we are a dedicated team of travel professionals committed to delivering exceptional service and Extraordinary travel experiences. With a focus on quality, reliability, and personalized support, we ensure every journey is seamless from start to finish. Whether it’s a quick getaway or a once-in-a-lifetime adventure, we go beyond the ordinary to bring your travel dreams to life.
                     </p>
                 </div>
 
@@ -491,6 +490,7 @@
                         <img src="{{ asset('assets/img/payment.png') }}" alt="Visa" style="">
 
                     </div>
+                    
                     {{-- <div class="payment-logo">
                         <img src="/images/payments/mastercard.png" alt="MasterCard" style="height: 24px;">
                     </div>

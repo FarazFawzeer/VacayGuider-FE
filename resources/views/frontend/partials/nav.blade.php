@@ -23,9 +23,9 @@
                   </li> --}}
 
                    <li><a href="{{ url('/inbound-tours') }}">Inbound</a></li>
-                              <li><a href="{{ url('/rent') }}">Rent Vehicle</a></li>
+                              <li><a href="{{ url('/rent') }}">Vehicle Rental</a></li>
                                   <li><a href="{{ url('/transportation') }}">Transportation</a></li>
-                                      <li><a href="{{ url('/airline') }}">Airline</a></li>
+                                      <li><a href="{{ url('/airline') }}">Air Ticketing</a></li>
 
                   <li>
                       <a href="{{ url('/blog') }}">Blog</a>
@@ -62,12 +62,12 @@
                                 <li><a href="/inbound-tours"
                                         class="{{ Request::is('inbound-tours') ? 'active' : '' }}">Inbound Tours</a>
                                 </li>
-                                <li><a href="/rent" class="{{ Request::is('rent') ? 'active' : '' }}">Rent Vehicle</a>
+                                <li><a href="/rent" class="{{ Request::is('rent') ? 'active' : '' }}">Vehicle Rental</a>
                                 </li>
                                 <li><a href="/transportation"
                                         class="{{ Request::is('transportation') ? 'active' : '' }}">Transportation</a>
                                 </li>
-                                <li><a href="/airline" class="{{ Request::is('airline') ? 'active' : '' }}">Airline</a>
+                                <li><a href="/airline" class="{{ Request::is('airline') ? 'active' : '' }}">Air Ticketing</a>
                                 </li>
                             </ul>
                         </li>

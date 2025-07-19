@@ -1232,22 +1232,14 @@
 
                         <!-- <h1 class="mb-4 text-center" style="font-size:34px;">Welcome to Tourist</h1> -->
                         <p class="text-center ">
-                            Welcome to <strong><span style="color: #94d106 !important;">Vacay</span> <span
+                            Welcome to <strong><span style="color: #94d106 !important;">Vacay</span><span
                                     style="color:#028ccc !important;">Guider</span>
-                            </strong>, your passport to extraordinary worldwide journeys. With over five years of certified
-                            travel expertise, we specialize in crafting bespoke vacations that turn fleeting moments into
-                            timeless memories. As award-winning global travel designers, we pride ourselves on delivering
-                            seamless, personalized experiences that go beyond ordinary tourism – because every traveler
-                            deserves a journey as unique as they are.
+                            </strong>, Your trusted partner in the travel and tourism industry. With over 5 years of certified experience, we take pride in delivering exceptional travel services that transform every journey into a lasting memory. 
                         </p>
                         <p class="text-center mt-3">
-                            At <strong><span style="color: #94d106 !important;">Vacay</span> <span
+                            At <strong><span style="color: #94d106 !important;">Vacay</span><span
                                     style="color:#028ccc !important;">Guider</span>
-                            </strong>, we design complete travel experiences from custom tour packages and air ticketing to
-                            visa assistance, hotel bookings, airport transfers, car rentals, and travel insurance. Whether
-                            you crave luxury escapes, cultural adventures, or family getaways, our end-to-end solutions
-                            handle every detail. Relax knowing your journey is expertly planned, perfectly executed, and
-                            fully protected.
+                            </strong>, We specialize in tailor-made travel experiences designed for every type of traveler. Whether you’re seeking a tranquil escape to Sri Lanka’s scenic wonders or a thrilling international adventure, we’re here to make your dream trip a reality. Our expertly crafted Inbound and Outbound tour packages offer the perfect mix of relaxation, exploration, and cultural discovery. 
                         </p>
 
 
@@ -1268,10 +1260,7 @@
 
                         <div class="text-center">
                             <p class="mt-3 text-muted">
-                                We’re not just planners – we’re your travel storytellers. With meticulous attention to
-                                detail and insider knowledge, we design soul-stirring journeys where every element sparks
-                                joy. Ready to experience stress-free travel? Contact us today and let’s create your perfect
-                                getaway together.
+                                Our passionate and experienced team is dedicated to providing personalized service, ensuring every detail is handled with care. At Vacay Guider, we don’t just plan trips — we create journeys that inspire, enrich, and delight.
 
                             </p>
                         </div>
@@ -1617,7 +1606,7 @@
                             <div class="card"
                                 style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;">
                                 <div class="img-box">
-                                    <img class="person-img" src="assets/img/shakir.jpg" alt="Team Member"
+                                    <img class="person-img" src="assets/img/Shakir.jpg" alt="Team Member"
                                         style="width: 100%; height: auto;">
                                 </div>
 
@@ -1677,7 +1666,7 @@
                             <div class="card"
                                 style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 20px;">
                                 <div class="img-box">
-                                    <img class="person-img" src="assets/img/siraj.jpg" alt="Team Member"
+                                    <img class="person-img" src="assets/img/Siraj.jpg" alt="Team Member"
                                         style="width: 100%; height: auto;">
                                 </div>
 
