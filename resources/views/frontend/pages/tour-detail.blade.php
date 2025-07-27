@@ -622,13 +622,12 @@
                                     <div
                                         class="flex gap-2 items-center text-black text-sm md:text-base font-bold  px-4 py-2 rounded-full">
                                         {{-- <i class="fas fa-calendar-day" style="color: #3596d3;"></i> --}}
-                                           <svg xmlns="http://www.w3.org/2000/svg" fill="black"
-                                                                    width="18" height="18" class="me-2"
-                                                                    viewBox="0 0 24 24">
-                                                                    <path
-                                                                        d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3a.75.75 0 0 1 1.5 0v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z">
-                                                                    </path>
-                                                                </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="black" width="18" height="18"
+                                            class="me-2" viewBox="0 0 24 24">
+                                            <path
+                                                d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3a.75.75 0 0 1 1.5 0v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z">
+                                            </path>
+                                        </svg>
                                         <span>{{ $package->days }} Days, {{ $package->nights }} Nights</span>
                                     </div>
                                 </div>
@@ -767,7 +766,8 @@
                                                 style="color: #709929;">
                                                 Day {{ str_pad($itinerary->day, 2, '0', STR_PAD_LEFT) }}
                                             </p>
-                                            <h1 class="text-3xl font-bold text-gray-900" style="margin-top: -15px;">{{ $itinerary->place_name }}</h1>
+                                            <h1 class="text-3xl font-bold text-gray-900" style="margin-top: -15px;">
+                                                {{ $itinerary->place_name }}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -891,11 +891,30 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                         @php
+                            $defaultMapImage = asset('assets/img/default-map.jpg');
+                            $mapImagePath = $itinerary->map_image ? 'storage/' . $itinerary->map_image : null;
+                            $mapImage =
+                                $mapImagePath && file_exists(public_path($mapImagePath))
+                                    ? asset($mapImagePath)
+                                    : $defaultMapImage;
+                        @endphp
+
+                        <div class="mt-12">
+                             <h3 class="text-2xl font-semibold text-gray-900 mb-6">Your Tour Map</h3>
+                            <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
+                                class=" lg:w-auto w-full object-cover rounded-xl shadow-md" style="height: 400px; width: 300px;"
+                                loading="lazy" />
+                        </div>
+
                             </div>
+
+                            
                         @endforeach
 
-
-
+                   
+               
 
 
 
