@@ -2986,7 +2986,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
 .scroll-top {
   position: fixed;
   right: 43px;
-  bottom: 160px;
+  bottom: 90px;
   height: 50px;
   width: 50px;
   cursor: pointer;

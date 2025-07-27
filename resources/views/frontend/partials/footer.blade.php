@@ -226,7 +226,7 @@
         }
 
         .payment-logo {
-          
+
             padding: 5px 10px;
             border-radius: 4px;
             display: flex;
@@ -284,6 +284,10 @@
         }
 
         @media (max-width: 576px) {
+            .scroll-top {
+                right: 29px;
+            }
+
             .links-row {
                 flex-direction: column;
                 gap: 15px;
@@ -414,7 +418,11 @@
                 <!-- Description Section -->
                 <div class="description-section">
                     <p class="description-text">
-                        VacayGuider, we are a dedicated team of travel professionals committed to delivering exceptional service and Extraordinary travel experiences. With a focus on quality, reliability, and personalized support, we ensure every journey is seamless from start to finish. Whether it’s a quick getaway or a once-in-a-lifetime adventure, we go beyond the ordinary to bring your travel dreams to life.
+                        VacayGuider, we are a dedicated team of travel professionals committed to delivering exceptional
+                        service and Extraordinary travel experiences. With a focus on quality, reliability, and
+                        personalized support, we ensure every journey is seamless from start to finish. Whether it’s a
+                        quick getaway or a once-in-a-lifetime adventure, we go beyond the ordinary to bring your travel
+                        dreams to life.
                     </p>
                 </div>
 
@@ -490,7 +498,7 @@
                         <img src="{{ asset('assets/img/payment.png') }}" alt="Visa" style="">
 
                     </div>
-                    
+
                     {{-- <div class="payment-logo">
                         <img src="/images/payments/mastercard.png" alt="MasterCard" style="height: 24px;">
                     </div>

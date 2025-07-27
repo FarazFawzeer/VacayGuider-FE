@@ -922,7 +922,7 @@
         /* Floating Toggle Button */
         #chatbot-toggle {
             position: fixed;
-            bottom: 80px;
+            bottom: 10px;
             right: 30px;
             z-index: 1000;
             background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
@@ -966,11 +966,12 @@
         /* Chatbot Window */
         #chatbot-box {
             position: fixed;
-            bottom: 165px;
+            bottom: 94px;
             right: 30px;
             width: 420px;
             max-width: calc(100vw - 60px);
-            max-height: calc(100vh - 174px);
+            /* max-height: calc(100vh - 100px); */
+            height: 480px;
             /* prevent from overflowing screen */
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(25px);
@@ -1077,6 +1078,7 @@
             color: #2c3e50;
             padding: 16px 20px;
             border-radius: 20px 20px 20px 8px;
+            width: fit-content;
             max-width: 88%;
             box-shadow: 0 4px 15px rgba(2, 140, 204, 0.15);
             border: 1px solid rgba(2, 140, 204, 0.1);
@@ -1102,6 +1104,7 @@
             color: white;
             padding: 16px 20px;
             border-radius: 20px 20px 8px 20px;
+            width: fit-content;
             max-width: 88%;
             margin-left: auto;
             text-align: right;
@@ -1111,17 +1114,6 @@
             line-height: 1.5;
         }
 
-        .user-message::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: -8px;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 8px 0 8px 8px;
-            border-color: transparent transparent transparent #028ccc;
-        }
 
         /* Input Area */
         #chat-input-area {
@@ -1181,77 +1173,47 @@
 
         /* Form Styles */
         .form-container {
+            background: #f9f9f9;
+            border-top: 1px solid rgba(2, 140, 204, 0.1);
             padding: 25px;
-            background: rgba(255, 255, 255, 0.98);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .form-container h4 {
+        .form-title {
+            font-size: 18px;
             color: #2c3e50;
             margin-bottom: 20px;
             text-align: center;
-            font-size: 18px;
             font-weight: 600;
-        }
-
-        .form-container,
-        .service-grid {
-            max-height: 300px;
-            overflow-y: auto;
         }
 
         .form-control {
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border: 2px solid rgba(2, 140, 204, 0.2);
-            border-radius: 15px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
             font-size: 14px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 8px rgba(2, 140, 204, 0.1);
+            background-color: #fff;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
         .form-control:focus {
-            outline: none;
             border-color: #028ccc;
-            box-shadow: 0 0 0 4px rgba(2, 140, 204, 0.15);
-            transform: translateY(-1px);
-        }
-
-        @media (max-height: 700px) {
-            #chatbot-box {
-                max-height: calc(100vh - 172px);
-                bottom: 163px;
-            }
-
-            .alirlin-title {
-                margin-top: 10px;
-            }
-        }
-
-        .btn {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 15px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(2, 140, 204, 0.1);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #000000 0%, #000000 100%);
-            color: white;
-            box-shadow: 0 6px 20px rgba(2, 140, 204, 0.3);
+            background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
+            border: none;
+            border-radius: 30px;
+            padding: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-
+            background: linear-gradient(135deg, #0a3d52 0%, #028ccc 100%);
+            transform: scale(1.03);
         }
 
         .btn-outline-primary {
@@ -1281,38 +1243,43 @@
         }
 
         /* Service Selection Styles */
+        /* Service Selection Styles */
         .service-grid {
-            padding: 25px;
+            padding: 15px 20px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .service-grid h4 {
             text-align: center;
             color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 18px;
+            font-size: 17px;
             font-weight: 600;
         }
 
+        /* Card button style */
         .service-card {
             background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
-            border: 2px solid rgba(2, 140, 204, 0.2);
-            border-radius: 18px;
-            padding: 18px;
+            border: 1.5px solid rgba(2, 140, 204, 0.2);
+            border-radius: 14px;
+            padding: 12px 15px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            margin-bottom: 12px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .service-card:hover {
             border-color: #028ccc;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(2, 140, 204, 0.25);
             background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
             color: white;
+            box-shadow: 0 8px 25px rgba(2, 140, 204, 0.2);
+            transform: translateY(-3px);
         }
 
         .service-card::before {
@@ -1323,12 +1290,13 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s ease;
+            transition: left 0.5s ease;
         }
 
         .service-card:hover::before {
             left: 100%;
         }
+
 
         /* Typing Indicator */
         .typing-indicator {
@@ -1512,11 +1480,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                        Let’s make your best trip with us </h1>
-                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                        Let’s make your best trip with us </h1>
+                                                                                                                                                                                                                                </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1533,19 +1501,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                        <div class="hero-inner">
-                                                                                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                            <div class="container">
-                                                                                                                                                                                                                <div class="hero-style1">
-                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                        Explore beauty of the whole world </h1>
-                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                        <div class="hero-inner">
+                                                                                                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                            <div class="container">
+                                                                                                                                                                                                                                <div class="hero-style1">
+                                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                        unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                        Explore beauty of the whole world </h1>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                    </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1803,14 +1771,15 @@
                                                             <!-- Country & Rating -->
                                                             <div class="tour-header d-flex align-items-center justify-content-between"
                                                                 style="margin-top: -12px; margin-bottom: -8px;">
-                                                                <p class="tour-country m-0 d-flex align-items-center">
-                                                                    {{ $inboundPackage->country_name ?? 'Sri Lanka' }}
-                                                                </p>
-                                                                <div class="tour-rating d-flex align-items-center"
-                                                                    style="margin-top: 13px;">
-                                                                    <i class="fas fa-star text-warning"></i>
-                                                                    <span class="ms-1"
-                                                                        style="font-weight: 600; font-size: 14px; color: #333;">{{ $inboundPackage->ratings }}</span>
+                                                                <p class="tour-country m-0 d-flex align-items-center"
+                                                                    style="color: #3596d3;">Sri Lanka</p>
+                                                                <div class="tour-rating d-flex align-items-center px-2  rounded"
+                                                                    style="margin-top: 13px; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
+                                                                    <i class="fas fa-star text-white  fa-sm"></i>
+                                                                    <span class=""
+                                                                        style="font-weight: 700; font-size: 12px; color: #fff;">
+                                                                        {{ round($inboundPackage->ratings) }}
+                                                                    </span>
                                                                 </div>
                                                             </div>
 
@@ -1824,29 +1793,39 @@
                                                             <p class="text-dark  small mt-1 mb-1"
                                                                 style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
                                                                 {{ Str::limit($inboundPackage->description, 90) }}
-                                                           </p>
+                                                            </p>
 
 
                                                             <a href="{{ route('tour.details', $inboundPackage->id) }}"
                                                                 class="small"
-                                                                style="font-weight: 500; color:#3596d3;">View More</a>
-                                                        </div>
+                                                                style="font-weight: 500; color:#3596d3; font-size: 12px;">View
+                                                                More</a>
 
-                                                        <!-- Tour Info -->
-                                                        <div class="d-flex align-items-center justify-content-between"
-                                                            style="margin-bottom: 5px; padding-right: 15px; padding-left: 15px; padding-bottom: 15px;">
+                                                            <!-- Days/Nights Section with Icon -->
+                                                            <div class="d-flex align-items-center mt-3"
+                                                                style="color: black;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="black"
+                                                                    width="18" height="18" class="me-2"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3a.75.75 0 0 1 1.5 0v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z">
+                                                                    </path>
+                                                                </svg>
 
-                                                            <div class="price-info">
-                                                                <span class="text-dark" style="font-weight: bold;">
-                                                                    USD {{ number_format($inboundPackage->price, 0) }}
-                                                                </span>
-
+                                                                <p class="text-sm m-0 text-dark"
+                                                                    style="font-size: 14px; font-weight: 500;">
+                                                                    {{ $inboundPackage->days }} Days {{ $inboundPackage->nights }} Nights
+                                                                </p>
                                                             </div>
 
-                                                            <span class="text-dark" style="font-weight: bold;">
-                                                                {{ $inboundPackage->days }} Days,
-                                                                {{ $inboundPackage->nights }} Nights
-                                                            </span>
+                                                        </div>
+
+                                                        <!-- Price in Bottom Right -->
+                                                        <div class="text-end px-3 pb-3">
+                                                            <p class="text-lg m-0 text-dark"
+                                                                style="font-size: 24px; font-weight: 600;">
+                                                                USD ${{ number_format($inboundPackage->price, 0) }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -1915,9 +1894,9 @@
                                             prompt, reliable rides.
                                         </p>
                                     </div>
-                                    <div class="decorative-shape"
+                                    {{-- <div class="decorative-shape"
                                         style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -1937,9 +1916,9 @@
                                             professional drivers.
                                         </p>
                                     </div>
-                                    <div class="decorative-shape"
+                                    {{-- <div class="decorative-shape"
                                         style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -1971,9 +1950,9 @@
                                             your journey.
                                         </p>
                                     </div>
-                                    <div class="decorative-shape"
+                                    {{-- <div class="decorative-shape"
                                         style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07);z-index: 1;">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -1993,9 +1972,9 @@
                                             multilingual support.
                                         </p>
                                     </div>
-                                    <div class="decorative-shape"
+                                    {{-- <div class="decorative-shape"
                                         style="position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -2235,10 +2214,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                                Get Tickets
-                                                                                                                                                            </a>
-                                                                                                                                                        </div> -->
+                                                                                                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                                                Get Tickets
+                                                                                                                                                                            </a>
+                                                                                                                                                                        </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -2530,7 +2509,7 @@
             <div id="chat-content">
                 <div class="message">
                     <div class="bot-message" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                        👋 Hi there! I'm your personal tour assistant. How can I help you plan your perfect trip today?
+                        Hi there! I'm your personal tour assistant. How can I help you plan your perfect trip today?
                     </div>
                 </div>
             </div>
@@ -2541,82 +2520,35 @@
             </div>
 
             <!-- Hidden Form -->
-            <div id="user-form" class="form-container" style="display: none;">
-                <h4>Contact Information</h4>
-                <input type="text" id="name" placeholder="Your Name" class="form-control mb-2">
-                <input type="email" id="email" placeholder="Your Email" class="form-control mb-2">
-                <input type="text" id="phone" placeholder="Your Phone" class="form-control mb-2">
-                <button id="submit-form" class="btn btn-primary w-100">Submit Information</button>
+            <div id="user-form" class="form-container" style="display: none; padding: 20px;">
+                <h4 class="form-title">Contact Information</h4>
+
+                <input type="text" id="name" placeholder="Your Name" class="form-control mb-1">
+                <div id="name-error" class="error-msg text-danger small mb-2"></div>
+
+                <input type="email" id="email" placeholder="Your Email" class="form-control mb-1">
+                <div id="email-error" class="error-msg text-danger small mb-2"></div>
+
+                <input type="text" id="phone" placeholder="Your Phone" class="form-control mb-3">
+                <div id="phone-error" class="error-msg text-danger small mb-2"></div>
+
+                <button id="submit-form" class="btn btn-primary w-100">Submit </button>
             </div>
 
             <!-- Hidden Service Selection -->
             <div id="service-options" class="service-grid" style="display: none;">
-                <h4 style="text-align: center; color: #2c3e50; margin-bottom: 15px;"> Choose Your Service</h4>
-                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Inbound Tour">
-                    Inbound Tour
-                </button>
-                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Outbound Tour">
-                    Outbound Tour
-                </button>
-                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Rent Vehicle">
-                    Rent Vehicle
-                </button>
-                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Transportation">
-                    Transportation
-                </button>
-                <button class="btn btn-outline-primary w-100 my-1 service-btn service-card" data-service="Airline">
-                    Airline Services
-                </button>
+                <h4>Choose Your Service</h4>
+                <button class="btn service-btn service-card" data-service="Inbound Tour">Inbound Tour</button>
+                <button class="btn service-btn service-card" data-service="Outbound Tour">Outbound Tour</button>
+                <button class="btn service-btn service-card" data-service="Rent Vehicle">Rent Vehicle</button>
+                <button class="btn service-btn service-card" data-service="Transportation">Transportation</button>
+                <button class="btn service-btn service-card" data-service="Airline">Air Ticketing</button>
+                <button class="btn service-btn service-card" data-service="Airline">Other Services</button>
             </div>
+
         </div>
 
     </div>
-    <script>
-        window.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('departDate').value = '';
-            document.getElementById('returnDate').value = '';
-
-            flatpickr("#departDate", {
-                dateFormat: "Y-m-d",
-                disableMobile: true
-            });
-
-            flatpickr("#returnDate", {
-                dateFormat: "Y-m-d",
-                disableMobile: true
-            });
-        });
-    </script>
-
-    <script>
-        document.getElementById('getQuoteBtn').addEventListener('click', function() {
-            const selectedValue = document.getElementById('serviceSelect').value;
-
-            switch (selectedValue) {
-                case 'inbound':
-                    window.location.href = '/inbound-tours';
-                    break;
-                case 'outbound':
-                    window.location.href = '/';
-                    break;
-                case 'airport':
-                    window.location.href = '/transportation';
-                    break;
-                case 'rent':
-                    window.location.href = '/rent';
-                    break;
-                case 'tickets':
-                    window.location.href = '/airline';
-                    break;
-                default:
-                    alert('Please select a service to continue.');
-                    break;
-            }
-        });
-    </script>
-
-
-
 
     <script>
         // Chatbot functionality
@@ -2749,36 +2681,53 @@
 
         // Form submission
         document.getElementById('submit-form').addEventListener('click', () => {
+            // Get values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
 
+            // Error message elements
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const phoneError = document.getElementById('phone-error');
+
+            // Clear previous messages
+            nameError.textContent = '';
+            emailError.textContent = '';
+            phoneError.textContent = '';
+
+            let hasError = false;
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const phoneRegex = /^[0-9]{9,12}$/;
 
+            // Validate fields
             if (!name) {
-                addMessage('Please enter your name.', 'bot');
-                return;
-            }
-            if (!email || !emailRegex.test(email)) {
-                addMessage('Please enter a valid email address.', 'bot');
-                return;
-            }
-            if (!phone || !phoneRegex.test(phone)) {
-                addMessage('Please enter a valid phone number (digits only, 9–12 characters).', 'bot');
-                return;
+                nameError.textContent = 'Please enter your name.';
+                hasError = true;
             }
 
-            // Show loading state
+            if (!email || !emailRegex.test(email)) {
+                emailError.textContent = 'Enter a valid email address.';
+                hasError = true;
+            }
+
+            if (!phone || !phoneRegex.test(phone)) {
+                phoneError.textContent = 'Enter a valid phone number (9–12 digits).';
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Proceed if no errors
             const submitBtn = document.getElementById('submit-form');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
 
             const formData = {
-                name: name,
-                email: email,
-                phone: phone,
+                name,
+                email,
+                phone,
                 service: selectedService
             };
 
@@ -2805,11 +2754,13 @@
                         if (data.success) {
                             addMessage(
                                 `Thank you ${name}! 🎉 Your information has been successfully saved. Our team will contact you within 24 hours to discuss your ${selectedService} plans.`,
-                                'bot');
+                                'bot'
+                            );
                         } else {
                             addMessage(
                                 `Thank you ${name}! Your request has been received. Our team will get back to you soon!`,
-                                'bot');
+                                'bot'
+                            );
                         }
                         resetForm();
                     }, 1500);
@@ -2820,7 +2771,8 @@
                         removeTyping();
                         addMessage(
                             `Thank you ${name}! Your information has been received. If you don't hear from us within 24 hours, feel free to contact us directly.`,
-                            'bot');
+                            'bot'
+                        );
                         resetForm();
                     }, 1500);
                 });
@@ -2874,6 +2826,55 @@
             }, 5000); // 5000 ms = 5 seconds
         });
     </script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('departDate').value = '';
+            document.getElementById('returnDate').value = '';
+
+            flatpickr("#departDate", {
+                dateFormat: "Y-m-d",
+                disableMobile: true
+            });
+
+            flatpickr("#returnDate", {
+                dateFormat: "Y-m-d",
+                disableMobile: true
+            });
+        });
+    </script>
+
+    <script>
+        document.getElementById('getQuoteBtn').addEventListener('click', function() {
+            const selectedValue = document.getElementById('serviceSelect').value;
+
+            switch (selectedValue) {
+                case 'inbound':
+                    window.location.href = '/inbound-tours';
+                    break;
+                case 'outbound':
+                    window.location.href = '/';
+                    break;
+                case 'airport':
+                    window.location.href = '/transportation';
+                    break;
+                case 'rent':
+                    window.location.href = '/rent';
+                    break;
+                case 'tickets':
+                    window.location.href = '/airline';
+                    break;
+                default:
+                    alert('Please select a service to continue.');
+                    break;
+            }
+        });
+    </script>
+
+
+
+
+
 
 
 @endsection

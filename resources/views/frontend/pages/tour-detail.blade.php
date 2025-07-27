@@ -3,7 +3,96 @@
 @section('title', 'Home')
 
 @section('content')
+    <style>
+        .btn-outline-dark {
+            border: 2px solid #0a3d52;
+            color: #0a3d52;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+        }
 
+        .btn-outline-dark:hover {
+            background-color: #0a3d52;
+            color: white;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .tab-container {
+            display: flex;
+            border-radius: 9999px;
+            padding: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 100%;
+            border: 1px solid #e2e8f0;
+            width: fit-content;
+            background-color: #f8fafc;
+            overflow-x: auto;
+            gap: 8px;
+        }
+
+        .tab-button {
+            flex: 1;
+
+            border: none;
+
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            color: #334155;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            color: #f1f5f9;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .tab-button.active:hover {
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            color: white;
+        }
+
+
+        .highlight-image {
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-image:hover {
+            transform: scale(1.05);
+        }
+
+        .tour-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .tour-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .duration-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .info-section {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10b981;
+        }
+    </style>
     <style>
         .steps-container {
             display: grid;
@@ -101,7 +190,7 @@
         }
 
         .btn {
-           
+
             padding: 18px 40px;
             border: none;
             border-radius: 50px;
@@ -189,7 +278,7 @@
             font-size: 16px;
             font-weight: 600;
             padding: 10px 20px;
-            background-color: #f5f5f5;
+
             border-radius: 25px;
             margin-right: 10px;
             cursor: pointer;
@@ -197,7 +286,7 @@
         }
 
         .tab-button[aria-selected="true"] {
-            background-color: #94d106;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
         }
 
@@ -226,42 +315,50 @@
 
         .nav-container {
             display: flex;
-            gap: 16px;
-            margin-top: 2rem;
-            justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 9999px;
+            padding: 6px;
+            background-color: #f8fafc;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            width: fit-content;
+            max-width: 100%;
         }
 
         .nav-button {
-            padding: 12px 24px;
-            border-radius: 25px;
+            flex: 1;
+            padding: 10px 28px;
+            border: none;
+            background-color: transparent;
+            color: #000000;
+            /* slate-600 */
+            font-size: 15px;
             font-weight: 600;
-            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 160px;
-            color: #0a3d52
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            position: relative;
+            outline: none;
         }
 
         .nav-button:hover {
-            background-color: rgba(91, 107, 209, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #000000;
+            /* slate-800 */
+
         }
 
-        .active {
-            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
-            color: white;
+        .nav-button.active {
+            background: linear-gradient(135deg, #0d4e6b, #0a3d52);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(13, 78, 107, 0.3);
         }
 
-        /* Optional icon styling */
-        .nav-button i {
-            margin-right: 8px;
-            font-size: 16px;
+        .nav-button.active:hover {
+            background: linear-gradient(135deg, #0c445e, #082f3f);
+            color: #fff;
+        }
+
+        .nav-button:focus-visible {
+            box-shadow: 0 0 0 3px rgba(13, 78, 107, 0.4);
         }
 
         /* For responsive design */
@@ -467,25 +564,25 @@
 
 
     <!-- Blog Start -->
-    <div class="container-fluid py-5" style="margin-top: -20px;">
+    <div class="container-fluid py-5" style="margin-top: -40px;">
 
         <div class="row ">
             <div class="col-lg-8 ">
                 <!-- Blog Detail Start -->
                 <div class="blog-item ">
-                    <div class="position-relative">
+                    <div class="position-relative ">
 
                         <div class="blog-date ">
-                            <small class="text-uppercase text-success " style="font-size: 18px;font-weight: 900;">Sri
+                            <small class="text-uppercase  " style="font-size: 18px;font-weight: 900; color:#96c93e;">Sri
                                 Lanka</small>
                             <h5 class="mt-2" style="font-size: 36px; font-weight:500;">
-                                Tour for <strong style="font-weight: 900;">{{ $package->days }} Nights</strong>
+                                Tour for <strong style="font-weight: 900;">{{ $package->days }} Days</strong>
                                 & <strong style="font-weight: 900;"> {{ $package->nights }}
-                                    Days</strong>
+                                    Nights</strong>
                             </h5>
                         </div>
 
-                        <img class="img-fluid w-100 mt-3"
+                        <img class="w-full h-72 object-cover  shadow-xl mt-3 rounded-top"
                             src="{{ $package->picture && file_exists(public_path('storage/' . $package->picture))
                                 ? asset('storage/' . $package->picture)
                                 : asset('assets/img/tour/2.jpg') }}"
@@ -499,13 +596,15 @@
 
                     <div class=" mb-3" style="padding: 30px;">
 
-                        <h2 class="mb-3" style="font-size: 30px; color:#000; font-weight: bold;">{{ $package->heading }}
-                        </h2>
-                        <p>{{ $package->description }}</p>
+                        {{-- <h2 class="mb-3" style="font-size: 30px; color:#000; font-weight: bold;">{{ $package->heading }}
+                        </h2> --}}
+                        <p style="padding-top: 10px; padding-bottom: 20px;">{{ $package->description }}</p>
+
+
 
 
                         <div class="nav-container">
-                            <button id="summary-btn" class="nav-button active" sy onclick="showSection('summary')">
+                            <button id="summary-btn" class="nav-button active" onclick="showSection('summary')">
                                 Summary
                             </button>
                             <button id="itinerary-btn" class="nav-button" onclick="showSection('itinerary')">
@@ -513,161 +612,283 @@
                             </button>
                         </div>
 
-                        <div class="tour-summaries  mt-5" id="summary-section" style="">
-                            <h2 class=" ml-3 mt-3" style="font-size: 30px; color:#000; font-weight: bold;">Tour Summary
-                            </h2>
-                            @foreach ($tourSummaries as $summary)
-                                <div class="rounded-xl p-3">
-                                    <!-- Tour Info: Day / City / Theme -->
-                                    <div class="tour-summary-details flex flex-wrap items-center gap-4 mt-3">
-                                        <!-- Day -->
-                                        <div class="flex items-center space-x-3 text-gray-700">
-                                            <img width="18" height="18"
-                                                src="https://img.icons8.com/laces/64/40C057/calendar.png" alt="calendar" />
-                                            <div>
-                                                <span class="font-bold text-lg text-green-600"
-                                                    style="font-size: 16px;">Day</span>
-                                                <span class="ml-2 font-semibold text-xl"
-                                                    style="font-size: 16px;">{{ $summary->day }}</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- City -->
-                                        <div class="flex items-center space-x-3 text-gray-700">
-                                            <img width="18" height="18"
-                                                src="https://img.icons8.com/laces/64/40C057/marker.png" alt="marker" />
-                                            <div>
-                                                <span class="font-bold text-lg text-green-600"
-                                                    style="font-size: 16px;">City</span>
-                                                <span class="ml-2 font-semibold text-xl"
-                                                    style="font-size: 16px;">{{ $summary->city }}</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Theme -->
-                                        <div class="flex items-center space-x-3 text-gray-700">
-                                            <img width="18" height="18"
-                                                src="https://img.icons8.com/quill/100/40C057/trekking.png"
-                                                alt="trekking" />
-                                            <div>
-                                                <span class="font-bold text-lg text-green-600"
-                                                    style="font-size: 16px;">Theme</span>
-                                                <span class="ml-2 font-semibold text-xl"
-                                                    style="font-size: 16px;">{{ $summary->theme }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Images & Key Activities -->
-                                    <div class="rounded-xl " style="margin-top: 30px">
-                                        <div class="flex flex-col space-y-6">
-                                            <!-- Image Gallery -->
-                                            @if (!empty($summary->images))
-                                                <div class="flex flex-wrap justify-center gap-5">
-                                                    @foreach ($summary->images as $img)
-                                                        @php
-                                                            $imagePath = public_path($img);
-                                                            $imageUrl = file_exists($imagePath)
-                                                                ? asset($img)
-                                                                : asset('assets/img/tour/6.jpg');
-                                                        @endphp
-                                                        <img src="{{ $imageUrl }}" alt="Tour Image"
-                                                            class="w-full sm:w-1/2 md:w-1/4 h-48 object-cover rounded-lg">
-                                                    @endforeach
-                                                </div>
-                                            @endif
-
-                                            <!-- Key Activities -->
-                                            <div>
-                                                <h2 class="text-xl font-bold text-gray-800 mb-4">Key Activities</h2>
-                                                @if (!empty($summary->key_attributes) && is_array($summary->key_attributes))
-                                                    <ul class="space-y-2 text-gray-700">
-                                                        @foreach ($summary->key_attributes as $activity)
-                                                            <li class="flex items-center">
-                                                                <svg class="w-5 h-5 text-black mr-2" fill="currentColor"
-                                                                    viewBox="0 0 20 20">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                                                                        clip-rule="evenodd" />
+                        <div class="tour-summaries mt-5 px-4 max-w-6xl mx-auto" id="summary-section">
+                            <div class="tour-card rounded-2xl p-8 mb-8 transition-all duration-300"
+                                style="background: #eff5ff;">
+                                <!-- Header with Title and Duration -->
+                                <div class="flex items-center justify-between mb-8">
+                                    <h2 class=" mt-3" style="font-size: 30px; color:#000; font-weight: bold;">Tour Summary
+                                    </h2>
+                                    <div
+                                        class="flex gap-2 items-center text-black text-sm md:text-base font-bold  px-4 py-2 rounded-full">
+                                        {{-- <i class="fas fa-calendar-day" style="color: #3596d3;"></i> --}}
+                                           <svg xmlns="http://www.w3.org/2000/svg" fill="black"
+                                                                    width="18" height="18" class="me-2"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3a.75.75 0 0 1 1.5 0v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z">
+                                                                    </path>
                                                                 </svg>
-                                                                {{ $activity }}
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
-                                            </div>
-                                        </div>
+                                        <span>{{ $package->days }} Days, {{ $package->nights }} Nights</span>
                                     </div>
                                 </div>
-                            @endforeach
+
+                                <!-- Summary Description -->
+                                @if (!empty($package->summary_description))
+                                    <div class="mb-8">
+                                        <p class="leading-relaxed text-lg text-gray-600">
+                                            {{ $package->summary_description }}
+                                        </p>
+                                    </div>
+                                @endif
+
+                                <!-- Cities & Destinations -->
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-bold text-black mb-4">Destinations</h2>
+                                    <div class="flex flex-wrap items-center ml-2 text-lg font-medium gap-2 text-gray-600">
+                                        @php
+                                            $cityList = [];
+                                            foreach ($tourSummaries as $summary) {
+                                                if ($summary->package_id == $package->id) {
+                                                    $cities = explode(',', $summary->city);
+                                                    foreach ($cities as $city) {
+                                                        $trimmed = trim($city);
+                                                        if (!empty($trimmed)) {
+                                                            $cityList[] = $trimmed;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            $cityList = array_values(array_unique($cityList));
+                                        @endphp
+
+                                        @foreach ($cityList as $index => $city)
+                                            <span>{{ $city }}</span>
+                                            @if ($index < count($cityList) - 1)
+                                                <span class="text-blue-600">→</span>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <!-- Themes -->
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-bold text-black mb-4">Themes</h2>
+                                    @php
+                                        $themeList = [];
+
+                                        foreach ($tourSummaries as $summary) {
+                                            if ($summary->package_id == $package->id && !empty($summary->theme)) {
+                                                $themes = explode(',', $summary->theme);
+                                                foreach ($themes as $theme) {
+                                                    $trimmed = trim($theme);
+                                                    if (!empty($trimmed)) {
+                                                        $themeList[] = $trimmed;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        $themeList = array_values(array_unique($themeList));
+                                    @endphp
+
+                                    @if (!empty($themeList))
+                                        <div
+                                            class="ml-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 text-base text-gray-600">
+                                            @foreach ($themeList as $theme)
+                                                @php
+                                                    // Define theme icons with keywords and their URLs
+                                                    $themeIcons = [
+                                                        'adventure' =>
+                                                            'https://d2xmwf00c85p5s.cloudfront.net/t5_0222b300ec.png',
+                                                        'beach' =>
+                                                            'https://d2xmwf00c85p5s.cloudfront.net/t2_a48d3a8dae.png',
+                                                        'city' =>
+                                                            'https://d2xmwf00c85p5s.cloudfront.net/2855998_b5bcbf5bea.png',
+                                                        'history' =>
+                                                            'https://d2xmwf00c85p5s.cloudfront.net/t6_005fa7fb20.png',
+                                                        'culture' =>
+                                                            'https://d2xmwf00c85p5s.cloudfront.net/t1_bfc05a4601.png',
+                                                    ];
+
+                                                    // Default icon
+                                                    $iconUrl =
+                                                        'https://d2xmwf00c85p5s.cloudfront.net/t5_0222b300ec.png';
+
+                                                    // Match theme to icon
+                                                    foreach ($themeIcons as $key => $url) {
+                                                        if (str_contains(strtolower($theme), $key)) {
+                                                            $iconUrl = $url;
+                                                            break;
+                                                        }
+                                                    }
+                                                @endphp
+
+                                                <div class="flex items-center gap-2">
+                                                    <img src="{{ $iconUrl }}" alt="{{ $theme }} icon"
+                                                        class="w-5 h-5 object-contain">
+                                                    <span>{{ $theme }}</span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
 
 
+
+                            </div>
                         </div>
 
 
-                        @foreach ($package->detailItineraries as $itinerary)
-                            <div class="detail-itineraries mt-5" id="itinerary-section"
-                                style="display: none;padding: 28px; border-radius: 22px;">
-                                <h2 class="  text-start mb-6 " style="font-size: 30px; color:#000; font-weight: bold;">
-                                    {{ strtoupper($itinerary->place_name) }}
-                                </h2>
 
-                                <!-- Itinerary Images from Highlights -->
-                                <div class="flex flex-wrap justify-center gap-4 mb-6">
-                                    @foreach ($itinerary->highlights->take(3) as $highlight)
-                                        @foreach ($highlight->images as $img)
-                                            <img src="{{ asset($img) }}" alt="Highlight Image"
-                                                class="rounded-lg shadow-lg w-1/4  object-cover"
-                                                onerror="this.onerror=null;this.src='{{ asset('assets/img/tour/7.jpg') }}';">
-                                        @endforeach
-                                    @endforeach
+                        @foreach ($package->detailItineraries as $itinerary)
+                            <div class="mx-auto p-6 rounded-lg mt-3  detail-itineraries "
+                                id="itinerary-section-{{ $itinerary->day }}" style="display: block;">
+
+                                <!-- Day Header -->
+                                {{-- <div class="flex items-center mb-6">
+                                    <div class="w-3 h-3 rounded-full bg-green-500 ring-8 ring-gray-100 mr-6"></div>
+                                    <div class="flex items-center gap-4">
+                                        <p class="text-xl font-medium text-gray-600">
+                                            Day {{ str_pad($itinerary->day, 2, '0', STR_PAD_LEFT) }}
+                                        </p>
+                                        <h1 class="text-3xl font-semibold text-gray-900">{{ $itinerary->place_name }}</h1>
+                                    </div>
+                                </div> --}}
+
+                                <div class="flex items-center justify-between mb-8">
+                                    <div class="flex items-center">
+                                        <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold text-lg mr-6 shadow-md"
+                                            style="background: linear-gradient(45deg, rgb(148, 199, 62), rgb(148, 199, 62));">
+                                            {{ str_pad($itinerary->day, 2, '0', STR_PAD_LEFT) }}
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-600 uppercase tracking-wide"
+                                                style="color: #709929;">
+                                                Day {{ str_pad($itinerary->day, 2, '0', STR_PAD_LEFT) }}
+                                            </p>
+                                            <h1 class="text-3xl font-bold text-gray-900" style="margin-top: -15px;">{{ $itinerary->place_name }}</h1>
+                                        </div>
+                                    </div>
                                 </div>
 
 
+                                <!-- Description Section (only if available) -->
+                                @if (!empty($itinerary->description))
+                                    <div class="mb-8">
+                                        <p class="text-gray-700 leading-relaxed text-lg">
+                                            {{ $itinerary->description }}
+                                        </p>
+                                    </div>
+                                @endif
+                                <!-- Cover Image -->
+                                @php
+                                    $defaultImage = 'assets/img/tour-detail.jpg';
+                                    $firstHighlight = $itinerary->highlights->first();
+                                    $coverImage = $defaultImage;
+                                    if ($firstHighlight && !empty($firstHighlight->images)) {
+                                        $images = is_array($firstHighlight->images)
+                                            ? $firstHighlight->images
+                                            : json_decode($firstHighlight->images, true);
+                                        if (!empty($images[0])) {
+                                            $coverImage = $images[0];
+                                        }
+                                    }
+                                @endphp
+                                <div class="mb-12">
+                                    <img src="{{ asset($coverImage) }}" alt="{{ $itinerary->place_name }} cover"
+                                        class="w-full h-80 object-cover rounded-2xl shadow-lg" />
+                                </div>
 
-                                <!-- Day Programme -->
-                                <h3 class=" font-semibold mb-4 text-black" style="font-size: 24px; margin-top: 40px;">
-                                    Day {{ $itinerary->day }} Programme – {{ strtoupper($itinerary->place_name) }}
-                                </h3>
-
-                                <!-- Program Points -->
-                                @if (!empty($programPoints))
-                                    <ul class="list-disc pl-8 mb-6 space-y-2">
-                                        @foreach ($itinerary->program_points as $point)
-                                            <li class="text-base text-gray-600">{{ $point }}</li>
+                                <!-- Activities Section -->
+                                <div class="mb-12">
+                                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+                                        Day {{ str_pad($itinerary->day, 2, '0', STR_PAD_LEFT) }} Program
+                                    </h3>
+                                    <div class="bg-gray-50 rounded-2xl p-6">
+                                        @foreach (collect($itinerary->program_points)->take(4) as $point)
+                                            <div class="flex items-start mb-4">
+                                                <div class="w-2 h-2 rounded-full bg-gray-900 mt-2 mr-4 flex-shrink-0">
+                                                </div>
+                                                <span class="text-gray-700">{{ $point }}</span>
+                                            </div>
                                         @endforeach
-                                    </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Highlights Section -->
+                                @if ($itinerary->highlights->isNotEmpty())
+                                    <div class="mb-12">
+                                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+                                            {{ $itinerary->place_name }} Highlights
+                                        </h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            @foreach ($itinerary->highlights->take(6) as $highlight)
+                                                @php
+                                                    $images = is_array($highlight->images)
+                                                        ? $highlight->images
+                                                        : json_decode($highlight->images, true);
+                                                    $images = is_array($images) ? $images : [];
+                                                @endphp
+
+                                                @if (!empty($images))
+                                                    @foreach ($images as $img)
+                                                        <div class="flex flex-col">
+                                                            <div class="overflow-hidden rounded-lg">
+                                                                <img src="{{ asset($img ?: $defaultImage) }}"
+                                                                    alt="Highlight"
+                                                                    class="w-full h-40 object-cover highlight-image" />
+                                                            </div>
+                                                            <p class="text-center text-sm text-gray-600 mt-3">
+                                                                {{ $highlight->highlight_places ?? ($highlight->title ?? 'Highlight') }}
+                                                            </p>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 @endif
 
-                                <!-- Overnight Stay and Details -->
-                                <div class="bg-green-50 p-6 rounded-lg "
-                                    style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%); border: none;">
-                                    <div class="flex items-center mb-3">
-                                        <i class="fas fa-bed  mr-3" style="font-size: 14px;"></i>
-                                        <span class="font-semibold text-gray-900" style="font-size: 14px;">
-                                            Overnight Stay -
-                                            <span class="text-gray-700"
-                                                style="font-size: 14px;">{{ $itinerary->overnight_stay }}</span>
-                                        </span>
-                                    </div>
+                                <!-- Accommodation Box -->
+                                <div class="bg-gray-50 rounded-2xl p-6">
+                                    <div class="space-y-4">
+                                        <!-- Accommodation -->
+                                        <div class="flex items-start space-x-4">
+                                            <div class="flex items-center space-x-4 w-40">
+                                                <i class="fas fa-map-marker-alt w-6  text-gray-600"
+                                                    style="height: 2rem;"></i>
+                                                <p class="hidden md:block text-gray-700">Accommodation</p>
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="flex items-center text-gray-900">
+                                                    {{ $itinerary->overnight_stay ?? 'Not specified' }}
+                                                </p>
+                                            </div>
+                                        </div>
 
-                                    <div class="flex items-center mb-3">
-                                        <i class="fas fa-utensils text-xl text-gray-700 mr-3"
-                                            style="font-size: 14px;"></i>
-                                        <span class="font-semibold text-gray-900" style="font-size: 14px;">
-                                            Meal Plan -
-                                            <span class="text-gray-700"
-                                                style="font-size: 14px;">{{ $itinerary->meal_plan }}</span>
-                                        </span>
-                                    </div>
+                                        <!-- Meal Plan -->
+                                        <div class="flex items-start space-x-4">
+                                            <div class="flex items-center space-x-4 w-40">
+                                                <i class="fas fa-utensils w-6  text-gray-600" style="height: 2rem;"></i>
+                                                <p class="hidden md:block text-gray-700">Meal Plan</p>
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-900">{{ $itinerary->meal_plan ?? 'None' }}</p>
+                                            </div>
+                                        </div>
 
-                                    <div class="flex items-center" style="font-size: 14px;">
-                                        <i class="fas fa-clock text-xl text-gray-700 mr-3" style="font-size: 14px;"></i>
-                                        <span class="font-semibold text-gray-900" style="font-size: 14px;">
-                                            Approximate Travel Time -
-                                            <span class="text-gray-700"
-                                                style="font-size: 14px;">{{ $itinerary->approximate_travel_time }}</span>
-                                        </span>
+                                        <!-- Travel Time -->
+                                        <div class="flex items-start space-x-4">
+                                            <div class="flex items-center space-x-4 w-40">
+                                                <i class="far fa-clock w-6  text-gray-600" style="height: 2rem;"></i>
+                                                <p class="hidden md:block text-gray-700">Travel Time</p>
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-900">
+                                                    {{ $itinerary->approximate_travel_time ?? 'N/A' }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -678,35 +899,28 @@
 
 
 
-
                         <div id="tour-accordion" class="mt-5" style="scroll-margin:90px">
                             <!-- Tab List -->
-                            <div class="flex justify-center mb-4" aria-label="Tour Details">
-                                <div class="p-1 h-fit gap-4 items-center bg-default-100 rounded-large flex overflow-x-auto scrollbar-hide"
-                                    role="tablist" aria-orientation="horizontal">
+                            <div class="flex justify-start mb-4" aria-label="Tour Details">
+                                <div class="tab-container" role="tablist" aria-orientation="horizontal">
                                     <!-- Tab Button 1 -->
-                                    <button
-                                        class="tab-button px-4 py-2 text-lg  shadow-sm  font-semibold transition-all duration-300 ease-in-out transform hover:scale-105 active:bg-default-200"
-                                        aria-selected="true" role="tab" id="tab-highlights" data-key="highlights"
-                                        aria-controls="tabpanel-highlights">
+                                    <button class="tab-button" aria-selected="false" role="tab" id="tab-highlights"
+                                        data-key="highlights" aria-controls="tabpanel-highlights">
                                         <span class="tab-content">Inclusions</span>
                                     </button>
                                     <!-- Tab Button 2 -->
-                                    <button
-                                        class="tab-button px-4 py-2 text-lg  shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105 active:bg-default-200"
-                                        role="tab" id="tab-itinerary" data-key="itinerary"
+                                    <button class="tab-button" role="tab" id="tab-itinerary" data-key="itinerary"
                                         aria-controls="tabpanel-itinerary">
-                                        <span class="tab-content" style="color: ">Exclusions</span>
+                                        <span class="tab-content">Exclusions</span>
                                     </button>
                                     <!-- Tab Button 3 -->
-                                    <button
-                                        class="tab-button px-4 py-2 text-lg  shadow-sm   font-semibold transition-all duration-300 ease-in-out transform hover:scale-105 active:bg-default-200"
-                                        role="tab" id="tab-pricing" data-key="pricing"
+                                    <button class="tab-button" role="tab" id="tab-pricing" data-key="pricing"
                                         aria-controls="tabpanel-pricing">
                                         <span class="tab-content">Cancellation Policy</span>
                                     </button>
                                 </div>
                             </div>
+
 
 
                             <!-- Content Panels -->
@@ -856,77 +1070,67 @@
             </div>
 
             <!-- Comment Form End -->
-            <div class="col-lg-4  mt-lg-0">
-                <div class="position-sticky"style="top: 130px;">
-                    <div class="row g-3 align-items-center bg-smoke shadow  p-4 rounded">
+            <div class="col-lg-4 mt-lg-0">
+                <div class="position-sticky" style="top: 130px;">
+                    <div
+                        style="padding: 32px;  background: white; border: 1px solid #e9ecef; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 
-                        <!-- Destination -->
-                        <div class="col-6">
-
-                            <div class="d-flex align-items-center">
+                        <!-- Destination & Tour Type -->
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f1f3f4;">
+                            <div style="display: flex; align-items: center;">
                                 <img src="https://d2xmwf00c85p5s.cloudfront.net/Flag_Sri_Lanka_8a368b9ec8.webp"
-                                    alt="Sri Lanka Flag" class="rounded-circle"
-                                    style="border-radius:50%; width: 32px; height: 32px;">
-                                <p class="mb-0 ms-2 fw-semibold">Sri Lanka</p>
+                                    alt="Sri Lanka Flag"
+                                    style="width: 32px; height: 32px; border-radius: 50%; margin-right: 12px; border: 2px solid #f8f9fa;">
+                                <span style="font-weight: 600; color: #2c3e50; font-size: 16px;">Sri Lanka</span>
+                            </div>
+                            <span
+                                style="background: linear-gradient(135deg, #0c445e, #082f3f); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 13px; letter-spacing: 0.5px;">
+                                Tailor Made
+                            </span>
+                        </div>
+
+                        <!-- Package Heading -->
+                        <h5
+                            style="font-weight: 700; color: #212529; margin-bottom: 14px; text-align: center; font-size: 20px; line-height: 1.3;">
+                            {{ $package->heading }}</h5>
+
+                        <!-- Price Section -->
+                        <div style="text-align: center; margin-bottom: 14px; padding: 20px 0;">
+                            <div
+                                style="display: inline-block; padding: 16px 24px; border: 2px solid #212529; border-radius: 12px;">
+                                <h4
+                                    style="color: #212529; font-weight: 800; margin: 0; font-size: 28px; letter-spacing: -0.5px;">
+                                    USD ${{ number_format($package->price) }}
+                                </h4>
                             </div>
                         </div>
 
-                        <!-- Tour Type -->
-                        <div class="col-6">
-
-                            <span class="d-inline-block text-center  px-3 py-2 rounded  fw-semibold"
-                                style="background-color: #94d106;color: #FFF;">Tailor Made</span>
-                        </div>
-
-                        <!-- Duration -->
-                        <div class="col-6 text-center">
-
-                            <p class="mb-0 fw-semibold">{{ $package->days }} Days & {{ $package->nights }} Nights</p>
-
-                        </div>
-
-
-                        <div class="mt-4 mb-3 d-flex justify-content-center gap-2">
-                            <button class="btn btn-sm px-3 py-2 shadow "
-                                onclick="scrollToSection('summary-section', this)"
-                                style="background-color: #0a3d52; color: #fffafa;  font-weight: bold;font-size: 16px;border-radius: 25px;">
-                                Summary
-                            </button>
-
-                            <button class="btn btn-sm px-3 py-2 shadow" onclick="scrollToSection('tour-accordion', this)"
-                                style="background-color: #0a3d52;color: #fffcfc; font-weight: bold;font-size: 16px; border-radius: 25px;">
-                                Inclusions
-                            </button>
-                        </div>
-
-
-
-
-
-                        <!-- Booking Options Section -->
-                        <div class="mt-4  mb-3 text-center">
-                            <h6 class="fw-bold text-dark">Plan Your Trip with Ease</h6>
-                            <p class="text-muted small">
-                                Choose from flexible booking options with hassle-free cancellations.
-                                Our experts are available 24/7 to assist you in customizing your trip.
+                        <!-- Booking Info -->
+                        <div style="text-align: center; margin-bottom: 32px; padding: 0 8px;">
+                            <h6 style="font-weight: 700; color: #2c3e50; margin-bottom: 12px; font-size: 16px;">Plan Your
+                                Trip with Ease</h6>
+                            <p
+                                style="color: #6c757d; font-size: 14px; margin: 0; line-height: 1.5; max-width: 280px; margin: 0 auto;">
+                                Flexible booking with easy cancellations. Our travel experts are available 24/7 to assist
+                                you.
                             </p>
                         </div>
 
-                        <!-- Scroll to Booking Button -->
-                        <div class="text-center mt-3 mb-3">
-                            <a href="#booking-section" class="th-btn"
-                                style="outline: 2px solid #000; background-color: black; color: white;">
-                                Let's Go
+                        <!-- Book Now Button -->
+                        <div style="text-align: center;">
+                            <a href="#booking-section"
+                                style="display: inline-block; background: linear-gradient(45deg, #94c73e, #94c73e); color: white; padding: 14px 40px; font-weight: 700; border-radius: 50px; text-decoration: none; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(33, 37, 41, 0.2);"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 25px rgba(33, 37, 41, 0.3)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(33, 37, 41, 0.2)'">
+                                Explore Now
                             </a>
                         </div>
 
-
-
                     </div>
-
-
                 </div>
             </div>
+
 
 
         </div>
@@ -1063,10 +1267,8 @@
                             </div>
 
                             <div class="form-group md:col-span-3 text-center pt-4">
-                                <button type="submit" class="btn btn-submit"  style=" background: linear-gradient(135deg, #000000, #000000);
-            color: white;">
-                                    Submit Request
-                                </button>
+                                <button type="submit" class="btn btn-primary btn-sm"
+                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -1104,63 +1306,79 @@
     <script>
         function showSection(section) {
             const summary = document.getElementById('summary-section');
-            const itinerary = document.getElementById('itinerary-section');
+            const itineraries = document.querySelectorAll('.detail-itineraries');
             const summaryBtn = document.getElementById('summary-btn');
             const itineraryBtn = document.getElementById('itinerary-btn');
 
             if (section === 'summary') {
                 summary.style.display = 'block';
-                itinerary.style.display = 'none';
+                itineraries.forEach(el => el.style.display = 'none');
                 summaryBtn.classList.add('active');
                 itineraryBtn.classList.remove('active');
             } else {
                 summary.style.display = 'none';
-                itinerary.style.display = 'block';
+                itineraries.forEach(el => el.style.display = 'block');
                 summaryBtn.classList.remove('active');
                 itineraryBtn.classList.add('active');
             }
         }
+
+        // Optional: Show only summary section on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('summary');
+        });
     </script>
+
     <script>
         const tabs = document.querySelectorAll('[role="tab"]');
         const panels = document.querySelectorAll('.tabpanel');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-                tab.setAttribute('aria-selected', 'true');
-
-                panels.forEach(panel => {
-                    panel.style.display = 'none';
-                });
-                const panelId = tab.getAttribute('aria-controls');
-                document.getElementById(panelId).style.display = 'block';
+        function activateTab(tab) {
+            // Deactivate all
+            tabs.forEach(t => {
+                t.setAttribute('aria-selected', 'false');
+                t.classList.remove('active');
             });
+
+            panels.forEach(panel => panel.style.display = 'none');
+
+            // Activate selected
+            tab.setAttribute('aria-selected', 'true');
+            tab.classList.add('active');
+
+            const panelId = tab.getAttribute('aria-controls');
+            const targetPanel = document.getElementById(panelId);
+            if (targetPanel) targetPanel.style.display = 'block';
+        }
+
+        // Initial: Activate first tab
+        if (tabs.length > 0) activateTab(tabs[0]);
+
+        // On click
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => activateTab(tab));
         });
 
+        // Scroll and button highlight logic (unchanged)
         function scrollToSection(sectionId, btn) {
-            var headerOffset = 150; // Adjust based on your header height
+            var headerOffset = 150;
             var section = document.getElementById(sectionId);
-
             if (section) {
                 var sectionPosition = section.getBoundingClientRect().top + window.scrollY;
                 var offsetPosition = sectionPosition - headerOffset;
-
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
                 });
             }
 
-            // Remove 'active-btn' from all buttons
             document.querySelectorAll('.btn').forEach(button => {
                 button.classList.remove('active-btn');
             });
-
-            // Add 'active-btn' class to the clicked button
             btn.classList.add('active-btn');
         }
 
+        // Optional: Auto-dismiss success message
         setTimeout(() => {
             const msg = document.getElementById('success-message');
             if (msg) {
@@ -1169,5 +1387,6 @@
             }
         }, 5000);
     </script>
+
 
 @endsection
