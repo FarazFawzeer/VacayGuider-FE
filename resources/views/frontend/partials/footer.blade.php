@@ -284,6 +284,12 @@
         }
 
         @media (max-width: 576px) {
+
+            .th-social {
+
+  gap: 5px !important;
+
+}
             .scroll-top {
                 right: 29px;
             }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
     protected $fillable = [
-        'heading', 'options', 'tour_ref_no', 'description', 'location', 'picture','country_name'
+        'heading', 'options', 'tour_ref_no', 'description', 'location', 'picture','country_name','price'
     ];
 
     protected $casts = [

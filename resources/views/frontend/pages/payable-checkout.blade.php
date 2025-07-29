@@ -25,12 +25,12 @@
             orderDescription: "{{ $orderDescription }}",
             invoiceId: "{{ $invoiceId }}",
             customerFirstName: "{{ explode(' ', $booking->full_name)[0] ?? 'Guest' }}",
-            customerLastName: "Fernando", // Replace with real value
+            // customerLastName: "Fernando", // Replace with real value
             customerMobilePhone: "{{ $booking->phone }}",
             customerEmail: "{{ $booking->email }}",
-            billingAddressStreet: "Main Street",
-            billingAddressCity: "Colombo",
-            billingAddressCountry: "LKA",
+            // billingAddressStreet: "Main Street",
+            // billingAddressCity: "Colombo",
+            // billingAddressCountry: "LKA",
             amount: "{{ $amount }}",
             currencyCode: "{{ $currency }}",
             paymentType: "1"

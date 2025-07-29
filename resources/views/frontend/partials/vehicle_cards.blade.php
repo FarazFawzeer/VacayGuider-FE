@@ -24,8 +24,8 @@
 
                             <!-- Price Label -->
                             <div
-                                style="position: absolute; top: 12px; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 8px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                <span style="font-size: 16px;">$ {{ $vehicle->price }}</span>
+                                style="position: absolute; top: 12px; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                <span style="font-size: 16px;"> USD ${{ number_format($vehicle->price,0) }}</span>
                                 <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                             </div>
                         </div>
@@ -38,7 +38,8 @@
                             </h3>
 
                             <a href="{{ route('rent.details', $vehicle->id) }}" class="btn btn-primary btn-sm"
-                                style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-decoration: none; border: none; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); letter-spacing: 0.02em;"
+                                style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #3596d3 0%, #256f9d 100%);
+ color: white; text-decoration: none; border: none; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); letter-spacing: 0.02em;"
                                 onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 2px 8px rgba(59, 130, 246, 0.3)'">
                                 Continue Booking

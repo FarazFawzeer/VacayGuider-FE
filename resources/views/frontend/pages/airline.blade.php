@@ -65,7 +65,7 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            background: linear-gradient(135deg, #2596be, #96c93e);
             color: white;
             width: 60px;
             height: 60px;
@@ -478,12 +478,12 @@
 
         .feature-card {
             flex-basis: calc(33.333% - 20px);
-            background: linear-gradient(to bottom right, #fff8eb, #fff2d9);
+            background: rgba(52, 152, 219, 0.1);
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 2rem;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #f39c12;
+            border-left: 4px solid #3498db;
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
         }
@@ -978,10 +978,10 @@
             </div>
 
 
-            <div class="text-center  style="style="margin-top: 45px;">
+            {{-- <div class="text-center  style="style="margin-top: 45px;">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
                 <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
-            </div>
+            </div> --}}
 
 
 

@@ -294,7 +294,7 @@
         }
 
         .step-number {
-            background: linear-gradient(45deg, #94c73e, #94c73e);
+            background: linear-gradient(135deg, #2596be, #96c93e);
             color: white;
             width: 60px;
             height: 60px;
@@ -521,7 +521,7 @@
                                 <!-- Visit Our Office -->
                                 <div class="col-md-4  d-flex">
                                     <div class="contact-item animate-fade-in w-100"
-                                        style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                                        style=" background: rgba(52, 152, 219, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -545,7 +545,7 @@
                                 <!-- Email Us -->
                                 <div class="col-md-4 d-flex">
                                     <div class="contact-item animate-fade-in w-100"
-                                        style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                                        style="  background: rgba(52, 152, 219, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -569,7 +569,7 @@
                                 <!-- Call Us -->
                                 <div class="col-md-4 d-flex">
                                     <div class="contact-item animate-fade-in w-100"
-                                        style=" background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                                        style="  background: rgba(52, 152, 219, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;

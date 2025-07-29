@@ -60,6 +60,7 @@ Route::post('/custom-tour-request', [TourPackageController::class, 'storeCustomT
 Route::post('/package-booking', [PackageBookingController::class, 'store'])->name('package.booking.store');
 Route::post('/payable-notify', [PackageBookingController::class, 'paymentNotify']);
 Route::get('/payable-return', [PackageBookingController::class, 'paymentReturn']);
+Route::get('/payment-launch', [PackageBookingController::class, 'launch'])->name('payment.launch');
 
 Route::get('/booking/payment-redirect', [PackageBookingController::class, 'redirectToPayment'])->name('booking.redirect');
 

@@ -5,6 +5,38 @@
 @section('content')
 
     <style>
+        @media (max-width: 480px) {
+            .inbound-sub-tittle {
+                margin-top: 120px;
+            }
+
+            .home-map {
+                margin-top: 40px;
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+            .rent-undrline {
+        display: none !important;
+    }
+        }
+
         .map-section {
             /* background-color: var(--secondary); */
             /* background:  url('/assets/img/map-bg-3.jpg'); */
@@ -1463,11 +1495,11 @@
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
                                     style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
 
-                                    Where every trip becomes a story worth remembering
+                                    Where Every Trip Becomes A Story Worth Remembering
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
                                     style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
-                                    Let us take you beyond the ordinary
+                                    Let Us Take You Beyond The Ordinary
                                 </h1>
                             </div>
 
@@ -1480,40 +1512,40 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                        Let’s make your best trip with us </h1>
-                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                    unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                    Let’s make your best trip with us </h1>
+                                                                                                                                                                                                                                            </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
                                     style="font-family: 'Roboto', sans-serif;  font-size: clamp(1.125rem, 2.5vw, 1.5rem);  font-weight: 400; color: ">
-                                    Travel smarter. Travel further. Travel with us.
+                                    Travel Smarter. Travel Further. Travel With Us.
                                 </span>
                                 <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s"
                                     style="  font-family: 'Poppins', sans-serif;font-size: clamp(2.5rem, 5vw, 4rem);font-weight: 700; color: #ffffff;">
 
-                                    Your next getaway is just a flight away
+                                    Your Next Getaway Is Just A Flight Away
                                 </h1>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                                        <div class="hero-inner">
-                                                                                                                                                                                                                            <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                            <div class="container">
-                                                                                                                                                                                                                                <div class="hero-style1">
-                                                                                                                                                                                                                                    <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                        unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                    <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                        Explore beauty of the whole world </h1>
-                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                    <div class="hero-inner">
+                                                                                                                                                                                                                                        <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                        <div class="container">
+                                                                                                                                                                                                                                            <div class="hero-style1">
+                                                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                    unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                    Explore beauty of the whole world </h1>
+                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1713,12 +1745,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="title-area text-center inbound-title">
-                        <span class="sub-title"
-                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Inbound
-                            Tours</span>
+                        <span class="sub-title inbound-sub-tittle"
+                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Discover
+                            the Wonders of Sri Lanka </span>
                         <h2 class="sec-title"
                             style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
-                            Discover the Wonders of Sri Lanka </h2>
+                            Inbound Tours </h2>
                     </div>
                 </div>
             </div>
@@ -1814,7 +1846,8 @@
 
                                                                 <p class="text-sm m-0 text-dark"
                                                                     style="font-size: 14px; font-weight: 500;">
-                                                                    {{ $inboundPackage->days }} Days {{ $inboundPackage->nights }} Nights
+                                                                    {{ $inboundPackage->days }} Days
+                                                                    {{ $inboundPackage->nights }} Nights
                                                                 </p>
                                                             </div>
 
@@ -1881,15 +1914,15 @@
                             <!-- Service Box 1 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
+                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-car" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Airport Pickups
+                                        <h3 style="font-size: 21px; font-weight: 900; color: #333;">Airport Pickups
                                         </h3>
-                                        <p style="font-size: 15px; color: #555;">
+                                        <p style="font-size: 15px; color: #555;font-weight: bold;">
                                             Hassle-free airport transfers anytime. We monitor your flight and ensure
                                             prompt, reliable rides.
                                         </p>
@@ -1903,15 +1936,15 @@
                             <!-- Service Box 2 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-shield-alt" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Safe & Reliable
+                                        <h3 style="font-size: 21px; font-weight: 900;  color: #333;">Safe & Reliable
                                         </h3>
-                                        <p class="text-center" style="font-size: 15px; color: #555;">
+                                        <p class="text-center" style="font-size: 15px; color: #555;font-weight: bold;">
                                             Certified service with insured, well-maintained vehicles and licensed,
                                             professional drivers.
                                         </p>
@@ -1925,7 +1958,7 @@
                     </div>
                 </div>
                 <!-- Center: Map Image -->
-                <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                <div class="col-lg-4 text-center mb-4 mb-lg-0 home-map">
                     <img src="assets/img/map-car.png" alt="Sri Lanka Transport Map" class="img-fluid rounded"
                         style="max-width: 100%; height: auto;">
                 </div>
@@ -1937,15 +1970,15 @@
                             <!-- Service Box 3 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-credit-card" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Booking Made Easy
+                                        <h3 style="font-size: 21px; font-weight: 900;  color: #333;">Booking Made Easy
                                         </h3>
-                                        <p class="text-center" style="font-size: 15px; color: #555;">
+                                        <p class="text-center" style="font-size: 15px; color: #555;font-weight: bold;">
                                             Simple booking with flexible hourly or distance-based packages tailored to
                                             your journey.
                                         </p>
@@ -1959,15 +1992,15 @@
                             <!-- Service Box 4 -->
                             <div class="col-12 d-flex">
                                 <div class="service-box h-100 shadow"
-                                    style="background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
+                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
                                     <div class="content-overlay d-flex flex-column align-items-center">
                                         <div class="icon-container mb-4"
                                             style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                             <i class="fas fa-user-tie" style="font-size: 28px; color: #3498db;"></i>
                                         </div>
-                                        <h3 style="font-size: 21px; font-weight: 700; color: #333;">Experienced Drivers
+                                        <h3 style="font-size: 21px; font-weight: 900;  color: #333;">Experienced Drivers
                                         </h3>
-                                        <p class="text-center" style="font-size: 15px; color: #555;">
+                                        <p class="text-center" style="font-size: 15px; color: #555; font-weight: bold;">
                                             Skilled local drivers with courteous service, island knowledge, and
                                             multilingual support.
                                         </p>
@@ -2001,13 +2034,13 @@
 
         <div class="container position-relative" style="z-index: 1;">
             <!-- Title Section with improved typography -->
-            <div class="title-area text-center mb-5" style="margin-top: -75px;">
-                <span class="sub-title"
-                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium
-                    Car Rentals</span>
+            <div class="title-area text-center mb-5 rent-sub-tittle" style="margin-top: -75px;">
+                <span class="sub-title "
+                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
+                    Find Your Perfect Ride </span>
                 <h2 class="sec-title"
                     style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
-                    Find Your Perfect Ride </h2>
+                    Vehicle Rentals </h2>
             </div>
 
             <div class="tab-content" id="nav-tabContent">
@@ -2056,7 +2089,7 @@
                                                 <!-- Left Section -->
                                                 <div class="content-section" style="flex: 1; padding-right: 20px;">
                                                     <div
-                                                        style="display: inline-block; background: linear-gradient(135deg, #FF4D4D, #CC0000);padding: 8px 14px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
+                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 8px 14px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
                                                         {{ $vehicle->category ?? 'Premium ' }}
                                                     </div>
 
@@ -2065,12 +2098,12 @@
                                                         {{ $vehicle->make }}
                                                     </h3>
                                                     <h3
-                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #00A2FF; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
+                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
                                                         {{ $vehicle->model }}
                                                     </h3>
 
-                                                    <div
-                                                        style="width: 60px; height: 6px; background: linear-gradient(90deg, #00A2FF, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
+                                                    <div class="rent-undrline"
+                                                        style="width: 60px; height: 6px; background: linear-gradient(90deg, #3596d3, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
                                                     </div>
                                                 </div>
 
@@ -2093,8 +2126,8 @@
 
                                                     <div class="demo-container">
                                                         <div
-                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 15px 20px; border-radius: 60px; font-size: 14px; font-weight: 800; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                                            <span style="font-size: 28px;">$ {{ $vehicle->price }}</span>
+                                                             style="position: absolute; text-align: center; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                            <span style="font-size: 28px;">USD ${{ number_format($vehicle->price, 0) }}</span>
                                                             <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                                                         </div>
                                                     </div>
@@ -2109,9 +2142,9 @@
 
                                                 <!-- Helmets -->
                                                 <div class="specification-item"
-                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #00A2FF; font-weight: 700; font-size: 18px;">
+                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #3596D2;font-weight: 700; font-size: 18px;">
                                                     <i class="fas fa-helmet-safety"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Helmets</span>
@@ -2125,7 +2158,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-kit-medical"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">First-Aid
@@ -2141,7 +2174,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-cogs"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Transmission</span>
@@ -2156,7 +2189,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-road"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Mileage</span>
@@ -2199,11 +2232,10 @@
                             {{-- <span class="sub-title" style="color: #AAAAAA;">Airline Tickets</span>
                                 <h2 class="sec-title"  style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">Your Gateway to the World</h2> --}}
                             <span class="sub-title "
-                                style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Airline
-                                Ticket</span>
+                                style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;"> Your Gateway to the World</span>
                             <h2 class="sec-title"
                                 style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
-                                Your Gateway to the World</h2>
+                                Air  Ticketing</h2>
 
 
                         </div>
@@ -2214,10 +2246,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                                            <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                                                Get Tickets
-                                                                                                                                                                            </a>
-                                                                                                                                                                        </div> -->
+                                                                                                                                                                                        <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                                                            Get Tickets
+                                                                                                                                                                                        </a>
+                                                                                                                                                                                    </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">

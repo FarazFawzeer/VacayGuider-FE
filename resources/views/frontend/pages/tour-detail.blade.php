@@ -4,6 +4,160 @@
 
 @section('content')
     <style>
+        @media (max-width: 480px) {
+            .main-head{
+                font-size: 26px !important;
+            }
+
+            .p-thank{
+                font-size: 14px;
+                text-align: justify;
+
+            }
+
+            .panel-content {
+                color: #333;
+                font-size: 14px !important;
+            }
+
+            .accomo-gap {
+                width: 14px !important;
+            }
+
+            .side-box-head {
+                margin-top: 15px;
+            }
+
+            .tab-button {
+                font-size: 16px;
+                font-weight: 600;
+                padding: 7px 10px !important;
+                border-radius: 25px;
+                margin-right: 10px;
+                cursor: pointer;
+                color: #000;
+
+                display: flex;
+                justify-content: center;
+                /* center text horizontally */
+                align-items: center;
+                /* center vertically */
+            }
+
+            .tab-content {
+                display: block;
+                width: 100%;
+                /* fill button */
+                text-align: center;
+            }
+
+            .tab-container {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 8px;
+            }
+
+
+            /*tour summary styls */
+            .summary-heading {
+                margin-bottom: 10px;
+            }
+
+            .tour-summaries {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .tour-card {
+                padding: 1.5rem !important;
+                width: 100%;
+            }
+
+            .tour-card h2 {
+                font-size: 22px !important;
+                margin-bottom: 1rem;
+            }
+
+            .tour-card .flex.items-center.justify-between {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .tour-card .text-lg {
+                font-size: 14px !important;
+            }
+
+            .tour-card .text-xl {
+                font-size: 18px !important;
+            }
+
+            .tour-card .text-base {
+                font-size: 14px !important;
+            }
+
+            .tour-card .gap-2 {
+                gap: 6px;
+            }
+
+            .tour-card .grid {
+                grid-template-columns: 1fr !important;
+                gap: 6px !important;
+            }
+
+            .tour-card img.w-5.h-5 {
+                width: 18px !important;
+                height: 18px !important;
+            }
+
+            .nav-container {
+                display: flex;
+                flex-wrap: nowrap;
+                /* Prevent wrapping */
+                overflow-x: auto;
+                /* Enable horizontal scroll if needed */
+                border-radius: 9999px;
+                padding: 6px 10px;
+                background-color: #f8fafc;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                border: 1px solid #e2e8f0;
+                width: 100% !important;
+                scrollbar-width: none;
+                /* Hide scrollbar for Firefox */
+            }
+
+            .nav-container::-webkit-scrollbar {
+                display: none;
+                /* Hide scrollbar for Chrome/Safari */
+            }
+
+            .nav-button {
+                flex: 0 0 auto;
+                /* Do not shrink, allow horizontal scroll */
+                padding: 10px 28px;
+                border: none;
+                background-color: transparent;
+                color: #000000;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 9999px;
+                transition: all 0.3s ease;
+                position: relative;
+                outline: none;
+                white-space: nowrap;
+                /* Prevent text wrapping */
+                margin-right: 8px;
+                /* Space between buttons */
+            }
+
+
+            .breadcrumb-mobile {
+
+                margin-top: 10px;
+            }
+        }
+
         .btn-outline-dark {
             border: 2px solid #0a3d52;
             color: #0a3d52;
@@ -122,7 +276,9 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            /* background: linear-gradient(135deg, #2596be, #1e6f94); */
+background: linear-gradient(135deg, #2596be, #96c93e);
+
             color: white;
             width: 60px;
             height: 60px;
@@ -362,17 +518,7 @@
         }
 
         /* For responsive design */
-        @media (max-width: 576px) {
-            .nav-container {
-
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .nav-button {
-                width: 100%;
-            }
-        }
+        @media (max-width: 576px) {}
 
         h1,
         h2,
@@ -575,7 +721,7 @@
                         <div class="blog-date ">
                             <small class="text-uppercase  " style="font-size: 18px;font-weight: 900; color:#96c93e;">Sri
                                 Lanka</small>
-                            <h5 class="mt-2" style="font-size: 36px; font-weight:500;">
+                            <h5 class="mt-2 main-head" style="font-size: 36px; font-weight:500;">
                                 Tour for <strong style="font-weight: 900;">{{ $package->days }} Days</strong>
                                 & <strong style="font-weight: 900;"> {{ $package->nights }}
                                     Nights</strong>
@@ -597,9 +743,12 @@
                     <div class=" mb-3" style="padding: 30px;">
 
                         {{-- <h2 class="mb-3" style="font-size: 30px; color:#000; font-weight: bold;">{{ $package->heading }}
-                        </h2> --}}
-                        <p style="padding-top: 10px; padding-bottom: 20px;">{{ $package->description }}</p>
-
+                        {{-- </h2> --}}
+                        {{-- <p class=" px-3"style="padding-top: 10px; padding-bottom: 20px;">{{ $package->description }}</p>  --}}
+                        <p class=" px-3"
+                            style="padding-top: 10px; padding-bottom: 20px; text-align: justify;word-spacing: -1px;">
+                            {{ $package->description }}
+                        </p>
 
 
 
@@ -612,16 +761,15 @@
                             </button>
                         </div>
 
-                        <div class="tour-summaries mt-5 px-4 max-w-6xl mx-auto" id="summary-section">
+                        <div class="tour-summaries mt-5 px-2 max-w-6xl mx-auto" id="summary-section">
                             <div class="tour-card rounded-2xl p-8 mb-8 transition-all duration-300"
                                 style="background: #eff5ff;">
                                 <!-- Header with Title and Duration -->
-                                <div class="flex items-center justify-between mb-8">
+                                <div class="flex items-center justify-between mb-8 summary-heading">
                                     <h2 class=" mt-3" style="font-size: 30px; color:#000; font-weight: bold;">Tour Summary
                                     </h2>
                                     <div
-                                        class="flex gap-2 items-center text-black text-sm md:text-base font-bold  px-4 py-2 rounded-full">
-                                        {{-- <i class="fas fa-calendar-day" style="color: #3596d3;"></i> --}}
+                                        class="hidden md:flex gap-2 items-center text-black text-sm md:text-base font-bold px-4 py-2 rounded-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="black" width="18" height="18"
                                             class="me-2" viewBox="0 0 24 24">
                                             <path
@@ -630,12 +778,13 @@
                                         </svg>
                                         <span>{{ $package->days }} Days, {{ $package->nights }} Nights</span>
                                     </div>
+
                                 </div>
 
                                 <!-- Summary Description -->
                                 @if (!empty($package->summary_description))
                                     <div class="mb-8">
-                                        <p class="leading-relaxed text-lg text-gray-600">
+                                        <p class="leading-relaxed text-lg text-gray-600 text-justify">
                                             {{ $package->summary_description }}
                                         </p>
                                     </div>
@@ -776,7 +925,7 @@
                                 <!-- Description Section (only if available) -->
                                 @if (!empty($itinerary->description))
                                     <div class="mb-8">
-                                        <p class="text-gray-700 leading-relaxed text-lg">
+                                        <p class="text-gray-700 leading-relaxed text-sm text-justify">
                                             {{ $itinerary->description }}
                                         </p>
                                     </div>
@@ -855,7 +1004,7 @@
                                     <div class="space-y-4">
                                         <!-- Accommodation -->
                                         <div class="flex items-start space-x-4">
-                                            <div class="flex items-center space-x-4 w-40">
+                                            <div class="flex items-center space-x-4 w-40 accomo-gap">
                                                 <i class="fas fa-map-marker-alt w-6  text-gray-600"
                                                     style="height: 2rem;"></i>
                                                 <p class="hidden md:block text-gray-700">Accommodation</p>
@@ -869,7 +1018,7 @@
 
                                         <!-- Meal Plan -->
                                         <div class="flex items-start space-x-4">
-                                            <div class="flex items-center space-x-4 w-40">
+                                            <div class="flex items-center space-x-4 w-40 accomo-gap">
                                                 <i class="fas fa-utensils w-6  text-gray-600" style="height: 2rem;"></i>
                                                 <p class="hidden md:block text-gray-700">Meal Plan</p>
                                             </div>
@@ -880,7 +1029,7 @@
 
                                         <!-- Travel Time -->
                                         <div class="flex items-start space-x-4">
-                                            <div class="flex items-center space-x-4 w-40">
+                                            <div class="flex items-center space-x-4 w-40 accomo-gap">
                                                 <i class="far fa-clock w-6  text-gray-600" style="height: 2rem;"></i>
                                                 <p class="hidden md:block text-gray-700">Travel Time</p>
                                             </div>
@@ -892,29 +1041,27 @@
                                     </div>
                                 </div>
 
-                                         @php
-                            $defaultMapImage = asset('assets/img/default-map.jpg');
-                            $mapImagePath = $itinerary->map_image ? 'storage/' . $itinerary->map_image : null;
-                            $mapImage =
-                                $mapImagePath && file_exists(public_path($mapImagePath))
-                                    ? asset($mapImagePath)
-                                    : $defaultMapImage;
-                        @endphp
+                                @php
+                                    $defaultMapImage = asset('assets/img/default-map.jpg');
+                                    $mapImagePath = $itinerary->map_image ? 'storage/' . $itinerary->map_image : null;
+                                    $mapImage =
+                                        $mapImagePath && file_exists(public_path($mapImagePath))
+                                            ? asset($mapImagePath)
+                                            : $defaultMapImage;
+                                @endphp
 
-                        <div class="mt-12">
-                             <h3 class="text-2xl font-semibold text-gray-900 mb-6">Your Tour Map</h3>
-                            <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
-                                class=" lg:w-auto w-full object-cover rounded-xl shadow-md" style="height: 400px; width: 300px;"
-                                loading="lazy" />
-                        </div>
+                                <div class="mt-12">
+                                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Tour Map</h3>
+                                    <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
+                                        class=" lg:w-auto w-full object-cover rounded-xl shadow-md"
+                                        style="height: 400px; width: 300px;" loading="lazy" />
+                                </div>
 
                             </div>
-
-                            
                         @endforeach
 
-                   
-               
+
+
 
 
 
@@ -947,31 +1094,66 @@
                             <div id="tabpanel-highlights" aria-labelledby="tab-highlights" class="tabpanel py-3 px-1">
                                 <div class="panel-content">
                                     <ul class="list-none pl-0">
+
                                         <li style="margin-bottom: 10px;">
-                                            • Airport pick up
+                                            <div class="flex items-startr">
+                                                <div class="w-2 h-2 rounded-full  mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Airport pick up</span>
+                                            </div>
+                                        </li>
+
+                                        <li style="margin-bottom: 10px;">
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Assistance at the Airport</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Assistance at the Airport
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Accommodation with breakfast and dinner basis on mentioned hotels
+                                                    below</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Accommodation with breakfast and dinner basis on mentioned hotels
-                                            below
+                                            <div class="flex items-starttems-center">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Private luxury car (air-conditioned)</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Private luxury car (air-conditioned)
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Private English-Speaking driver for the entire journey</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Private English-Speaking driver for the entire journey
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>All government taxes</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • All government taxes
-                                        </li>
-                                        <li style="margin-bottom: 10px;">
-                                            • Fuel & local insurance for the vehicle
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Fuel & local insurance for the vehicle</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 20px;">
-                                            • Airport drop off
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Airport drop off</span>
+                                            </div>
                                         </li>
+
                                         <p style="margin-bottom: 10px ;margin-top: 2opx;">
                                             <strong style="color: #000;">Note :</strong> All rooms and tickets are subject
                                             to
@@ -994,41 +1176,90 @@
                                 <div class="panel-content">
                                     <ul class="list-none pl-0">
                                         <li style="margin-bottom: 10px;">
-                                            • Air tickets NOT included
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Air tickets NOT included</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Sightseeing entrance charges
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Sightseeing entrance charges</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Meals not mentioned in the itinerary
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Meals not mentioned in the itinerary</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Camera & video permits
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Camera & video permits</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Insurances
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Insurances</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Guide/Driver tips
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Guide/Driver tips</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Personal expenses
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Personal expenses</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Late check-outs & early check-in charges
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Late check-outs & early check-in charges</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Visa cost (mandatory charge for immigration: 25 USD per person)
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Visa cost (mandatory charge for immigration: 25 USD per person)</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • Shopping expenses
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Shopping expenses</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
-                                            • PCR tests
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>PCR tests</span>
+                                            </div>
                                         </li>
                                         <li style="margin-bottom: 20px;">
-                                            • Above cost is valid for 14 pax or above only
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Above cost is valid for 14 pax or above only</span>
+                                            </div>
                                         </li>
+
                                         <p style="margin-bottom: 10px;">
                                             <strong style="color: #000;">Note :</strong> Please note that if the
                                             information mentioned
@@ -1045,13 +1276,30 @@
                                 style="display:none;">
                                 <div class="panel-content">
                                     <ul class="list-none pl-0">
-                                        <li style="margin-bottom: 10px;"> • <strong>In case of
-                                                cancellation:</strong> The following cancellation charges will be
-                                            applicable</li>
+                                        <li style="margin-bottom: 10px;">
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span><strong>In case of cancellation:</strong> The following cancellation
+                                                    charges will be applicable</span>
+                                            </div>
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>Cancellations made with less than 30 days from the start of a tour:
+                                                    Zero refund.</span>
+                                            </div>
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            <div class="flex items-start">
+                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
+                                                    style="background: #727373;"></div>
+                                                <span>No Show: Zero refund.</span>
+                                            </div>
+                                        </li>
 
-                                        <li style="margin-bottom: 10px;"> • Cancellations made with less than 30
-                                            days from the start of a tour: Zero refund.</li>
-                                        <li style="margin-bottom: 10px;"> • No Show: Zero refund.</li>
                                         <p style="margin-bottom: 10px;"><strong style="color: #000;">Note :</strong>
                                             Cancellations made
                                             prior to 30 days from the scheduled start of a tour: 80% of total tour
@@ -1065,7 +1313,7 @@
                             <div
                                 style="max-width: 800px; width: 100%; padding: 20px; background-color: #f4f4f4; border-top: 2px solid #ccc; font-family: Arial, sans-serif; color: #333; font-size: 16px; line-height: 1.6; text-align: center;">
 
-                                <p style="margin: 0 0 10px 0;">
+                                <p class="p-thank" style="margin: 0 0 10px 0;">
                                     At <strong>VacayGuider</strong>, the journey doesn't end when the trip does, it lingers
                                     in the stories shared,
                                     the photos reminisced, and the plans for the next adventure. But above all, we
@@ -1079,7 +1327,7 @@
                                 </p>
 
 
-                                <p style="margin: 0; font-weight: bold;">Thank You</p>
+                                <p class="p-thank text-center" style="margin: 0; font-weight: bold;">Thank You</p>
 
                             </div>
                         </div>
@@ -1089,7 +1337,7 @@
             </div>
 
             <!-- Comment Form End -->
-            <div class="col-lg-4 mt-lg-0">
+            <div class="col-lg-4 mt-lg-0 side-box-head">
                 <div class="position-sticky" style="top: 130px;">
                     <div
                         style="padding: 32px;  background: white; border: 1px solid #e9ecef; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
@@ -1139,7 +1387,7 @@
                         <!-- Book Now Button -->
                         <div style="text-align: center;">
                             <a href="#booking-section"
-                                style="display: inline-block; background: linear-gradient(45deg, #94c73e, #94c73e); color: white; padding: 14px 40px; font-weight: 700; border-radius: 50px; text-decoration: none; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(33, 37, 41, 0.2);"
+                                style="display: inline-block; background: linear-gradient(135deg, #2596be, #96c93e); color: white; padding: 14px 40px; font-weight: 700; border-radius: 50px; text-decoration: none; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(33, 37, 41, 0.2);"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 25px rgba(33, 37, 41, 0.3)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(33, 37, 41, 0.2)'">
                                 Explore Now
@@ -1294,10 +1542,10 @@
                 </div>
             </div>
 
-            <div class="text-center " style="margin-bottom: -40px;margin-top: 30px;">
+            {{-- <div class="text-center " style="margin-bottom: -40px;margin-top: 30px;">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
                 <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
-            </div>
+            </div> --}}
 
 
 

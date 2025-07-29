@@ -24,6 +24,8 @@ class PackageBooking extends Model
         'start_date',
         'end_date',
         'message',
+        'invoice_id',         // ← add this
+    'payment_status',     
     ];
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PackageBooking;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BookingConfirmation;
@@ -14,7 +15,7 @@ class PackageBookingController extends Controller
     //
 
 
-  public function store(Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'fullName' => 'required|string|max:255',
@@ -46,16 +47,19 @@ class PackageBookingController extends Controller
             'end_date' => $data['endDate'],
             'message' => $data['message'] ?? null,
             'invoice_id' => $invoiceId,
+            'payment_status' => 'pending',
         ]);
 
         // Send confirmation email (optional)
         Mail::to($booking->email)->send(new BookingConfirmation($booking));
 
+        $package = Package::findOrFail($data['package']);
+        $amount = number_format($package->price, 2, '.', ''); // e.g., 599.50
+        $currency = env('PAYABLE_CURRENCY', 'LKR');
         // Payment setup
         $merchantKey = env('PAYABLE_MERCHANT_KEY');
         $merchantToken = env('PAYABLE_MERCHANT_TOKEN');
-        $amount = '600.00'; // Can be dynamic
-        $currency = 'LKR';
+
 
         $orderDescription = "Tour Booking for Package #" . $booking->package_id;
         $orderDescription = preg_replace('/[^A-Za-z0-9 .,]/', '', $orderDescription);
@@ -67,27 +71,27 @@ class PackageBookingController extends Controller
         $notifyUrl = $baseUrl . '/payable-notify';
         $logoUrl = $baseUrl . '/public/assets/img/vacayguider.png';
 
- $mToken = strtoupper(hash('sha512', $merchantToken));
-$val = $merchantKey . '|' . $invoiceId . '|' . $amount . '|' . $currency . '|' . $mToken;
-$checkValue = strtoupper(hash('sha512', $val));
+        $mToken = strtoupper(hash('sha512', $merchantToken));
+        $val = $merchantKey . '|' . $invoiceId . '|' . $amount . '|' . $currency . '|' . $mToken;
+        $checkValue = strtoupper(hash('sha512', $val));
 
-// dd($val);
-session([
-    'booking_id' => $booking->id,
-    'merchant_key' => $merchantKey,
-    'merchant_token' => $merchantToken,
-    'check_value' => $checkValue,
-    'amount' => $amount,
-    'currency' => $currency,
-    'invoice_id' => $invoiceId,
-    'order_description' => $orderDescription,
-    'return_url' => $returnUrl,
-    'notify_url' => $notifyUrl,
-    'logo_url' => $logoUrl
-]);
+        // dd($val);
+        session([
+            'booking_id' => $booking->id,
+            'merchant_key' => $merchantKey,
+            'merchant_token' => $merchantToken,
+            'check_value' => $checkValue,
+            'amount' => $amount,
+            'currency' => $currency,
+            'invoice_id' => $invoiceId,
+            'order_description' => $orderDescription,
+            'return_url' => $returnUrl,
+            'notify_url' => $notifyUrl,
+            'logo_url' => $logoUrl
+        ]);
 
-// Redirect to a separate route that loads the checkout page
-return redirect()->route('payment.launch');
+        // Redirect to a separate route that loads the checkout page
+        return redirect()->route('payment.launch');
     }
 
     public function paymentNotify(Request $request)
@@ -108,6 +112,11 @@ return redirect()->route('payment.launch');
     }
 
 
+    public function launch()
+{
+    return view('frontend.pages.payable-checkout'); // or wherever your payment page is
+}
+
     // public function handleNotify(Request $request)
     // {
     //     $data = $request->all();
@@ -125,9 +134,9 @@ return redirect()->route('payment.launch');
 
     //     return response()->json(['Status' => 200]);
     // }
-    
-    
-   
+
+
+
     // protected $merchantKey = '';
     // protected $merchantToken = ';
 

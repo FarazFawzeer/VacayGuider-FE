@@ -240,7 +240,7 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+           background: linear-gradient(135deg, #2596be, #96c93e);
             color: white;
             width: 60px;
             height: 60px;
@@ -337,7 +337,7 @@
         }
 
         .payment-info {
-            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+           background: rgba(52, 152, 219, 0.1);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -357,7 +357,7 @@
         }
 
         .success-section .step-number {
-            background: #3596d3;
+            background: linear-gradient(135deg, #2596be, #96c93e);
         }
 
         .bottom-image {
@@ -551,7 +551,7 @@
                                                 <!-- Left Section -->
                                                 <div class="content-section" style="flex: 1; padding-right: 20px;">
                                                     <div
-                                                        style="display: inline-block; background: linear-gradient(135deg, #FF4D4D, #CC0000);padding: 8px 14px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
+                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 4px 8px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
                                                         {{ $vehicle->category ?? 'Premium ' }}
                                                     </div>
 
@@ -560,12 +560,12 @@
                                                         {{ $vehicle->make }}
                                                     </h3>
                                                     <h3
-                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #00A2FF; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
+                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
                                                         {{ $vehicle->model }}
                                                     </h3>
 
                                                     <div
-                                                        style="width: 60px; height: 6px; background: linear-gradient(90deg, #00A2FF, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
+                                                        style="width: 60px; height: 6px; background: linear-gradient(90deg, #3596d3, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
                                                     </div>
                                                 </div>
 
@@ -589,8 +589,8 @@
 
                                                     <div class="demo-container">
                                                         <div
-                                                            style="position: absolute; text-align: center; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 8px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                                            <span style="font-size: 28px;">$ {{ $vehicle->price }}</span>
+                                                            style="position: absolute; text-align: center; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                            <span style="font-size: 28px;">USD ${{ number_format($vehicle->price, 0) }}</span>
                                                             <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                                                         </div>
                                                     </div>
@@ -605,9 +605,9 @@
 
                                                 <!-- Helmets -->
                                                 <div class="specification-item"
-                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #00A2FF; font-weight: 700; font-size: 18px;">
+                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #3596D3; font-weight: 700; font-size: 18px;">
                                                     <i class="fas fa-helmet-safety"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Helmets</span>
@@ -619,9 +619,9 @@
 
                                                 <!-- First-Aid Kit -->
                                                 <div class="specification-item"
-                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
+                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #3596D3;">
                                                     <i class="fas fa-kit-medical"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">First-Aid
@@ -635,9 +635,9 @@
 
                                                 <!-- Transmission -->
                                                 <div class="specification-item"
-                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
+                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #3596D3;">
                                                     <i class="fas fa-cogs"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Transmission</span>
@@ -650,9 +650,9 @@
 
                                                 <!-- Mileage -->
                                                 <div class="specification-item"
-                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
+                                                    style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #3596D3;">
                                                     <i class="fas fa-road"
-                                                        style="color: #00A2FF; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Mileage</span>
@@ -684,7 +684,7 @@
             <!-- Improved RESERVE NOW Button -->
             <div class="reserve-button-container" style="display: flex; justify-content: center; margin-top: 50px;">
                 <a href="#" id="reserveButton" class="reserve-now-btn"
-                    style="display: inline-block; background: linear-gradient(135deg, #FF4D4D, #CC0000); color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; padding: 18px 42px; border-radius: 10px; text-decoration: none; letter-spacing: 1.5px; box-shadow: 0 8px 20px rgba(0,162,255,0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    style="display: inline-block; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; padding: 18px 42px; border-radius: 10px; text-decoration: none; letter-spacing: 1.5px; box-shadow: 0 8px 20px rgba(0,162,255,0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
                     <span style="position: relative; z-index: 2;">RESERVE NOW</span>
                     <div class="btn-glow"
                         style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%); z-index: 1; animation: glow 2s infinite linear;">
@@ -938,7 +938,7 @@
                         Ready to explore the beautiful roads of Sri Lanka with complete peace of mind!
                     </p> --}}
 
-                            <div class="payment-info" style="background: #96c83d;">
+                            <div class="payment-info" style="background: rgba(52, 152, 219, 0.1);">
                                 <p>
                                     You will receive your driving license at the requested location on time.
                                     For any clarifications, feel free to contact us
@@ -977,7 +977,7 @@
                         style="flex: 1; min-width: 250px; max-width: 280px; background: linear-gradient(135deg, rgba(19,19,30,0.8) 0%, rgba(30,30,47,0.8) 100%); padding: 30px 25px; border-radius: 16px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 1px solid rgba(0,162,255,0.1); transition: all 0.3s ease;">
                         <div class="icon-container"
                             style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(0,162,255,0.1) 0%, rgba(0,105,217,0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,162,255,0.15); border: 1px solid rgba(0,162,255,0.2);">
-                            <i class="fas fa-shield-alt" style="font-size: 30px; color: #00A2FF;"></i>
+                            <i class="fas fa-shield-alt" style="font-size: 30px; color: #3596D3;"></i>
                         </div>
                         <h4
                             style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 15px;">
@@ -992,7 +992,7 @@
                         style="flex: 1; min-width: 250px; max-width: 280px; background: linear-gradient(135deg, rgba(19,19,30,0.8) 0%, rgba(30,30,47,0.8) 100%); padding: 30px 25px; border-radius: 16px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 1px solid rgba(0,162,255,0.1); transition: all 0.3s ease;">
                         <div class="icon-container"
                             style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(0,162,255,0.1) 0%, rgba(0,105,217,0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,162,255,0.15); border: 1px solid rgba(0,162,255,0.2);">
-                            <i class="fas fa-dollar-sign" style="font-size: 30px; color: #00A2FF;"></i>
+                            <i class="fas fa-dollar-sign" style="font-size: 30px; color: #3596D3;"></i>
                         </div>
                         <h4
                             style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 15px;">
@@ -1007,7 +1007,7 @@
                         style="flex: 1; min-width: 250px; max-width: 280px; background: linear-gradient(135deg, rgba(19,19,30,0.8) 0%, rgba(30,30,47,0.8) 100%); padding: 30px 25px; border-radius: 16px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 1px solid rgba(0,162,255,0.1); transition: all 0.3s ease;">
                         <div class="icon-container"
                             style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(0,162,255,0.1) 0%, rgba(0,105,217,0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,162,255,0.15); border: 1px solid rgba(0,162,255,0.2);">
-                            <i class="fas fa-headset" style="font-size: 30px; color: #00A2FF;"></i>
+                            <i class="fas fa-headset" style="font-size: 30px; color: #3596D3;"></i>
                         </div>
                         <h4
                             style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 15px;">

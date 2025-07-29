@@ -4,6 +4,78 @@
 
 @section('content')
     <style>
+        @media (max-width: 480px) {
+
+        .page-title{
+            margin-bottom: 26px !important;
+        }
+            .special-title{
+                margin-top: 10px;
+            }
+            .inbound-title{
+                margin-top: 32px;
+                margin-block: 20px;
+                margin-bottom: 16px;
+            }
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1049; /* Just behind the sidebar */
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
         .breadcrumb-item {
             transition: all 0.2s ease-in-out;
         }
@@ -22,6 +94,7 @@
                 overflow-x: auto;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
+                margin-top: 14px;
             }
 
             .breadcrumb-mobile::-webkit-scrollbar {
@@ -88,7 +161,7 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            background: linear-gradient(135deg, #2596be, #96c93e);
             color: white;
             width: 60px;
             height: 60px;
@@ -362,7 +435,7 @@
         </div>
     </div>
 
-
+<div class="sidebar-overlay"></div>
 
 
 
@@ -370,97 +443,123 @@
     <section class="position-relative overflow-hidden space" id="service-sec" data-bg-src="">
         <div class="container-fluid" style="margin-top: -104px;">
             <div class="row">
-                <div class="title-area text-center " style="">
+                <div class="title-area text-center inbound-title" style="">
                     <h2 class="sec-title"
                         style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                         Discover the Wonders of Sri Lanka </h2>
                 </div>
             </div>
+            
 
             <div class="row " style="margin-top: -20px;">
 
+
+                <!-- Filter Toggle Button for Mobile -->
+             <!-- Filter Toggle Button (Visible only on mobile) -->
+<div class="d-md-none w-100 px-3 mb-3">
+    <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
+        style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+        </svg>
+        <span style="font-size: 14px;">Filter</span>
+    </button>
+</div>
+
+
                 <!-- Sidebar Filter Section - 1/4 width -->
-                <div class="col-md-3">
-                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px;">
-                        <form id="filterForm">
-                            <!-- Tour Category Selection -->
-                            <div class="filter-section mb-4">
-                                <div class="ps-1">
-                                    @php
-                                        $options = [
-                                            'special' => 'Special',
-                                            'city' => 'City',
-                                            'tailor' => 'Tailor Made',
-                                            'customize' => 'Customize',
-                                        ];
-                                    @endphp
-                                    @foreach ($options as $key => $label)
-                                        <div
-                                            class="form-check mb-2 d-flex align-items-start align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <input class="form-check-input tour-option-radio" type="checkbox"
-                                                    name="tour_category" id="category_{{ $key }}"
-                                                    value="{{ $key }}" {{ $loop->first ? 'checked' : '' }}
-                                                    data-section="{{ $key }}">
-                                                <label class="form-check-label ms-2" for="category_{{ $key }}">
-                                                    {{ $label }}
-                                                </label>
+                <div class="col-md-3 sidebar-container" id="mobileSidebar">
+                    <div class="sidebar-content p-4"
+                        style=" width: 100%;">
+                        <div class="filter-sidebar shadow p-4"
+                            style="background-color: #f8f9fa; border-radius: 6px; border: 1px solid #dee2e6;">
+                            <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
+                                <button id="closeSidebarBtn" class=" btn-sm text-danger border-0 shadow-none">
+                                    <i class="fas fa-times fa-lg"></i>
+                                </button>
+                            </div>
+                            <form id="filterForm">
+                                <!-- Tour Category Selection -->
+                                <div class="filter-section mb-4">
+                                    <div class="ps-1">
+                                        @php
+                                            $options = [
+                                                'special' => 'Special',
+                                                'city' => 'City',
+                                                'tailor' => 'Tailor Made',
+                                                'customize' => 'Customize',
+                                            ];
+                                        @endphp
+                                        @foreach ($options as $key => $label)
+                                            <div
+                                                class="form-check mb-2 d-flex align-items-start align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <input class="form-check-input tour-option-radio" type="checkbox"
+                                                        name="tour_category" id="category_{{ $key }}"
+                                                        value="{{ $key }}" {{ $loop->first ? 'checked' : '' }}
+                                                        data-section="{{ $key }}">
+                                                    <label class="form-check-label ms-2" for="category_{{ $key }}">
+                                                        {{ $label }}
+                                                    </label>
+                                                </div>
+
+                                                @if ($key === 'tailor')
+                                                    <span class="tailor-arrow" style="font-size: 16px;">&#9656;</span>
+                                                    {{-- ▶ --}}
+                                                @endif
                                             </div>
 
                                             @if ($key === 'tailor')
-                                                <span class="tailor-arrow" style="font-size: 16px;">&#9656;</span>
-                                                {{-- ▶ --}}
+                                                <!-- Tailor Made Sub-Filters (indented under Tailor) -->
+                                                <div id="tailor-section"
+                                                    class="filter-section-content d-none ms-4 mt-2 border-start ps-3">
+                                                    <!-- Days Filter -->
+                                                    <div class="filter-section mb-3">
+                                                        <h6 class="text-black" style="font-size: 14px;">Number of Days</h6>
+                                                        <div class="d-flex justify-content-between mb-2">
+                                                            <span id="durationMinLabel"
+                                                                style="font-size: 13px;">{{ $minDay }} Day</span>
+                                                            <span id="durationMaxLabel"
+                                                                style="font-size: 13px;">{{ $maxDay }} Days</span>
+                                                        </div>
+                                                        <input type="range" class="form-range" id="daysRangeSlider"
+                                                            name="days" min="{{ $minDay }}"
+                                                            max="{{ $maxDay }}" value="" />
+                                                        <div class="text-center">
+                                                            <small>Selected: <span id="selectedDay">Not selected</span>
+                                                                Days</small>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Themes Filter -->
+                                                    <div class="filter-section mb-2">
+                                                        <h6 class="text-black" style="font-size: 14px;">Theme</h6>
+                                                        <div class="ps-2">
+                                                            @foreach ($allThemes as $theme)
+                                                                <div class="form-check mb-2 d-flex align-items-center">
+                                                                    <input class="form-check-input" name="theme[]"
+                                                                        value="{{ $theme }}" type="checkbox"
+                                                                        id="theme_{{ $loop->index }}">
+                                                                    <label class="form-check-label ms-2"
+                                                                        for="theme_{{ $loop->index }}">
+                                                                        {{ ucfirst($theme) }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @endif
-                                        </div>
-
-                                        @if ($key === 'tailor')
-                                            <!-- Tailor Made Sub-Filters (indented under Tailor) -->
-                                            <div id="tailor-section"
-                                                class="filter-section-content d-none ms-4 mt-2 border-start ps-3">
-                                                <!-- Days Filter -->
-                                                <div class="filter-section mb-3">
-                                                    <h6 class="text-black" style="font-size: 14px;">Number of Days</h6>
-                                                    <div class="d-flex justify-content-between mb-2">
-                                                        <span id="durationMinLabel"
-                                                            style="font-size: 13px;">{{ $minDay }} Day</span>
-                                                        <span id="durationMaxLabel"
-                                                            style="font-size: 13px;">{{ $maxDay }} Days</span>
-                                                    </div>
-                                                    <input type="range" class="form-range" id="daysRangeSlider"
-                                                        name="days" min="{{ $minDay }}" max="{{ $maxDay }}"
-                                                        value="" />
-                                                    <div class="text-center">
-                                                        <small>Selected: <span id="selectedDay">Not selected</span>
-                                                            Days</small>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Themes Filter -->
-                                                <div class="filter-section mb-2">
-                                                    <h6 class="text-black" style="font-size: 14px;">Theme</h6>
-                                                    <div class="ps-2">
-                                                        @foreach ($allThemes as $theme)
-                                                            <div class="form-check mb-2 d-flex align-items-center">
-                                                                <input class="form-check-input" name="theme[]"
-                                                                    value="{{ $theme }}" type="checkbox"
-                                                                    id="theme_{{ $loop->index }}">
-                                                                <label class="form-check-label ms-2"
-                                                                    for="theme_{{ $loop->index }}">
-                                                                    {{ ucfirst($theme) }}
-                                                                </label>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
 
 
-                        </form>
+                            </form>
 
+                        </div>
                     </div>
                 </div>
 
@@ -471,7 +570,7 @@
                         {{-- Show all three on page load --}}
 
                         <!-- Special Tours -->
-                        <h1 class="page-title text-start ml-2"
+                        <h1 class="page-title text-start ml-2 special-title"
                             style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
                             Special Tours</h1>
                         <div class="row">
@@ -569,7 +668,8 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-sm"
+                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -849,7 +949,8 @@
 
                             <!-- Button -->
                             <div class="form-group md:col-span-3 text-center pt-4">
-                                <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
+                                <button type="submit" class="btn btn-submit"
+                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
                                     Submit Request
                                 </button>
                             </div>
@@ -858,10 +959,10 @@
                 </div>
             </div>
 
-            <div class="text-center mt-15">
+            {{-- <div class="text-center mt-15">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
                 <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
-            </div>
+            </div> --}}
 
 
 
@@ -971,9 +1072,9 @@
 
         /*
 
-                                                                                                                    .space, .space-top {
-                                                                                                                      padding-top: 20px;
-                                                                                                                    } */
+                                                                                                                                                .space, .space-top {
+                                                                                                                                                  padding-top: 20px;
+                                                                                                                                                } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1699,6 +1800,50 @@
                     });
                 });
         });
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const toggleBtn = document.getElementById('toggleFilterBtn');
+            const closeBtn = document.getElementById('closeSidebarBtn');
+
+            toggleBtn?.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                document.body.classList.add('sidebar-open');
+            });
+
+            closeBtn?.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            });
+        });
+
+        // document.getElementById('toggleFilterBtn').addEventListener('click', () => {
+        //     document.querySelector('.sidebar-container').classList.add('show');
+        // });
+        // document.getElementById('closeSidebarBtn').addEventListener('click', () => {
+        //     document.querySelector('.sidebar-container').classList.remove('show');
+        // });
+
+        const sidebar = document.querySelector('.sidebar-container');
+const overlay = document.querySelector('.sidebar-overlay');
+const toggleBtn = document.getElementById('toggleFilterBtn');
+const closeBtn = document.getElementById('closeSidebarBtn');
+
+toggleBtn.addEventListener('click', () => {
+    sidebar.classList.add('show');
+    overlay.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('show');
+    overlay.classList.remove('active');
+});
+
+overlay.addEventListener('click', () => {
+    sidebar.classList.remove('show');
+    overlay.classList.remove('active');
+});
+
+
     </script>
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
