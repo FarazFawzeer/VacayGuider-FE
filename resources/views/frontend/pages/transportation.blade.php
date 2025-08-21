@@ -5,9 +5,177 @@
 @section('content')
 
     <style>
-        .service-card{
+        @media (max-width: 480px) {
+
+            .hero-section {
+                padding: 0px !important;
+            }
+
+            .step-card-mob {
+                padding: 0px !important;
+            }
+
+            .permint-post-mob {
+                margin-top: -32px;
+            }
+
+            /* Mobile adjustments */
+            @media (max-width: 576px) {
+                .title-area {
+                    margin-top: 0 !important;
+                    padding: 0 10px;
+                }
+
+                .sec-title {
+                    font-size: 1.75rem !important;
+                }
+
+                .hero-section .container {
+                    gap: 1rem;
+                }
+
+                .overview-text {
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                .info-badge {
+                    font-size: 13px;
+                    padding: 8px 12px;
+                }
+            }
+
+            .rent-undrline {
+                display: none !important;
+            }
+
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+            .filter-title-mob {
+                margin-top: 22px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .rvs-btn-mob {
+                margin-top: 25px !important;
+                margin-bottom: -40px !important;
+            }
+
+            .card-mob {
+                margin-top: -24px !important;
+            }
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 14px;
+            }
+
+            .title-mob {
+                margin-top: -38px !important;
+            }
+
+            .sub-title {
+                margin-bottom: 0px !important;
+
+            }
+
+            .filter-mob {
+                margin-top: -20px;
+                padding-bottom: 10px;
+
+            }
+
+            .title-area-mob {
+                margin-top: 14px !important;
+
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+        }
+
+
+        .service-card {
             background: linear-gradient(135deg, #f6faff 0%, #ddeeff 100%);
         }
+
         .map-section {
             /* background-color: var(--secondary); */
             /* background:  url('/assets/img/map-bg-3.jpg'); */
@@ -228,11 +396,11 @@
         .feature-item {
             text-align: center;
             padding: 25px;
-            background: linear-gradient(to bottom right, #fff8eb, #fff2d9);
+            background: rgba(52, 152, 219, 0.1);
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #f39c12;
-            border-right: 4px solid #f39c12;
+            border-left: 4px solid #3498db;
+            border-right: 4px solid #3498db;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -268,7 +436,7 @@
         .pagination .page-item.active .page-link {
             background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
-            border-color:  linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            border-color: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
         }
 
         .pagination .page-link {
@@ -316,14 +484,14 @@
                             <!-- Home Link -->
                             <li class="flex items-center">
                                 <a href="{{ url('/') }}"
-                                    class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                    class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
                                     <!-- Home Icon -->
                                     <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                     </svg>
-                                    <span class="group-hover:text-blue-600">Home</span>
+                                    <span class="group-hover:text-black">Home</span>
                                 </a>
                             </li>
 
@@ -353,16 +521,16 @@
         </div>
         <div class="container mx-auto px-4">
 
-            <div class="title-area text-center mb-5" style="margin-top: -50px; ">
+            <div class="title-area text-center mb-5 title-mob" style="margin-top: -50px; ">
 
 
-                <div class="title-area text-center " style="">
+                <div class="title-area text-center  " style="">
                     {{-- <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
                     <h2 class="sec-title"
                         style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                        We deliver comfort every
-                        mile</h2>
+                        We Deliver Comfort Every
+                        Mile</h2>
                 </div>
 
                 <p class="text-center " style="margin-top: -40px;margin-bottom: 50px; color:#000; ">
@@ -384,7 +552,7 @@
                         <!-- Centered Icon + Heading -->
                         <div class="flex justify-center items-center ">
                             <!-- Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2"
                                 style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -415,7 +583,7 @@
                         <!-- Centered Icon + Heading -->
                         <div class="flex justify-center items-center mb-3">
                             <!-- Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2"
                                 style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -446,7 +614,7 @@
                         <!-- Centered Icon + Heading -->
                         <div class="flex justify-center items-center mb-3">
                             <!-- Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2"
                                 style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -486,7 +654,7 @@
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
                         <!-- Centered Icon + Heading -->
                         <div class="flex justify-center items-center mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2"
                                 style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -510,7 +678,7 @@
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
                         <div class="flex justify-center items-center mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2"
                                 style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -534,7 +702,7 @@
                     <div
                         class="service-card bg-smoke hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-25 p-6 rounded-xl border border-gray-100 shadow-lg">
                         <div class="flex justify-center items-center mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2"
                                 style="margin-top: -14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -559,15 +727,17 @@
         </div>
     </section>
 
+    <div class="sidebar-overlay"></div>
+
     <section class="position-relative overflow-hidden bg-smoke space" id="service-sec" data-bg-src="">
-        <div class="containe-fluid" style="margin-top: -82px;">
+        <div class="container-fluid" style="margin-top: -82px;">
             <div class="row">
 
 
                 <div class="title-area text-center" style=" ">
 
 
-                    <div class="title-area text-center " style="">
+                    <div class="title-area title-area-mob text-center " style="">
                         <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium
                             Vehicles</span>
@@ -580,48 +750,70 @@
 
                 <div class="row " style="margin-top: -45px;">
 
+                    <!-- Filter Toggle Button (Visible only on mobile) -->
+                    <div class="d-md-none w-100 px-3 mb-3 filter-mob">
+                        <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
+                            style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                            <span style="font-size: 14px;">Filter</span>
+                        </button>
+                    </div>
 
                     <!-- Sidebar Filter Section - 1/4 width -->
-                    <div class="col-md-3">
-                        <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px; ">
-                            <form id="vehicleFilterForm">
-                                <div class="filter-section mb-4">
-                                    <h5 class="filter-heading text-black" style="font-size: 16px">
-                                        Vehicle Type
-                                    </h5>
-                                    <div class="ps-2">
-                                        <div class="ps-2"
-                                            style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
-                                            @foreach ($vehicleTypes as $type)
-                                                <div class="form-check mb-2 d-flex align-items-center">
-                                                    <input class="form-check-input" name="types[]"
-                                                        value="{{ $type }}" type="checkbox"
-                                                        id="vehicle_type_{{ $loop->index }}"
-                                                        style="font-size: 14px; color:#000; border: 2px solid #000; ">
-                                                    <label class="form-check-label ms-2"
-                                                        for="vehicle_type_{{ $loop->index }}"
-                                                        style="font-size: 14px; color:#000; ">
-                                                        {{ ucfirst($type) }}
-                                                    </label>
-                                                </div>
-                                            @endforeach
+                    <div class="col-md-3 sidebar-container" id="vehicleSidebar">
+                        <div class="sidebar-content p-4" style="width: 100%;">
+                            <div class="filter-sidebar p-4"
+                                style="border-radius: 10px; border: 1px solid #dee2e6; background: rgb(255, 255, 255);">
+
+                                <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
+                                    <button id="closeVehicleSidebarBtn" class="btn-sm text-danger border-0 shadow-none">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </button>
+                                </div>
+
+                                <form id="vehicleFilterForm">
+                                    <div class="filter-section mb-4">
+                                        <h5 class="filter-heading text-black" style="font-size: 16px;">
+                                            Vehicle Type
+                                        </h5>
+                                        <div class="ps-2">
+                                            <div class="ps-2"
+                                                style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
+                                                @foreach ($vehicleTypes as $type)
+                                                    <div class="form-check mb-2 d-flex align-items-center">
+                                                        <input class="form-check-input" name="types[]"
+                                                            value="{{ $type }}" type="checkbox"
+                                                            id="vehicle_type_{{ $loop->index }}">
+                                                        <label class="form-check-label ms-2"
+                                                            for="vehicle_type_{{ $loop->index }}">
+                                                            {{ ucfirst($type) }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
 
 
+
                     <!-- Results Section -->
                     <div class="col-md-9" id="filteredVehicleResults">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             @foreach ($vehicles as $vehicle)
-                                @php
-                                    $vehicleType = strtolower($vehicle->type); // e.g., car, bike, etc.
-                                    $imagePath = $vehicle->image ? 'storage/' . $vehicle->image : null;
-                                    $fallbackImage = 'assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg';
-                                @endphp
+                                   @php
+                    $backendBaseUrl = config('app.backend_url');
+                    $vehicleImageUrl = $vehicle->vehicle_image
+                        ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
+                        : asset('assets/img/bike3.png');
+                @endphp
                                 <div class="col-12 col-sm-6 col-md-4 mb-4 vehicle-card" data-type="{{ $vehicle->type }}">
                                     <div class="tour-box style2 th-ani"
                                         style="cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 16px; overflow: hidden; min-height: 320px; position: relative; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.06); transform: translateY(0px);"
@@ -631,7 +823,7 @@
                                         <!-- Vehicle Image -->
                                         <div class="tour-box_img global-img"
                                             style="position: relative; overflow: hidden;">
-                                            <img src="{{ $vehicle->image && file_exists(public_path($imagePath)) ? asset($imagePath) : asset($fallbackImage) }}"
+                                            <img src="{{ $vehicleImageUrl }}"
                                                 alt="{{ $vehicle->name }}"
                                                 style="width: 100%; height: 220px; object-fit: cover; transition: transform 0.3s ease;"
                                                 onmouseover="this.style.transform='scale(1.05)'"
@@ -642,7 +834,7 @@
 
                                             <!-- Price Label -->
                                             <div
-                                                style="position: absolute; top: 12px; right: 12px; background: rgba(5, 150, 105, 0.95); color: white; padding: 8px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                style="position: absolute; top: 12px; right: 12px; background:#96c93e; color: white; padding: 8px 12px; border-radius: 10px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                                                 <span style="font-size: 16px;">$ {{ $vehicle->price }}</span>
                                                 <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                                             </div>
@@ -657,7 +849,7 @@
 
                                             <a href="{{ route('transportation.details', $vehicle->id) }}"
                                                 class="btn btn-primary btn-sm"
-                                                style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-decoration: none; border: none; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); letter-spacing: 0.02em;"
+                                                style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 10px; background: linear-gradient(135deg, rgb(13, 78, 107) 0%, rgb(10, 61, 82) 100%); color: white; text-decoration: none; border: none; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); letter-spacing: 0.02em;"
                                                 onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.4)'"
                                                 onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 2px 8px rgba(59, 130, 246, 0.3)'">
                                                 Continue Booking
@@ -808,4 +1000,29 @@
             document.getElementById('vehicleFilterForm').addEventListener('change', fetchFilteredVehicles);
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.getElementById("toggleFilterBtn");
+            const sidebar = document.getElementById("vehicleSidebar"); // fixed ID
+            const closeBtn = document.getElementById("closeVehicleSidebarBtn");
+            const overlay = document.getElementById("vehicleSidebarOverlay");
+
+            toggleBtn.addEventListener("click", function() {
+                sidebar.classList.add("show");
+                overlay.classList.add("active");
+                document.body.classList.add("sidebar-open");
+            });
+
+            function closeSidebar() {
+                sidebar.classList.remove("show");
+                overlay.classList.remove("active");
+                document.body.classList.remove("sidebar-open");
+            }
+
+            closeBtn.addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
+        });
+    </script>
+
 @endsection

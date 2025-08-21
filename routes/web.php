@@ -58,17 +58,13 @@ Route::post('/custom-tour-request', [TourPackageController::class, 'storeCustomT
 
 
 Route::post('/package-booking', [PackageBookingController::class, 'store'])->name('package.booking.store');
-Route::post('/payable-notify', [PackageBookingController::class, 'paymentNotify']);
 Route::get('/payable-return', [PackageBookingController::class, 'paymentReturn']);
-Route::get('/payment-launch', [PackageBookingController::class, 'launch'])->name('payment.launch');
 
 Route::get('/booking/payment-redirect', [PackageBookingController::class, 'redirectToPayment'])->name('booking.redirect');
 
-// Route::post('/payable-notify', [PackageBookingController::class, 'handleNotify'])->name('payable.notify');
 
-// Route::get('/payable-checkout', [App\Http\Controllers\PackageBookingController::class, 'showCheckout']);
-// Route::post('/payable-notify', [App\Http\Controllers\PackageBookingController::class, 'paymentNotify']);
-// Route::get('/payable-return', [App\Http\Controllers\PackageBookingController::class, 'paymentReturn']);
+
+
 
 
 Route::get('/thank-you', function () {
@@ -105,3 +101,26 @@ Route::get('/tours/load-more/{category}', [TourPackageController::class, 'loadMo
 
 
 Route::post('/airline-booking', [AirlineBookingController::class, 'store'])->name('airline.booking.store');
+
+
+use App\Models\PackageBooking;
+
+Route::get('/payment-launch', function () {
+    $booking = PackageBooking::findOrFail(session('booking_id'));
+
+    return view('frontend.pages.payable-checkout', [
+        'booking' => $booking,
+        'merchantKey' => session('merchant_key'),
+        'checkValue' => session('check_value'),
+        'amount' => session('amount'),
+        'invoiceId' => session('invoice_id'),
+        'orderDescription' => session('order_description'),
+        'returnUrl' => session('return_url'),
+        'notifyUrl' => session('notify_url'),
+        'logoUrl' => session('logo_url'),
+        'currencyCode' => session('currency'),
+    ]);
+})->name('payment.launch');
+
+
+// Route::post('/payable-notify', [PackageBookingController::class, 'handlePayableWebhook'])->name('checkout.webhook');

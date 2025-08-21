@@ -5,6 +5,319 @@
 @section('content')
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @media (max-width: 480px) {
+
+            .counter-top-mob {
+                margin-top: -40px !important;
+
+            }
+
+            .counter-top-mob-sec {
+                margin-top: -50px !important;
+            }
+
+            .counter-top-mob-third {
+                margin-top: -50px !important;
+            }
+
+            .counter-top-mob-fourth {
+                margin-top: -50px !important;
+            }
+
+            .mob-team-staff {
+                margin-top: -27px !important;
+            }
+
+            .mob-ceo-head {
+                margin-top: -62px !important;
+            }
+
+            .mob-team {
+                margin-top: -62px !important;
+            }
+
+            .ceo-content {
+                margin-top: -48px !important;
+            }
+
+            .content-container {
+                text-align: center !important;
+                /* Center heading and footer */
+                padding: 15px !important;
+                /* Reduce padding for mobile */
+            }
+
+            .blockquote-footer-mob {
+                text-align: center !important;
+            }
+
+            .content-container .ceo-main-image img {
+                margin: 0 auto;
+                /* Center the image */
+                display: block;
+                width: 80%;
+                /* Optional: make it a bit smaller on mobile */
+                max-width: 250px;
+            }
+
+            .content-container h1 {
+                font-size: 24px !important;
+                /* Reduce heading size for mobile */
+            }
+
+            .content-container footer {
+                display: block;
+                text-align: center !important;
+                font-size: 14px;
+            }
+
+            .counter-section-mob {
+                margin-top: -60px !important;
+            }
+
+            .counter-section .counter-card {
+                text-align: center !important;
+                /* Center all content */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .counter-section .counter-icon {
+                margin-bottom: 15px;
+            }
+
+            .counter-section .counter-line {
+                margin-left: auto !important;
+                margin-right: auto !important;
+                /* Center the line */
+            }
+
+            .counter-section strong,
+            .counter-section label {
+                text-align: center !important;
+            }
+
+            .responsive-container-block.inner-container,
+            .team-cards-outer-container,
+            .team-cards-inner-container {
+                padding: 10px !important;
+                min-height: auto !important;
+            }
+
+            /* Card adjustments */
+            .card-container {
+                padding: 5px !important;
+            }
+
+            .card {
+                border-radius: 12px;
+                margin-bottom: 15px !important;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+            }
+
+            .card .card-content-box {
+                padding: 10px !important;
+            }
+
+            .card .person-name {
+                font-size: 16px !important;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .card .person-info {
+                font-size: 14px !important;
+                text-align: center;
+                color: #555;
+            }
+
+            .ceo-content p {
+                font-size: 14px !important;
+                text-align: center !important;
+            }
+
+            .ceo-main-image img {
+                width: 100% !important;
+                max-width: 300px;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .responsive-cell-block.wk-tab-12,
+            .responsive-cell-block.wk-mobile-12,
+            .responsive-cell-block.wk-ipadp-10 {
+                width: 100% !important;
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+            }
+
+            .hero-section {
+                padding: 0px !important;
+            }
+
+            .step-card-mob {
+                padding: 0px !important;
+            }
+
+            .permint-post-mob {
+                margin-top: -32px;
+            }
+
+            /* Mobile adjustments */
+            @media (max-width: 576px) {
+                .title-area {
+                    margin-top: 0 !important;
+                    padding: 0 10px;
+                }
+
+                .sec-title {
+                    font-size: 1.75rem !important;
+                }
+
+                .hero-section .container {
+                    gap: 1rem;
+                }
+
+                .overview-text {
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                .info-badge {
+                    font-size: 13px;
+                    padding: 8px 12px;
+                }
+            }
+
+            .rent-undrline {
+                display: none !important;
+            }
+
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+            .filter-title-mob {
+                margin-top: 22px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .rvs-btn-mob {
+                margin-top: 25px !important;
+                margin-bottom: -40px !important;
+            }
+
+            .card-mob {
+                margin-top: -24px !important;
+            }
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 14px;
+            }
+
+            .title-mob {
+                margin-top: -38px !important;
+            }
+
+            .sub-title {
+                margin-bottom: 0px !important;
+
+            }
+
+            .filter-mob {
+                margin-top: -20px;
+                padding-bottom: 10px;
+
+            }
+
+            .title-area-mob {
+                margin-top: 14px !important;
+
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+        }
+
         .breadcrumb-item {
             transition: all 0.2s ease-in-out;
         }
@@ -328,16 +641,7 @@
             align-items: center;
         }
 
-        .content-container {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: row;
-            align-items: center;
-            padding-top: 0px;
-            padding-right: 25px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-        }
+
 
         .img-box {
             max-width: 130px;
@@ -463,12 +767,7 @@
                 max-height: 109px;
             }
 
-            .content-container {
-                padding-top: 0px;
-                padding-right: 20px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-            }
+
 
             .inner-container {
                 justify-content: space-evenly;
@@ -519,11 +818,14 @@
 
         @media (max-width: 500px) {
             .outer-container {
-                padding-top: 0px;
-                padding-right: 60px;
-                padding-bottom: 0px;
-                padding-left: 60px;
+                justify-content: center !important;
+                padding-top: 0px !important;
+                padding-right: 0px !important;
+                padding-bottom: 0px !important;
+                padding-left: 0px !important;
             }
+
+
 
             .section-head {
                 font-size: 40px;
@@ -743,9 +1045,9 @@
 
         /*
 
-                    .space, .space-top {
-                      padding-top: 20px;
-                    } */
+                            .space, .space-top {
+                              padding-top: 20px;
+                            } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1164,236 +1466,259 @@
     </div> --}}
     <!-- Simple Professional Breadcrumb -->
     <div>
-    <div class="w-full ">
-        <div class="mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="py-3">
-                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
-                    <ol class="flex items-center space-x-1 text-sm font-medium">
-                        <!-- Home Link -->
-                        <li class="flex items-center">
-                            <a href="{{ url('/') }}"
-                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
-                                <!-- Home Icon -->
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                <span class="group-hover:text-blue-600">Home</span>
-                            </a>
-                        </li>
+        <div class="w-full ">
+            <div class="mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="py-3">
+                    <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                        <ol class="flex items-center space-x-1 text-sm font-medium">
+                            <!-- Home Link -->
+                            <li class="flex items-center">
+                                <a href="{{ url('/') }}"
+                                    class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                    <!-- Home Icon -->
+                                    <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                    <span class="group-hover:text-blue-600">Home</span>
+                                </a>
+                            </li>
 
-                        <!-- Separator -->
-                        <li class="flex items-center">
-                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </li>
-
-                        <!-- Current Page -->
-                        <li class="flex items-center">
-                            <span
-                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
-                                aria-current="page">
-                                <!-- About Icon -->
-                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <!-- Separator -->
+                            <li class="flex items-center">
+                                <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span>About Us</span>
-                            </span>
-                        </li>
-                    </ol>
-                </nav>
+                            </li>
+
+                            <!-- Current Page -->
+                            <li class="flex items-center">
+                                <span
+                                    class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                    aria-current="page">
+                                    <!-- About Icon -->
+                                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span>About Us</span>
+                                </span>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
 
 
 
 
 
-    <section class="counter-section " id="about" style="margin-top: -10px;">
-        <div class="container">
+        <section class="counter-section " id="about" style="margin-top: -10px;">
+            <div class="container">
 
-            <div class="row vertical_content_manage mt-5">
-                <div class="title-area text-center " style="">
-                    <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                        Explore the World with Vacay Guider </h2>
-                </div>
+                <div class="row vertical_content_manage mt-5">
+                    <div class="title-area text-center " style="">
+                        <h2 class="sec-title"
+                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            Explore the World with Vacay Guider </h2>
+                    </div>
 
-                <div class="col-lg-12" style="margin-top: -25px;">
-                    <div class="about_header_main ">
-                        {{-- <h4 class="about_heading text-capitalize text-center font-weight-bold mt-4">
+                    <div class="col-lg-12" style="margin-top: -25px;">
+                        <div class="about_header_main ">
+                            {{-- <h4 class="about_heading text-capitalize text-center font-weight-bold mt-4">
                                     Explore the World with Vacay Guider
                                 </h4>  --}}
 
-                        <!-- <h1 class="mb-4 text-center" style="font-size:34px;">Welcome to Tourist</h1> -->
-                        <p class="text-center ">
-                            Welcome to <strong><span style="color: #94d106 !important;">Vacay</span><span
-                                    style="color:#028ccc !important;">Guider</span>
-                            </strong>, Your trusted partner in the travel and tourism industry. With over 5 years of certified experience, we take pride in delivering exceptional travel services that transform every journey into a lasting memory. 
-                        </p>
-                        <p class="text-center mt-3">
-                            At <strong><span style="color: #94d106 !important;">Vacay</span><span
-                                    style="color:#028ccc !important;">Guider</span>
-                            </strong>, We specialize in tailor-made travel experiences designed for every type of traveler. Whether you’re seeking a tranquil escape to Sri Lanka’s scenic wonders or a thrilling international adventure, we’re here to make your dream trip a reality. Our expertly crafted Inbound and Outbound tour packages offer the perfect mix of relaxation, exploration, and cultural discovery. 
-                        </p>
-
-
-
-
-                        <div class="text-center">
-                            <p class="mt-3 text-muted">
-                                To ensure a seamless and stress-free travel experience, we offer a wide range of reliable
-                                services, including: 1. Custom Tour Packages – Experiences tailored to your interests 2. Air
-                                Ticketing – Hassle-free booking to your dream destinations 3. Visa Assistance – Expert help
-                                with travel documentation 4. Hotel Booking – Handpicked stays to suit your preferences and
-                                budget 5. Airport Transportation – Smooth and punctual airport transfers 6. Car Rental
-                                Services – Flexible options to suit your travel needs 7. Travel Insurance – Coverage for
-                                peace of mind on every trip
-
+                            <!-- <h1 class="mb-4 text-center" style="font-size:34px;">Welcome to Tourist</h1> -->
+                            <p class="text-center ">
+                                Welcome to <strong><span style="color: #94d106 !important;">Vacay</span><span
+                                        style="color:#028ccc !important;">Guider</span>
+                                </strong>, Your trusted partner in the travel and tourism industry. With over 5 years of
+                                certified experience, we take pride in delivering exceptional travel services that transform
+                                every journey into a lasting memory.
                             </p>
-                        </div>
-
-                        <div class="text-center">
-                            <p class="mt-3 text-muted">
-                                Our passionate and experienced team is dedicated to providing personalized service, ensuring every detail is handled with care. At Vacay Guider, we don’t just plan trips — we create journeys that inspire, enrich, and delight.
-
+                            <p class="text-center mt-3">
+                                At <strong><span style="color: #94d106 !important;">Vacay</span><span
+                                        style="color:#028ccc !important;">Guider</span>
+                                </strong>, We specialize in tailor-made travel experiences designed for every type of
+                                traveler. Whether you’re seeking a tranquil escape to Sri Lanka’s scenic wonders or a
+                                thrilling international adventure, we’re here to make your dream trip a reality. Our
+                                expertly crafted Inbound and Outbound tour packages offer the perfect mix of relaxation,
+                                exploration, and cultural discovery.
                             </p>
-                        </div>
 
 
 
 
+                            <div class="text-center">
+                                <p class="mt-3 text-muted">
+                                    To ensure a seamless and stress-free travel experience, we offer a wide range of
+                                    reliable
+                                    services, including: 1. Custom Tour Packages – Experiences tailored to your interests 2.
+                                    Air
+                                    Ticketing – Hassle-free booking to your dream destinations 3. Visa Assistance – Expert
+                                    help
+                                    with travel documentation 4. Hotel Booking – Handpicked stays to suit your preferences
+                                    and
+                                    budget 5. Airport Transportation – Smooth and punctual airport transfers 6. Car Rental
+                                    Services – Flexible options to suit your travel needs 7. Travel Insurance – Coverage for
+                                    peace of mind on every trip
 
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="vision-mission-container" style="padding: 40px 0; font-family: 'Poppins', sans-serif;">
-                <div class="row g-4" style="margin: 0;">
-                    <!-- Vision Box -->
-                    <div class="col-lg-6">
-                        <div class="vision-box h-100"
-                            style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
-                            <div class="content-overlay" style="position: relative; z-index: 2;">
-                                <div class="icon-container mb-4"
-                                    style="width: 80px; height: 80px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
-                                            fill="#2E7D32" />
-                                        <path
-                                            d="M12 22C11.4477 22 11 21.5523 11 21C11 20.4477 11.4477 20 12 20C12.5523 20 13 20.4477 13 21C13 21.5523 12.5523 22 12 22Z"
-                                            fill="#2E7D32" />
-                                        <path
-                                            d="M17.6569 6.34315C18.0474 5.95262 18.0474 5.31946 17.6569 4.92893C17.2664 4.53841 16.6332 4.53841 16.2427 4.92893C15.8522 5.31946 15.8522 5.95262 16.2427 6.34315C16.6332 6.73367 17.2664 6.73367 17.6569 6.34315Z"
-                                            fill="#2E7D32" />
-                                        <path
-                                            d="M4.92893 19.0711C4.53841 18.6805 4.53841 18.0474 4.92893 17.6569C5.31946 17.2663 5.95262 17.2663 6.34315 17.6569C6.73367 18.0474 6.73367 18.6805 6.34315 19.0711C5.95262 19.4616 5.31946 19.4616 4.92893 19.0711Z"
-                                            fill="#2E7D32" />
-                                        <path
-                                            d="M19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13C18.5523 13 19 12.5523 19 12Z"
-                                            fill="#2E7D32" />
-                                        <path
-                                            d="M3 12C3 11.4477 3.44772 11 4 11C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13C3.44772 13 3 12.5523 3 12Z"
-                                            fill="#2E7D32" />
-                                        <path
-                                            d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                                            fill="#2E7D32" />
-                                    </svg>
-                                </div>
-                                <h2
-                                    style="font-size: 32px; font-weight: 700; margin-bottom: 16px; color: #2E7D32; text-transform: uppercase; letter-spacing: 1px;">
-                                    Our Vision</h2>
-                                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #1B5E20;">
-                                    Pioneering Tomorrow's Travel Tales</h3>
-                                <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
-                                    We aspire to be a globally recognized leader in the travel and tourism industry by
-                                    redefining
-                                    the way people experience the world. We aim to empower travelers through personalized,
-                                    innovative, and seamless travel solutions that not only meet their expectations but
-                                    exceed
-                                    them. We envision a future where every journey we create fosters cultural connection,
-                                    personal growth, and unforgettable memories. With a strong commitment to quality, trust,
-                                    and sustainability, we strive to build lasting relationships with our clients and
-                                    partners —
-                                    becoming the go-to travel companion for explorers around the globe.
                                 </p>
                             </div>
-                            <div class="decorative-shape"
-                                style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(46, 125, 50, 0.1); z-index: 1;">
+
+                            <div class="text-center">
+                                <p class="mt-3 text-muted">
+                                    Our passionate and experienced team is dedicated to providing personalized service,
+                                    ensuring every detail is handled with care. At Vacay Guider, we don’t just plan trips —
+                                    we create journeys that inspire, enrich, and delight.
+
+                                </p>
                             </div>
-                            <div class="decorative-shape"
-                                style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(46, 125, 50, 0.07); z-index: 1;">
-                            </div>
+
+
+
+
+
+
                         </div>
                     </div>
 
-                    <!-- Mission Box -->
-                    <div class="col-lg-6">
-                        <div class="mission-box h-100"
-                            style="background: linear-gradient(135deg, #e6f2f7 0%, #c8d7e6 100%); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
-                            <div class="content-overlay" style="position: relative; z-index: 2;">
-                                <div class="icon-container mb-4"
-                                    style="width: 80px; height: 80px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M17.618 5.968C17.618 5.968 17.109 13.582 12.01 13.582C6.91 13.582 6.402 5.968 6.402 5.968"
-                                            stroke="#1565C0" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M19 19.833L18.132 14.235C18.052 13.818 17.692 13.5 17.268 13.5H6.732C6.308 13.5 5.948 13.818 5.868 14.235L5 19.833"
-                                            stroke="#1565C0" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M12 7L12 10" stroke="#1565C0" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <circle cx="12" cy="5" r="2" stroke="#1565C0" stroke-width="2" />
-                                    </svg>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="vision-mission-container" style="padding: 40px 0; font-family: 'Poppins', sans-serif;">
+                    <div class="row g-4" style="margin: 0;">
+                        <!-- Vision Box -->
+                        <div class="col-lg-6">
+                            <div class="vision-box h-100"
+                                style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+                                <div class="content-overlay" style="position: relative; z-index: 2;">
+                                    <div class="icon-container mb-4"
+                                        style="width: 80px; height: 80px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+                                                fill="#2E7D32" />
+                                            <path
+                                                d="M12 22C11.4477 22 11 21.5523 11 21C11 20.4477 11.4477 20 12 20C12.5523 20 13 20.4477 13 21C13 21.5523 12.5523 22 12 22Z"
+                                                fill="#2E7D32" />
+                                            <path
+                                                d="M17.6569 6.34315C18.0474 5.95262 18.0474 5.31946 17.6569 4.92893C17.2664 4.53841 16.6332 4.53841 16.2427 4.92893C15.8522 5.31946 15.8522 5.95262 16.2427 6.34315C16.6332 6.73367 17.2664 6.73367 17.6569 6.34315Z"
+                                                fill="#2E7D32" />
+                                            <path
+                                                d="M4.92893 19.0711C4.53841 18.6805 4.53841 18.0474 4.92893 17.6569C5.31946 17.2663 5.95262 17.2663 6.34315 17.6569C6.73367 18.0474 6.73367 18.6805 6.34315 19.0711C5.95262 19.4616 5.31946 19.4616 4.92893 19.0711Z"
+                                                fill="#2E7D32" />
+                                            <path
+                                                d="M19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13C18.5523 13 19 12.5523 19 12Z"
+                                                fill="#2E7D32" />
+                                            <path
+                                                d="M3 12C3 11.4477 3.44772 11 4 11C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13C3.44772 13 3 12.5523 3 12Z"
+                                                fill="#2E7D32" />
+                                            <path
+                                                d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                                                fill="#2E7D32" />
+                                        </svg>
+                                    </div>
+                                    <h2
+                                        style="font-size: 32px; font-weight: 700; margin-bottom: 16px; color: #2E7D32; text-transform: uppercase; letter-spacing: 1px;">
+                                        Our Vision</h2>
+                                    <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #1B5E20;">
+                                        Pioneering Tomorrow's Travel Tales</h3>
+                                    <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
+                                        We aspire to be a globally recognized leader in the travel and tourism industry by
+                                        redefining
+                                        the way people experience the world. We aim to empower travelers through
+                                        personalized,
+                                        innovative, and seamless travel solutions that not only meet their expectations but
+                                        exceed
+                                        them. We envision a future where every journey we create fosters cultural
+                                        connection,
+                                        personal growth, and unforgettable memories. With a strong commitment to quality,
+                                        trust,
+                                        and sustainability, we strive to build lasting relationships with our clients and
+                                        partners —
+                                        becoming the go-to travel companion for explorers around the globe.
+                                    </p>
                                 </div>
-                                <h2
-                                    style="font-size: 32px; font-weight: 700; margin-bottom: 16px; color: #1565C0; text-transform: uppercase; letter-spacing: 1px;">
-                                    Our Mission</h2>
-                                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #0D47A1;">
-                                    Crafting
-                                    Journeys, Curating Memories</h3>
-                                <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
-                                    At VacayGuider, we deliver exceptional travel experiences through personalized,
-                                    reliable, and comprehensive solutions. Committed to understanding each traveler's unique
-                                    needs, we transform dreams into reality with carefully crafted tours, trusted support
-                                    services, and our passionate team. Whether exploring Sri Lanka's beauty or discovering
-                                    global destinations, we ensure every journey is smooth, enriching, and memorable. With
-                                    our focus on quality, customer satisfaction, and innovation, we've become the trusted
-                                    travel partner clients rely on - every step of the way
-                                </p>
+                                <div class="decorative-shape"
+                                    style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(46, 125, 50, 0.1); z-index: 1;">
+                                </div>
+                                <div class="decorative-shape"
+                                    style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(46, 125, 50, 0.07); z-index: 1;">
+                                </div>
                             </div>
-                            <div class="decorative-shape"
-                                style="position: absolute; top: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(21, 101, 192, 0.1); z-index: 1;">
-                            </div>
-                            <div class="decorative-shape"
-                                style="position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(21, 101, 192, 0.07); z-index: 1;">
+                        </div>
+
+                        <!-- Mission Box -->
+                        <div class="col-lg-6">
+                            <div class="mission-box h-100"
+                                style="background: linear-gradient(135deg, #e6f2f7 0%, #c8d7e6 100%); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+                                <div class="content-overlay" style="position: relative; z-index: 2;">
+                                    <div class="icon-container mb-4"
+                                        style="width: 80px; height: 80px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17.618 5.968C17.618 5.968 17.109 13.582 12.01 13.582C6.91 13.582 6.402 5.968 6.402 5.968"
+                                                stroke="#1565C0" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M19 19.833L18.132 14.235C18.052 13.818 17.692 13.5 17.268 13.5H6.732C6.308 13.5 5.948 13.818 5.868 14.235L5 19.833"
+                                                stroke="#1565C0" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M12 7L12 10" stroke="#1565C0" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <circle cx="12" cy="5" r="2" stroke="#1565C0"
+                                                stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <h2
+                                        style="font-size: 32px; font-weight: 700; margin-bottom: 16px; color: #1565C0; text-transform: uppercase; letter-spacing: 1px;">
+                                        Our Mission</h2>
+                                    <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #0D47A1;">
+                                        Crafting
+                                        Journeys, Curating Memories</h3>
+                                    <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
+                                        At VacayGuider, we deliver exceptional travel experiences through personalized,
+                                        reliable, and comprehensive solutions. Committed to understanding each traveler's
+                                        unique
+                                        needs, we transform dreams into reality with carefully crafted tours, trusted
+                                        support
+                                        services, and our passionate team. Whether exploring Sri Lanka's beauty or
+                                        discovering
+                                        global destinations, we ensure every journey is smooth, enriching, and memorable.
+                                        With
+                                        our focus on quality, customer satisfaction, and innovation, we've become the
+                                        trusted
+                                        travel partner clients rely on - every step of the way
+                                    </p>
+                                </div>
+                                <div class="decorative-shape"
+                                    style="position: absolute; top: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(21, 101, 192, 0.1); z-index: 1;">
+                                </div>
+                                <div class="decorative-shape"
+                                    style="position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(21, 101, 192, 0.07); z-index: 1;">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        </div>
+    </div>
     </section>
 
 
 
-    <section class="counter-section  " style="border-radius: 12px;margin-top: 25px; margin-bottom: 80px; ">
+    <section class="counter-section counter-top-mob  " style="border-radius: 12px;margin-top: 25px; margin-bottom: 80px; ">
         <div class="container">
 
             <div class="row counters text-center">
@@ -1419,7 +1744,7 @@
                 <!-- Repeat for other cards -->
 
                 <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <div class="counter-card p-4"
+                    <div class="counter-card p-4 counter-top-mob-sec"
                         style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
@@ -1437,7 +1762,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-                    <div class="counter-card p-4"
+                    <div class="counter-card p-4 counter-top-mob-third"
                         style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
@@ -1455,8 +1780,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3">
-                    <div class="counter-card p-4"
+                <div class="col-md-6 col-lg-3 ">
+                    <div class="counter-card p-4 counter-top-mob-fourth"
                         style="background-color: transparent; border-radius: 15px; box-shadow: none;">
                         <div class="counter-icon mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
@@ -1490,11 +1815,12 @@
             <div class="responsive-container-block outer-container ">
                 <div class="responsive-container-block inner-container" style="  min-height: 70vh; ">
 
-                    <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-5 content-container"
+                    <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-5 content-container mob-ceo-head"
                         style="background-color:  #f8f9fa; border-radius: 8px; padding: 25px; ">
                         <div class="content-box">
                             <div class="text-start text-lg-start">
-                                <h1 class="mb-4 text-black" style="font-size:36px; ">Atheek Zuhair</h1>
+                                <h1 class="mb-4 text-black blockquote-footer-mob" style="font-size:36px; ">Atheek Zuhair
+                                </h1>
                                 <footer class="blockquote-footer" style="font-weight: bold;">CEO & Founder</footer>
                             </div>
 
@@ -1555,12 +1881,13 @@
                 <div class="container-fluid mt-5 mb-5">
 
                     <div class="title-area text-center mb-5" style="margin-top: -5px;">
-                        <span class="sub-title"
+                        <span class="sub-title mob-team"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 600;color: #000000;">
                             Meet Our Team</span>
 
                     </div>
-                    <div class="responsive-container-block team-cards-inner-container justify-content-center">
+                    <div
+                        class="responsive-container-block team-cards-inner-container justify-content-center mob-team-staff">
                         <!-- First Row -->
                         <div class="responsive-cell-block wk-mobile-12 wk-ipadp-10 wk-tab-6 wk-desk-4 card-container ">
                             <div class="card"

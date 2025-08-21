@@ -5,11 +5,11 @@
 @section('content')
     <style>
         @media (max-width: 480px) {
-            .main-head{
+            .main-head {
                 font-size: 26px !important;
             }
 
-            .p-thank{
+            .p-thank {
                 font-size: 14px;
                 text-align: justify;
 
@@ -277,7 +277,7 @@
 
         .step-number {
             /* background: linear-gradient(135deg, #2596be, #1e6f94); */
-background: linear-gradient(135deg, #2596be, #96c93e);
+            background: linear-gradient(135deg, #2596be, #96c93e);
 
             color: white;
             width: 60px;
@@ -448,7 +448,7 @@ background: linear-gradient(135deg, #2596be, #96c93e);
 
         .tabpanel {
             padding: 30px;
-            background-color: #f5f5f5;
+            /* background-color: #f5f5f5; */
             border-radius: 16px;
             margin-top: 20px;
         }
@@ -721,24 +721,28 @@ background: linear-gradient(135deg, #2596be, #96c93e);
                         <div class="blog-date ">
                             <small class="text-uppercase  " style="font-size: 18px;font-weight: 900; color:#96c93e;">Sri
                                 Lanka</small>
-                            <h5 class="mt-2 main-head" style="font-size: 36px; font-weight:500;">
+                            <h5 class="mt-2 main-head" style="font-size: 32px; font-weight:500;">
                                 Tour for <strong style="font-weight: 900;">{{ $package->days }} Days</strong>
                                 & <strong style="font-weight: 900;"> {{ $package->nights }}
                                     Nights</strong>
                             </h5>
                         </div>
 
-                        <img class="w-full h-72 object-cover  shadow-xl mt-3 rounded-top"
-                            src="{{ $package->picture && file_exists(public_path('storage/' . $package->picture))
-                                ? asset('storage/' . $package->picture)
-                                : asset('assets/img/tour/2.jpg') }}"
+                        @php
+                            $backendBaseUrl = config('app.backend_url');
+                            $imageUrl = $package->picture
+                                ? $backendBaseUrl . '/storage/' . ltrim($package->picture, '/')
+                                : asset('/images/no-image.jpg');
+                        @endphp
+
+                        <img class="w-full h-72  object-cover rounded-2xl mt-3 " src="{{ $imageUrl }}"
                             alt="{{ $package->place }}" style="height: 500px;">
                     </div>
                 </div>
 
 
 
-                <div class="pb-3 bg-smoke shadow">
+                <div class="pb-3  shadow">
 
                     <div class=" mb-3" style="padding: 30px;">
 
@@ -932,26 +936,19 @@ background: linear-gradient(135deg, #2596be, #96c93e);
                                 @endif
                                 <!-- Cover Image -->
                                 @php
-                                    $defaultImage = 'assets/img/tour-detail.jpg';
-                                    $firstHighlight = $itinerary->highlights->first();
-                                    $coverImage = $defaultImage;
-                                    if ($firstHighlight && !empty($firstHighlight->images)) {
-                                        $images = is_array($firstHighlight->images)
-                                            ? $firstHighlight->images
-                                            : json_decode($firstHighlight->images, true);
-                                        if (!empty($images[0])) {
-                                            $coverImage = $images[0];
-                                        }
-                                    }
+                                    $backendBaseUrl = config('app.backend_url');
+                                    $defaultImage = asset('/images/no-image.jpg');
+                                    $coverImage = $itinerary->pictures
+                                        ? $backendBaseUrl . '/storage/' . ltrim($itinerary->pictures, '/')
+                                        : $defaultImage;
                                 @endphp
-                                <div class="mb-12">
-                                    <img src="{{ asset($coverImage) }}" alt="{{ $itinerary->place_name }} cover"
-                                        class="w-full h-80 object-cover rounded-2xl shadow-lg" />
-                                </div>
+
+                                <img src="{{ $coverImage }}" alt="{{ $itinerary->place_name }} cover"
+                                    class="w-full h-80 object-cover rounded-2xl shadow-lg" style="height: 20rem;" />
 
                                 <!-- Activities Section -->
                                 <div class="mb-12">
-                                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+                                    <h3 class="text-2xl font-semibold text-gray-900 mb-6" style="margin-top: 30px;">
                                         Day {{ str_pad($itinerary->day, 2, '0', STR_PAD_LEFT) }} Program
                                     </h3>
                                     <div class="bg-gray-50 rounded-2xl p-6">
@@ -965,39 +962,39 @@ background: linear-gradient(135deg, #2596be, #96c93e);
                                     </div>
                                 </div>
 
-                                <!-- Highlights Section -->
                                 @if ($itinerary->highlights->isNotEmpty())
                                     <div class="mb-12">
                                         <h3 class="text-2xl font-semibold text-gray-900 mb-6">
                                             {{ $itinerary->place_name }} Highlights
                                         </h3>
                                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            @php
+                                                $backendBaseUrl = config('app.backend_url'); // e.g., https://admin.vacayguider.com
+                                                $defaultImage = asset('/images/no-image.jpg');
+                                            @endphp
+
                                             @foreach ($itinerary->highlights->take(6) as $highlight)
                                                 @php
-                                                    $images = is_array($highlight->images)
-                                                        ? $highlight->images
-                                                        : json_decode($highlight->images, true);
-                                                    $images = is_array($images) ? $images : [];
+                                                    $imageUrl = $highlight->images
+                                                        ? $backendBaseUrl . '/storage/' . ltrim($highlight->images, '/')
+                                                        : $defaultImage;
                                                 @endphp
 
-                                                @if (!empty($images))
-                                                    @foreach ($images as $img)
-                                                        <div class="flex flex-col">
-                                                            <div class="overflow-hidden rounded-lg">
-                                                                <img src="{{ asset($img ?: $defaultImage) }}"
-                                                                    alt="Highlight"
-                                                                    class="w-full h-40 object-cover highlight-image" />
-                                                            </div>
-                                                            <p class="text-center text-sm text-gray-600 mt-3">
-                                                                {{ $highlight->highlight_places ?? ($highlight->title ?? 'Highlight') }}
-                                                            </p>
-                                                        </div>
-                                                    @endforeach
-                                                @endif
+                                                <div class="flex flex-col">
+                                                    <div class="overflow-hidden rounded-lg">
+                                                        <img src="{{ $imageUrl }}" alt="Highlight"
+                                                            class="w-full h-40 object-cover highlight-image"
+                                                            style="height: 10rem;" />
+                                                    </div>
+                                                    <p class="text-center text-sm text-gray-600 mt-3">
+                                                        {{ $highlight->highlight_places ?? ($highlight->title ?? 'Highlight') }}
+                                                    </p>
+                                                </div>
                                             @endforeach
                                         </div>
                                     </div>
                                 @endif
+
 
                                 <!-- Accommodation Box -->
                                 <div class="bg-gray-50 rounded-2xl p-6">
@@ -1041,21 +1038,24 @@ background: linear-gradient(135deg, #2596be, #96c93e);
                                     </div>
                                 </div>
 
-                                @php
-                                    $defaultMapImage = asset('assets/img/default-map.jpg');
-                                    $mapImagePath = $itinerary->map_image ? 'storage/' . $itinerary->map_image : null;
-                                    $mapImage =
-                                        $mapImagePath && file_exists(public_path($mapImagePath))
-                                            ? asset($mapImagePath)
-                                            : $defaultMapImage;
-                                @endphp
 
-                                <div class="mt-12">
-                                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Tour Map</h3>
-                                    <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
-                                        class=" lg:w-auto w-full object-cover rounded-xl shadow-md"
-                                        style="height: 400px; width: 300px;" loading="lazy" />
-                                </div>
+                                @if ($loop->last)
+                                    @php
+                                        $backendBaseUrl = config('app.backend_url'); // e.g., https://admin.vacayguider.com
+                                        $defaultMapImage = asset('assets/img/default-map.jpg');
+
+                                        $mapImage = $package->map_image
+                                            ? $backendBaseUrl . '/storage/' . ltrim($package->map_image, '/')
+                                            : $defaultMapImage;
+                                    @endphp
+
+                                    <div class="mt-12">
+                                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Tour Map</h3>
+                                        <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
+                                            class="lg:w-auto w-full object-cover rounded-xl shadow-md"
+                                            style="height: 400px; width: 300px;" loading="lazy" />
+                                    </div>
+                                @endif
 
                             </div>
                         @endforeach
@@ -1477,6 +1477,24 @@ background: linear-gradient(135deg, #2596be, #96c93e);
                             <div class="form-group md:col-span-2">
                                 <label for="fullName">Full Name *</label>
                                 <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group md:col-span-2">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                            </div>
+
+                            <!-- Street -->
+                            <div class="form-group md:col-span-2">
+                                <label for="street">Street *</label>
+                                <input type="text" id="street" name="street" required placeholder="123 Main St">
+                            </div>
+
+                            <!-- City -->
+                            <div class="form-group md:col-span-2">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required placeholder="New York">
                             </div>
 
                             <div class="form-group">

@@ -22,7 +22,7 @@ class RentVehicleController extends Controller
         });
 
         // Define the desired custom order
-        $customOrder = ['cycle', 'electricbike', 'tuktuk', 'motorcycle', 'car', 'jeep', 'van'];
+        $customOrder = ['cycle', 'electricbike', 'tuktuk', 'scooter','motorcycle', 'car', 'jeep', 'van'];
 
         // Sort the vehicle types by the custom order
         $vehicleTypes = collect($customOrder)->filter(function ($type) use ($vehicleTypes) {
@@ -36,8 +36,9 @@ class RentVehicleController extends Controller
         }
 
         $vehicles = $query->paginate(6);
+         $vehiclesslide = VehicleDetail::all();
 
-        return view('frontend.pages.rent', compact('vehicles', 'vehicleTypes'));
+        return view('frontend.pages.rent', compact('vehicles', 'vehicleTypes','vehiclesslide'));
     }
 
 

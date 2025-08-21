@@ -13,6 +13,9 @@ class PackageBooking extends Model
 
     protected $fillable = [
         'full_name',
+        'last_name',
+        'street',
+        'city',
         'country',
         'email',
         'phone',
@@ -24,8 +27,17 @@ class PackageBooking extends Model
         'start_date',
         'end_date',
         'message',
-        'invoice_id',         // ← add this
-    'payment_status',     
+        'invoice_id',
+        'payment_status',
+        'transaction_id',
+        'order_id',
+        'card_holder_name',
+        'card_number',
+        'payment_method',
+        'payment_scheme',
+        'payable_amount',
+        'payable_currency',
+        'status_message'
     ];
 
     /**

@@ -5,6 +5,156 @@
 @section('content')
 
     <style>
+        @media (max-width: 480px) {
+
+            .hero-section {
+                padding: 0px !important;
+            }
+
+            .step-card-mob {
+                padding: 0px !important;
+            }
+
+            .permint-post-mob {
+                margin-top: -32px;
+            }
+
+            /* Mobile adjustments */
+            @media (max-width: 576px) {
+                .title-area {
+                    margin-top: 0 !important;
+                    padding: 0 10px;
+                }
+
+                .sec-title {
+                    font-size: 1.75rem !important;
+                }
+
+                .hero-section .container {
+                    gap: 1rem;
+                }
+
+                .overview-text {
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                .info-badge {
+                    font-size: 13px;
+                    padding: 8px 12px;
+                }
+            }
+
+            .rent-undrline {
+                display: none !important;
+            }
+
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+            .filter-title-mob {
+                margin-top: 22px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .rvs-btn-mob {
+                margin-top: 25px !important;
+                margin-bottom: -40px !important;
+            }
+
+            .card-mob {
+                margin-top: -24px !important;
+            }
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 14px;
+            }
+
+            .title-mob {
+                margin-top: -90px !important;
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+        }
+
         .ps-2 {
             padding-left: 0 !important;
         }
@@ -142,7 +292,7 @@
         .pagination .page-item.active .page-link {
             background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
             color: white;
-            border-color:  linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
+            border-color: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
         }
 
         .pagination .page-link {
@@ -240,7 +390,7 @@
         }
 
         .step-number {
-           background: linear-gradient(135deg, #2596be, #96c93e);
+            background: linear-gradient(135deg, #2596be, #96c93e);
             color: white;
             width: 60px;
             height: 60px;
@@ -337,7 +487,7 @@
         }
 
         .payment-info {
-           background: rgba(52, 152, 219, 0.1);
+            background: rgba(52, 152, 219, 0.1);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -491,7 +641,7 @@
 
         <div class="container position-relative" style="z-index: 1;">
             <!-- Title Section with improved typography -->
-            <div class="title-area text-center mb-5" style="margin-top: -126px; ">
+            <div class="title-area text-center mb-5 title-mob" style="margin-top: -126px; ">
 
 
                 <div class="title-area text-center " style="">
@@ -539,10 +689,10 @@
 
 
                                 <!-- Slide 1: Motorbike with improved styling -->
-                                @foreach ($vehicles as $vehicle)
+                                @foreach ($vehiclesslide as $vehicle)
                                     <div class="swiper-slide">
-                                        <div class="cars-slider__item"
-                                            style="background: linear-gradient(135deg, #071f2b 0%, #000000 100%); overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);">
+                                        <div class="cars-slider__item card-mob"
+                                            style="background: linear-gradient(135deg, #071f2b 0%, #000000 100%); overflow: hidden; margin: 10px; transition: all 0.3s ease; position: relative; padding: 30px;  border: 1px solid rgba(0,162,255,0.1);border-radius: 10px;">
 
                                             <!-- Main Row Layout -->
                                             <div class="horizontal-layout"
@@ -551,8 +701,8 @@
                                                 <!-- Left Section -->
                                                 <div class="content-section" style="flex: 1; padding-right: 20px;">
                                                     <div
-                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 4px 8px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
-                                                        {{ $vehicle->category ?? 'Premium ' }}
+                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 4px 8px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
+                                                        {{ $vehicle->label ?? 'Premium ' }}
                                                     </div>
 
                                                     <h3
@@ -561,10 +711,10 @@
                                                     </h3>
                                                     <h3
                                                         style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
-                                                        {{ $vehicle->model }}
+                                                        {{ $vehicle->name }}
                                                     </h3>
 
-                                                    <div
+                                                    <div class="rent-undrline"
                                                         style="width: 60px; height: 6px; background: linear-gradient(90deg, #3596d3, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
                                                     </div>
                                                 </div>
@@ -575,10 +725,17 @@
                                                     <div
                                                         style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,162,255,0.15) 0%, rgba(0,162,255,0) 70%); z-index: 1;">
                                                     </div>
+                                                    @php
+                                                        $backendBaseUrl = config('app.backend_url');
+                                                        $vehicleImageUrl = $vehicle->vehicle_image
+                                                            ? $backendBaseUrl .
+                                                                '/storage/' .
+                                                                ltrim($vehicle->vehicle_image, '/')
+                                                            : asset('assets/img/bike3.png');
+                                                    @endphp
 
-                                                    <img src="{{ $vehicle->image ? asset('storage/' . $vehicle->image) : asset('assets/img/bike3.png') }}"
-                                                        alt="{{ $vehicle->brand }} {{ $vehicle->model }}"
-                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease; ">
+                                                    <img src="{{ $vehicleImageUrl }}" alt="{{ $vehicle->name }}"
+                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease;">
                                                 </div>
 
 
@@ -588,10 +745,13 @@
 
 
                                                     <div class="demo-container">
-                                                        <div
-                                                            style="position: absolute; text-align: center; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                                            <span style="font-size: 28px;">USD ${{ number_format($vehicle->price, 0) }}</span>
-                                                            <span style="font-size: 12px; opacity: 0.9;">/ day</span>
+                                                        <div class=" text-white font-bold text-2xl px-8 py-2 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                                                            style="border-radius: 58px;background: #96c93e;">
+                                                            <span class="relative z-10">USD
+                                                                ${{ number_format($vehicle->price) }}</span>
+                                                            <div
+                                                                class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-full hover:translate-x-[-100%] transition-transform duration-700">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -682,7 +842,8 @@
                     }));
             </script>
             <!-- Improved RESERVE NOW Button -->
-            <div class="reserve-button-container" style="display: flex; justify-content: center; margin-top: 50px;">
+            <div class="reserve-button-container rvs-btn-mob"
+                style="display: flex; justify-content: center; margin-top: 50px;">
                 <a href="#" id="reserveButton" class="reserve-now-btn"
                     style="display: inline-block; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; padding: 18px 42px; border-radius: 10px; text-decoration: none; letter-spacing: 1.5px; box-shadow: 0 8px 20px rgba(0,162,255,0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
                     <span style="position: relative; z-index: 2;">RESERVE NOW</span>
@@ -708,7 +869,7 @@
         style="background: #F5F5F5;padding-bottom: 44px;">
         <div class="container-fluid" style="margin-top: -82px;">
             <div class="row">
-                <div class="title-area text-center mb-5" style="margin-top: -10px; ">
+                <div class="title-area text-center mb-5 filter-title-mob" style="margin-top: -10px; ">
                     <div class="title-area text-center " style="">
 
                         <h2 class="sec-title"
@@ -720,37 +881,58 @@
                 <div class="row " style="margin-top: -45px;">
 
 
-                    <!-- Sidebar Filter Section - 1/4 width -->
-                    <div class="col-md-3">
-                        <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px; ">
-                            <form id="vehicleFilterForm">
-                                <div class="filter-section mb-4">
-                                    <h5 class="filter-heading text-black" style="font-size: 16px">
-                                        Vehicle Type
-                                    </h5>
-                                    <div class="ps-2">
-                                        <div class="ps-2"
-                                            style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
-                                            @foreach ($vehicleTypes as $type)
-                                                <div class="form-check mb-2 d-flex align-items-center">
-                                                    <input class="form-check-input" name="types[]"
-                                                        value="{{ $type }}" type="checkbox"
-                                                        id="vehicle_type_{{ $loop->index }}"
-                                                        style="font-size: 14px; color:#000; border: 2px solid #000; ">
-                                                    <label class="form-check-label ms-2"
-                                                        for="vehicle_type_{{ $loop->index }}"
-                                                        style="font-size: 14px; color:#000; ">
-                                                        {{ ucfirst($type) }}
-                                                    </label>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <!-- Filter Toggle Button (Visible only on mobile) -->
+                    <div class="d-md-none w-100 px-3 mb-3">
+                        <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
+                            style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                            <span style="font-size: 14px;">Filter</span>
+                        </button>
                     </div>
 
+                    <!-- Sidebar Filter Section - 1/4 width -->
+                    <div class="col-md-3 sidebar-container" id="vehicleMobileSidebar">
+                        <div class="sidebar-content p-4" style="width: 100%;">
+                            <div class="filter-sidebar p-4"
+                                style="border-radius: 10px; border: 1px solid #dee2e6;background: rgb(255, 255, 255);">
+                                <!-- Mobile Close Button -->
+                                <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
+                                    <button id="closeVehicleSidebarBtn" class="btn-sm text-danger border-0 shadow-none">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Filter Form -->
+                                <form id="vehicleFilterForm">
+                                    <div class="filter-section mb-4">
+                                        <h5 class="filter-heading text-black" style="font-size: 16px;">
+                                            Vehicle Type
+                                        </h5>
+                                        <div class="ps-2">
+                                            <div class="ps-2"
+                                                style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
+                                                @foreach ($vehicleTypes as $type)
+                                                    <div class="form-check mb-2 d-flex align-items-center">
+                                                        <input class="form-check-input" name="types[]"
+                                                            value="{{ $type }}" type="checkbox"
+                                                            id="vehicle_type_{{ $loop->index }}">
+                                                        <label class="form-check-label ms-2"
+                                                            for="vehicle_type_{{ $loop->index }}">
+                                                            {{ ucfirst($type) }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Results Section -->
                     <div class="col-md-9" id="filteredVehicleResults">
                         @include('frontend.partials.vehicle_cards', ['vehicles' => $vehicles])
@@ -782,11 +964,10 @@
 
             <!-- Hero Section -->
             <div class="hero-section">
-                <div class="container">
+                <div class="container permint-post-mob">
                     <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
                         alt="Driving in Sri Lanka" class="hero-image">
-                    {{-- <h1 class="hero-title">Get Your Sri Lanka Driving License</h1>
-                <p class="hero-subtitle">Start your journey with confidence!</p> --}}
+
 
                     <div class="overview-text">
                         <div class="info-badge">
@@ -890,7 +1071,9 @@
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit Application</button>
+                                <button type="submit" class="btn btn-submit"
+                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit
+                                    Application</button>
                             </div>
                         </form>
                     </div>
@@ -923,20 +1106,13 @@
                         </div>
 
                         <!-- Step 3: Enjoy -->
-                        <div class="step-card success-section col-md-6" style="  box-shadow: none !important;">
+                        <div class="step-card step-card-mob success-section col-md-6"
+                            style="  box-shadow: none !important;">
                             <div class="step-header">
                                 <div class="step-number">03</div>
                                 <h2 class="step-title">Enjoy Your Ride</h2>
                             </div>
 
-                            {{-- <p style="font-size: 1.2rem; margin-bottom: 10px; color: #ffff;">
-                        You will receive your driving license at the requested location on time.
-                        For any clarifications, feel free to contact us.
-                    </p>
-
-                    <p style="font-size: 1.1rem; opacity: 0.9;color: #ffff;">
-                        Ready to explore the beautiful roads of Sri Lanka with complete peace of mind!
-                    </p> --}}
 
                             <div class="payment-info" style="background: rgba(52, 152, 219, 0.1);">
                                 <p>
@@ -953,7 +1129,7 @@
     </section>
 
 
-    <section style="background: linear-gradient(180deg, #0B0B13 0%, #121219 100%);margin-top: -80px;">
+    <section style="background: linear-gradient(135deg, #071f2b 0%, #000000 100%);"margin-top: -80px;">
         <div class="advantages-section"
             style="margin-top: 80px; background: linear-gradient(135deg, rgba(0,10,20,0.6) 0%, rgba(19,19,30,0.6) 100%); padding: 40px 0; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden; border: 1px solid rgba(0,162,255,0.15);">
             <div
@@ -1130,5 +1306,32 @@
         }
     });
 </script> --}}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.getElementById("toggleFilterBtn");
+            const sidebar = document.getElementById("vehicleMobileSidebar");
+            const closeBtn = document.getElementById("closeVehicleSidebarBtn");
+            const overlay = document.getElementById("vehicleSidebarOverlay");
+
+            // Open sidebar
+            toggleBtn.addEventListener("click", function() {
+                sidebar.classList.add("show");
+                overlay.classList.add("active");
+                document.body.classList.add("sidebar-open");
+            });
+
+            // Close sidebar
+            function closeSidebar() {
+                sidebar.classList.remove("show");
+                overlay.classList.remove("active");
+                document.body.classList.remove("sidebar-open");
+            }
+
+            closeBtn.addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
+        });
+    </script>
+
 
 @endsection

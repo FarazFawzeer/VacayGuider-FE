@@ -4,19 +4,56 @@
 
 @section('content')
     <style>
+        .theme-lable {
+            font-weight: 300 !important;
+        }
+
+        input[type="checkbox"]~label::before {
+            content: '';
+            font-family: var(--icon-font);
+            font-weight: 700;
+            position: absolute;
+            left: 0px;
+            top: 3.5px;
+            background-color: #fff;
+            border: 1px solid #dee2e6 !important;
+            height: 18px;
+            width: 18px;
+            line-height: 18px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        input[type="checkbox"]:checked~label::before {
+            content: "\f00c";
+            color: var(--white-color);
+            background-color: #000000;
+            border-color: var(--theme-color);
+        }
+
+        input[type="checkbox"]:checked~label::before {
+            content: "\f00c";
+            color: var(--white-color);
+            background-color: #000000;
+            border-color: var(--theme-color);
+        }
+
         @media (max-width: 480px) {
 
-        .page-title{
-            margin-bottom: 26px !important;
-        }
-            .special-title{
+            .page-title {
+                margin-bottom: 26px !important;
+            }
+
+            .special-title {
                 margin-top: 10px;
             }
-            .inbound-title{
+
+            .inbound-title {
                 margin-top: 32px;
                 margin-block: 20px;
                 margin-bottom: 16px;
             }
+
             .sidebar-container {
                 position: fixed;
                 top: 50%;
@@ -37,23 +74,25 @@
             }
 
 
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1049; /* Just behind the sidebar */
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-}
-.sidebar-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
 
 
             #filteredResults {
@@ -393,7 +432,7 @@
     </div> --}}
 
     <div class="w-full ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -435,7 +474,7 @@
         </div>
     </div>
 
-<div class="sidebar-overlay"></div>
+    <div class="sidebar-overlay"></div>
 
 
 
@@ -449,32 +488,30 @@
                         Discover the Wonders of Sri Lanka </h2>
                 </div>
             </div>
-            
+
 
             <div class="row " style="margin-top: -20px;">
 
 
                 <!-- Filter Toggle Button for Mobile -->
-             <!-- Filter Toggle Button (Visible only on mobile) -->
-<div class="d-md-none w-100 px-3 mb-3">
-    <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
-        style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-            stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-        </svg>
-        <span style="font-size: 14px;">Filter</span>
-    </button>
-</div>
+                <!-- Filter Toggle Button (Visible only on mobile) -->
+                <div class="d-md-none w-100 px-3 mb-3">
+                    <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
+                        style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                        </svg>
+                        <span style="font-size: 14px;">Filter</span>
+                    </button>
+                </div>
 
 
                 <!-- Sidebar Filter Section - 1/4 width -->
                 <div class="col-md-3 sidebar-container" id="mobileSidebar">
-                    <div class="sidebar-content p-4"
-                        style=" width: 100%;">
-                        <div class="filter-sidebar shadow p-4"
-                            style="background-color: #f8f9fa; border-radius: 6px; border: 1px solid #dee2e6;">
+                    <div class="sidebar-content p-4" style=" width: 100%;">
+                        <div class="filter-sidebar  p-4" style="  border-radius: 10px; border: 1px solid #dee2e6;">
                             <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
                                 <button id="closeSidebarBtn" class=" btn-sm text-danger border-0 shadow-none">
                                     <i class="fas fa-times fa-lg"></i>
@@ -514,10 +551,11 @@
                                             @if ($key === 'tailor')
                                                 <!-- Tailor Made Sub-Filters (indented under Tailor) -->
                                                 <div id="tailor-section"
-                                                    class="filter-section-content d-none ms-4 mt-2 border-start ps-3">
+                                                    class="filter-section-content  ms-4 mt-2 border-start ps-3">
                                                     <!-- Days Filter -->
                                                     <div class="filter-section mb-3">
-                                                        <h6 class="text-black" style="font-size: 14px;">Number of Days</h6>
+                                                        <h6 class="text-black" style="font-size: 14px;font-weight: 500;">
+                                                            Number of Days</h6>
                                                         <div class="d-flex justify-content-between mb-2">
                                                             <span id="durationMinLabel"
                                                                 style="font-size: 13px;">{{ $minDay }} Day</span>
@@ -526,7 +564,8 @@
                                                         </div>
                                                         <input type="range" class="form-range" id="daysRangeSlider"
                                                             name="days" min="{{ $minDay }}"
-                                                            max="{{ $maxDay }}" value="" />
+                                                            max="{{ $maxDay }}" value=""
+                                                            style="border: none;" />
                                                         <div class="text-center">
                                                             <small>Selected: <span id="selectedDay">Not selected</span>
                                                                 Days</small>
@@ -535,14 +574,16 @@
 
                                                     <!-- Themes Filter -->
                                                     <div class="filter-section mb-2">
-                                                        <h6 class="text-black" style="font-size: 14px;">Theme</h6>
+                                                        <h6 class="text-black" style="font-size: 14px;font-weight: 500;">
+                                                            Theme</h6>
                                                         <div class="ps-2">
                                                             @foreach ($allThemes as $theme)
                                                                 <div class="form-check mb-2 d-flex align-items-center">
                                                                     <input class="form-check-input" name="theme[]"
                                                                         value="{{ $theme }}" type="checkbox"
                                                                         id="theme_{{ $loop->index }}">
-                                                                    <label class="form-check-label ms-2"
+                                                                    <label class="form-check-label theme-lable ms-2"
+                                                                        syle="font-size: 12px !important;font-weight: 300 !important;"
                                                                         for="theme_{{ $loop->index }}">
                                                                         {{ ucfirst($theme) }}
                                                                     </label>
@@ -736,11 +777,28 @@
                     class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     @csrf
                     <!-- Full Name -->
-                    <div class="md:col-span-2">
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="John Doe"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
+                            <div class="form-group md:col-span-2">
+                                <label for="fullName">First Name *</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group md:col-span-2">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
+                            </div>
+
+                            <!-- Street -->
+                            <div class="form-group md:col-span-2">
+                                <label for="street">Street *</label>
+                                <input type="text" id="street" name="street" required placeholder="123 Main St">
+                            </div>
+
+                            <!-- City -->
+                            <div class="form-group md:col-span-2">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required placeholder="New York">
+                            </div>
 
                     <!-- Country -->
                     <div>
@@ -868,8 +926,26 @@
                         <div class="form-grid">
                             <!-- Full Name -->
                             <div class="form-group md:col-span-2">
-                                <label for="fullName">Full Name *</label>
+                                <label for="fullName">First Name *</label>
                                 <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group md:col-span-2">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
+                            </div>
+
+                            <!-- Street -->
+                            <div class="form-group md:col-span-2">
+                                <label for="street">Street *</label>
+                                <input type="text" id="street" name="street" required placeholder="123 Main St">
+                            </div>
+
+                            <!-- City -->
+                            <div class="form-group md:col-span-2">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required placeholder="New York">
                             </div>
 
                             <!-- Country -->
@@ -1072,9 +1148,9 @@
 
         /*
 
-                                                                                                                                                .space, .space-top {
-                                                                                                                                                  padding-top: 20px;
-                                                                                                                                                } */
+                                                                                                                                                    .space, .space-top {
+                                                                                                                                                      padding-top: 20px;
+                                                                                                                                                    } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1652,16 +1728,22 @@
             const form = document.getElementById('filterForm');
             const params = new URLSearchParams();
 
+            // Tour category
+            const selectedCategory = document.querySelector('.tour-option-radio:checked');
+            if (selectedCategory) {
+                params.append('category', selectedCategory.value);
+            }
 
+            // Themes
             form.querySelectorAll('input[name="theme[]"]:checked').forEach(input => {
                 params.append('theme[]', input.value);
             });
 
-            // ✅ Only include days if user touched the slider
+            // Days
             if (daysTouched) {
-                const days = form.querySelector('input[name="days"]');
-                if (days && days.value) {
-                    params.append('days', days.value);
+                const daysInput = form.querySelector('input[name="days"]');
+                if (daysInput && daysInput.value) {
+                    params.append('days', daysInput.value);
                 }
             }
 
@@ -1675,6 +1757,7 @@
                     document.getElementById('tourPackageList').innerHTML = data;
                 });
         }
+
 
         // 🔁 Handle Radio Button Selection
         document.querySelectorAll('.tour-option-radio').forEach(checkbox => {
@@ -1824,26 +1907,24 @@
         // });
 
         const sidebar = document.querySelector('.sidebar-container');
-const overlay = document.querySelector('.sidebar-overlay');
-const toggleBtn = document.getElementById('toggleFilterBtn');
-const closeBtn = document.getElementById('closeSidebarBtn');
+        const overlay = document.querySelector('.sidebar-overlay');
+        const toggleBtn = document.getElementById('toggleFilterBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
 
-toggleBtn.addEventListener('click', () => {
-    sidebar.classList.add('show');
-    overlay.classList.add('active');
-});
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.add('show');
+            overlay.classList.add('active');
+        });
 
-closeBtn.addEventListener('click', () => {
-    sidebar.classList.remove('show');
-    overlay.classList.remove('active');
-});
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('active');
+        });
 
-overlay.addEventListener('click', () => {
-    sidebar.classList.remove('show');
-    overlay.classList.remove('active');
-});
-
-
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('active');
+        });
     </script>
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

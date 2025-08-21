@@ -6,16 +6,16 @@
                 <div class="tour-box shadow style2 th-ani"
                     style="cursor: pointer; transition: transform 0.3s ease; border-radius: 10px; overflow: hidden; min-height: 320px; position: relative;">
 
-                    @php
-                        $imagePath = $package->picture ? 'storage/' . $package->picture : null;
-                        $fallbackImage = asset('assets/img/tour/yala.jpg');
-                        $imageUrl =
-                            $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : $fallbackImage;
+                       @php
+                        $backendBaseUrl = config('app.backend_url');
+                        $imageUrl = $package->picture
+                            ? $backendBaseUrl . '/storage/' . ltrim($package->picture, '/')
+                            : asset('images/no-image.jpg');
                     @endphp
 
                     <div class="tour-box_img global-img" style="position: relative;">
                         <img src="{{ $imageUrl }}" alt="{{ $package->place ?? 'Tour Image' }}"
-                            style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                            style="width: 100%; height: 200px; object-fit: cover; ">
                     </div>
 
                     <div class="tour-content" style="padding: 15px;">
@@ -24,7 +24,7 @@
                             <p class="tour-country m-0 d-flex align-items-center" style="color: #3596d3;">Sri Lanka</p>
                             <div class="tour-rating d-flex align-items-center px-2  rounded"
                                 style="margin-top: 13px; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
-                                <i class="fas fa-star text-white  fa-sm"></i>
+                                <i class="fas fa-star text-white  fa-sm" style"font-size: 10px;"></i>
                                 <span class="" style="font-weight: 700; font-size: 12px; color: #fff;">
                                     {{ round($package->ratings) }}
                                 </span>
@@ -52,7 +52,10 @@
                             </svg>
 
                             <p class="text-sm m-0 text-dark" style="font-size: 14px; font-weight: 500;">
-                                {{ $package->days }} Days {{ $package->nights }} Nights
+                               {{ $package->days }} Days
+@if($package->nights > 0)
+    {{ $package->nights }} Nights
+@endif
                             </p>
                         </div>
                     </div>

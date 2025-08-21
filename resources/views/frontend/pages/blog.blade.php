@@ -6,6 +6,179 @@
 
 
     <style>
+        @media (max-width: 480px) {
+
+            .title-tesimonal-mob{
+                margin-top: -40px;
+
+            }
+            .title-bred-mob{
+                margin-top: 70px;
+            }
+            .hero-section {
+                padding: 0px !important;
+            }
+
+            .step-card-mob {
+                padding: 0px !important;
+            }
+
+            .permint-post-mob {
+                margin-top: -32px;
+            }
+
+            /* Mobile adjustments */
+            @media (max-width: 576px) {
+                .title-area {
+                  
+                    padding: 0 10px;
+                }
+
+                .sec-title {
+                    font-size: 1.75rem !important;
+                }
+
+                .hero-section .container {
+                    gap: 1rem;
+                }
+
+                .overview-text {
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                .info-badge {
+                    font-size: 13px;
+                    padding: 8px 12px;
+                }
+            }
+
+            .rent-undrline {
+                display: none !important;
+            }
+
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+            .filter-title-mob {
+                margin-top: 22px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .rvs-btn-mob {
+                margin-top: 25px !important;
+                margin-bottom: -40px !important;
+            }
+
+            .card-mob {
+                margin-top: -24px !important;
+            }
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 14px;
+            }
+
+            .title-mob {
+                margin-top: -38px !important;
+            }
+
+            .sub-title {
+                margin-bottom: 0px !important;
+
+            }
+
+            .filter-mob {
+                margin-top: -20px;
+                padding-bottom: 10px;
+
+            }
+
+            .title-area-mob {
+                margin-top: 14px !important;
+
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+        }
+
         .testimonials-section {
             background-color: var(--secondary);
             background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
@@ -263,7 +436,7 @@
 
         .posts-grid {
             display: grid;
-    
+
             padding: 20px 0;
         }
 
@@ -381,25 +554,25 @@
         }
 
         /* .share-btn {
-                                                            background: linear-gradient(45deg, #3498db, #028ccc);
-                                                            color: white;
-                                                        }
+                                                                                background: linear-gradient(45deg, #3498db, #028ccc);
+                                                                                color: white;
+                                                                            }
 
-                                                        .share-btn:hover {
-                                                            transform: translateY(-2px);
-                                                            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                                        }
+                                                                            .share-btn:hover {
+                                                                                transform: translateY(-2px);
+                                                                                box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                                                            }
 
-                                                        .view-btn {
-                                                            background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                                            background-color: #94d106;
-                                                            color: white;
-                                                        }
+                                                                            .view-btn {
+                                                                                background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                                                                background-color: #94d106;
+                                                                                color: white;
+                                                                            }
 
-                                                        .view-btn:hover {
-                                                            transform: translateY(-2px);
-                                                            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                                        } */
+                                                                            .view-btn:hover {
+                                                                                transform: translateY(-2px);
+                                                                                box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                                                            } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -448,7 +621,7 @@
 
         .load-more {
             text-align: center;
-        
+
         }
 
         .load-more-btn {
@@ -472,9 +645,7 @@
         }
 
         @media (max-width: 768px) {
-            .posts-grid {
-        
-            }
+            .posts-grid {}
 
             .page-title {
                 font-size: 2rem;
@@ -1222,7 +1393,7 @@
 
 
     <div class="w-full ">
-        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto  px-4 sm:px-6 lg:px-8 title-bred-mob">
             <div class="py-3">
                 <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
                     <ol class="flex items-center space-x-1 text-sm font-medium">
@@ -1282,32 +1453,65 @@
 
             </div>
 
+
+            <div class="row">
+
+                <!-- Filter Toggle Button (Visible only on mobile) -->
+                <div class="d-md-none w-100 px-3 mb-3 filter-mob">
+                    <button id="toggleBlogFilterBtn" class="w-100 d-flex align-items-center gap-2 rounded-lg p-2"
+                        style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                        </svg>
+                        <span style="font-size: 14px;">Filter</span>
+                    </button>
+                </div>
+
+            </div> <!-- 🔹 CLOSE row for toggle button only -->
+
+
             <div class="row">
 
 
-                <div class="col-md-3">
-                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa; border-radius: 15px;">
-                        <form method="GET" action="{{ route('blog') }}" id="blogFilterForm">
-                            <div class="filter-section mb-4">
-                                {{-- <h5 class="filter-heading text-black" style="font-size: 16px">Post Type</h5> --}}
-                                <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
-                                    @foreach ($blogTypes as $index => $type)
-                                        <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input text-black" type="checkbox" name="blog_type[]"
-                                                value="{{ $type }}" id="blog_type_{{ $index }}"
-                                                {{ is_array($blogTypeFilter) && in_array($type, $blogTypeFilter) ? 'checked' : '' }}
-                                                style="font-size: 14px;">
-                                            <label class="form-check-label ms-2 text-black"
-                                                for="blog_type_{{ $index }}" style="font-size: 14px;">
-                                                {{ ucfirst($type) }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
+
+
+                <!-- Blog Sidebar -->
+                <div class="col-md-3 sidebar-container" id="blogSidebar">
+                    <div class="sidebar-content p-4" style="width: 100%;">
+                        <div class="filter-sidebar p-4"
+                            style="border-radius: 10px; border: 1px solid #dee2e6; background:#ffffff;">
+
+                            <!-- Close Button for Mobile -->
+                            <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
+                                <button id="closeBlogSidebarBtn" class="btn-sm text-danger border-0 shadow-none">
+                                    <i class="fas fa-times fa-lg"></i>
+                                </button>
                             </div>
-                        </form>
+
+                            <form method="GET" action="{{ route('blog') }}" id="blogFilterForm">
+                                <div class="filter-section mb-4">
+                                    <div class="ps-1">
+                                        @foreach ($blogTypes as $index => $type)
+                                            <div class="form-check mb-2 d-flex align-items-center">
+                                                <input class="form-check-input text-black" type="checkbox"
+                                                    name="blog_type[]" value="{{ $type }}"
+                                                    id="blog_type_{{ $index }}"
+                                                    {{ is_array($blogTypeFilter) && in_array($type, $blogTypeFilter) ? 'checked' : '' }}>
+                                                <label class="form-check-label ms-2 text-black"
+                                                    for="blog_type_{{ $index }}" style="font-size: 14px;">
+                                                    {{ ucfirst($type) }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
 
 
 
@@ -1351,6 +1555,9 @@
                         </div>
                     @endforeach
                 </div>
+
+                <!-- Overlay -->
+                <div id="blogSidebarOverlay" class="sidebar-overlay"></div>
 
 
                 <div class="load-more">
@@ -1421,52 +1628,75 @@
             <div class="title-area text-center " style="">
                 {{-- <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
-                <h2 class="sec-title"
+                <h2 class="sec-title title-tesimonal-mob"
                     style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                     What our client Says</h2>
             </div>
             <div class="row">
 
-                <!-- Sidebar filter -->
-                <div class="col-md-3">
-                    <div class="filter-sidebar p-4 shadow" style="background-color: #f8f9fa;border-radius: 15px;">
-                        <form method="GET" action="{{ route('blog') }}" id="filterForm">
-
-                            <div class="filter-section mb-4">
-                                {{-- <h5 class="filter-heading text-black" style="font-size: 16px">
-                                    Source
-                                </h5> --}}
-                                <div class="ps-2" style="border-bottom: 2px solid #e1dede; padding-bottom: 10px;">
-                                    {{-- "All Sources" option --}}
-                                    <div class="form-check mb-2 d-flex align-items-center">
-                                        <input class="form-check-input" type="checkbox" name="source" value=""
-                                            name="source[]" id="source_all" {{ !$sourceFilter ? 'checked' : '' }}
-                                            style="font-size: 14px; ">
-                                        <label class="form-check-label ms-2 text-black" for="source_all"
-                                            style="font-size: 14px; ">All Sources</label>
-                                    </div>
-
-                                    @foreach ($sources as $source)
-                                        <div class="form-check mb-2 d-flex align-items-center">
-                                            <input class="form-check-input text-black" type="checkbox" name="source[]"
-                                                value="{{ $source }}" id="source_{{ $loop->index }}"
-                                                {{ is_array($sourceFilter) && in_array($source, $sourceFilter) ? 'checked' : '' }}
-                                                style="font-size: 14px;">
-
-                                            <label class="form-check-label ms-2 text-black"
-                                                for="source_{{ $loop->index }}" style="font-size: 14px;">
-                                                {{ ucfirst($source) }}
-                                            </label>
-                                        </div>
-                                    @endforeach
+                <!-- Mobile Filter Button (only visible on mobile) -->
+                <!-- Filter Toggle Button (Visible only on mobile) -->
+                <div class="d-md-none w-100 px-3 mb-3 filter-mob">
+                    <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2 rounded-lg p-2"
+                        style="border: 1px solid #ddd; justify-content: center; background: #f8f9fa;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                        </svg>
+                        <span style="font-size: 14px;">Filter</span>
+                    </button>
+                </div>
 
 
-                                </div>
+                <!-- Testimonial Sidebar -->
+                <div class="col-md-3 sidebar-container" id="testimonialSidebar">
+                    <div class="sidebar-content p-4" style="width: 100%;">
+                        <div class="filter-sidebar p-4"
+                            style="border-radius: 10px; border: 1px solid #dee2e6; background:#ffffff;">
+
+                            <!-- Close Button for Mobile -->
+                            <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
+                                <button id="closeTestimonialSidebarBtn" class="btn-sm text-danger border-0 shadow-none">
+                                    <i class="fas fa-times fa-lg"></i>
+                                </button>
                             </div>
 
-                        </form>
+                            <!-- Filter Form -->
+                            <form method="GET" action="{{ route('blog') }}" id="filterForm">
+                                <div class="filter-section mb-4">
+                                    <div class="ps-1">
+                                        <!-- All Sources option -->
+                                        <div class="form-check mb-2 d-flex align-items-center">
+                                            <input class="form-check-input text-black" type="checkbox" name="source"
+                                                value="" id="source_all" {{ !$sourceFilter ? 'checked' : '' }}>
+                                            <label class="form-check-label ms-2 text-black" for="source_all"
+                                                style="font-size: 14px;">
+                                                All Sources
+                                            </label>
+                                        </div>
+
+                                        @foreach ($sources as $source)
+                                            <div class="form-check mb-2 d-flex align-items-center">
+                                                <input class="form-check-input text-black" type="checkbox"
+                                                    name="source[]" value="{{ $source }}"
+                                                    id="source_{{ $loop->index }}"
+                                                    {{ is_array($sourceFilter) && in_array($source, $sourceFilter) ? 'checked' : '' }}>
+                                                <label class="form-check-label ms-2 text-black"
+                                                    for="source_{{ $loop->index }}" style="font-size: 14px;">
+                                                    {{ ucfirst($source) }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
+
+
 
 
 
@@ -1547,13 +1777,13 @@
                                                             <span
                                                                 class="date-text">{{ \Carbon\Carbon::parse($testimonial->postedate)->format('M j, Y') }}</span>
                                                         </div>
-                                                        <div class="engagement-indicators">
+                                                        {{-- <div class="engagement-indicators">
                                                             <div class="indicator helpful" style="cursor: pointer;"
                                                                 onclick="markHelpful({{ $testimonial->id }}, this)">
                                                                 <i class="bi bi-hand-thumbs-up"></i>
                                                                 <span>Helpful</span>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
 
                                                     </div>
                                                 </div>
@@ -1597,7 +1827,7 @@
                         @endif
                     </div>
                 </div>
-
+                <div id="sidebarOverlay" class="sidebar-overlay"></div>
             </div>
         </div>
     </section>
@@ -1750,15 +1980,63 @@
 
 
 
-<script>
-    function togglePosts() {
-        const extraPosts = document.querySelectorAll('.extra-post');
-        extraPosts.forEach(post => {
-            post.classList.remove('d-none');
+    <script>
+        function togglePosts() {
+            const extraPosts = document.querySelectorAll('.extra-post');
+            extraPosts.forEach(post => {
+                post.classList.remove('d-none');
+            });
+
+            // Optionally hide the Load More button after expanding
+            document.getElementById('togglePostsBtn').style.display = 'none';
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.getElementById("toggleBlogFilterBtn");
+            const sidebar = document.getElementById("blogSidebar");
+            const closeBtn = document.getElementById("closeBlogSidebarBtn");
+            const overlay = document.getElementById("blogSidebarOverlay");
+
+            toggleBtn.addEventListener("click", function() {
+                sidebar.classList.add("show");
+                overlay.classList.add("active");
+                document.body.classList.add("sidebar-open");
+            });
+
+            function closeSidebar() {
+                sidebar.classList.remove("show");
+                overlay.classList.remove("active");
+                document.body.classList.remove("sidebar-open");
+            }
+
+            closeBtn.addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
         });
 
-        // Optionally hide the Load More button after expanding
-        document.getElementById('togglePostsBtn').style.display = 'none';
-    }
-</script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.getElementById("toggleFilterBtn");
+            const sidebar = document.getElementById("testimonialSidebar");
+            const closeBtn = document.getElementById("closeTestimonialSidebarBtn");
+            const overlay = document.getElementById("sidebarOverlay");
+
+            toggleBtn.addEventListener("click", function() {
+                sidebar.classList.add("show");
+                overlay.classList.add("active");
+                document.body.classList.add("sidebar-open");
+            });
+
+            function closeSidebar() {
+                sidebar.classList.remove("show");
+                sidebar.removeAttribute("style");
+                overlay.style.display = "none";
+                document.body.classList.remove("sidebar-open");
+            }
+
+            closeBtn.addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
+        });
+    </script>
+
 @endsection

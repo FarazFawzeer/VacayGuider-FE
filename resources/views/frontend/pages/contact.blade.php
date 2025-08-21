@@ -8,6 +8,162 @@
         /* Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
 
+        @media (max-width: 480px) {
+
+            .hero-section {
+                padding: 0px !important;
+            }
+
+            .step-card-mob {
+                padding: 0px !important;
+            }
+
+            .permint-post-mob {
+                margin-top: -32px;
+            }
+
+            .sec-title {
+
+                margin-bottom: 22px !important;
+
+            }
+
+            /* Mobile adjustments */
+            @media (max-width: 576px) {
+                .title-area {
+                    margin-top: 0 !important;
+                    padding: 0 10px;
+                }
+
+                .sec-title {
+                    font-size: 1.75rem !important;
+
+                }
+
+                .hero-section .container {
+                    gap: 1rem;
+                }
+
+                .overview-text {
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                .info-badge {
+                    font-size: 13px;
+                    padding: 8px 12px;
+                }
+            }
+
+            .rent-undrline {
+                display: none !important;
+            }
+
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+            .filter-title-mob {
+                margin-top: 22px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .rvs-btn-mob {
+                margin-top: 25px !important;
+                margin-bottom: -40px !important;
+            }
+
+            .card-mob {
+                margin-top: -24px !important;
+            }
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 14px;
+            }
+
+            .title-mob {
+                margin-top: -90px !important;
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+        }
 
         .contact-card {
 
@@ -491,7 +647,8 @@
 
 
 
-                    <p class="mb-4 text-center" style="color: #000000">We’d love to hear from you. Whether you have questions regarding our
+                    <p class="mb-4 text-center" style="color: #000000">We’d love to hear from you. Whether you have
+                        questions regarding our
                         services, pricing
                         or else our dedicated team is ready to provide prompt and professional assistance at
                         every stage of your journey.</p>
@@ -514,14 +671,14 @@
                         </div>
                     </div>
 
-                     <div class="row justify-content-center" style="margin-top: 40px;">
-                    <div class="col-lg-10">
-                        <div class="contact-card">
-                            <div class="row g-4">
-                                <!-- Visit Our Office -->
-                                <div class="col-md-4  d-flex">
-                                    <div class="contact-item animate-fade-in w-100"
-                                        style=" background: rgba(52, 152, 219, 0.1);
+                    <div class="row justify-content-center" style="margin-top: 40px;">
+                        <div class="col-lg-10">
+                            <div class="contact-card">
+                                <div class="row g-4">
+                                    <!-- Visit Our Office -->
+                                    <div class="col-md-4  d-flex">
+                                        <div class="contact-item animate-fade-in w-100"
+                                            style=" background: rgba(52, 152, 219, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -529,23 +686,23 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="contact-icon">
-                                                <i class="fas fa-map-marker-alt" style=""></i>
-                                            </div>
-                                            <div class="contact-content">
-                                                <h6>Visit Our Office</h6>
-                                                <p>22/14C, Asarappa Road, Negombo, Sri Lanka</p>
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-map-marker-alt" style=""></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Visit Our Office</h6>
+                                                    <p>22/14C, Asarappa Road, Negombo, Sri Lanka</p>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Email Us -->
-                                <div class="col-md-4 d-flex">
-                                    <div class="contact-item animate-fade-in w-100"
-                                        style="  background: rgba(52, 152, 219, 0.1);
+                                    <!-- Email Us -->
+                                    <div class="col-md-4 d-flex">
+                                        <div class="contact-item animate-fade-in w-100"
+                                            style="  background: rgba(52, 152, 219, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -553,23 +710,23 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="contact-icon">
-                                                <i class="fas fa-envelope"></i>
-                                            </div>
-                                            <div class="contact-content">
-                                                <h6>Email Us</h6>
-                                                <p><a href="mailto:info@vacayguider.co"
-                                                        style="color: #6c757d;">info@vacayguider.com</a></p>
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="contact-content">
+                                                    <h6>Email Us</h6>
+                                                    <p><a href="mailto:info@vacayguider.co"
+                                                            style="color: #6c757d;">info@vacayguider.com</a></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Call Us -->
-                                <div class="col-md-4 d-flex">
-                                    <div class="contact-item animate-fade-in w-100"
-                                        style="  background: rgba(52, 152, 219, 0.1);
+                                    <!-- Call Us -->
+                                    <div class="col-md-4 d-flex">
+                                        <div class="contact-item animate-fade-in w-100"
+                                            style="  background: rgba(52, 152, 219, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -577,26 +734,26 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="contact-icon">
-                                                <i class="fas fa-phone-alt"></i>
-                                            </div>
-                                            <div class="contact-content" style="color: #6c757d;">
-                                                <h6>Call Us</h6>
-                                                <p><a href="tel:+94114272372" style="color: #6c757d;">+94 114 272
-                                                        372</a></p>
-                                                <p><a href="tel:+94711999444" style="color: #6c757d;">+94 711 999
-                                                        444</a></p>
-                                                <p><a href="tel:+94777035325" style="color: #6c757d;">+94 777 035
-                                                        325</a></p>
+                                            <div class="d-flex align-items-center">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                </div>
+                                                <div class="contact-content" style="color: #6c757d;">
+                                                    <h6>Call Us</h6>
+                                                    <p><a href="tel:+94114272372" style="color: #6c757d;">+94 114 272
+                                                            372</a></p>
+                                                    <p><a href="tel:+94711999444" style="color: #6c757d;">+94 711 999
+                                                            444</a></p>
+                                                    <p><a href="tel:+94777035325" style="color: #6c757d;">+94 777 035
+                                                            325</a></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div> <!-- .row -->
-                        </div> <!-- .contact-card -->
+                                </div> <!-- .row -->
+                            </div> <!-- .contact-card -->
+                        </div>
                     </div>
-                </div>
 
                     <p class="mb-4  text-center" style="color: #000000">
                         <strong>Got a question or planning a trip?</strong>
@@ -643,7 +800,8 @@
                                 <div class="form-group">
                                     <label for="email" class="block font-semibold text-gray-700 mb-1">Your Email
                                         *</label>
-                                    <input type="email" id="email" name="email" required placeholder="Your Email"
+                                    <input type="email" id="email" name="email" required
+                                        placeholder="Your Email"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
                                 </div>
 
@@ -704,7 +862,7 @@
 
 
 
-               
+
 
 
                 <!-- Map -->

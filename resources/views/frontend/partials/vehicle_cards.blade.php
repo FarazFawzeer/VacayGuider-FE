@@ -1,10 +1,12 @@
         <div class="row">
             @foreach ($vehicles as $vehicle)
                 @php
-                    $vehicleType = strtolower($vehicle->type); // e.g., car, bike, etc.
-                    $imagePath = $vehicle->image ? 'storage/' . $vehicle->image : null;
-                    $fallbackImage = 'assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg';
+                    $backendBaseUrl = config('app.backend_url');
+                    $vehicleImageUrl = $vehicle->vehicle_image
+                        ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
+                        : asset('assets/img/bike3.png');
                 @endphp
+
                 <div class="col-12 col-sm-6 col-md-4 mb-4 vehicle-card" data-type="{{ $vehicle->type }}">
                     <div class="tour-box style2 th-ani"
                         style="cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 16px; overflow: hidden; min-height: 320px; position: relative; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.06); transform: translateY(0px);"
@@ -13,8 +15,7 @@
 
                         <!-- Vehicle Image -->
                         <div class="tour-box_img global-img" style="position: relative; overflow: hidden;">
-                            <img src="{{ $vehicle->image && file_exists(public_path($imagePath)) ? asset($imagePath) : asset($fallbackImage) }}"
-                                alt="{{ $vehicle->name }}"
+                            <img src="{{ $vehicleImageUrl }}" alt="{{ $vehicle->name }}"
                                 style="width: 100%; height: 220px; object-fit: cover; transition: transform 0.3s ease;"
                                 onmouseover="this.style.transform='scale(1.05)'"
                                 onmouseout="this.style.transform='scale(1)'">
@@ -24,8 +25,8 @@
 
                             <!-- Price Label -->
                             <div
-                                style="position: absolute; top: 12px; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                <span style="font-size: 16px;"> USD ${{ number_format($vehicle->price,0) }}</span>
+                                style="position: absolute; top: 12px; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 10px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                <span style="font-size: 16px;"> USD ${{ number_format($vehicle->price, 0) }}</span>
                                 <span style="font-size: 12px; opacity: 0.9;">/ day</span>
                             </div>
                         </div>
@@ -38,7 +39,7 @@
                             </h3>
 
                             <a href="{{ route('rent.details', $vehicle->id) }}" class="btn btn-primary btn-sm"
-                                style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #3596d3 0%, #256f9d 100%);
+                                style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 8px; background:linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
  color: white; text-decoration: none; border: none; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); letter-spacing: 0.02em;"
                                 onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 2px 8px rgba(59, 130, 246, 0.3)'">

@@ -69,7 +69,219 @@
         }
     </script>
     <style>
-         .steps-container {
+        @media (max-width: 480px) {
+
+            .hero-section {
+                padding: 0px !important;
+            }
+
+            .step-card-mob {
+                padding: 0px !important;
+            }
+
+            .permint-post-mob {
+                margin-top: -32px;
+            }
+
+            /* Mobile adjustments */
+            @media (max-width: 576px) {
+                .title-area {
+                    margin-top: 0 !important;
+                    padding: 0 10px;
+                }
+
+                .sec-title {
+                    font-size: 1.75rem !important;
+                }
+
+                .hero-section .container {
+                    gap: 1rem;
+                }
+
+                .overview-text {
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                .info-badge {
+                    font-size: 13px;
+                    padding: 8px 12px;
+                }
+            }
+
+            .rent-undrline {
+                display: none !important;
+            }
+
+            .sidebar-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-height: 90%;
+                width: 90%;
+                background: transparent;
+                /* Remove background */
+                z-index: 1050;
+                overflow-y: auto;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1049;
+                /* Just behind the sidebar */
+                background-color: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            #filteredResults {
+                position: relative;
+                z-index: 1;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
+
+            .sidebar-container.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+            .filter-title-mob {
+                margin-top: 22px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .rvs-btn-mob {
+                margin-top: 25px !important;
+                margin-bottom: -40px !important;
+            }
+
+            .card-mob {
+                margin-top: -24px !important;
+            }
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 14px;
+            }
+
+            .title-mob {
+                margin-top: -38px !important;
+            }
+
+            .sub-title {
+                margin-bottom: 0px !important;
+
+            }
+
+            .filter-mob {
+                margin-top: -20px;
+                padding-bottom: 10px;
+
+            }
+
+            .title-area-mob {
+                margin-top: 14px !important;
+
+            }
+
+            .rent-sub-tittle {
+                margin-top: -60px !important;
+            }
+
+            element {}
+
+            .demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .demo-container {
+
+                height: 80px !important;
+
+            }
+
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .spec-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            transition: left 0.6s ease-in-out;
+        }
+
+        .spec-card:hover::before {
+            left: 100%;
+        }
+
+        .icon-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-effect {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .professional-shadow {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .steps-container {
             display: grid;
             gap: 30px;
             margin-top: 40px;
@@ -97,7 +309,7 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            background: linear-gradient(135deg, #2596be, #96c93e);
             color: white;
             width: 60px;
             height: 60px;
@@ -309,8 +521,8 @@
                         <li class="flex items-center">
                             <a href="{{ url('/') }}"
                                 class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                 </svg>
@@ -367,276 +579,282 @@
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"
             style="animation-delay: 4s;"></div> --}}
 
-        <div class="relative container mx-auto px-4 z-10">
+        <div class="container ">
             <!-- Section Header -->
 
 
-            <!-- Main Content Container -->
-            <div class="flex flex-col lg:flex-row gap-12 items-stretch mt-3">
-                <!-- Map Section -->
-                <div class="lg:w-1/2 w-full animate-slide-in lg:mt-20">
-                    <div class="relative overflow-hidden ">
-                        <img src="{{ asset('assets/img/map-car.png') }}" alt="Sri Lanka Transport Map"
-                            class="w-full h-auto object-cover">
-                    </div>
-                </div>
-
+        
+              
 
 
 
                 <!-- Vehicle Details Section -->
-                <div class="lg:w-1/2 w-full flex flex-col animate-fade-up" style="animation-delay: 0.3s;">
-                    <!-- Vehicle Image -->
-                    @php
-                        $vehicleType = strtolower($vehicle->type); // car, bike, etc.
-                        $imagePath = $vehicle->image ? 'storage/' . $vehicle->image : null;
-                        $fallbackImage = 'assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg';
-                        $finalImage =
-                            $vehicle->image && file_exists(public_path($imagePath))
-                                ? asset($imagePath)
-                                : asset($fallbackImage);
-                    @endphp
-
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-8 group">
-                        <div class=" rounded-3xl">
-                            <div class="bg-white rounded-3xl overflow-hidden">
-                                <div
-                                    class="bg-gradient-to-br from-gray-100 to-gray-200 h-80 flex items-center justify-center relative overflow-hidden">
-
-                                    <!-- Vehicle Image -->
-                                    <img src="{{ $finalImage }}" alt="{{ $vehicle->name }}"
-                                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-3xl">
-
-                                    <!-- Overlay Effects -->
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Floating Badge -->
-                        <div
-                            class="absolute top-6 left-6 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-bounce-gentle">
-                            ✨ Premium Choice
-                        </div>
-                    </div>
-
-
-
-                    <!-- Vehicle Info -->
-                    <div class="flex-1 space-y-8">
-                        <!-- Header with Price -->
+                <div class=" w-full flex flex-col animate-fade-up" style="animation-delay: 0.3s;">
+                    
+                              <!-- Header with Price -->
                         <div class="flex items-start justify-between flex-wrap gap-4">
                             <!-- Vehicle Info -->
                             <div class="flex-1 min-w-0">
+                                <h2
+                                    class="text-2xl lg:text-2xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
+                                    {{ $vehicle->make }}
+                                </h2>
                                 <h1
                                     class="text-4xl lg:text-4xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
-                                    {{ $vehicle->make }} {{ $vehicle->name }}
+                                    {{ $vehicle->name }}
                                 </h1>
-                                <div
-                                    class="inline-flex items-center px-4 py-2 bg-blue-500 rounded-full text-white text-sm font-semibold shadow-lg">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                        <path
-                                            d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3z" />
-                                    </svg>
-                                    {{ ucfirst($vehicle->type) }}
-                                </div>
+
                             </div>
 
                             <!-- Price Info -->
                             <div class="relative">
-                                <div
-                                    class="bg-red-500 text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden" style="border-radius: 58px;">
-                                    <span class="relative z-10">${{ number_format($vehicle->price, 2) }}/day</span>
+                                <div class=" text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                                    style="border-radius: 58px;background: #96c93e;">
+                                    <span class="relative z-10">${{ number_format($vehicle->price) }}/day</span>
                                     <div
                                         class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-full hover:translate-x-[-100%] transition-transform duration-700">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        </div>
+                    <!-- Vehicle Main Image -->
+@php
+    $backendBaseUrl = config('app.backend_url');
+    $vehicleType = strtolower($vehicle->type); // car, bike, etc.
+
+    // Main image URL
+    $finalImage = !empty($vehicle->vehicle_image)
+        ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
+        : asset('assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg');
+
+    // Prepare sub-images array
+    $subImages = [];
+    if (!empty($vehicle->sub_image)) {
+        $decoded = json_decode($vehicle->sub_image, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+            $subImages = $decoded;
+        } else {
+            $subImages = explode(',', $vehicle->sub_image);
+        }
+
+        // Clean extra quotes and spaces
+        $subImages = array_map(fn($img) => trim($img, " \t\n\r\0\x0B\""), $subImages);
+    }
+
+    // Build full URLs for sub-images
+    $subImageUrls = array_map(
+        fn($img) => $backendBaseUrl . '/storage/' . ltrim($img, '/'),
+        $subImages,
+    );
+@endphp
+
+<!-- Main Image -->
+<div class="relative overflow-hidden mb-4 group text-center" style="margin-top: -50px;">
+    <img src="{{ $finalImage }}" alt="{{ $vehicle->name }}"
+        class="mx-auto block object-contain transition-transform duration-500 group-hover:scale-105 rounded-3xl cursor-pointer"
+        style=" max-width: 100%;"
+        data-bs-toggle="modal" data-bs-target="#imageModal" data-img="{{ $finalImage }}">
+</div>
+
+<!-- Sub Images Grid (4 per row) -->
+@if (count($subImageUrls) > 0)
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sub-img-mob" style="margin-top: -70px">
+        @foreach ($subImageUrls as $url)
+            <img src="{{ $url }}" alt="Sub Image"
+                class="object-cover rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                style=" width: 100%;"
+                data-bs-toggle="modal" data-bs-target="#imageModal" data-img="{{ $url }}">
+        @endforeach
+    </div>
+@endif
+
+<!-- Image Modal (Popup) -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-body text-center p-0">
+                <img id="modalImage" src="" class="img-fluid rounded" alt="Large Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                    <!-- Vehicle Info -->
+                    <div class="flex-1 space-y-8" style="margin-top: 65px;">
+                     
 
 
                         <!-- Enhanced Vehicle Specs Grid -->
-                        <div class="max-w-6xl mx-auto">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        <div class="max-w-7xl mx-auto">
+
+                            <!-- Main Desktop Grid -->
+                            <div class="hidden md:grid md:grid-cols-3 gap-8 mb-16">
+                                <!-- Vehicle Type Card -->
                                 <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex flex-col items-center space-y-2">
+                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                                    <div class="flex flex-col items-center text-center space-y-4">
                                         <div
-                                            class="w-8 h-8 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                            class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-8 h-8 " fill="currentColor" viewBox="0 0 24 24"
+                                                style="color: #3596d3;">
                                                 <path
-                                                    d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                                <path
-                                                    d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1V8a1 1 0 00-1-1h-3z" />
+                                                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
                                             </svg>
                                         </div>
-                                        <div class="text-center">
-                                            <p class="text-xs text-gray-500 font-medium">Vehicle Type</p>
-                                            <p class="font-bold text-gray-900 text-sm">{{ ucfirst($vehicle->type) }}</p>
+                                        <div>
+                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
+                                                Vehicle Type</p>
+                                            <p class="text-xl font-bold text-slate-800">Sedan</p>
                                         </div>
                                     </div>
                                     <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
+                                        class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                     </div>
                                 </div>
 
+                                <!-- Availability Card -->
                                 <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex flex-col items-center space-y-2">
+                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                                    <div class="flex flex-col items-center text-center space-y-4">
                                         <div
-                                            class="w-8 h-8 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-8 h-8 " fill="currentColor" viewBox="0 0 24 24"
+                                                style="color: #3596d3;">
                                                 <path fill-rule="evenodd"
-                                                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </div>
-                                        <div class="text-center">
-                                            <p class="text-xs text-gray-500 font-medium">Availability</p>
-                                            <p class="font-bold text-green-600 text-sm flex items-center justify-center">
-                                                <span
-                                                    class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1 animate-pulse"></span>
-                                                Available Now
-                                            </p>
+                                        <div>
+                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
+                                                Availability</p>
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                                <p class="text-xl font-bold text-emerald-600">Available Now</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
+                                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                     </div>
                                 </div>
 
+                                <!-- Capacity Card -->
                                 <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex flex-col items-center space-y-2">
+                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                                    <div class="flex flex-col items-center text-center space-y-4">
                                         <div
-                                            class="w-8 h-8 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
+                                            class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-8 h-8 " fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" style="color: #3596d3;">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                             </svg>
                                         </div>
-                                        <div class="text-center">
-                                            <p class="text-xs text-gray-500 font-medium">Capacity</p>
-                                            <p class="font-bold text-gray-900 text-sm">
-                                                {{ ucfirst($vehicle->max_seating_capacity) }} Passengers</p>
+                                        <div>
+                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
+                                                Capacity</p>
+                                            <p class="text-xl font-bold text-slate-800">5 Passengers</p>
                                         </div>
                                     </div>
                                     <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
+                                        class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                     </div>
                                 </div>
 
 
                             </div>
 
-                            <!-- Responsive version for mobile -->
-                            <div class="grid grid-cols-2 gap-3 mt-8 md:hidden">
+                            <!-- Mobile/Tablet Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:hidden">
+                                <!-- Vehicle Type Card - Mobile -->
                                 <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex items-center space-x-3">
+                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                                    <div class="flex items-center space-x-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                            class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-7 h-7 " fill="currentColor" viewBox="0 0 24 24"
+                                                style="color: #3596d3;">
                                                 <path
-                                                    d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                                <path
-                                                    d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1V8a1 1 0 00-1-1h-3z" />
+                                                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="text-xs text-gray-500 font-medium">Vehicle Type</p>
-                                            <p class="font-bold text-gray-900 text-sm">{{ ucfirst($vehicle->type) }}</p>
+                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
+                                                Vehicle Type</p>
+                                            <p class="text-lg font-bold text-slate-800">Sedan</p>
                                         </div>
                                     </div>
                                     <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
+                                        class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                     </div>
                                 </div>
 
+                                <!-- Availability Card - Mobile -->
                                 <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex items-center space-x-3">
+                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                                    <div class="flex items-center space-x-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-7 h-7 " fill="currentColor" viewBox="0 0 24 24"
+                                                style="color: #3596d3;">
                                                 <path fill-rule="evenodd"
-                                                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="text-xs text-gray-500 font-medium">Availability</p>
-                                            <p class="font-bold text-green-600 text-sm flex items-center">
-                                                <span
-                                                    class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1 animate-pulse"></span>
-                                                Available Now
-                                            </p>
+                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
+                                                Availability</p>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                                <p class="text-lg font-bold text-emerald-600">Available Now</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
+                                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                     </div>
                                 </div>
 
+                                <!-- Capacity Card - Mobile -->
                                 <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex items-center space-x-3">
+                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                                    <div class="flex items-center space-x-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
+                                            class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-7 h-7 " fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" style="color: #3596d3;">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="text-xs text-gray-500 font-medium">Capacity</p>
-                                            <p class="font-bold text-gray-900 text-sm">5 Passengers</p>
+                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
+                                                Capacity</p>
+                                            <p class="text-lg font-bold text-slate-800">5 Passengers</p>
                                         </div>
                                     </div>
                                     <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
+                                        class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                     </div>
                                 </div>
 
-                                <div
-                                    class="group relative overflow-hidden bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 shadow-md hover:shadow-lg hover:transform hover:translateY-[-2px] transition-all duration-300">
-                                    <div class="flex items-center space-x-3">
-                                        <div
-                                            class="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-gray-500 font-medium">Fuel Type</p>
-                                            <p class="font-bold text-gray-900 text-sm">Hybrid Engine</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-red-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300">
-                                    </div>
-                                </div>
+
                             </div>
-
                         </div>
+
                         <!-- Enhanced Description -->
                         <div
                             class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 p-8 rounded-3xl border border-blue-100/50 shadow-lg">
                             <div class="relative z-10">
                                 <div class="flex items-center mb-4">
-                                    <div
-                                        class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
+                                    <div class="w-8 h-8  rounded-lg flex items-center justify-center mr-3"
+                                        style="margin-top: -9px;background: linear-gradient(135deg, #2596be, #96c93e);">
                                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -688,16 +906,9 @@
                                 onmouseover="this.style.backgroundPosition = '100% 0%'"
                                 onmouseout="this.style.backgroundPosition = '0% 0%'">
                                 <span class="relative z-10 flex items-center justify-center space-x-3">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                    </svg>
-                                    <span>Book Now - Start Your Adventure</span>
-                                    <svg class="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
+
+                                    <span>Book Now</span>
+
                                 </span>
 
                                 <!-- Animated shine effect -->
@@ -720,7 +931,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    <span>Free Cancellation</span>
+                                    <span>Cancellation</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
@@ -728,19 +939,19 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    <span>Instant Confirmation</span>
+                                    <span>Confirmation</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <span>Best Price Guarantee</span>
+                                    <span>Best Price </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+       
         </div>
     </section>
 
@@ -906,7 +1117,8 @@
 
                             <!-- Submit Button -->
                             <div class="form-group md:col-span-3 text-center pt-4">
-                                <button type="submit" class="btn btn-submit" style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
+                                <button type="submit" class="btn btn-submit"
+                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
                                     Submit Request
                                 </button>
                             </div>
@@ -916,10 +1128,7 @@
             </div>
 
 
-            <div class="text-center " style="margin-top: 45px;">
-                <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
-                <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
-            </div>
+
 
 
 
@@ -950,5 +1159,19 @@
             }
         }, 5000);
     </script>
+
+    <!-- Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modalImage = document.getElementById("modalImage");
+        const imageTriggers = document.querySelectorAll("[data-bs-target='#imageModal']");
+
+        imageTriggers.forEach(img => {
+            img.addEventListener("click", function () {
+                modalImage.src = this.getAttribute("data-img");
+            });
+        });
+    });
+</script>
 
 @endsection

@@ -33,8 +33,8 @@
             }
 
             .rent-undrline {
-        display: none !important;
-    }
+                display: none !important;
+            }
         }
 
         .map-section {
@@ -1512,11 +1512,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                                    unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                                    Let’s make your best trip with us </h1>
-                                                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                                Let’s make your best trip with us </h1>
+                                                                                                                                                                                                                                                        </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1533,19 +1533,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                                                    <div class="hero-inner">
-                                                                                                                                                                                                                                        <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                        <div class="container">
-                                                                                                                                                                                                                                            <div class="hero-style1">
-                                                                                                                                                                                                                                                <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                                    unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                                <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                                    Explore beauty of the whole world </h1>
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                <div class="hero-inner">
+                                                                                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                    <div class="container">
+                                                                                                                                                                                                                                                        <div class="hero-style1">
+                                                                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                                Explore beauty of the whole world </h1>
+                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                            </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1782,20 +1782,21 @@
                                                         style="cursor: pointer; transition: transform 0.3s ease; border-radius: 0px; overflow: hidden; min-height: 320px; position: relative;border-radius: 10px;">
 
                                                         @php
-                                                            $imagePath = $inboundPackage->picture
-                                                                ? 'storage/' . $inboundPackage->picture
-                                                                : null;
-                                                            $fallbackImage = asset('assets/img/tour/yala.jpg'); // Your dummy tour image
-                                                            $imageUrl =
-                                                                $imagePath && file_exists(public_path($imagePath))
-                                                                    ? asset($imagePath)
-                                                                    : $fallbackImage;
+                                                            $backendBaseUrl = config('app.backend_url');
+                                                            $imageUrl = $inboundPackage->picture
+                                                                ? $backendBaseUrl .
+                                                                    '/storage/' .
+                                                                    ltrim($inboundPackage->picture, '/')
+                                                                : asset('assets/img/tour/yala.jpg');
                                                         @endphp
+
+
+
                                                         <!-- Image Section -->
                                                         <div class="tour-box_img global-img" style="position: relative;">
                                                             <img src="{{ $imageUrl }}"
-                                                                alt="{{ $inboundPackage->place }}"
-                                                                style="width: 100%; height: 200px; object-fit: cover; border-radius: 0px;">
+                                                                alt="{{ $inboundPackage->place ?? 'Tour Image' }}"
+                                                                style="width: 100%; height: 200px; object-fit: cover; ">
                                                         </div>
 
                                                         <!-- Content Section -->
@@ -1806,7 +1807,7 @@
                                                                 <p class="tour-country m-0 d-flex align-items-center"
                                                                     style="color: #3596d3;">Sri Lanka</p>
                                                                 <div class="tour-rating d-flex align-items-center px-2  rounded"
-                                                                    style="margin-top: 13px; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
+                                                                    style="margin-top: 13px; padding: 3px; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
                                                                     <i class="fas fa-star text-white  fa-sm"></i>
                                                                     <span class=""
                                                                         style="font-weight: 700; font-size: 12px; color: #fff;">
@@ -2090,7 +2091,7 @@
                                                 <div class="content-section" style="flex: 1; padding-right: 20px;">
                                                     <div
                                                         style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 8px 14px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
-                                                        {{ $vehicle->category ?? 'Premium ' }}
+                                                        {{ $vehicle->label ?? 'Premium ' }}
                                                     </div>
 
                                                     <h3
@@ -2099,7 +2100,7 @@
                                                     </h3>
                                                     <h3
                                                         style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
-                                                        {{ $vehicle->model }}
+                                                        {{ $vehicle->name }}
                                                     </h3>
 
                                                     <div class="rent-undrline"
@@ -2113,10 +2114,17 @@
                                                     <div
                                                         style="position: absolute; width: 300px; height: 300px; border-radius: 50%; z-index: 1;">
                                                     </div>
+                                                    @php
+                                                        $backendBaseUrl = config('app.backend_url');
+                                                        $vehicleImageUrl = $vehicle->vehicle_image
+                                                            ? $backendBaseUrl .
+                                                                '/storage/' .
+                                                                ltrim($vehicle->vehicle_image, '/')
+                                                            : asset('assets/img/bike3.png');
+                                                    @endphp
 
-                                                    <img src="{{ $vehicle->image ? asset('storage/' . $vehicle->image) : asset('assets/img/bike3.png') }}"
-                                                        alt="{{ $vehicle->brand }} {{ $vehicle->model }}"
-                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease; ">
+                                                    <img src="{{ $vehicleImageUrl }}" alt="{{ $vehicle->name }}"
+                                                        style="width: 100%; max-width: auto; height: 350px; object-fit: contain; z-index: 2; transform: scale(1.1); transition: transform 0.5s ease;">
                                                 </div>
 
 
@@ -2125,10 +2133,13 @@
 
 
                                                     <div class="demo-container">
-                                                        <div
-                                                             style="position: absolute; text-align: center; right: 12px; background: #96c93e; color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 700; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                                            <span style="font-size: 28px;">USD ${{ number_format($vehicle->price, 0) }}</span>
-                                                            <span style="font-size: 12px; opacity: 0.9;">/ day</span>
+                                                        <div class=" text-white font-bold text-2xl px-8 py-2 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                                                            style="border-radius: 58px;background: #96c93e;">
+                                                            <span class="relative z-10">USD
+                                                                ${{ number_format($vehicle->price) }}</span>
+                                                            <div
+                                                                class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-full hover:translate-x-[-100%] transition-transform duration-700">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2232,10 +2243,11 @@
                             {{-- <span class="sub-title" style="color: #AAAAAA;">Airline Tickets</span>
                                 <h2 class="sec-title"  style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-shadow: 0 2px 15px rgba(0,162,255,0.3);">Your Gateway to the World</h2> --}}
                             <span class="sub-title "
-                                style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;"> Your Gateway to the World</span>
+                                style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
+                                Your Gateway to the World</span>
                             <h2 class="sec-title"
                                 style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
-                                Air  Ticketing</h2>
+                                Air Ticketing</h2>
 
 
                         </div>
@@ -2246,10 +2258,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                                                        <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                                                            Get Tickets
-                                                                                                                                                                                        </a>
-                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                    <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                                                                        Get Tickets
+                                                                                                                                                                                                    </a>
+                                                                                                                                                                                                </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
