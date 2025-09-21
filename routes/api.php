@@ -1,6 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PayableController;
+use App\Http\Controllers\PackageBookingController;
 
-Route::post('/payable-notify', [PayableController::class, 'handlePayableWebhook']);
+Route::post('/payable-notify', [PackageBookingController::class, 'handlePayableWebhook']);

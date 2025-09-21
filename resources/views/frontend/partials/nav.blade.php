@@ -1,20 +1,19 @@
+<div class="th-menu-wrapper onepage-nav">
+    <div class="th-menu-area text-center">
+        <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
+        <div class="mobile-logo ">
+            <a href="home-travel.html"><img src="{{ asset('assets/img/vacayguider.png') }}" alt="Tourm"></a>
+        </div>
+        <div class="th-mobile-menu">
+            <ul>
+                <li>
+                    <a href="{{ url('/') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url('/about') }}">About Us</a>
+                </li>
 
-  <div class="th-menu-wrapper onepage-nav">
-      <div class="th-menu-area text-center">
-          <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
-          <div class="mobile-logo ">
-              <a href="home-travel.html"><img src="{{ asset('assets/img/vacayguider.png') }}" alt="Tourm"></a>
-          </div>
-          <div class="th-mobile-menu">
-              <ul>
-                  <li>
-                      <a href="{{ url('/') }}">Home</a>
-                  </li>
-                  <li>
-                      <a href="{{ url('/about') }}">About Us</a>
-                  </li>
-
-                  {{-- <li class="menu-item-has-children">
+                {{-- <li class="menu-item-has-children">
                      <a href="#" class="mobile-submenu-toggle">Services</a>
                       <ul class="sub-menu">
                          
@@ -22,29 +21,30 @@
                       </ul>
                   </li> --}}
 
-                   <li><a href="{{ url('/inbound-tours') }}">Inbound</a></li>
-                              <li><a href="{{ url('/rent') }}">Vehicle Rental</a></li>
-                                  <li><a href="{{ url('/transportation') }}">Transportation</a></li>
-                                      <li><a href="{{ url('/airline') }}">Air Ticketing</a></li>
+                <li><a href="{{ url('/inbound-tours') }}">Inbound</a></li>
+                <li><a href="{{ url('/rent') }}">Vehicle Rental</a></li>
+                <li><a href="{{ url('/transportation') }}">Transportation</a></li>
+                <li><a href="{{ url('/airline') }}">Air Ticketing</a></li>
 
-                  <li>
-                      <a href="{{ url('/blog') }}">Blog</a>
-                  </li>
-                  <li>
-                      <a href="{{ url('/contact') }}">Contact</a>
-                  </li>
-              </ul>
-          </div>
+                <li>
+                    <a href="{{ url('/blog') }}">Blog</a>
+                </li>
+                <li>
+                    <a href="{{ url('/contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
 
-      </div>
-  </div>
+    </div>
+</div>
 
 <header class="header shadow" id="header">
     <div class="container-fluid">
         <div class="header-content">
             <div class="header-logo">
                 <a href="#">
-                    <img src="{{ asset('assets/img/vacayguider.png') }}" alt="VacayGuider Logo" style="max-height: 75px;">
+                    <img src="{{ asset('assets/img/vacayguider.png') }}" alt="VacayGuider Logo"
+                        style="max-height: 75px;">
                 </a>
             </div>
 
@@ -62,12 +62,14 @@
                                 <li><a href="/inbound-tours"
                                         class="{{ Request::is('inbound-tours') ? 'active' : '' }}">Inbound Tours</a>
                                 </li>
-                                <li><a href="/rent" class="{{ Request::is('rent') ? 'active' : '' }}">Vehicle Rental</a>
+                                <li><a href="/rent" class="{{ Request::is('rent') ? 'active' : '' }}">Vehicle
+                                        Rental</a>
                                 </li>
                                 <li><a href="/transportation"
                                         class="{{ Request::is('transportation') ? 'active' : '' }}">Transportation</a>
                                 </li>
-                                <li><a href="/airline" class="{{ Request::is('airline') ? 'active' : '' }}">Air Ticketing</a>
+                                <li><a href="/airline" class="{{ Request::is('airline') ? 'active' : '' }}">Air
+                                        Ticketing</a>
                                 </li>
                             </ul>
                         </li>
@@ -77,35 +79,40 @@
 
                 </nav>
 
-             
 
-             
+
+
             </div>
 
             <div class="header-utility">
-    <div class="support-badge">
-        <span>24/7 Support</span>
-    </div>
+                <div class="support-badge">
+                    <span>24/7 Support</span>
+                </div>
 
-    <div class="language-dropdown">
-        <button class="language-btn">
-            <img src="https://flagcdn.com/us.svg" alt="English" width="20" height="14" style="border-radius: 2px;">
-            <span>English</span>
-            <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
-        </button>
-        <div class="language-menu">
-            <a href="#"><img src="https://flagcdn.com/us.svg" alt="English" width="24"> English</a>
-            <a href="#"><img src="https://flagcdn.com/es.svg" alt="Español" width="24"> Español</a>
-            <a href="#"><img src="https://flagcdn.com/fr.svg" alt="Français" width="24"> Français</a>
-            <a href="#"><img src="https://flagcdn.com/de.svg" alt="Deutsch" width="24"> Deutsch</a>
-            <a href="#"><img src="https://flagcdn.com/cn.svg" alt="中文" width="24"> 中文</a>
-        </div>
-    </div>
-</div>
+                <div class="language-dropdown">
+                    <button class="language-btn">
+                        <img src="https://flagcdn.com/us.svg" alt="English" width="20" height="14"
+                            style="border-radius: 2px;">
+                        <span>English</span>
+                        <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                    </button>
+                    <div class="language-menu">
+                        <a href="#"><img src="https://flagcdn.com/us.svg" alt="English" width="24">
+                            English</a>
+                        <a href="#"><img src="https://flagcdn.com/es.svg" alt="Español" width="24">
+                            Español</a>
+                        <a href="#"><img src="https://flagcdn.com/fr.svg" alt="Français" width="24">
+                            Français</a>
+                        <a href="#"><img src="https://flagcdn.com/de.svg" alt="Deutsch" width="24">
+                            Deutsch</a>
+                        <a href="#"><img src="https://flagcdn.com/cn.svg" alt="中文" width="24"> 中文</a>
+                    </div>
+                </div>
+            </div>
 
-                <button type="button" class="th-menu-toggle d-block d-xl-none" >
-                              <i class="fas fa-bars"></i>
-                          </button>
+            <button type="button" class="th-menu-toggle d-block d-xl-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </div>
 
@@ -153,25 +160,25 @@
             display: none !important;
         }
 
-       
+
         .language-dropdown {
             display: none !important;
         }
 
-            .sub-menu {
-        display: none;
-        background: #0a3d52;
-        padding-left: 20px;
-    }
+        .sub-menu {
+            display: none;
+            background: #0a3d52;
+            padding-left: 20px;
+        }
 
-    .sub-menu.open {
-        display: block;
-    }
+        .sub-menu.open {
+            display: block;
+        }
 
-    .menu-item-has-children > a::after {
-        content: " ▼";
-        font-size: 12px;
-    }
+        .menu-item-has-children>a::after {
+            content: " ▼";
+            font-size: 12px;
+        }
     }
 
     * {
@@ -187,12 +194,12 @@
     }
 
     .language-btn img {
-  
+
         vertical-align: middle;
     }
 
     .language-menu a img {
-        
+
         border-radius: 2px;
         vertical-align: middle;
     }
@@ -348,13 +355,13 @@
     .support-badge {
         background: #94c73e;
         /* Soft green background */
-       
+
         border-radius: 20px;
         color: #ffffff;
         /* Deep green text */
-    font-size: 9px;
-  padding: 0px 8px;
-  border-radius: 20px;
+        font-size: 9px;
+        padding: 0px 8px;
+        border-radius: 20px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -384,7 +391,7 @@
 
 
     .language-dropdown .language-btn {
-        
+
         font-size: 11px;
 
     }
@@ -395,16 +402,16 @@
 
 
     .header-utility {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  
-}
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
 
-/* Adjust size and spacing for the badge */
+    }
+
+    /* Adjust size and spacing for the badge */
 
 
-/* Reduce size of language button */
+    /* Reduce size of language button */
 
 
     @keyframes pulse {
@@ -439,7 +446,7 @@
     }
 
     .language-btn:hover {
-        
+
         transform: translateY(-2px);
     }
 
@@ -534,19 +541,20 @@
         } */
 
         @media (max-width: 768px) {
-    .header-utility {
-        gap: 6px;
-    }
+            .header-utility {
+                gap: 6px;
+            }
 
-    .language-btn span {
-        display: none;
-    }
+            .language-btn span {
+                display: none;
+            }
 
-    .support-badge {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-}
+            .support-badge {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+
         .language-btn span {
             display: none;
         }
@@ -555,77 +563,77 @@
             padding-top: 70px;
         }
 
-                  .header-top {
-              padding: 10px 0;
-          }
+        .header-top {
+            padding: 10px 0;
+        }
 
-          .header-logo img {
-              max-height: 40px;
-          }
+        .header-logo img {
+            max-height: 40px;
+        }
 
-          .menu-area .row {
-              padding: 8px 0;
-          }
-      }
+        .menu-area .row {
+            padding: 8px 0;
+        }
+    }
 
-      /* Animations */
-      @keyframes fadeInUp {
-          from {
-              opacity: 0;
-              transform: translateY(20px);
-          }
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
-      }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-      .th-header {
-          animation: fadeInUp 0.6s ease-out;
-      }
+    .th-header {
+        animation: fadeInUp 0.6s ease-out;
+    }
 
-      /* Hover Effects */
-      .header-right {
-          display: flex;
-          align-items: center;
-      }
+    /* Hover Effects */
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
 
-      /* Enhanced Visual Effects */
-      .menu-area::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(2, 140, 204, 0.3), transparent);
-      }
+    /* Enhanced Visual Effects */
+    .menu-area::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(2, 140, 204, 0.3), transparent);
+    }
 
-      /* Sticky Header Enhancement */
-      .sticky-wrapper {
-          position: relative;
-      }
+    /* Sticky Header Enhancement */
+    .sticky-wrapper {
+        position: relative;
+    }
 
-      .sticky-wrapper.is-sticky {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 999;
-          animation: slideDown 0.3s ease-out;
-      }
+    .sticky-wrapper.is-sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        animation: slideDown 0.3s ease-out;
+    }
 
-      @keyframes slideDown {
-          from {
-              transform: translateY(-100%);
-          }
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+        }
 
-          to {
-              transform: translateY(0);
-          }
-      }
-    
+        to {
+            transform: translateY(0);
+        }
+    }
+
 
     /* Demo content */
     .demo-content {
@@ -643,36 +651,33 @@
     }
 </style>
 
-  <script>
-      // Sticky header functionality
-      window.addEventListener('scroll', function() {
-          const stickyWrapper = document.querySelector('.sticky-wrapper');
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+<script>
+    // Sticky header functionality
+    window.addEventListener('scroll', function() {
+        const stickyWrapper = document.querySelector('.sticky-wrapper');
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-          if (scrollTop > 100) {
-              stickyWrapper.classList.add('is-sticky');
-          } else {
-              stickyWrapper.classList.remove('is-sticky');
-          }
-      });
+        if (scrollTop > 100) {
+            stickyWrapper.classList.add('is-sticky');
+        } else {
+            stickyWrapper.classList.remove('is-sticky');
+        }
+    });
 
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function(e) {
-              e.preventDefault();
-              const target = document.querySelector(this.getAttribute('href'));
-              if (target) {
-                  target.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start'
-                  });
-              }
-          });
-      });
-
-      
-      
-  </script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
 
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}

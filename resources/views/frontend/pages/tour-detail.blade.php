@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Home')
+@section('title', 'VacayGuider | Inbound Tours')
 
 @section('content')
     <style>
@@ -726,6 +726,34 @@
                                 & <strong style="font-weight: 900;"> {{ $package->nights }}
                                     Nights</strong>
                             </h5>
+                             <div class="flex flex-wrap items-center ml-2 text-xs md:text-sm font-normal text-gray-600 gap-1">
+        @php
+            $cityList = [];
+            foreach ($tourSummaries as $summary) {
+                if ($summary->package_id == $package->id) {
+                    $cities = explode(',', $summary->city);
+                    foreach ($cities as $city) {
+                        $trimmed = trim($city);
+                        if (!empty($trimmed)) {
+                            $cityList[] = $trimmed;
+                        }
+                    }
+                }
+            }
+            $cityList = array_values(array_unique($cityList));
+        @endphp
+
+<span class="font-semibold">Airport</span>
+<span class="text-blue-600">→</span>
+
+@foreach ($cityList as $index => $city)
+    <span class="font-semibold">{{ $city }}</span>
+    <span class="text-blue-600">→</span>
+@endforeach
+
+<span class="font-semibold">Airport</span>
+
+    </div>
                         </div>
 
                         @php
@@ -781,6 +809,7 @@
                                             </path>
                                         </svg>
                                         <span>{{ $package->days }} Days, {{ $package->nights }} Nights</span>
+                                        
                                     </div>
 
                                 </div>
@@ -962,38 +991,7 @@
                                     </div>
                                 </div>
 
-                                @if ($itinerary->highlights->isNotEmpty())
-                                    <div class="mb-12">
-                                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">
-                                            {{ $itinerary->place_name }} Highlights
-                                        </h3>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                            @php
-                                                $backendBaseUrl = config('app.backend_url'); // e.g., https://admin.vacayguider.com
-                                                $defaultImage = asset('/images/no-image.jpg');
-                                            @endphp
-
-                                            @foreach ($itinerary->highlights->take(6) as $highlight)
-                                                @php
-                                                    $imageUrl = $highlight->images
-                                                        ? $backendBaseUrl . '/storage/' . ltrim($highlight->images, '/')
-                                                        : $defaultImage;
-                                                @endphp
-
-                                                <div class="flex flex-col">
-                                                    <div class="overflow-hidden rounded-lg">
-                                                        <img src="{{ $imageUrl }}" alt="Highlight"
-                                                            class="w-full h-40 object-cover highlight-image"
-                                                            style="height: 10rem;" />
-                                                    </div>
-                                                    <p class="text-center text-sm text-gray-600 mt-3">
-                                                        {{ $highlight->highlight_places ?? ($highlight->title ?? 'Highlight') }}
-                                                    </p>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endif
+                               
 
 
                                 <!-- Accommodation Box -->
@@ -1038,26 +1036,38 @@
                                     </div>
                                 </div>
 
+@if ($loop->last)
+    @php
+        $backendBaseUrl = config('app.backend_url'); // e.g., https://admin.vacayguider.com
+        $defaultMapImage = asset('assets/img/default-map.jpg');
 
-                                @if ($loop->last)
-                                    @php
-                                        $backendBaseUrl = config('app.backend_url'); // e.g., https://admin.vacayguider.com
-                                        $defaultMapImage = asset('assets/img/default-map.jpg');
+        $mapImage = $package->map_image
+            ? $backendBaseUrl . '/storage/' . ltrim($package->map_image, '/')
+            : $defaultMapImage;
+    @endphp
 
-                                        $mapImage = $package->map_image
-                                            ? $backendBaseUrl . '/storage/' . ltrim($package->map_image, '/')
-                                            : $defaultMapImage;
-                                    @endphp
+    <div class="mt-12 ">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Tour Map</h3>
 
-                                    <div class="mt-12">
-                                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Tour Map</h3>
-                                        <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
-                                            class="lg:w-auto w-full object-cover rounded-xl shadow-md"
-                                            style="height: 400px; width: 300px;" loading="lazy" />
-                                    </div>
-                                @endif
+        <!-- Thumbnail Image (clickable) -->
+        <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
+            class="lg:w-auto w-full object-cover rounded-xl shadow-md cursor-pointer"
+            style="height: 550px; width: 400px;" loading="lazy"
+            data-bs-toggle="modal" data-bs-target="#mapModal" />
+    </div>
 
-                            </div>
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0 shadow-none">
+                <button type="button" class="btn-close ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                <img src="{{ $mapImage }}" alt="Tour map for {{ $package->place }}"
+                    class="img-fluid rounded shadow-lg" />
+            </div>
+        </div>
+    </div>
+@endif
+</div>
                         @endforeach
 
 
@@ -1099,7 +1109,7 @@
                                             <div class="flex items-startr">
                                                 <div class="w-2 h-2 rounded-full  mr-2 mt-2 flex-shrink-0"
                                                     style="background: #727373;"></div>
-                                                <span>Airport pick up</span>
+                                                <span>Airport pick up and drop off</span>
                                             </div>
                                         </li>
 
@@ -1114,8 +1124,7 @@
                                             <div class="flex items-start">
                                                 <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
                                                     style="background: #727373;"></div>
-                                                <span>Accommodation with breakfast and dinner basis on mentioned hotels
-                                                    below</span>
+                                                <span>Accommodation with breakfast and dinner basis on mentioned hotels below</span>
                                             </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
@@ -1136,35 +1145,12 @@
                                             <div class="flex items-start">
                                                 <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
                                                     style="background: #727373;"></div>
-                                                <span>All government taxes</span>
-                                            </div>
-                                        </li>
-                                        <li style="margin-bottom: 10px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
                                                 <span>Fuel & local insurance for the vehicle</span>
                                             </div>
                                         </li>
-                                        <li style="margin-bottom: 20px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span>Airport drop off</span>
-                                            </div>
-                                        </li>
-
-                                        <p style="margin-bottom: 10px ;margin-top: 2opx;">
-                                            <strong style="color: #000;">Note :</strong> All rooms and tickets are subject
-                                            to
-                                            availability.
-                                        </p>
+                                       
                                         <p style="margin-bottom: 10px;">
-                                            <strong style="color: #000;">Note :</strong> Travel durations listed in this
-                                            itinerary are
-                                            subject to change due to road, traffic, and weather conditions. These
-                                            suggested durations are estimated point-to-point without any stops. This
-                                            is only a guideline for your understanding.
+                                            <strong style="color: #000;">Note :</strong> Please note that all journey durations are estimates and may vary due to traffic, road conditions, and weather. These times are calculated for direct travel without stops and are provided as a guideline only.
                                         </p>
                                     </ul>
                                 </div>
@@ -1221,7 +1207,7 @@
                                             <div class="flex items-start">
                                                 <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
                                                     style="background: #727373;"></div>
-                                                <span>Personal expenses</span>
+                                                <span>Personal expenses and shopping expense</span>
                                             </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">
@@ -1235,30 +1221,10 @@
                                             <div class="flex items-start">
                                                 <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
                                                     style="background: #727373;"></div>
-                                                <span>Visa cost (mandatory charge for immigration: 25 USD per person)</span>
+                                                <span>Visa cost </span>
                                             </div>
                                         </li>
-                                        <li style="margin-bottom: 10px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span>Shopping expenses</span>
-                                            </div>
-                                        </li>
-                                        <li style="margin-bottom: 10px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span>PCR tests</span>
-                                            </div>
-                                        </li>
-                                        <li style="margin-bottom: 20px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span>Above cost is valid for 14 pax or above only</span>
-                                            </div>
-                                        </li>
+                                        
 
                                         <p style="margin-bottom: 10px;">
                                             <strong style="color: #000;">Note :</strong> Please note that if the
@@ -1272,46 +1238,25 @@
 
 
                             <!-- Panel for Cancellation Policy -->
-                            <div id="tabpanel-pricing" aria-labelledby="tab-pricing" class="tabpanel py-3 px-1"
-                                style="display:none;">
-                                <div class="panel-content">
-                                    <ul class="list-none pl-0">
-                                        <li style="margin-bottom: 10px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span><strong>In case of cancellation:</strong> The following cancellation
-                                                    charges will be applicable</span>
-                                            </div>
-                                        </li>
-                                        <li style="margin-bottom: 10px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span>Cancellations made with less than 30 days from the start of a tour:
-                                                    Zero refund.</span>
-                                            </div>
-                                        </li>
-                                        <li style="margin-bottom: 10px;">
-                                            <div class="flex items-start">
-                                                <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
-                                                    style="background: #727373;"></div>
-                                                <span>No Show: Zero refund.</span>
-                                            </div>
-                                        </li>
+<div id="tabpanel-pricing" aria-labelledby="tab-pricing" class="tabpanel py-3 px-1" style="display:none;">
+    <div class="panel-content">
 
-                                        <p style="margin-bottom: 10px;"><strong style="color: #000;">Note :</strong>
-                                            Cancellations made
-                                            prior to 30 days from the scheduled start of a tour: 80% of total tour
-                                            fee will be refunded.</p>
-                                    </ul>
-                                </div>
-                            </div>
+        <p class="mb-3">
+            <strong>In case of cancellation:</strong> The following cancellation charges will be applicable.
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2">
+            <li>No Show: Zero refund.</li>
+            <li>Cancellations made prior to 30 days from the scheduled start of a tour: 80% of total tour fee will be refunded.</li>
+        </ul>
+    </div>
+</div>
+
                         </div>
 
                         <div style="margin-top: 40px; display: flex; justify-content: center;">
                             <div
-                                style="max-width: 800px; width: 100%; padding: 20px; background-color: #f4f4f4; border-top: 2px solid #ccc; font-family: Arial, sans-serif; color: #333; font-size: 16px; line-height: 1.6; text-align: center;">
+                                style="max-width: 800px; width: 100%; padding: 20px; border-top: 2px solid #ccc; font-family: Arial, sans-serif; color: #333; font-size: 16px; line-height: 1.6; text-align: center;">
 
                                 <p class="p-thank" style="margin: 0 0 10px 0;">
                                     At <strong>VacayGuider</strong>, the journey doesn't end when the trip does, it lingers

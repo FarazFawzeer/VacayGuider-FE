@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Home')
+@section('title', 'VacayGuider | About Us')
 
 @section('content')
     <script src="https://cdn.tailwindcss.com"></script>
@@ -1557,19 +1557,24 @@
 
                             <div class="text-center">
                                 <p class="mt-3 text-muted">
-                                    To ensure a seamless and stress-free travel experience, we offer a wide range of
-                                    reliable
-                                    services, including: 1. Custom Tour Packages – Experiences tailored to your interests 2.
-                                    Air
-                                    Ticketing – Hassle-free booking to your dream destinations 3. Visa Assistance – Expert
-                                    help
-                                    with travel documentation 4. Hotel Booking – Handpicked stays to suit your preferences
-                                    and
-                                    budget 5. Airport Transportation – Smooth and punctual airport transfers 6. Car Rental
-                                    Services – Flexible options to suit your travel needs 7. Travel Insurance – Coverage for
-                                    peace of mind on every trip
+    To ensure a seamless and stress-free travel experience, we offer a wide range of
+    reliable services, including:
+</p>
 
-                                </p>
+<div class="flex justify-center">
+    <ol class="text-muted mt-2 space-y-2 list-decimal list-outside pl-5 text-left max-w-2xl">
+        <li>Custom Tour Packages – Experiences tailored to your interests</li>
+        <li>Air Ticketing – Hassle-free booking to your dream destinations</li>
+        <li>Visa Assistance – Expert help with travel documentation</li>
+        <li>Hotel Booking – Handpicked stays to suit your preferences and budget</li>
+        <li>Airport Transportation – Smooth and punctual airport transfers</li>
+        <li>Car Rental Services – Flexible options to suit your travel needs</li>
+        <li>Travel Insurance – Coverage for peace of mind on every trip</li>
+    </ol>
+</div>
+
+
+
                             </div>
 
                             <div class="text-center">
@@ -1632,19 +1637,7 @@
                                     <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #1B5E20;">
                                         Pioneering Tomorrow's Travel Tales</h3>
                                     <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
-                                        We aspire to be a globally recognized leader in the travel and tourism industry by
-                                        redefining
-                                        the way people experience the world. We aim to empower travelers through
-                                        personalized,
-                                        innovative, and seamless travel solutions that not only meet their expectations but
-                                        exceed
-                                        them. We envision a future where every journey we create fosters cultural
-                                        connection,
-                                        personal growth, and unforgettable memories. With a strong commitment to quality,
-                                        trust,
-                                        and sustainability, we strive to build lasting relationships with our clients and
-                                        partners —
-                                        becoming the go-to travel companion for explorers around the globe.
+                                       We aspire to be a globally recognized leader in the travel and tourism industry by redefining the way people experience the world. We aim to empower travelers through personalized, innovative, and seamless travel solutions that not only meet their expectations but exceed them. We envision a future where every journey we create fosters cultural connection, personal growth, and unforgettable memories. With a strong commitment to quality, trust, and sustainability, we strive to build lasting relationships with our clients and partners—becoming the go-to travel companion for explorers around the globe.
                                     </p>
                                 </div>
                                 <div class="decorative-shape"
@@ -1686,18 +1679,7 @@
                                         Crafting
                                         Journeys, Curating Memories</h3>
                                     <p style="font-size: 16px; line-height: 1.8; color: #333333; margin-bottom: 0;">
-                                        At VacayGuider, we deliver exceptional travel experiences through personalized,
-                                        reliable, and comprehensive solutions. Committed to understanding each traveler's
-                                        unique
-                                        needs, we transform dreams into reality with carefully crafted tours, trusted
-                                        support
-                                        services, and our passionate team. Whether exploring Sri Lanka's beauty or
-                                        discovering
-                                        global destinations, we ensure every journey is smooth, enriching, and memorable.
-                                        With
-                                        our focus on quality, customer satisfaction, and innovation, we've become the
-                                        trusted
-                                        travel partner clients rely on - every step of the way
+                                       At VacayGuider, we deliver exceptional travel experiences through personalized, reliable, and comprehensive solutions. Committed to understanding each traveler’s unique needs, we transform dreams into reality with carefully crafted tours, trusted support services, and our passionate team. Whether exploring Sri Lanka’s beauty or discovering global destinations, we ensure every journey is smooth, enriching, and memorable. With our focus on quality, customer satisfaction, and innovation, we are the trusted travel partner clients rely on—every step of the way.
                                     </p>
                                 </div>
                                 <div class="decorative-shape"

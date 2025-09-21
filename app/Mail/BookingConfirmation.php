@@ -26,15 +26,9 @@ class BookingConfirmation extends Mailable
         );
     }
 
-    public function content(): Content
+    public function build()
     {
-        return new Content(
-            markdown: 'emails.booking.confirmation', // Make sure this Blade file exists
-        );
-    }
-
-    public function attachments(): array
-    {
-        return [];
+        return $this->subject('Booking Confirmation - ' . $this->booking->invoice_id)
+            ->markdown('emails.booking_confirmation');
     }
 }

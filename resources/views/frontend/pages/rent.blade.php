@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Home')
+@section('title', 'VacayGuider | Vehicle Rental')
 
 @section('content')
 
@@ -965,31 +965,23 @@
             <!-- Hero Section -->
             <div class="hero-section">
                 <div class="container permint-post-mob">
-                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    <img src="{{ asset('assets/img/post new.jpg') }}"
                         alt="Driving in Sri Lanka" class="hero-image">
 
 
                     <div class="overview-text">
                         <div class="info-badge">
-                            <p><strong>Important:</strong> Sri Lanka requires foreign nationals to verify their license
-                                locally.
-                                You cannot legally drive using an IDP or foreign license alone.</p>
+                            <p><strong>Important:</strong> SSri Lanka requires foreign nationals to verify their license locally. You cannot legally drive using an IDP or foreign license alone.</p>
                         </div>
                         <p>
-                            To help make your trip seamless, we assist in arranging your temporary driving license in
-                            advance.
-                            By choosing to arrange your license beforehand, you've made the right decision to save time and
-                            enjoy every moment of your stay.To help make your trip seamless, we assist in arranging your
-                            temporary driving license in advance. By choosing to arrange your license beforehand, you've
-                            made
-                            the right decision to save time and enjoy every moment of your stay
+                            To ensure a seamless trip, we assist in arranging your temporary driving license in advance. By choosing to arrange your license beforehand, you’ve made the right decision to save time and enjoy every moment of your stay.
                         </p>
                     </div>
-                    <div class="bottom-image">
-                        <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                            alt="Sri Lanka scenic roads">
+                    <!--<div class="bottom-image">-->
+                    <!--    <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"-->
+                    <!--        alt="Sri Lanka scenic roads">-->
 
-                    </div>
+                    <!--</div>-->
 
                 </div>
 

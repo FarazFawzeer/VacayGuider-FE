@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Home')
+@section('title', 'VacayGuider | Transportation')
 
 @section('content')
 
@@ -937,12 +937,7 @@
                         Pre-Booking Transportation </h2>
                 </div>
                 <p class="text-center mt-3 mb-3"> Ensure a smooth start to your journey with our <strong>Pre-Booking
-                        Transportation Services</strong>. Whether you're arriving at the airport or planning day-to-day
-                    travel during your stay, our reliable options are designed for convenience and peace of mind. Choose
-                    from <strong>private airport transfers</strong>, <strong>chauffeur-driven vehicles</strong>, or
-                    <strong>self-drive car rentals</strong> — all bookable in advance to save time and avoid last-minute
-                    stress. With <strong>Vacay Guider</strong>, you can travel confidently knowing your transport is
-                    secured, punctual, and tailored to your itinerary.
+                        Ensure a smooth start to your journey with our pre-booking transportation services. Whether you’re arriving at the airport or planning day-to-day travel during your stay, our reliable options are designed for convenience and peace of mind. Choose from private airport transfers, chauffeur-driven vehicles, or self-drive car rentals—all bookable in advance to save time and avoid last-minute stress. With VacayGuider, you can travel confidently, knowing your transport is secured, punctual, and tailored to your itinerary.
                 </p>
 
                 <div class="feature-grid" style="margin-top: 50px;">

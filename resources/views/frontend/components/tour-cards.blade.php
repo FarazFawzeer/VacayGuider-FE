@@ -34,13 +34,13 @@
                     {{ $package->heading }}
                 </h3>
 
-                <p class="text-muted small mt-1 mb-1"
-                    style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                    {{ Str::limit($package->description, 90) }}
-                </p>
+                <!--<p class="text-muted small mt-1 mb-1"-->
+                <!--    style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">-->
+                <!--    {{ Str::limit($package->description, 90) }}-->
+                <!--</p>-->
 
-                <a href="{{ route('tour.details', $package->id) }}" class="small"
-                    style="font-weight: 500; color:#3596d3; font-size: 12px;">View More</a>
+                <!--<a href="{{ route('tour.details', $package->id) }}" class="small"-->
+                <!--    style="font-weight: 500; color:#3596d3; font-size: 12px;">View More</a>-->
 
                 <!-- Days/Nights Section with Icon -->
                 <div class="d-flex align-items-center mt-3" style="color: black;">

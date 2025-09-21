@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Home')
+@section('title', 'VacayGuider | Vehicle Rental')
 
 @section('content')
 
@@ -14,7 +14,7 @@
             --light-bg: #f8f9fa;
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --border-radius: 15px;
-        }
+        }feature-item
 
         .vehicle-container {
             background: white;
@@ -1031,25 +1031,43 @@
         <img src="{{ $vehicle->vehicle_image ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/') : asset('/images/no-image.jpg') }}"
             class="main-image img-fluid rounded"
             alt="{{ $vehicle->name }}"
-            style=" object-fit: contain; transform: scale(1.1); transition: transform 0.5s ease;">
+            style=" object-fit: contain; transform: scale(1.1); transition: transform 0.5s ease;height: 300px;">
     </div>
 
     <!-- Sub Images Grid -->
-    @if (count($subImages) > 0)
-        <div class="row g-2 w-100 sub-img-mob" style="margin-top: -100px">
-            @foreach ($subImages as $index => $img)
-                <div class="col-6">
-                    <img src="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}"
-                        class="img-fluid rounded sub-image"
-                        alt="Sub Image {{ $index + 1 }}"
-                        style=" object-fit: cover; cursor: pointer;"
-                        data-bs-toggle="modal"
-                        data-bs-target="#imageModal"
-                        data-img="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}">
-                </div>
-            @endforeach
+@if (in_array($vehicle->type, ['car', 'van']) && count($subImages) > 0)
+    <!-- Show Sub Images -->
+    <div class="row g-2 w-100 sub-img-mob" style="margin-top: -50px;">
+        @foreach ($subImages as $index => $img)
+            <div class="col-6">
+                <img src="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}"
+                    class="img-fluid rounded sub-image"
+                    alt="Sub Image {{ $index + 1 }}"
+                    style="object-fit: cover; cursor: pointer; width: 100%; height: 150px;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#imageModal"
+                    data-img="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}">
+            </div>
+        @endforeach
+    </div>
+@elseif (in_array($vehicle->type, ['cycle', 'electricbike', 'scooter', 'motorcycle', 'tuktuk']))
+    <!-- Show Small Description -->
+    <div class="row g-2 w-100 sub-img-mob" style="margin-top: 0px;">
+        <div class="col-12">
+<p class="text-muted small" style="font-size: 14px; line-height: 1.6;">
+    Our {{ ucfirst($vehicle->type) }} is a perfect choice for city travel, daily commutes, and short trips. 
+    Designed to be lightweight, economical, and easy to handle, it ensures a smooth riding experience even in busy streets 
+    and narrow roads. Whether you are looking for a budget-friendly ride, an eco-friendly option, or simply a convenient way 
+    to get around, this vehicle provides excellent fuel efficiency, low maintenance, and the flexibility to move quickly 
+    through traffic while enjoying comfort and reliability. Beyond practicality, it also offers a stylish design, 
+    spacious seating, and modern features that make every journey more enjoyable. Ideal for individuals, families, or 
+    professionals, this {{ ucfirst($vehicle->type) }} is built to deliver not only efficiency but also long-lasting 
+    performance, giving you peace of mind and true value for your investment.
+</p>
+
         </div>
-    @endif
+    </div>
+@endif
 </div>
 
 <!-- Image Modal (Popup) -->
@@ -1122,13 +1140,14 @@
                     </div>
 
                     <div class="feature-list">
-                        <div class="feature-item">
-                            <div
-                                class="feature-icon {{ $vehicle->air_conditioned ? 'feature-available' : 'feature-unavailable' }}">
-                                <i class="fas fa-snowflake"></i>
-                            </div>
-                            <span>Air Conditioned</span>
-                        </div>
+                      @if($vehicle->air_conditioned == 1)
+    <div class="feature-item">
+        <div class="feature-icon {{ $vehicle->first_aid_kit ? 'feature-available' : 'feature-unavailable' }}">
+            <i class="fas fa-snowflake"></i>
+        </div>
+        <span>Air Conditioned</span>
+    </div>
+@endif
 
                         <div class="feature-item">
                             <div

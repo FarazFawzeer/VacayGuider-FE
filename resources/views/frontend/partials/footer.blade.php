@@ -424,11 +424,9 @@
                 <!-- Description Section -->
                 <div class="description-section">
                     <p class="description-text">
-                        VacayGuider, we are a dedicated team of travel professionals committed to delivering exceptional
-                        service and Extraordinary travel experiences. With a focus on quality, reliability, and
-                        personalized support, we ensure every journey is seamless from start to finish. Whether it’s a
-                        quick getaway or a once-in-a-lifetime adventure, we go beyond the ordinary to bring your travel
-                        dreams to life.
+                       We at VacayGuider are a dedicated team of travel professionals committed to delivering exceptional service and extraordinary travel experiences. With our focus on quality, reliability, and personalized support, we ensure every journey is seamless from start to finish.
+                       <br>
+                       Whether you're planning a quick getaway or a once-in-a-lifetime adventure, we go beyond the ordinary to bring your travel dreams to life.
                     </p>
                 </div>
 

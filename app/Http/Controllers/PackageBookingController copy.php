@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 
-
 class PackageBookingController extends Controller
 {
     //
@@ -76,7 +75,7 @@ $invoiceId = 'INV' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT); // e.g., INV000
   $package = Package::findOrFail($data['package']);
 
 $amount = number_format($package->price, 2, '.', ''); // Ensures two decimals
-$currencyCode = env('APP_CURRENCY', 'LKR');
+$currencyCode = env('APP_CURRENCY', 'USD');
 
 $orderDescription = "Tour Booking for Package: " . $booking->package->heading;
         $orderDescription = preg_replace('/[^A-Za-z0-9 .,]/', '', $orderDescription);
@@ -199,41 +198,18 @@ return redirect()->route('payment.launch');
 
 
 public function handlePayableWebhook(Request $request)
-{
-    $data = $request->all();
+    {
+        $data = $request->all();
 
-    // Log incoming payload for debugging
-    Log::info('Payable Webhook Received', $data);
-
-    // Find booking by invoice number
-    $booking = PackageBooking::where('invoice_id', $data['invoiceNo'] ?? null)->first();
-
-    if ($booking) {
-        $booking->update([
-            'payment_status'   => $data['statusMessage'] ?? 'FAILED',
-            'transaction_id'   => $data['payableTransactionId'] ?? null,
-            'order_id'         => $data['payableOrderId'] ?? null,
-            'card_holder_name' => $data['cardHolderName'] ?? null,
-            'card_number'      => $data['cardNumber'] ?? null,
-            'payment_method'   => $data['paymentMethod'] ?? null,
-            'payment_scheme'   => $data['paymentScheme'] ?? null,
-            'payable_amount'   => $data['payableAmount'] ?? null,
-            'payable_currency' => $data['payableCurrency'] ?? null,
-            'status_message'   => $data['statusMessage'] ?? null,
+        Log::info('PAYable notify received', [
+            'headers' => $request->headers->all(),
+            'body' => $data,
+            'ip' => $request->ip(),
         ]);
 
-        // Send confirmation email
-        try {
-            Mail::to($booking->email)->send(new \App\Mail\BookingConfirmation($booking));
-        } catch (\Exception $e) {
-            Log::error('Email sending failed: ' . $e->getMessage());
-        }
-    } else {
-        Log::warning('No booking found for invoice ID: ' . ($data['invoiceNo'] ?? 'N/A'));
+        return response()->json(['Status' => 200, 'Message' => 'Webhook received']);
     }
 
-    return response()->json(['Status' => 200, 'Message' => 'Webhook received']);
-}
 
 
     public function paymentReturn(Request $request)
