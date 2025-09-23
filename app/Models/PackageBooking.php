@@ -26,6 +26,11 @@ class PackageBooking extends Model
         'package_id',
         'start_date',
         'end_date',
+        'pickup',
+        'hotel_type',
+        'travelling_from',
+        'travel_reason',
+        'theme',
         'message',
         'invoice_id',
         'payment_status',
@@ -39,6 +44,14 @@ class PackageBooking extends Model
         'payable_currency',
         'status_message'
     ];
+
+
+       protected $casts = [
+        'theme' => 'array',
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
+
 
     /**
      * Get the package associated with this booking.

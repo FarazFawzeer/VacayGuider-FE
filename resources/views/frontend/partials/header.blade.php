@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
         <!-- Favicon -->
-        <link rel="shortcut icon" type="{{ asset('assets/img/favicon.png') }}">
+        <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/vacayguider.png') }}">
     <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
     <meta name="msapplication-TileColor" content="#ffffff">

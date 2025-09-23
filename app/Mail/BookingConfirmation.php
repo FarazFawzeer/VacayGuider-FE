@@ -2,33 +2,28 @@
 
 namespace App\Mail;
 
+use App\Models\PackageBooking;
+use App\Models\Package;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class BookingConfirmation extends Mailable
+class BookingConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $booking;
+    public $package;
 
-    public function __construct($booking)
+    public function __construct(PackageBooking $booking)
     {
         $this->booking = $booking;
-    }
-
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Booking Confirmation',
-        );
+        $this->package = $booking->package; // Make sure your PackageBooking model has a relationship to Package
     }
 
     public function build()
     {
-        return $this->subject('Booking Confirmation - ' . $this->booking->invoice_id)
-            ->markdown('emails.booking_confirmation');
+        return $this->subject('Your Booking Request Confirmation')
+                    ->view('emails.booking-confirmation');
     }
 }

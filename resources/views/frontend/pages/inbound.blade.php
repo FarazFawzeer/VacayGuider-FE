@@ -3,6 +3,585 @@
 @section('title', 'VacayGuider | Inbound Tours')
 
 @section('content')
+
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+
+        .message {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .message.success {
+            background-color: #e6ffed;s
+            color: #155724;
+        }
+
+        .message.error {
+            background-color: #fdecea;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .message.warning {
+            background-color: #fff4e5;
+            border-left: 4px solid #f0ad4e;
+            color: #856404;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .booking-header {
+
+            color: rgb(0, 0, 0);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .booking-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .booking-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .booking-header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+        }
+
+        .progress-section {
+            padding: 2rem;
+
+            position: relative;
+        }
+
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.active .step-number {
+            background: #3596d3;
+            color: white;
+            transform: scale(1.1);
+
+        }
+
+        .step-item.completed .step-number {
+            background: #96c93e;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .step-title {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step-item.active .step-title {
+            color: #3596d3;
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            right: -50%;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 1;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .step-item.completed .progress-line {
+            background: #96c93e;
+        }
+
+        .step-item:last-child .progress-line {
+            display: none;
+        }
+
+        .form-section {
+            padding: 0 2rem 2rem;
+        }
+
+        .step-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.5s ease;
+            position: relative;
+        }
+
+
+        .greeting {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0d4e6b, #1a5a78);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(13, 78, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 78, 107, 0.4);
+            background: linear-gradient(135deg, #1a5a78, #0d4e6b);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgb(37, 150, 190), rgb(150, 201, 62));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .greeting {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-content h4 {
+            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+
+
+        .form-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #e2e8f0;
+            /* border-radius: 12px; */
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            font-weight: 500;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            outline: none;
+            background: white;
+            transform: translateY(-1px);
+        }
+
+        /* Fix Bootstrap validation icons for <select> fields */
+        select.form-select.is-valid option,
+        select.form-select.is-invalid option {
+            background-image: none !important;
+            /* remove icons from dropdown items */
+        }
+
+        /* Show icon only on the select box itself */
+        select.form-select.is-valid,
+        select.form-select.is-invalid {
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem 1rem;
+            padding-right: 2.25rem;
+            /* spacing for icon */
+        }
+
+        /* Green check for valid */
+        select.form-select.is-valid {
+            border-color: #198754;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23198754'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7' /%3e%3c/svg%3e");
+        }
+
+        /* Red cross for invalid */
+        select.form-select.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23dc3545'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 18L18 6M6 6l12 12' /%3e%3c/svg%3e");
+        }
+
+
+
+        .form-control.is-invalid {
+            border-color: #f56565;
+            box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.1);
+        }
+
+        .form-control.is-valid {
+            border-color: #96c93e;
+            box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.1);
+        }
+
+        .btn {
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: #0d4e6b;
+            color: white;
+            border: 1px solid #0d4e6b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+            border: none
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            color: white;
+            background: #0d4e6b;
+
+        }
+
+
+
+        .btn-primary:focus {
+
+            color: white;
+            background: #0d4e6b;
+            border: 1px solid #0d4e6b !important;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: rgb(0, 0, 0);
+            border: 1px solid #0d4e6b;
+             border-radius: 50px;
+        }
+
+        .btn-secondary:hover {
+            background: #0d4e6b;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-success {
+            background: #96c93e color: white;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-success:hover::before {
+            left: 100%;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(72, 187, 120, 0.4);
+            color: white;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-top: -30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .review-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .review-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #2d3748;
+            flex: 1;
+        }
+
+        .review-value {
+            color: #1a202c;
+            font-weight: 500;
+            flex: 1;
+            text-align: right;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0;
+            }
+
+            .booking-container {
+                margin: 0 1rem;
+                border-radius: 16px;
+            }
+
+            .booking-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .booking-header h1 {
+                font-size: 2rem;
+            }
+
+            .progress-section,
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .navigation-buttons {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navigation-buttons .btn {
+                width: 100%;
+            }
+
+            .step-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .step-item {
+                flex: none;
+                min-width: 80px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+        }
+    </style>
     <style>
         .theme-lable {
             font-weight: 300 !important;
@@ -199,26 +778,8 @@
 
         }
 
-        .step-number {
-            background: linear-gradient(135deg, #2596be, #96c93e);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: 20px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
-        }
+       
 
-        .step-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
 
         .form-grid {
             display: grid;
@@ -278,7 +839,7 @@
             background: rgba(102, 126, 234, 0.05);
             border: 2px dashed #667eea;
         }
-
+/* 
         .btn {
             background: linear-gradient(135deg, #000000, #000000);
             color: white;
@@ -294,7 +855,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
             margin-top: 20px;
-        }
+        } */
 
         .btn:hover {
             color: #ffff;
@@ -412,6 +973,667 @@
         }
     </style>
 
+ <style>
+        .th-btn:hover {
+            color: #ffffff;
+            background-color: #0083a3 !important;
+        }
+
+        .hero-form {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 40px;
+            margin-left: -26px;
+        }
+
+        .support-badge {
+            margin-top: 5px;
+        }
+
+
+
+
+
+
+        .tour-country {
+            font-size: 14px;
+            font-weight: 600;
+            color: #3596D3;
+            /* Matches your theme */
+            margin-bottom: 5px;
+        }
+
+        .tour-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .tour-list li {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .tour-list i {
+            color: #909090;
+            margin-right: 5px;
+        }
+
+
+        .tour-box .tour-action .th-btn {
+            border: 1px solid #60D522;
+
+            font-weight: 500;
+
+            padding: 10px 19.5px;
+
+        }
+
+
+
+        .header-links li:not(:last-child)::after {
+            content: '';
+            height: 14px;
+            width: 1px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 5px;
+            right: -27px;
+        }
+
+        .booking-form {
+            position: relative;
+            background-color: var(--white-color);
+            border: 2px solid var(--theme-color);
+            box-shadow: 0px 20px 20px rgba(204, 204, 204, 0.25);
+            border-radius: 0px;
+            padding: 14px 34px;
+            z-index: 3;
+            margin-top: -45px;
+        }
+
+        .space,
+        .space-bottom {
+            padding-bottom: 20px;
+        }
+
+        .custom-btn-with-arrow:after {
+            content: "\E800";
+            font-family: fontello;
+            font-size: 18px;
+            margin-left: 17px;
+        }
+
+        /*
+
+                                                                                                                                                    .space, .space-top {
+                                                                                                                                                      padding-top: 20px;
+                                                                                                                                                    } */
+        .custom-btn {
+            background: linear-gradient(45deg, #60D522, #A3EB58);
+
+            /* Smooth gradient */
+            color: #fff;
+            /* White text */
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            /* Soft rounded corners */
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .custom-btn:hover {
+
+            /* Reverse gradient */
+            transform: translateY(-3px);
+            /* Slight lift effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .box-title a {
+            font-size: 16px;
+        }
+
+        .custom-btn:active {
+            transform: translateY(1px);
+            /* Press-down effect */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .tour-header {
+            display: flex;
+            align-items: center;
+            /* Ensures vertical alignment */
+            justify-content: space-between;
+            /* Keeps spacing equal */
+        }
+
+        .copyright-wrap {
+            padding: 5px 0;
+            background-color: #262A36;
+        }
+
+        .tour-country {
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            /* Centers icon & text */
+        }
+
+        .tour-rating {
+            display: flex;
+            align-items: center;
+            /* Ensures rating is vertically centered */
+        }
+
+        .small-star {
+            font-size: 12px;
+            /* Smaller stars */
+            color: #fbbf24;
+            margin-left: -2px;
+            /* Adds slight spacing between stars */
+        }
+
+        .tour-box {
+            position: relative;
+            background-color: var(--white-color);
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .tour-box_img img {
+            width: 100%;
+            border-radius: 0px 0px 0 0;
+            -webkit-transition: 1.3s all ease;
+            transition: 1.3s all ease;
+        }
+
+        .tour-box_img {
+            position: relative;
+            border-radius: 0px 0px 0 0;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            height: 100%;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            /* Ensures images cover the container */
+            width: 50%;
+            height: 50%;
+        }
+
+        /* Adjust the carousel control buttons to stand out better */
+        .carousel-control-prev,
+        .carousel-control-next {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark background for better contrast */
+            border-radius: 50%;
+            /* Round buttons */
+            width: 40px;
+            /* Adjust the width */
+            height: 40px;
+            /* Adjust the height */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .header-layout1 .currency-menu .nice-select {
+            min-width: 104px;
+        }
+
+        .h2,
+        h2 {
+            font-size: 30px;
+            line-height: 1.327;
+        }
+
+        .sub-title {
+            display: block;
+            color: var(--title-color);
+            font-size: 25px;
+            line-height: 40px;
+            font-weight: 700;
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            margin-bottom: -4px;
+        }
+
+        .sec-text {
+            font-size: 15px;
+            line-height: 26px;
+        }
+
+        .box-title {
+            font-size: 20px;
+            line-height: 1.417;
+            font-weight: 600;
+            margin-top: -0.32em;
+        }
+
+        .widget-area {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .fa-map-marker-alt {
+            margin-right: 5px;
+        }
+
+        .tour-box_img img {
+            height: 200px;
+            object-fit: cover;
+            /* Ensures the image covers the area without distortion */
+            width: 100%;
+            /* Maintains responsiveness */
+        }
+
+        .services i {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #7AB730;
+            background: #FFFFFF;
+            color: #7AB730;
+            transition: .5s;
+        }
+
+        /* Hover effect */
+        .services:hover i {
+            background: #60D522;
+            /* Background green on hover */
+            color: white;
+            /* Icon color white on hover */
+        }
+
+        /* Styling the paragraph */
+        .service-desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .services {
+            background-color: #f8f9fa;
+            /* Light gray background */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
+        }
+
+        .info-box_text a {
+            color: #888C97;
+        }
+
+        .info-box_text p {
+            color: #888C97;
+        }
+
+        .th-social a {
+            display: inline-block;
+            width: var(--icon-size, 32px);
+            height: var(--icon-size, 32px);
+            line-height: var(--icon-size, 32px);
+            background-color: #262A36;
+            color: var(--theme-color);
+            font-size: 16px;
+            border-radius: 50%;
+            text-align: center;
+            margin-right: 5px;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+        .info-box_text .icon {
+            color: var(--body-color);
+            -webkit-box-flex: 0;
+            -webkit-flex: none;
+            -ms-flex: none;
+            flex: none;
+            width: 40px;
+            height: 40px;
+            line-height: 37px;
+            background-color: #262A36;
+            border-radius: 50%;
+            text-align: center;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .bg-smoke {
+            background-color: #F5F5F5 !important;
+        }
+
+
+        .testimonials-section {
+            background-color: var(--secondary);
+        }
+
+        .card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-summary .card-body {
+            padding: 2rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .progress {
+            background-color: var(--secondary);
+            border-radius: var(--radius);
+        }
+
+        .progress-bar {
+            background-color: var(--primary);
+            border-radius: var(--radius);
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+        }
+
+        .platform-item {
+            padding: 0.5rem 0;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .review-summary {
+                margin-bottom: 2rem;
+            }
+
+            .testimonial-card {
+                margin-bottom: 1rem;
+            }
+        }
+
+        :root {
+            --primary: #0284c7;
+            --primary-foreground: #ffffff;
+            --secondary: #f1f5f9;
+            --secondary-foreground: #0f172a;
+            --background: #ffffff;
+            --foreground: #0f172a;
+            --card: #ffffff;
+            --card-foreground: #0f172a;
+            --border: #e2e8f0;
+            --ring: #0284c7;
+            --radius: 0.5rem;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        /* From Uiverse.io by cssbuttons-io */
+        .fancy {
+            background-color: transparent;
+            border: 2px solid #000;
+            border-radius: 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            float: right;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin: 0;
+            outline: none;
+            overflow: visible;
+            padding: 1.25em 2em;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            text-transform: none;
+            transition: all 0.3s ease-in-out;
+            user-select: none;
+            font-size: 13px;
+        }
+
+        .fancy::before {
+            content: " ";
+            width: 1.5625rem;
+            height: 2px;
+            background: black;
+            top: 50%;
+            left: 1.5em;
+            position: absolute;
+            transform: translateY(-50%);
+            transform-origin: center;
+            transition: background 0.3s linear, width 0.3s linear;
+        }
+
+        .fancy .text {
+            font-size: 1.125em;
+            line-height: 1.33333em;
+            padding-left: 2em;
+            display: block;
+            text-align: left;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: black;
+        }
+
+        .fancy .top-key {
+            height: 2px;
+            width: 1.5625rem;
+            top: -2px;
+            left: 0.625rem;
+            position: absolute;
+            background: #e8e8e8;
+            transition: width 0.5s ease-out, left 0.3s ease-out;
+        }
+
+        .fancy .bottom-key-1 {
+            height: 2px;
+            width: 1.5625rem;
+            right: 1.875rem;
+            bottom: -2px;
+            position: absolute;
+            background: #e8e8e8;
+            transition: width 0.5s ease-out, right 0.3s ease-out;
+        }
+
+        .fancy .bottom-key-2 {
+            height: 2px;
+            width: 0.625rem;
+            right: 0.625rem;
+            bottom: -2px;
+            position: absolute;
+            background: #e8e8e8;
+            transition: width 0.5s ease-out, right 0.3s ease-out;
+        }
+
+        .fancy:hover {
+            color: white;
+            background: black;
+        }
+
+        .fancy:hover::before {
+            width: 0.9375rem;
+            background: white;
+        }
+
+        .fancy:hover .text {
+            color: white;
+            padding-left: 1.5em;
+        }
+
+        .fancy:hover .top-key {
+            left: -2px;
+            width: 0px;
+        }
+
+        .fancy:hover .bottom-key-1,
+        .fancy:hover .bottom-key-2 {
+            right: 0;
+            width: 0;
+        }
+
+        breadcumb-wrapper {
+            position: relative;
+            background-image: url('assets/img/hero/carousel-2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .breadcumb-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Adjust this for darker/lighter effect */
+            z-index: 1;
+        }
+
+        .breadcumb-content {
+            position: relative;
+            z-index: 2;
+            /* Ensures text stays on top */
+        }
+
+        .breadcumb-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+            /* Highlights text */
+        }
+
+        .breadcumb-menu li a,
+        .breadcumb-menu li {
+            font-size: 18px;
+            color: white !important;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            /* Highlights menu text */
+        }
+
+        .pagination .page-link {
+            color: black;
+            border: 1px solid black;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: black;
+            color: white;
+            border-color: black;
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        select,
+        .form-control,
+        .form-select,
+        textarea,
+        input {
+
+            /* border: none; */
+
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+
+        }
+    </style>
+    <style>
+        .tour-option-box {
+            display: inline-block;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, color 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .tour-option-radio {
+            display: none;
+        }
+
+        .tour-option-radio:checked+.tour-option-box {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .tour-option-wrapper {
+            margin-bottom: 10px;
+        }
+    </style>
 
     {{-- 
     <div class="container-fluid about-hero text-white position-relative"
@@ -894,15 +2116,12 @@
 
 
             </div> --}}
-            <div class="steps-container">
+            {{-- <div class="steps-container">
                 <div class="step-card">
                     <div class="step-header text-center">
                         <div class="step-number">01</div>
                         <h2 class="step-title text-blue-900 text-center">Check Your Reservation</h2>
                     </div>
-
-                    {{-- <p class="text-center text-gray-600 mb-4">Fill out the form below to check availability and receive a
-                        personalized quote.</p> --}}
 
                     <!-- Alerts -->
                     @if (session('success'))
@@ -1033,7 +2252,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- <div class="text-center mt-15">
                 <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
@@ -1047,673 +2266,505 @@
 
 
 
+        <div class="container-fluid">
+            <div class="booking-container">
+                <!-- Header -->
+                <div class="booking-header ">
+                    <h1>Request a Quote</h1>
+                    <p>Our team of travel experts is at your service 24/7,
+                        always ready to assist <br> you with reliable support whenever you need it.</p>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-section">
+                    <div class="step-progress">
+                        <div class="step-item active" id="indicator-1">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Contact Info</div>
+                            <div class="progress-line"></div>
+                        </div>
+                        <div class="step-item" id="indicator-2">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Travel Details</div>
+                            <div class="progress-line"></div>
+                        </div>
+                        <div class="step-item" id="indicator-3">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Preferences</div>
+                            <div class="progress-line"></div>
+                        </div>
+                        <div class="step-item" id="indicator-4">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Review & Book</div>
+                        </div>s
+                    </div>
+                </div>
+
+
+                <div id="formMessage" class="message" style="display:none;"></div>
+                <!-- Form -->
+                <form id="bookingForm" method="POST" action="{{ route('package.booking.store') }}">
+                    @csrf
+        
+
+                    <div class="form-section">
+                        <!-- Step 1: Contact Details -->
+                        <div class="step-content" id="step-1">
+                            <h4>Contact Information</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Full Name *</label>
+                                    <input type="text" name="full_name" class="form-control"
+                                        placeholder="Enter your full name" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="your@email.com" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Phone Number *</label>
+
+                                    <input type="tel" id="phone" name="phone" class="form-control" required
+                                        style="width: 514px;">
+
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">WhatsApp (Optional)</label>
+                                    <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
+                                        style="width: 514px;">
+                                </div>
+                            </div>
+                              <div class="row">
+                                <div class="col-md-6 mb-4">
+                                <label class="form-label">Country *</label>
+                                <input type="text" name="country" class="form-control"
+                                    placeholder="Enter your country" required>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                    <label for="package">Tour Packages</label>
+                                    <select select id="package" name="package" class="form-select">
+                                           <option value="">Select a package</option>
+                                    @foreach ($packages as $package)
+                                        <option value="{{ $package->id }}">{{ $package->heading }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                              </div>
+
+
+                            
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Travel Details -->
+                        <div class="step-content hidden" id="step-2">
+                            <h4>Travel Information</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Number of Adults (13+) *</label>
+                                    <input type="number" name="adults" min="1" value="2"
+                                        class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Number of Children (0-13)</label>
+                                    <input type="number" name="children" min="0" value="0"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Check-in Date *</label>
+                                    <input type="date" name="check_in" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Check-out Date *</label>
+                                    <input type="date" name="check_out" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Pickup Location / Flight Information</label>
+                                <input type="text" name="pickup" class="form-control"
+                                    placeholder="Airport code, hotel name, or specific address">
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Preferences -->
+                        <div class="step-content hidden" id="step-3">
+                            <h4>Your Travel Preferences</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Hotel Category *</label>
+                                    <select name="hotel_type" class="form-select" required>
+                                        <option value="">Choose your preferred hotel category</option>
+                                        <option value="3-star">3 Star </option>
+                                        <option value="4-star">4 Star</option>
+                                        <option value="5-star">5 Star </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Travelling From *</label>
+                                    <input type="text" name="travelling_from" class="form-control"
+                                        placeholder="Your departure city or country" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Occasion for Travel</label>
+                                    <select name="travel_reason" class="form-select">
+                                        <option value="leisure">Leisure & Vacation</option>
+                                        <option value="honeymoon">Honeymoon</option>
+                                        <option value="anniversary">Anniversary Celebration</option>
+                                        <option value="birthday">Birthday Trip</option>
+                                        <option value="annual-trip">Annual Family Trip</option>
+                                        <option value="business">Business & Leisure</option>
+                                        <option value="other">Other Special Occasion</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Travel Experience Theme</label>
+                                    <select name="theme[]" class="form-select" id="themeSelect" multiple>
+                                        <option value="wildlife">Wildlife</option>
+                                        <option value="water_sports">Water Sports</option>
+                                        <option value="adventure">Adventure</option>
+                                        <option value="snorkeling">Snorkeling</option>
+                                        <option value="culture">Culture</option>
+                                        <option value="whale_watching">Whale Watching</option>
+                                        <option value="history">History</option>
+                                        <option value="dolphin_watching">Dolphin Watching</option>
+                                        <option value="hikes">Hikes</option>
+                                        <option value="diving">Diving</option>
+                                        <option value="nature">Nature</option>
+                                        <option value="yoga_meditation">Yoga & Meditation</option>
+                                        <option value="beach">Beach</option>
+                                        <option value="mountains">Mountains</option>
+                                        <option value="tea_gardens">Tea Gardens</option>
+                                        <option value="train_rides">Train Rides</option>
+                                        <option value="boat_rides">Boat Rides</option>
+                                        <option value="birds_watching">Birds Watching</option>
+                                        <option value="village_walks">Village Walks</option>
+                                        <option value="handcrafts">Handcrafts</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Review -->
+                        <div class="step-content hidden" id="step-4">
+                            <div class="icon">
+                                <svg class="checkmark" viewBox="0 0 24 24">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                            </div>
+                            <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi there!
+                            </h4>
+                            <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
+                                style="margin-top: -10px;padding-bottom: 20px;"></p>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="submit-btn">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn btn-secondary hidden" id="prevBtn">
+                            Previous
+                        </button>
+                        <div></div>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Next
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
 
 
     </section>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <style>
-        .th-btn:hover {
-            color: #ffffff;
-            background-color: #0083a3 !important;
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            $('#themeSelect').select2({
+                placeholder: "Select travel themes",
+                allowClear: true,
+                width: "100%"
+            });
+        });
+    </script>
+
+
+    <script>
+        // Initialize intl-tel-input for both phone and WhatsApp
+        function initIntlTel(selector) {
+            var input = document.querySelector(selector);
+            return window.intlTelInput(input, {
+                initialCountry: "auto",
+                separateDialCode: true, // ✅ shows code in input
+                geoIpLookup: function(success) {
+                    fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
+                        .then(resp => resp.json())
+                        .then(resp => success(resp.country))
+                        .catch(() => success("us"));
+                },
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+            });
         }
 
-        .hero-form {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            -webkit-backdrop-filter: blur(15px);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            padding: 40px;
-            margin-left: -26px;
-        }
-
-        .support-badge {
-            margin-top: 5px;
-        }
-
-
-
-
-
-
-        .tour-country {
-            font-size: 14px;
-            font-weight: 600;
-            color: #3596D3;
-            /* Matches your theme */
-            margin-bottom: 5px;
-        }
-
-        .tour-list {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0;
-        }
-
-        .tour-list li {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .tour-list i {
-            color: #909090;
-            margin-right: 5px;
-        }
-
-
-        .tour-box .tour-action .th-btn {
-            border: 1px solid #60D522;
-
-            font-weight: 500;
-
-            padding: 10px 19.5px;
-
-        }
-
-
-
-        .header-links li:not(:last-child)::after {
-            content: '';
-            height: 14px;
-            width: 1px;
-            background-color: #ffffff;
-            position: absolute;
-            top: 5px;
-            right: -27px;
-        }
-
-        .booking-form {
-            position: relative;
-            background-color: var(--white-color);
-            border: 2px solid var(--theme-color);
-            box-shadow: 0px 20px 20px rgba(204, 204, 204, 0.25);
-            border-radius: 0px;
-            padding: 14px 34px;
-            z-index: 3;
-            margin-top: -45px;
-        }
-
-        .space,
-        .space-bottom {
-            padding-bottom: 20px;
-        }
-
-        .custom-btn-with-arrow:after {
-            content: "\E800";
-            font-family: fontello;
-            font-size: 18px;
-            margin-left: 17px;
-        }
-
-        /*
-
-                                                                                                                                                    .space, .space-top {
-                                                                                                                                                      padding-top: 20px;
-                                                                                                                                                    } */
-        .custom-btn {
-            background: linear-gradient(45deg, #60D522, #A3EB58);
-
-            /* Smooth gradient */
-            color: #fff;
-            /* White text */
-            font-size: 16px;
-            font-weight: 600;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            /* Soft rounded corners */
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .custom-btn:hover {
-
-            /* Reverse gradient */
-            transform: translateY(-3px);
-            /* Slight lift effect */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .box-title a {
-            font-size: 16px;
-        }
-
-        .custom-btn:active {
-            transform: translateY(1px);
-            /* Press-down effect */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-
-        .tour-header {
-            display: flex;
-            align-items: center;
-            /* Ensures vertical alignment */
-            justify-content: space-between;
-            /* Keeps spacing equal */
-        }
-
-        .copyright-wrap {
-            padding: 5px 0;
-            background-color: #262A36;
-        }
-
-        .tour-country {
-            font-size: 14px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            /* Centers icon & text */
-        }
-
-        .tour-rating {
-            display: flex;
-            align-items: center;
-            /* Ensures rating is vertically centered */
-        }
-
-        .small-star {
-            font-size: 12px;
-            /* Smaller stars */
-            color: #fbbf24;
-            margin-left: -2px;
-            /* Adds slight spacing between stars */
-        }
-
-        .tour-box {
-            position: relative;
-            background-color: var(--white-color);
-            border: none;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .tour-box_img img {
-            width: 100%;
-            border-radius: 0px 0px 0 0;
-            -webkit-transition: 1.3s all ease;
-            transition: 1.3s all ease;
-        }
-
-        .tour-box_img {
-            position: relative;
-            border-radius: 0px 0px 0 0;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .carousel-inner {
-            height: 100%;
-        }
-
-        .carousel-item img {
-            object-fit: cover;
-            /* Ensures images cover the container */
-            width: 50%;
-            height: 50%;
-        }
-
-        /* Adjust the carousel control buttons to stand out better */
-        .carousel-control-prev,
-        .carousel-control-next {
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Dark background for better contrast */
-            border-radius: 50%;
-            /* Round buttons */
-            width: 40px;
-            /* Adjust the width */
-            height: 40px;
-            /* Adjust the height */
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: #fff;
-            width: 20px;
-            height: 20px;
-        }
-
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .header-layout1 .currency-menu .nice-select {
-            min-width: 104px;
-        }
-
-        .h2,
-        h2 {
-            font-size: 30px;
-            line-height: 1.327;
-        }
-
-        .sub-title {
-            display: block;
-            color: var(--title-color);
-            font-size: 25px;
-            line-height: 40px;
-            font-weight: 700;
-            font-family: 'Dancing Script', cursive;
-            position: relative;
-            margin-bottom: -4px;
-        }
-
-        .sec-text {
-            font-size: 15px;
-            line-height: 26px;
-        }
-
-        .box-title {
-            font-size: 20px;
-            line-height: 1.417;
-            font-weight: 600;
-            margin-top: -0.32em;
-        }
-
-        .widget-area {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-
-        .fa-map-marker-alt {
-            margin-right: 5px;
-        }
-
-        .tour-box_img img {
-            height: 200px;
-            object-fit: cover;
-            /* Ensures the image covers the area without distortion */
-            width: 100%;
-            /* Maintains responsiveness */
-        }
-
-        .services i {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #7AB730;
-            background: #FFFFFF;
-            color: #7AB730;
-            transition: .5s;
-        }
-
-        /* Hover effect */
-        .services:hover i {
-            background: #60D522;
-            /* Background green on hover */
-            color: white;
-            /* Icon color white on hover */
-        }
-
-        /* Styling the paragraph */
-        .service-desc {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        .services {
-            background-color: #f8f9fa;
-            /* Light gray background */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            /* Soft shadow */
-        }
-
-        .info-box_text a {
-            color: #888C97;
-        }
-
-        .info-box_text p {
-            color: #888C97;
-        }
-
-        .th-social a {
-            display: inline-block;
-            width: var(--icon-size, 32px);
-            height: var(--icon-size, 32px);
-            line-height: var(--icon-size, 32px);
-            background-color: #262A36;
-            color: var(--theme-color);
-            font-size: 16px;
-            border-radius: 50%;
-            text-align: center;
-            margin-right: 5px;
-            -webkit-transition: all 0.4s ease;
-            transition: all 0.4s ease;
-        }
-
-        .info-box_text .icon {
-            color: var(--body-color);
-            -webkit-box-flex: 0;
-            -webkit-flex: none;
-            -ms-flex: none;
-            flex: none;
-            width: 40px;
-            height: 40px;
-            line-height: 37px;
-            background-color: #262A36;
-            border-radius: 50%;
-            text-align: center;
-            -webkit-transition: all 0.4s ease-in-out;
-            transition: all 0.4s ease-in-out;
-        }
-
-        .bg-smoke {
-            background-color: #F5F5F5 !important;
-        }
-
-
-        .testimonials-section {
-            background-color: var(--secondary);
-        }
-
-        .card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .review-summary .card-body {
-            padding: 2rem;
-        }
-
-        .stars {
-            color: #fbbf24;
-        }
-
-        .progress {
-            background-color: var(--secondary);
-            border-radius: var(--radius);
-        }
-
-        .progress-bar {
-            background-color: var(--primary);
-            border-radius: var(--radius);
-        }
-
-        .avatar {
-            width: 48px;
-            height: 48px;
-            object-fit: cover;
-        }
-
-        .platform-item {
-            padding: 0.5rem 0;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            color: var(--primary-foreground);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        .review-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .review-summary {
-                margin-bottom: 2rem;
+        var itiPhone = initIntlTel("#phone");
+        var itiWhatsapp = initIntlTel("#whatsapp");
+
+        // ✅ On form submit, set full numbers with code
+        document.querySelector("form").addEventListener("submit", function() {
+            document.querySelector("#phone").value = itiPhone.getNumber();
+            document.querySelector("#whatsapp").value = itiWhatsapp.getNumber();
+        });
+    </script>
+    <script>
+        class PremiumBookingForm {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 4;
+                this.init();
             }
 
-            .testimonial-card {
-                margin-bottom: 1rem;
+            init() {
+                this.bindEvents();
+                this.setMinDate();
+                document.getElementById('bookingForm').addEventListener('submit', (e) => this.handleSubmit(e));
             }
+
+            bindEvents() {
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
+                document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
+
+                const inputs = document.querySelectorAll('input[required], select[required]');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => this.clearValidation(input));
+                });
+            }
+
+            setMinDate() {
+                const today = new Date().toISOString().split('T')[0];
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const tomorrowStr = tomorrow.toISOString().split('T')[0];
+
+                document.querySelector('input[name="check_in"]').min = today;
+                document.querySelector('input[name="check_out"]').min = tomorrowStr;
+
+                document.querySelector('input[name="check_in"]').addEventListener('change', (e) => {
+                    const checkIn = new Date(e.target.value);
+                    const checkOut = new Date(checkIn);
+                    checkOut.setDate(checkOut.getDate() + 1);
+                    document.querySelector('input[name="check_out"]').min = checkOut.toISOString().split('T')[
+                        0];
+                });
+            }
+
+            validateField(field) {
+                if (field.hasAttribute('required') && !field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    return false;
+                }
+
+                if (field.type === 'email' && field.value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(field.value)) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                }
+
+                field.classList.remove('is-invalid');
+                field.classList.add('is-valid');
+                return true;
+            }
+
+            clearValidation(field) {
+                field.classList.remove('is-invalid', 'is-valid');
+            }
+
+            validateStep(step) {
+                const stepElement = document.getElementById(`step-${step}`);
+                const requiredFields = stepElement.querySelectorAll('input[required], select[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!this.validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                return isValid;
+            }
+
+            showStep(step) {
+                for (let i = 1; i <= this.totalSteps; i++) {
+                    document.getElementById(`step-${i}`).classList.add('hidden');
+                    document.getElementById(`indicator-${i}`).classList.remove('active', 'completed');
+                }
+
+                document.getElementById(`step-${step}`).classList.remove('hidden');
+                document.getElementById(`indicator-${step}`).classList.add('active');
+
+                for (let i = 1; i < step; i++) {
+                    document.getElementById(`indicator-${i}`).classList.add('completed');
+                }
+
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+
+                prevBtn.classList.toggle('hidden', step === 1);
+
+                if (step === this.totalSteps) {
+                    nextBtn.classList.add('hidden');
+                    this.populateReview();
+                } else {
+                    nextBtn.classList.remove('hidden');
+                }
+            }
+
+            nextStep() {
+                if (this.validateStep(this.currentStep)) {
+                    if (this.currentStep < this.totalSteps) {
+                        this.currentStep++;
+                        this.showStep(this.currentStep);
+                    }
+                } else {
+                    const firstInvalid = document.querySelector('.is-invalid');
+                    if (firstInvalid) {
+                        firstInvalid.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        firstInvalid.focus();
+                    }
+                }
+            }
+
+            prevStep() {
+                if (this.currentStep > 1) {
+                    this.currentStep--;
+                    this.showStep(this.currentStep);
+                }
+            }
+
+            populateReview() {
+                const formData = new FormData(document.getElementById('bookingForm'));
+                const fullName = formData.get('full_name') || '';
+
+                // Greeting with name
+                document.getElementById('reviewGreeting').innerText = `Hi ${fullName}!`;
+
+                // Friendly thank you message
+                const message = `
+        Thank you for your booking request. 
+        Our travel specialists will review your preferences and contact you shortly to arrange the perfect trip for you. 
+        We look forward to creating an unforgettable experience!
+    `;
+                document.getElementById('reviewSummary').innerText = message;
+            }
+
+
+
+            handleSubmit(e) {
+                e.preventDefault();
+
+                const form = document.getElementById('bookingForm');
+                const formData = new FormData(form);
+
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Processing Your Booking...';
+                submitBtn.disabled = true;
+
+                function showMessage(type, text) {
+                    const messageBox = document.getElementById("formMessage");
+                    messageBox.className = `message ${type}`;
+                    messageBox.innerHTML = text;
+                    messageBox.style.display = "block";
+
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        messageBox.classList.add("hide");
+                        // Fully hide after transition
+                        setTimeout(() => messageBox.style.display = "none", 500);
+                    }, 5000);
+                }
+
+                fetch(form.action, {
+                        method: "POST",
+                        headers: {
+                            "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value,
+                            "Accept": "application/json"
+                        },
+                        body: formData
+                    })
+                    .then(async (res) => {
+                        if (!res.ok) {
+                            const errorData = await res.json();
+                            throw errorData;
+                        }
+                        return res.json();
+                    })
+                    .then((data) => {
+                        if (data.success) {
+                            showMessage("success", `<strong>Success!</strong> ${data.message}`);
+
+                            // Reset form + steps
+                            this.currentStep = 1;
+                            this.showStep(1);
+                            form.reset();
+                            document.querySelectorAll(".is-valid, .is-invalid").forEach(el => {
+                                el.classList.remove("is-valid", "is-invalid");
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Error submitting form:", err);
+                        if (err.errors) {
+                            let messages = Object.values(err.errors).flat().join("<br>");
+                            showMessage("warning", `<strong>⚠️ Please fix:</strong><br>${messages}`);
+                        } else {
+                            showMessage("error",
+                            `<strong>Oops...</strong> Something went wrong. Please try again.`);
+                        }
+                    })
+                    .finally(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+
+
+            }
+
         }
 
-        :root {
-            --primary: #0284c7;
-            --primary-foreground: #ffffff;
-            --secondary: #f1f5f9;
-            --secondary-foreground: #0f172a;
-            --background: #ffffff;
-            --foreground: #0f172a;
-            --card: #ffffff;
-            --card-foreground: #0f172a;
-            --border: #e2e8f0;
-            --ring: #0284c7;
-            --radius: 0.5rem;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            new PremiumBookingForm();
+        });
+    </script>
 
-        body {
-            background-color: var(--background);
-            color: var(--foreground);
-            font-family: system-ui, -apple-system, sans-serif;
-        }
 
-        /* From Uiverse.io by cssbuttons-io */
-        .fancy {
-            background-color: transparent;
-            border: 2px solid #000;
-            border-radius: 0;
-            box-sizing: border-box;
-            color: #fff;
-            cursor: pointer;
-            display: inline-block;
-            float: right;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin: 0;
-            outline: none;
-            overflow: visible;
-            padding: 1.25em 2em;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            text-transform: none;
-            transition: all 0.3s ease-in-out;
-            user-select: none;
-            font-size: 13px;
-        }
-
-        .fancy::before {
-            content: " ";
-            width: 1.5625rem;
-            height: 2px;
-            background: black;
-            top: 50%;
-            left: 1.5em;
-            position: absolute;
-            transform: translateY(-50%);
-            transform-origin: center;
-            transition: background 0.3s linear, width 0.3s linear;
-        }
-
-        .fancy .text {
-            font-size: 1.125em;
-            line-height: 1.33333em;
-            padding-left: 2em;
-            display: block;
-            text-align: left;
-            transition: all 0.3s ease-in-out;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: black;
-        }
-
-        .fancy .top-key {
-            height: 2px;
-            width: 1.5625rem;
-            top: -2px;
-            left: 0.625rem;
-            position: absolute;
-            background: #e8e8e8;
-            transition: width 0.5s ease-out, left 0.3s ease-out;
-        }
-
-        .fancy .bottom-key-1 {
-            height: 2px;
-            width: 1.5625rem;
-            right: 1.875rem;
-            bottom: -2px;
-            position: absolute;
-            background: #e8e8e8;
-            transition: width 0.5s ease-out, right 0.3s ease-out;
-        }
-
-        .fancy .bottom-key-2 {
-            height: 2px;
-            width: 0.625rem;
-            right: 0.625rem;
-            bottom: -2px;
-            position: absolute;
-            background: #e8e8e8;
-            transition: width 0.5s ease-out, right 0.3s ease-out;
-        }
-
-        .fancy:hover {
-            color: white;
-            background: black;
-        }
-
-        .fancy:hover::before {
-            width: 0.9375rem;
-            background: white;
-        }
-
-        .fancy:hover .text {
-            color: white;
-            padding-left: 1.5em;
-        }
-
-        .fancy:hover .top-key {
-            left: -2px;
-            width: 0px;
-        }
-
-        .fancy:hover .bottom-key-1,
-        .fancy:hover .bottom-key-2 {
-            right: 0;
-            width: 0;
-        }
-
-        breadcumb-wrapper {
-            position: relative;
-            background-image: url('assets/img/hero/carousel-2.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-        }
-
-        .breadcumb-wrapper::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            /* Adjust this for darker/lighter effect */
-            z-index: 1;
-        }
-
-        .breadcumb-content {
-            position: relative;
-            z-index: 2;
-            /* Ensures text stays on top */
-        }
-
-        .breadcumb-title {
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-            /* Highlights text */
-        }
-
-        .breadcumb-menu li a,
-        .breadcumb-menu li {
-            font-size: 18px;
-            color: white !important;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-            /* Highlights menu text */
-        }
-
-        .pagination .page-link {
-            color: black;
-            border: 1px solid black;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: black;
-            color: white;
-            border-color: black;
-        }
-
-        .pagination .page-item .page-link:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        select,
-        .form-control,
-        .form-select,
-        textarea,
-        input {
-
-            /* border: none; */
-
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 40px;
-
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 700;
-
-        }
-    </style>
-    <style>
-        .tour-option-box {
-            display: inline-block;
-            border: 2px solid #000;
-            border-radius: 8px;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s, color 0.3s;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .tour-option-radio {
-            display: none;
-        }
-
-        .tour-option-radio:checked+.tour-option-box {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .tour-option-wrapper {
-            margin-bottom: 10px;
-        }
-    </style>
-
+   
 
 
     <script>
