@@ -63,6 +63,9 @@ Route::get('/payable-return', [PackageBookingController::class, 'paymentReturn']
 Route::get('/booking/payment-redirect', [PackageBookingController::class, 'redirectToPayment'])->name('booking.redirect');
 
 
+Route::get('/storage/{path}', function ($path) {
+    return redirect("/course/storage/app/public/{$path}");
+})->where('path', '.*');
 
 
 

@@ -3,6 +3,103 @@
 @section('title', 'VacayGuider | Home')
 
 @section('content')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .home-head {
+            font-size: 22px !important;
+        }
+
+        .section-title {
+            font-size: 22px !important;
+        }
+
+        .features-section {
+            background-color: #F5F5F5;
+            border-radius: 30px;
+            padding: 48px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .features-section {
+                padding: 24px;
+            }
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            height: 100%;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 25px;
+            color: #1a1a1a;
+            flex-shrink: 0;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: inherit;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: start;
+            width: 100%;
+        }
+
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: start;
+            margin-bottom: 4px;
+            color: #6A6A6A;
+        }
+
+        .feature-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .bullet {
+            width: 8px;
+            height: 8px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            margin-right: 16px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 40px;
+            line-height: 54px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 36px;
+                line-height: 44px;
+                text-align: center;
+            }
+        }
+    </style>
 
     <style>
         @media (max-width: 480px) {
@@ -49,7 +146,18 @@
             background-repeat: no-repeat;
         }
 
-        @media (max-width: 767.98px) {
+        @media (max-width: 600px) {
+
+            .heading {
+                text-align: center;
+                color: #454343;
+                font-size: 24px;
+                font-weight: 700;
+                position: relative;
+                margin-bottom: 70px;
+
+                z-index: 999;
+            }
 
             .swiper-button-prev-rental {
                 left: -10px;
@@ -60,7 +168,11 @@
             }
 
             .inbound-title {
-                margin-top: 80px
+                margin-top: 130px !important;
+            }
+
+            .vehicle-title {
+                margin-top: 50px !important;
             }
 
             .airlin-mob {
@@ -201,7 +313,7 @@
             font-weight: 700;
             position: relative;
             margin-bottom: 70px;
-            text-transform: uppercase;
+
             z-index: 999;
         }
 
@@ -214,7 +326,7 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            height: 40px;
+            height: 55px;
             width: 180px;
             border-radius: 4px;
             transform: translateX(-50%);
@@ -418,7 +530,7 @@
         }
 
         .custom-btn:hover {
-            background: #000000 !important;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%) !important;
             /* Reverse gradient */
             transform: translateY(-3px);
             /* Slight lift effect */
@@ -835,7 +947,7 @@
         /* From Uiverse.io by cssbuttons-io */
         .fancy {
             background-color: transparent;
-            border: 2px solid #000;
+            border: 2px solid #0d4e6b;
             border-radius: 0;
             box-sizing: border-box;
             color: #fff;
@@ -914,7 +1026,7 @@
 
         .fancy:hover {
             color: white;
-            background: black;
+            background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
         }
 
         .fancy:hover::before {
@@ -976,8 +1088,8 @@
 
         #chatbot-toggle:hover {
             transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 20px 40px rgba(2, 140, 204, 0.6);
-            background: linear-gradient(135deg, #0056b3 0%, #028ccc 100%);
+
+
         }
 
         #chatbot-toggle.active {
@@ -1106,13 +1218,12 @@
         }
 
         .bot-message {
-            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            background: #F5F5F5;
             color: #2c3e50;
             padding: 16px 20px;
             border-radius: 20px 20px 20px 8px;
             width: fit-content;
             max-width: 88%;
-            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.15);
             border: 1px solid rgba(2, 140, 204, 0.1);
             position: relative;
             font-size: 14px;
@@ -1132,7 +1243,7 @@
         }
 
         .user-message {
-            background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
+            background: #028ccc;
             color: white;
             padding: 16px 20px;
             border-radius: 20px 20px 8px 20px;
@@ -1161,21 +1272,15 @@
         #chat-input {
             flex: 1;
             padding: 15px 20px;
-            border: 2px solid rgba(2, 140, 204, 0.2);
             border-radius: 30px;
             background: rgba(255, 255, 255, 0.95);
             outline: none;
-            font-size: 14px;
+            font-size: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(2, 140, 204, 0.1);
         }
 
-        #chat-input:focus {
-            border-color: #028ccc;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(2, 140, 204, 0.15);
-            transform: translateY(-1px);
-        }
+
+
 
         #send-btn {
             background: linear-gradient(135deg, #028ccc 0%, #0a3d52 100%);
@@ -1229,9 +1334,8 @@
         }
 
         .form-control:focus {
-            border-color: #028ccc;
+
             outline: none;
-            box-shadow: 0 0 0 3px rgba(2, 140, 204, 0.1);
         }
 
         .btn-primary {
@@ -1292,8 +1396,8 @@
 
         /* Card button style */
         .service-card {
-            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
-            border: 1.5px solid rgba(2, 140, 204, 0.2);
+            background: #F5F5F5;
+
             border-radius: 14px;
             padding: 12px 15px;
             text-align: center;
@@ -1307,9 +1411,9 @@
         }
 
         .service-card:hover {
-            border-color: #028ccc;
-            background: linear-gradient(135deg, #028ccc 0%, #0056b3 100%);
-            color: white;
+
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            color: rgb(0, 0, 0);
             box-shadow: 0 8px 25px rgba(2, 140, 204, 0.2);
             transform: translateY(-3px);
         }
@@ -1335,7 +1439,7 @@
             display: flex;
             align-items: center;
             padding: 12px 18px;
-            background: rgba(2, 140, 204, 0.1);
+            background: #F5F5F5;
             border-radius: 20px 20px 20px 8px;
             margin-bottom: 20px;
             max-width: 85%;
@@ -1346,7 +1450,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: #028ccc;
+            background: #7a7a7a;
             margin: 0 3px;
             animation: typing 1.4s infinite;
         }
@@ -1512,11 +1616,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                                                unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                                                Let’s make your best trip with us </h1>
-                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                        <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                                            unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                                        <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                                            Let’s make your best trip with us </h1>
+                                                                                                                                                                                                                                                                    </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1533,19 +1637,19 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                                                                <div class="hero-inner">
-                                                                                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                    <div class="container">
-                                                                                                                                                                                                                                                        <div class="hero-style1">
-                                                                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                                                unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                                                Explore beauty of the whole world </h1>
-                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                                            <div class="hero-inner">
+                                                                                                                                                                                                                                                                <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                <div class="container">
+                                                                                                                                                                                                                                                                    <div class="hero-style1">
+                                                                                                                                                                                                                                                                        <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                                            unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                                        <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                                            Explore beauty of the whole world </h1>
+                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                        </div> -->
 
             </div>
             <div class="th-swiper-custom">
@@ -1745,12 +1849,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="title-area text-center inbound-title">
-                        <span class="sub-title inbound-sub-tittle"
+                        {{-- <span class="sub-title inbound-sub-tittle"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Discover
-                            the Wonders of Sri Lanka </span>
+                            the Wonders of Sri Lanka </span> --}}
                         <h2 class="sec-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
-                            Inbound Tours </h2>
+                            style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                            Inbound Tours</h2>
                     </div>
                 </div>
             </div>
@@ -1888,143 +1992,97 @@
     </section>
 
 
-    <section id="transportation" class="py-5 bg-smoke map-section" style="margin-bottom: 70px; margin-top: 30px;">
-        <div class="container-fluid">
+    <div class="container my-5">
+        <div class="features-section">
 
 
-            <!-- Title Section with improved typography -->
             <div class="title-area text-center mb-5" style="">
-                <span class="sub-title"
-                    style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Travel
-                    Sri Lanka</span>
+
                 <h2 class="sec-title"
-                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                     Transport Solutions </h2>
             </div>
 
+            <div class="row align-items-center new-feature-row">
+                <!-- Left Features -->
+                <div class="col-lg-6">
+                    <div class="mt-4">
 
-
-
-
-            <!-- Main Content Row: Left Services - Center Image - Right Services -->
-            <div class="row align-items-center">
-                <!-- Left Side: 2 Service Boxes -->
-                <div class="col-lg-4">
-                    <div class="services-container" style="font-family: 'Poppins', sans-serif;">
-                        <div class="row g-4">
-                            <!-- Service Box 1 -->
-                            <div class="col-12 d-flex">
-                                <div class="service-box h-100 shadow"
-                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; text-align: center;">
-                                    <div class="content-overlay d-flex flex-column align-items-center">
-                                        <div class="icon-container mb-4"
-                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-car" style="font-size: 28px; color: #3498db;"></i>
-                                        </div>
-                                        <h3 style="font-size: 21px; font-weight: 900; color: #333;">Airport Pickups
-                                        </h3>
-                                        <p style="font-size: 15px; color: #555;font-weight: bold;">
-                                            Hassle-free airport transfers anytime. We monitor your flight and ensure
-                                            prompt, reliable rides.
-                                        </p>
-                                    </div>
-                                    {{-- <div class="decorative-shape"
-                                        style="position: absolute; top: -15px; right: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                    </div> --}}
-                                </div>
+                        <!-- Feature 1 -->
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-airplane-engines feature-icon"></i>
                             </div>
-
-                            <!-- Service Box 2 -->
-                            <div class="col-12 d-flex">
-                                <div class="service-box h-100 shadow"
-                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
-                                    <div class="content-overlay d-flex flex-column align-items-center">
-                                        <div class="icon-container mb-4"
-                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-shield-alt" style="font-size: 28px; color: #3498db;"></i>
-                                        </div>
-                                        <h3 style="font-size: 21px; font-weight: 900;  color: #333;">Safe & Reliable
-                                        </h3>
-                                        <p class="text-center" style="font-size: 15px; color: #555;font-weight: bold;">
-                                            Certified service with insured, well-maintained vehicles and licensed,
-                                            professional drivers.
-                                        </p>
-                                    </div>
-                                    {{-- <div class="decorative-shape"
-                                        style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                    </div> --}}
-                                </div>
+                            <div class="ms-3">
+                                <h3 class="feature-title" style="color: #000;"><b>Airport</b> Pickups</h3>
+                                <p class="text-muted mb-0">
+                                    Hassle-free airport transfers anytime. We monitor your flight closely and ensure prompt,
+                                    reliable rides every time.
+                                </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- Center: Map Image -->
-                <div class="col-lg-4 text-center mb-4 mb-lg-0 home-map">
-                    <img src="assets/img/map-car.png" alt="Sri Lanka Transport Map" class="img-fluid rounded"
-                        style="max-width: 100%; height: auto;">
-                </div>
 
-                <!-- Right Side: 2 Service Boxes -->
-                <div class="col-lg-4">
-                    <div class="services-container" style="font-family: 'Poppins', sans-serif;">
-                        <div class="row g-4">
-                            <!-- Service Box 3 -->
-                            <div class="col-12 d-flex">
-                                <div class="service-box h-100 shadow"
-                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
-                                    <div class="content-overlay d-flex flex-column align-items-center">
-                                        <div class="icon-container mb-4"
-                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-credit-card" style="font-size: 28px; color: #3498db;"></i>
-                                        </div>
-                                        <h3 style="font-size: 21px; font-weight: 900;  color: #333;">Booking Made Easy
-                                        </h3>
-                                        <p class="text-center" style="font-size: 15px; color: #555;font-weight: bold;">
-                                            Simple booking with flexible hourly or distance-based packages tailored to
-                                            your journey.
-                                        </p>
-                                    </div>
-                                    {{-- <div class="decorative-shape"
-                                        style="position: absolute; top: -15px; left: -15px; width: 100px; height: 100px; border-radius: 50%; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07);z-index: 1;">
-                                    </div> --}}
-                                </div>
+                        <!-- Feature 2 -->
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-shield-check feature-icon"></i>
                             </div>
-
-                            <!-- Service Box 4 -->
-                            <div class="col-12 d-flex">
-                                <div class="service-box h-100 shadow"
-                                    style="background: rgba(52, 152, 219, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative;">
-                                    <div class="content-overlay d-flex flex-column align-items-center">
-                                        <div class="icon-container mb-4"
-                                            style="width: 70px; height: 70px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-user-tie" style="font-size: 28px; color: #3498db;"></i>
-                                        </div>
-                                        <h3 style="font-size: 21px; font-weight: 900;  color: #333;">Experienced Drivers
-                                        </h3>
-                                        <p class="text-center" style="font-size: 15px; color: #555; font-weight: bold;">
-                                            Skilled local drivers with courteous service, island knowledge, and
-                                            multilingual support.
-                                        </p>
-                                    </div>
-                                    {{-- <div class="decorative-shape"
-                                        style="position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(52, 152, 219, 0.07); z-index: 1;">
-                                    </div> --}}
-                                </div>
+                            <div class="ms-3">
+                                <h3 class="feature-title" style="color: #000;"><b>Safe</b> & Reliable</h3>
+                                <p class="text-muted mb-0">
+                                    Certified service with insured, well-maintained vehicles and licensed, professional
+                                    drivers for total peace of mind.
+                                </p>
                             </div>
                         </div>
+
+                        <!-- Feature 3 -->
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-calendar-check feature-icon"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="feature-title" style="color: #000;"><b>Booking</b> Made Easy</h3>
+                                <p class="text-muted mb-0">
+                                    Simple booking with flexible hourly or distance-based packages, perfectly tailored to
+                                    your travel journey.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 4 -->
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-people feature-icon"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="feature-title" style="color: #000;"><b>Experienced</b> Drivers</h3>
+                                <p class="text-muted mb-0">
+                                    Skilled local drivers with courteous service, great island knowledge, and multilingual
+                                    support for your comfort.
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+
+
+
+
+                <!-- Right Image -->
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                    <img src="assets/img/map-car.png" class=" " alt="New Features" style="height: 595px;">
                 </div>
             </div>
 
             <!-- Centered Show More Button -->
-            <div class="text-center mt-5">
-                <a href="{{ url('/transportation') }}" class="th-btn"
-                    style=" background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); color: white;">
-                    Show More
-                </a>
-            </div>
+
         </div>
-    </section>
+    </div>
+
+
+
 
 
     <!-- Rent vehicles -->
@@ -2035,13 +2093,15 @@
 
         <div class="container position-relative" style="z-index: 1;">
             <!-- Title Section with improved typography -->
-            <div class="title-area text-center mb-5 rent-sub-tittle" style="margin-top: -75px;">
-                <span class="sub-title "
+            <div class="title-area text-center mb-5 rent-sub-tittle" style="margin-top: -55px;">
+                {{-- <span class="sub-title "
                     style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
-                    Find Your Perfect Ride </span>
-                <h2 class="sec-title"
-                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
-                    Vehicle Rentals </h2>
+                    Find Your Perfect Ride </span> --}}
+
+
+                <h2 class="sec-title vehicle-title"
+                    style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    Vehicle Rentals</h2>
             </div>
 
             <div class="tab-content" id="nav-tabContent">
@@ -2246,7 +2306,7 @@
                                 style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
                                 Your Gateway to the World</span>
                             <h2 class="sec-title"
-                                style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                                style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                                 Air Ticketing</h2>
 
 
@@ -2258,10 +2318,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                                                                    <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                                                                        Get Tickets
-                                                                                                                                                                                                    </a>
-                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                                                                                    Get Tickets
+                                                                                                                                                                                                                </a>
+                                                                                                                                                                                                            </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -2479,7 +2539,7 @@
 
     <section class="testimonials-section py-5">
         <div class="container-fluid">
-            <div class="heading white-heading text-center mb-4">Testimonial</div>
+            <div class="heading white-heading text-center mb-4">What Pepole Say</div>
 
             <div id="testimonial4"
                 class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"

@@ -39,7 +39,7 @@
 </div>
 
 <header class="header shadow" id="header">
-    <div class="container-fluid">
+    <div class="container">
         <div class="header-content">
             <div class="header-logo">
                 <a href="#">
