@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-    'backend_url' => env('BACKEND_URL', 'http://127.0.0.1:8000'),
+    'backend_url' => env('BACKEND_URL', 'http://127.0.0.1:9000'),
 
     /*
     |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 
 @section('content')
 
- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -24,8 +24,8 @@
         }
 
         .message.success {
-            background-color: #e6ffed;s
-            color: #155724;
+            background-color: #e6ffed;
+            s color: #155724;
         }
 
         .message.error {
@@ -434,7 +434,7 @@
             background: white;
             color: rgb(0, 0, 0);
             border: 1px solid #0d4e6b;
-             border-radius: 50px;
+            border-radius: 50px;
         }
 
         .btn-secondary:hover {
@@ -778,7 +778,7 @@
 
         }
 
-       
+
 
 
         .form-grid {
@@ -839,23 +839,24 @@
             background: rgba(102, 126, 234, 0.05);
             border: 2px dashed #667eea;
         }
-/* 
-        .btn {
-            background: linear-gradient(135deg, #000000, #000000);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            margin-top: 20px;
-        } */
+
+        /*
+                .btn {
+                    background: linear-gradient(135deg, #000000, #000000);
+                    color: white;
+                    padding: 18px 40px;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    text-decoration: none;
+                    display: inline-block;
+                    text-align: center;
+                    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                    margin-top: 20px;
+                } */
 
         .btn:hover {
             color: #ffff;
@@ -973,7 +974,7 @@
         }
     </style>
 
- <style>
+    <style>
         .th-btn:hover {
             color: #ffffff;
             background-color: #0083a3 !important;
@@ -1069,9 +1070,9 @@
 
         /*
 
-                                                                                                                                                    .space, .space-top {
-                                                                                                                                                      padding-top: 20px;
-                                                                                                                                                    } */
+                                                                                                                                                            .space, .space-top {
+                                                                                                                                                              padding-top: 20px;
+                                                                                                                                                            } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1653,6 +1654,7 @@
         </div>
     </div> --}}
 
+    <div>
     <div class="w-full ">
         <div class="mx-auto  px-4 sm:px-6 lg:px-8">
             <div class="py-3">
@@ -1759,7 +1761,8 @@
                                                         name="tour_category" id="category_{{ $key }}"
                                                         value="{{ $key }}" {{ $loop->first ? 'checked' : '' }}
                                                         data-section="{{ $key }}">
-                                                    <label class="form-check-label ms-2" for="category_{{ $key }}">
+                                                    <label class="form-check-label ms-2"
+                                                        for="category_{{ $key }}">
                                                         {{ $label }}
                                                     </label>
                                                 </div>
@@ -2305,7 +2308,7 @@
                 <!-- Form -->
                 <form id="bookingForm" method="POST" action="{{ route('package.booking.store') }}">
                     @csrf
-        
+
 
                     <div class="form-section">
                         <!-- Step 1: Contact Details -->
@@ -2338,161 +2341,163 @@
                                         style="width: 514px;">
                                 </div>
                             </div>
-                              <div class="row">
+                            <div class="row">
                                 <div class="col-md-6 mb-4">
-                                <label class="form-label">Country *</label>
-                                <input type="text" name="country" class="form-control"
-                                    placeholder="Enter your country" required>
-                            </div>
+                                    <label class="form-label">Country *</label>
+                                    <input type="text" name="country" class="form-control"
+                                        placeholder="Enter your country" required>
+                                </div>
 
-                            <div class="col-md-6 mb-4">
+                                <div class="col-md-6 mb-4">
                                     <label for="package">Tour Packages</label>
                                     <select select id="package" name="package" class="form-select">
-                                           <option value="">Select a package</option>
-                                    @foreach ($packages as $package)
-                                        <option value="{{ $package->id }}">{{ $package->heading }}</option>
-                                    @endforeach
+                                        <option value="">Select a package</option>
+                                        @foreach ($packages as $package)
+                                            <option value="{{ $package->id }}">{{ $package->heading }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                              </div>
-
-
-                            
                             </div>
+
+
+
                         </div>
-
-                        <!-- Step 2: Travel Details -->
-                        <div class="step-content hidden" id="step-2">
-                            <h4>Travel Information</h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Number of Adults (13+) *</label>
-                                    <input type="number" name="adults" min="1" value="2"
-                                        class="form-control" required>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Number of Children (0-13)</label>
-                                    <input type="number" name="children" min="0" value="0"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Check-in Date *</label>
-                                    <input type="date" name="check_in" class="form-control" required>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Check-out Date *</label>
-                                    <input type="date" name="check_out" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label">Pickup Location / Flight Information</label>
-                                <input type="text" name="pickup" class="form-control"
-                                    placeholder="Airport code, hotel name, or specific address">
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Preferences -->
-                        <div class="step-content hidden" id="step-3">
-                            <h4>Your Travel Preferences</h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Hotel Category *</label>
-                                    <select name="hotel_type" class="form-select" required>
-                                        <option value="">Choose your preferred hotel category</option>
-                                        <option value="3-star">3 Star </option>
-                                        <option value="4-star">4 Star</option>
-                                        <option value="5-star">5 Star </option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Travelling From *</label>
-                                    <input type="text" name="travelling_from" class="form-control"
-                                        placeholder="Your departure city or country" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Occasion for Travel</label>
-                                    <select name="travel_reason" class="form-select">
-                                        <option value="leisure">Leisure & Vacation</option>
-                                        <option value="honeymoon">Honeymoon</option>
-                                        <option value="anniversary">Anniversary Celebration</option>
-                                        <option value="birthday">Birthday Trip</option>
-                                        <option value="annual-trip">Annual Family Trip</option>
-                                        <option value="business">Business & Leisure</option>
-                                        <option value="other">Other Special Occasion</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Travel Experience Theme</label>
-                                    <select name="theme[]" class="form-select" id="themeSelect" multiple>
-                                        <option value="wildlife">Wildlife</option>
-                                        <option value="water_sports">Water Sports</option>
-                                        <option value="adventure">Adventure</option>
-                                        <option value="snorkeling">Snorkeling</option>
-                                        <option value="culture">Culture</option>
-                                        <option value="whale_watching">Whale Watching</option>
-                                        <option value="history">History</option>
-                                        <option value="dolphin_watching">Dolphin Watching</option>
-                                        <option value="hikes">Hikes</option>
-                                        <option value="diving">Diving</option>
-                                        <option value="nature">Nature</option>
-                                        <option value="yoga_meditation">Yoga & Meditation</option>
-                                        <option value="beach">Beach</option>
-                                        <option value="mountains">Mountains</option>
-                                        <option value="tea_gardens">Tea Gardens</option>
-                                        <option value="train_rides">Train Rides</option>
-                                        <option value="boat_rides">Boat Rides</option>
-                                        <option value="birds_watching">Birds Watching</option>
-                                        <option value="village_walks">Village Walks</option>
-                                        <option value="handcrafts">Handcrafts</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Review -->
-                        <div class="step-content hidden" id="step-4">
-                            <div class="icon">
-                                <svg class="checkmark" viewBox="0 0 24 24">
-                                    <polyline points="20,6 9,17 4,12"></polyline>
-                                </svg>
-                            </div>
-                            <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi there!
-                            </h4>
-                            <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
-                                style="margin-top: -10px;padding-bottom: 20px;"></p>
-                            <div class="text-center mt-4">
-                                <button type="submit" class="submit-btn">
-                                    Submit Request
-                                </button>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <!-- Navigation -->
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary hidden" id="prevBtn">
-                            Previous
-                        </button>
-                        <div></div>
-                        <button type="button" class="btn btn-primary" id="nextBtn">
-                            Next
-                        </button>
+                    <!-- Step 2: Travel Details -->
+                    <div class="step-content hidden" id="step-2">
+                        <h4>Travel Information</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Number of Adults (13+) *</label>
+                                <input type="number" name="adults" min="1" value="2" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Number of Children (0-13)</label>
+                                <input type="number" name="children" min="0" value="0"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Check-in Date *</label>
+                                <input type="date" name="check_in" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Check-out Date *</label>
+                                <input type="date" name="check_out" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Pickup Location / Flight Information</label>
+                            <input type="text" name="pickup" class="form-control"
+                                placeholder="Airport code, hotel name, or specific address">
+                        </div>
                     </div>
-                </form>
+
+                    <!-- Step 3: Preferences -->
+                    <div class="step-content hidden" id="step-3">
+                        <h4>Your Travel Preferences</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Hotel Category *</label>
+                                <select name="hotel_type" class="form-select" required>
+                                    <option value="">Choose your preferred hotel category</option>
+                                    <option value="3-star">3 Star </option>
+                                    <option value="4-star">4 Star</option>
+                                    <option value="5-star">5 Star </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Travelling From *</label>
+                                <input type="text" name="travelling_from" class="form-control"
+                                    placeholder="Your departure city or country" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Occasion for Travel</label>
+                                <select name="travel_reason" class="form-select">
+                                    <option value="leisure">Leisure & Vacation</option>
+                                    <option value="honeymoon">Honeymoon</option>
+                                    <option value="anniversary">Anniversary Celebration</option>
+                                    <option value="birthday">Birthday Trip</option>
+                                    <option value="annual-trip">Annual Family Trip</option>
+                                    <option value="business">Business & Leisure</option>
+                                    <option value="other">Other Special Occasion</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Travel Experience Theme</label>
+                                <select name="theme[]" class="form-select" id="themeSelect" multiple>
+                                    <option value="wildlife">Wildlife</option>
+                                    <option value="water_sports">Water Sports</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="snorkeling">Snorkeling</option>
+                                    <option value="culture">Culture</option>
+                                    <option value="whale_watching">Whale Watching</option>
+                                    <option value="history">History</option>
+                                    <option value="dolphin_watching">Dolphin Watching</option>
+                                    <option value="hikes">Hikes</option>
+                                    <option value="diving">Diving</option>
+                                    <option value="nature">Nature</option>
+                                    <option value="yoga_meditation">Yoga & Meditation</option>
+                                    <option value="beach">Beach</option>
+                                    <option value="mountains">Mountains</option>
+                                    <option value="tea_gardens">Tea Gardens</option>
+                                    <option value="train_rides">Train Rides</option>
+                                    <option value="boat_rides">Boat Rides</option>
+                                    <option value="birds_watching">Birds Watching</option>
+                                    <option value="village_walks">Village Walks</option>
+                                    <option value="handcrafts">Handcrafts</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review -->
+                    <div class="step-content hidden" id="step-4">
+                        <div class="icon">
+                            <svg class="checkmark" viewBox="0 0 24 24">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi there!
+                        </h4>
+                        <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
+                            style="margin-top: -10px;padding-bottom: 20px;"></p>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="submit-btn">
+                                Submit Request
+                            </button>
+                        </div>
+                    </div>
+
             </div>
+
+            <!-- Navigation -->
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary hidden" id="prevBtn">
+                    Previous
+                </button>
+                <div></div>
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                    Next
+                </button>
+            </div>
+            </form>
+        </div>
         </div>
 
 
 
     </section>
 
+
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -2745,7 +2750,7 @@
                             showMessage("warning", `<strong>⚠️ Please fix:</strong><br>${messages}`);
                         } else {
                             showMessage("error",
-                            `<strong>Oops...</strong> Something went wrong. Please try again.`);
+                                `<strong>Oops...</strong> Something went wrong. Please try again.`);
                         }
                     })
                     .finally(() => {
@@ -2763,8 +2768,27 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#show-more-btn', function() {
+                $('.extra-package').removeClass('d-none');
+                $(this).hide();
+                $('#hide-btn').show();
+            });
 
-   
+            $(document).on('click', '#hide-btn', function() {
+                $('.extra-package').addClass('d-none');
+                $(this).hide();
+                $('#show-more-btn').show();
+                // Optional: Scroll back to top of the package section
+                $('html, body').animate({
+                    scrollTop: $('#package-container').offset().top - 100
+                }, 400);
+            });
+        });
+    </script>
+
+
 
 
     <script>

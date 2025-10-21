@@ -12,7 +12,6 @@ class DetailItinerary extends Model
     ];
 
     protected $casts = [
-        'pictures' => 'array',
         'program_points' => 'array',
     ];
 

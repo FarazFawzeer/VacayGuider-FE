@@ -20,12 +20,12 @@ class TourPackageController extends Controller
         $isAjax = $request->ajax();
 
         // Sidebar filters
-      $allThemes = TourSummary::whereNotNull('theme')
-    ->where('theme', '!=', '')
-    ->pluck('theme')
-    ->map(fn($theme) => trim(ucfirst(strtolower($theme))))
-    ->unique()
-    ->values();
+        $allThemes = TourSummary::whereNotNull('theme')
+            ->where('theme', '!=', '')
+            ->pluck('theme')
+            ->map(fn($theme) => trim(ucfirst(strtolower($theme))))
+            ->unique()
+            ->values();
         $allTypes = Package::whereNotNull('tour_type')
             ->where('tour_type', '!=', '')
             ->distinct()
@@ -77,45 +77,45 @@ class TourPackageController extends Controller
     /**
      * AJAX: Filter tour results by theme/type/days
      */
-   public function filter(Request $request)
-{
-    Log::info('Filter request', $request->all());
+    public function filter(Request $request)
+    {
+        Log::info('Filter request', $request->all());
 
-    $query = Package::select('packages.*')
-        ->leftJoin('tour_summaries', 'tour_summaries.package_id', '=', 'packages.id')
-        ->where('packages.status', 1)
-        ->where('packages.type', 'inbound');
+        $query = Package::select('packages.*')
+            ->leftJoin('tour_summaries', 'tour_summaries.package_id', '=', 'packages.id')
+            ->where('packages.status', 1)
+            ->where('packages.type', 'inbound');
 
-    if ($request->filled('days')) {
-        $query->where('packages.days', '>=', (int) $request->days);
+        if ($request->filled('days')) {
+            $query->where('packages.days', '>=', (int) $request->days);
+        }
+
+        if ($request->has('theme') && is_array($request->theme)) {
+            $themes = collect($request->theme)
+                ->map(fn($theme) => trim(strtolower($theme)))
+                ->toArray();
+
+            $query->whereHas('tourSummaries', function ($q) use ($themes) {
+                $q->where(function ($q2) use ($themes) {
+                    foreach ($themes as $theme) {
+                        $q2->orWhereRaw('LOWER(TRIM(theme)) LIKE ?', ['%' . $theme . '%']);
+                    }
+                });
+            });
+        }
+
+
+
+        if ($request->filled('category')) {
+            $query->where('packages.tour_category', $request->category);
+        }
+
+        $query->distinct();
+
+        $packages = $query->get();
+
+        return view('frontend.components.filtered-results', compact('packages'))->render();
     }
-
-if ($request->has('theme') && is_array($request->theme)) {
-    $themes = collect($request->theme)
-        ->map(fn($theme) => trim(strtolower($theme)))
-        ->toArray();
-
-    $query->whereHas('tourSummaries', function ($q) use ($themes) {
-        $q->where(function ($q2) use ($themes) {
-            foreach ($themes as $theme) {
-                $q2->orWhereRaw('LOWER(TRIM(theme)) LIKE ?', ['%' . $theme . '%']);
-            }
-        });
-    });
-}
-
-
-
-    if ($request->filled('category')) {
-        $query->where('packages.tour_category', $request->category);
-    }
-
-    $query->distinct();
-
-    $packages = $query->paginate(8);
-
-    return view('frontend.components.filtered-results', compact('packages'))->render();
-}
     /**
      * AJAX: Fetch tours by category (special/city/tailor)
      */
@@ -153,14 +153,23 @@ if ($request->has('theme') && is_array($request->theme)) {
             return $summary;
         });
 
-           // Decode program_points in itineraries
-    $package->detailItineraries->map(function ($itinerary) {
-        if (is_string($itinerary->program_points) && str_starts_with($itinerary->program_points, '[')) {
-            $itinerary->program_points = json_decode($itinerary->program_points, true) ?? [];
-        }
-        // Highlights: now images is just a string, no decoding needed
-        return $itinerary;
-    });
+        // Decode program_points in itineraries
+        $package->detailItineraries->map(function ($itinerary) {
+            // Decode itinerary program points
+            if (is_string($itinerary->program_points) && str_starts_with($itinerary->program_points, '[')) {
+                $itinerary->program_points = json_decode($itinerary->program_points, true) ?? [];
+            }
+
+            // Decode highlight images
+            $itinerary->highlights->map(function ($highlight) {
+                if (is_string($highlight->images) && str_starts_with($highlight->images, '[')) {
+                    $highlight->images = json_decode($highlight->images, true) ?? [];
+                }
+                return $highlight;
+            });
+
+            return $itinerary;
+        });
 
 
         return view('frontend.pages.tour-detail', compact('package', 'tourSummaries'));

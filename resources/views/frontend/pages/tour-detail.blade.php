@@ -23,8 +23,8 @@
         }
 
         .message.success {
-            background-color: #e6ffed;s
-            color: #155724;
+            background-color: #e6ffed;
+            s color: #155724;
         }
 
         .message.error {
@@ -909,19 +909,19 @@
 
         /* .btn {
 
-                                                                                                padding: 18px 40px;
-                                                                                                border: none;
-                                                                                                border-radius: 50px;
-                                                                                                font-size: 1.1rem;
-                                                                                                font-weight: 600;
-                                                                                                cursor: pointer;
-                                                                                                transition: all 0.3s ease;
-                                                                                                text-decoration: none;
-                                                                                                display: inline-block;
-                                                                                                text-align: center;
-                                                                                                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-                                                                                                margin-top: 20px;
-                                                                                            } */
+                                                                                                            padding: 18px 40px;
+                                                                                                            border: none;
+                                                                                                            border-radius: 50px;
+                                                                                                            font-size: 1.1rem;
+                                                                                                            font-weight: 600;
+                                                                                                            cursor: pointer;
+                                                                                                            transition: all 0.3s ease;
+                                                                                                            text-decoration: none;
+                                                                                                            display: inline-block;
+                                                                                                            text-align: center;
+                                                                                                            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                                                                                                            margin-top: 20px;
+                                                                                                        } */
 
         .btn:hover {
             color: #ffff;
@@ -1326,8 +1326,8 @@
                                 : asset('/images/no-image.jpg');
                         @endphp
 
-                        <img class="w-full h-72  object-cover rounded-2xl mt-3 " src="{{ $imageUrl }}"
-                            alt="{{ $package->place }}" style="height: 500px;">
+                        <img class="w-full h-72 rounded-t-2xl mt-3 " src="{{ $imageUrl }}"
+                            alt="{{ $package->place }}" style="height: 500px;" style="object-fit: cover;">
                     </div>
                 </div>
 
@@ -1528,6 +1528,7 @@
                                     </div>
                                 @endif
                                 <!-- Cover Image -->
+
                                 @php
                                     $backendBaseUrl = config('app.backend_url');
                                     $defaultImage = asset('/images/no-image.jpg');
@@ -1537,7 +1538,8 @@
                                 @endphp
 
                                 <img src="{{ $coverImage }}" alt="{{ $itinerary->place_name }} cover"
-                                    class="w-full h-80 object-cover rounded-2xl shadow-lg" style="height: 20rem;" />
+                                    class="w-full   rounded-2xl shadow-lg"
+                                    style="height: 350px;object-position: center;" />
 
                                 <!-- Activities Section -->
                                 <div class="mb-12">
@@ -1554,6 +1556,70 @@
                                         @endforeach
                                     </div>
                                 </div>
+
+
+                                @if ($itinerary->highlights->isNotEmpty())
+                                    <div class="mb-12">
+                                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+                                            {{ $itinerary->place_name }} Highlights
+                                        </h3>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            @foreach ($itinerary->highlights->take(6) as $highlight)
+                                                @php
+                                                    // backend base + fallback
+                                                    $backendBaseUrl = config('app.backend_url');
+                                                    $defaultImage = asset('/images/no-image.jpg');
+
+                                                    // Determine images: if images column is JSON, decode; else treat as single string
+                                                    $images = [];
+
+                                                    if (!empty($highlight->images)) {
+                                                        // If already array (unlikely), use it
+                                                        if (is_array($highlight->images)) {
+                                                            $images = $highlight->images;
+                                                        } else {
+                                                            // Try to decode JSON array (if it was stored as JSON)
+                                                            $decoded = @json_decode($highlight->images, true);
+                                                            if (is_array($decoded) && count($decoded) > 0) {
+                                                                $images = $decoded;
+                                                            } else {
+                                                                // Treat as single image path string
+                                                                $images = [$highlight->images];
+                                                            }
+                                                        }
+                                                    }
+
+                                                    // Build full URLs for each image
+                                                    $imageUrls = collect($images)
+                                                        ->map(function ($img) use ($backendBaseUrl, $defaultImage) {
+                                                            if (empty($img)) {
+                                                                return $defaultImage;
+                                                            }
+                                                            // If image already looks like full URL, use it
+                                                            if (Str::startsWith($img, ['http://', 'https://'])) {
+                                                                return $img;
+                                                            }
+                                                            return $backendBaseUrl . '/storage/' . ltrim($img, '/');
+                                                        })
+                                                        ->all();
+                                                @endphp
+
+                                                {{-- If there are images, show the first one (or you can loop through them) --}}
+                                                <div class="flex flex-col">
+                                                    <div class="overflow-hidden rounded-lg">
+                                                        <img src="{{ $imageUrls[0] ?? $defaultImage }}" alt="Highlight"
+                                                            class="w-full   highlight-image"
+                                                            style="height: 200px" style="object-fit: cover;" />
+                                                    </div>
+                                                    <p class="text-center text-sm text-gray-600 mt-3">
+                                                        {{ $highlight->highlight_places ?? 'Highlight' }}
+                                                    </p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
 
 
 
@@ -2089,7 +2155,7 @@
 
 
         <div class="container-fluid">
-            
+
             <div class="booking-container">
                 <!-- Header -->
                 <div class="booking-header ">
@@ -2552,7 +2618,7 @@
                             showMessage("warning", `<strong>⚠️ Please fix:</strong><br>${messages}`);
                         } else {
                             showMessage("error",
-                            `<strong>Oops...</strong> Something went wrong. Please try again.`);
+                                `<strong>Oops...</strong> Something went wrong. Please try again.`);
                         }
                     })
                     .finally(() => {

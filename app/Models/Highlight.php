@@ -10,9 +10,7 @@ class Highlight extends Model
         'itinerary_id', 'highlight_places', 'images', 'description'
     ];
 
-    protected $casts = [
-        'images' => 'array',
-    ];
+   
 
     public function itinerary()
     {
