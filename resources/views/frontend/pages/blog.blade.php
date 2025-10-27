@@ -7,14 +7,20 @@
 
     <style>
         @media (max-width: 480px) {
+            .post-image {
+                height: 200px !important;
+                object-fit: contain !important;
+            }
 
-            .title-tesimonal-mob{
+            .title-tesimonal-mob {
                 margin-top: -40px;
 
             }
-            .title-bred-mob{
+
+            .title-bred-mob {
                 margin-top: 70px;
             }
+
             .hero-section {
                 padding: 0px !important;
             }
@@ -30,7 +36,7 @@
             /* Mobile adjustments */
             @media (max-width: 576px) {
                 .title-area {
-                  
+
                     padding: 0 10px;
                 }
 
@@ -458,8 +464,8 @@
         .post-image {
             width: 100%;
             height: 280px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            object-fit: contain;
+            background-color: #f8f8f8;
         }
 
         .post-card:hover .post-image {
@@ -554,25 +560,25 @@
         }
 
         /* .share-btn {
-                                                                                background: linear-gradient(45deg, #3498db, #028ccc);
-                                                                                color: white;
-                                                                            }
+                                                                                            background: linear-gradient(45deg, #3498db, #028ccc);
+                                                                                            color: white;
+                                                                                        }
 
-                                                                            .share-btn:hover {
-                                                                                transform: translateY(-2px);
-                                                                                box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                                                            }
+                                                                                        .share-btn:hover {
+                                                                                            transform: translateY(-2px);
+                                                                                            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                                                                        }
 
-                                                                            .view-btn {
-                                                                                background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                                                                background-color: #94d106;
-                                                                                color: white;
-                                                                            }
+                                                                                        .view-btn {
+                                                                                            background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                                                                            background-color: #94d106;
+                                                                                            color: white;
+                                                                                        }
 
-                                                                            .view-btn:hover {
-                                                                                transform: translateY(-2px);
-                                                                                box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                                                            } */
+                                                                                        .view-btn:hover {
+                                                                                            transform: translateY(-2px);
+                                                                                            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                                                                        } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -870,12 +876,10 @@
             width: 64px;
             height: 64px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ffffff;
+            object-fit: contain !important;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             position: relative;
             z-index: 1;
-            transition: var(--transition);
             background-color: #028ccc;
         }
 
@@ -927,7 +931,7 @@
 
         .source-badge i {
             font-size: 14px;
-            color: #667eea;
+            color: #000000;
         }
 
         .verified-badge {
@@ -1044,7 +1048,6 @@
         /* Elegant Footer */
         .testimonial-footer {
             border-top: 1px solid rgba(226, 232, 240, 0.6);
-            padding-top: 20px;
             position: relative;
             z-index: 2;
         }
@@ -1053,6 +1056,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0 20px !important;
         }
 
         .date-section {
@@ -1516,15 +1520,25 @@
 
 
                 <div class="posts-grid col-md-9" id="postsGrid" style="margin-top: -20px; border-radius: 15px;">
+                    @php
+                        $backendBaseUrl = config('app.backend_url');
+                        $defaultImage = asset('/images/no-image.jpg');
+                    @endphp
+
                     @foreach ($blogPosts->chunk(6) as $postChunk)
-                        <div class="row ">
+                        <div class="row">
                             @foreach ($postChunk as $index => $post)
                                 @php
                                     $imgArray = is_array($post->image_post) ? $post->image_post : [];
                                     $imgCount = count($imgArray);
-                                    $firstImage = !empty($imgArray[0])
-                                        ? asset('storage/' . $imgArray[0])
-                                        : 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop';
+
+                                    // Build full backend URLs for all images
+                                    $imageUrls = array_map(function ($img) use ($backendBaseUrl) {
+                                        return $backendBaseUrl . '/storage/' . ltrim($img, '/');
+                                    }, $imgArray);
+
+                                    // Determine first image or fallback
+                                    $firstImage = $imgCount > 0 ? $imageUrls[0] : $defaultImage;
                                 @endphp
 
                                 <div class="col-md-4 mb-4">
@@ -1533,20 +1547,22 @@
                                         data-bs-toggle="modal" data-bs-target="#postModal" data-title="{{ $post->title }}"
                                         data-description="{{ $post->description }}"
                                         data-date="{{ $post->created_at->format('F j, Y') }}"
-                                        data-likes="{{ $post->likes ?? 0 }}" data-comments="{{ $post->comments ?? 0 }}"
-                                        data-shares="{{ $post->shares ?? 0 }}" data-images='@json(array_map(fn($img) => asset('storage/' . $img), $imgArray))'>
+                                        data-likes="{{ $post->likes_count ?? 0 }}"
+                                        data-comments="{{ $post->comments ?? 0 }}" data-shares="{{ $post->shares ?? 0 }}"
+                                        data-images='@json($imageUrls)'>
 
                                         <div class="position-relative">
-                                            <img src="{{ $firstImage }}" alt="Post Image" class="post-image">
-                                            <div class="image-count-badge">
-                                                <i class="fas fa-image"></i>
-                                                @if ($imgCount > 0)
-                                                    {{ $imgCount }}
-                                                @endif
-                                            </div>
+                                            <img src="{{ $firstImage }}" alt="{{ $post->title }}"
+                                                class="post-image w-100 rounded" style="">
+                                            @if ($imgCount > 1)
+                                                <div
+                                                    class="image-count-badge position-absolute top-0 end-0 m-2 bg-dark text-white px-2 py-1 rounded">
+                                                    <i class="fas fa-images"></i> {{ $imgCount }}
+                                                </div>
+                                            @endif
                                         </div>
 
-                                        <div class="post-content text-center">
+                                        <div class="post-content text-center mt-2">
                                             <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
                                         </div>
                                     </article>
@@ -1555,6 +1571,7 @@
                         </div>
                     @endforeach
                 </div>
+
 
                 <!-- Overlay -->
                 <div id="blogSidebarOverlay" class="sidebar-overlay"></div>
@@ -1726,10 +1743,14 @@
                                                 <div class="testimonial-header">
                                                     <div class="user-section">
                                                         <div class="avatar-container">
-                                                            <div class="avatar-ring"></div>
-                                                            <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
+                                                     
+                                                            @php
+                                                                $backendBaseUrl = config('app.backend_url');
+                                                            @endphp
+
+                                                            <img src="{{ $testimonial->image ? $backendBaseUrl . '/storage/' . ltrim($testimonial->image, '/') : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
                                                                 class="user-avatar" alt="{{ $testimonial->name }}">
-                                                            <div class="avatar-status"></div>
+
                                                         </div>
                                                         <div class="user-info">
                                                             <h3 class="user-name">{{ $testimonial->name }}</h3>
@@ -1737,9 +1758,7 @@
                                                                 <i
                                                                     class="bi bi-{{ strtolower($testimonial->source) }}"></i>
                                                                 <span>{{ $testimonial->source }}</span>
-                                                                <div class="verified-badge">
-                                                                    <i class="bi bi-patch-check-fill"></i>
-                                                                </div>
+                                                          
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1851,9 +1870,6 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalDescription = document.getElementById('modalDescription');
             const modalDate = document.getElementById('modalDate');
-            const likeCount = document.getElementById('likeCount');
-            const commentCount = document.getElementById('commentCount');
-            const shareCount = document.getElementById('shareCount');
             const carouselImages = document.getElementById('carouselImages');
             const currentImage = document.getElementById('currentImage');
             const totalImages = document.getElementById('totalImages');
@@ -1863,11 +1879,8 @@
                     const title = post.dataset.title;
                     const description = post.dataset.description;
                     const date = post.dataset.date;
-                    const likes = post.dataset.likes || 0;
-                    const comments = post.dataset.comments || 0;
-                    const shares = post.dataset.shares || 0;
-                    let images = [];
 
+                    let images = [];
                     try {
                         images = JSON.parse(post.dataset.images);
                     } catch (e) {
@@ -1875,32 +1888,33 @@
                     }
 
                     if (!Array.isArray(images) || images.length === 0) {
-                        images = [
-                            'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop'
-                        ];
+                        images = ['https://via.placeholder.com/600x400?text=No+Image'];
                     }
 
                     modalTitle.textContent = title;
                     modalDescription.textContent = description;
                     modalDate.textContent = `Posted on ${date}`;
-                    likeCount.textContent = `${likes} likes`;
-                    commentCount.textContent = `${comments} comments`;
-                    shareCount.textContent = `${shares} shares`;
 
-                    // Carousel images
+                    // Reset carousel content
                     carouselImages.innerHTML = '';
+
+                    // Build carousel slides
+                    images.forEach((img, index) => {
+                        carouselImages.innerHTML += `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <img src="${img}" class="d-block w-100" alt="Slide ${index + 1}">
+                    </div>`;
+                    });
+
+                    // Update image counter values
                     totalImages.textContent = images.length;
                     currentImage.textContent = 1;
 
-                    images.forEach((img, index) => {
-                        carouselImages.innerHTML += `
-                        <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                            <img src="${img}" class="d-block w-100" alt="Slide ${index + 1}">
-                        </div>`;
-                    });
-
-                    // Update current image number on slide
+                    // Reinitialize the carousel
                     const carouselElement = document.querySelector('#imageCarousel');
+                    const carousel = bootstrap.Carousel.getOrCreateInstance(carouselElement);
+
+                    // Listen for slide events to update the counter
                     carouselElement.addEventListener('slid.bs.carousel', function(event) {
                         currentImage.textContent = event.to + 1;
                     });

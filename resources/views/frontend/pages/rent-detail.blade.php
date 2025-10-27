@@ -14,9 +14,9 @@
             --light-bg: #f8f9fa;
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --border-radius: 15px;
-        }feature-item
+        }
 
-        .vehicle-container {
+        feature-item .vehicle-container {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
@@ -289,8 +289,8 @@
         }
 
         @media (max-width: 480px) {
-            
-            .sub-img-mob{
+
+            .sub-img-mob {
                 margin-top: -70px !important;
             }
 
@@ -1008,78 +1008,82 @@
             <div class="row g-0">
                 <!-- Vehicle Images Section -->
                 <!-- Vehicle Images Section -->
-<div class="col-lg-6 image-section p-4 d-flex flex-column align-items-center">
-    @php
-        $backendBaseUrl = config('app.backend_url');
-        $subImages = [];
+                <div class="col-lg-6 image-section p-4 d-flex flex-column align-items-center">
+                    @php
+                        $backendBaseUrl = config('app.backend_url');
+                        $subImages = [];
 
-        if (!empty($vehicle->sub_image)) {
-            $decoded = json_decode($vehicle->sub_image, true);
-            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
-                $subImages = $decoded;
-            } else {
-                $subImages = explode(',', $vehicle->sub_image);
-            }
-            $subImages = array_map(function ($img) {
-                return trim($img, " \t\n\r\0\x0B\"");
-            }, $subImages);
-        }
-    @endphp
+                        if (!empty($vehicle->sub_image)) {
+                            $decoded = json_decode($vehicle->sub_image, true);
+                            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                                $subImages = $decoded;
+                            } else {
+                                $subImages = explode(',', $vehicle->sub_image);
+                            }
+                            $subImages = array_map(function ($img) {
+                                return trim($img, " \t\n\r\0\x0B\"");
+                            }, $subImages);
+                        }
+                    @endphp
 
-    <!-- Main Image -->
-    <div class="main-image-container position-relative mb-3" style="width: 100%;">
-        <img src="{{ $vehicle->vehicle_image ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/') : asset('/images/no-image.jpg') }}"
-            class="main-image img-fluid rounded"
-            alt="{{ $vehicle->name }}"
-            style=" object-fit: contain; transform: scale(1.1); transition: transform 0.5s ease;height: 300px;">
-    </div>
+                    <!-- Main Image -->
+                    <div class="main-image-container position-relative mb-3" style="width: 100%;">
+                        <img src="{{ $vehicle->vehicle_image ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/') : asset('/images/no-image.jpg') }}"
+                            class="main-image img-fluid rounded" alt="{{ $vehicle->name }}"
+                            style=" object-fit: contain; transform: scale(1.1); transition: transform 0.5s ease;height: 300px;">
+                    </div>
 
-    <!-- Sub Images Grid -->
-@if (in_array($vehicle->type, ['car', 'van']) && count($subImages) > 0)
-    <!-- Show Sub Images -->
-    <div class="row g-2 w-100 sub-img-mob" style="margin-top: -50px;">
-        @foreach ($subImages as $index => $img)
-            <div class="col-6">
-                <img src="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}"
-                    class="img-fluid rounded sub-image"
-                    alt="Sub Image {{ $index + 1 }}"
-                    style="object-fit: cover; cursor: pointer; width: 100%; height: 150px;"
-                    data-bs-toggle="modal"
-                    data-bs-target="#imageModal"
-                    data-img="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}">
-            </div>
-        @endforeach
-    </div>
-@elseif (in_array($vehicle->type, ['cycle', 'electricbike', 'scooter', 'motorcycle', 'tuktuk']))
-    <!-- Show Small Description -->
-    <div class="row g-2 w-100 sub-img-mob" style="margin-top: 0px;">
-        <div class="col-12">
-<p class="text-muted small" style="font-size: 14px; line-height: 1.6;">
-    Our {{ ucfirst($vehicle->type) }} is a perfect choice for city travel, daily commutes, and short trips. 
-    Designed to be lightweight, economical, and easy to handle, it ensures a smooth riding experience even in busy streets 
-    and narrow roads. Whether you are looking for a budget-friendly ride, an eco-friendly option, or simply a convenient way 
-    to get around, this vehicle provides excellent fuel efficiency, low maintenance, and the flexibility to move quickly 
-    through traffic while enjoying comfort and reliability. Beyond practicality, it also offers a stylish design, 
-    spacious seating, and modern features that make every journey more enjoyable. Ideal for individuals, families, or 
-    professionals, this {{ ucfirst($vehicle->type) }} is built to deliver not only efficiency but also long-lasting 
-    performance, giving you peace of mind and true value for your investment.
-</p>
+                    <!-- Sub Images Grid -->
+                    @if (in_array($vehicle->type, ['car', 'van']) && count($subImages) > 0)
+                        <!-- Show Sub Images -->
+                        <div class="row g-2 w-100 sub-img-mob" style="margin-top: -50px;">
+                            @foreach ($subImages as $index => $img)
+                                <div class="col-6">
+                                    <img src="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}"
+                                        class="img-fluid rounded sub-image" alt="Sub Image {{ $index + 1 }}"
+                                        style="object-fit: cover; cursor: pointer; width: 100%; height: 150px;"
+                                        data-bs-toggle="modal" data-bs-target="#imageModal"
+                                        data-img="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}">
+                                </div>
+                            @endforeach
+                        </div>
+                    @elseif (in_array($vehicle->type, ['cycle', 'electricbike', 'scooter', 'motorcycle', 'tuktuk']))
+                        <!-- Show Small Description -->
+                        <div class="row g-2 w-100 sub-img-mob" style="margin-top: 0px;">
+                            <div class="col-12">
+                                <p class="text-muted small" style="font-size: 14px; line-height: 1.6;">
+                                    Our {{ ucfirst($vehicle->type) }} is a perfect choice for city travel, daily commutes,
+                                    and short trips.
+                                    Designed to be lightweight, economical, and easy to handle, it ensures a smooth riding
+                                    experience even in busy streets
+                                    and narrow roads. Whether you are looking for a budget-friendly ride, an eco-friendly
+                                    option, or simply a convenient way
+                                    to get around, this vehicle provides excellent fuel efficiency, low maintenance, and the
+                                    flexibility to move quickly
+                                    through traffic while enjoying comfort and reliability. Beyond practicality, it also
+                                    offers a stylish design,
+                                    spacious seating, and modern features that make every journey more enjoyable. Ideal for
+                                    individuals, families, or
+                                    professionals, this {{ ucfirst($vehicle->type) }} is built to deliver not only
+                                    efficiency but also long-lasting
+                                    performance, giving you peace of mind and true value for your investment.
+                                </p>
 
-        </div>
-    </div>
-@endif
-</div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
 
-<!-- Image Modal (Popup) -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark">
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" class="img-fluid rounded" alt="Large Image">
-            </div>
-        </div>
-    </div>
-</div>
+                <!-- Image Modal (Popup) -->
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-body text-center">
+                                <img id="modalImage" src="" class="img-fluid rounded" alt="Large Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Vehicle Details Section -->
                 <div class="col-lg-6 details-section">
@@ -1140,14 +1144,15 @@
                     </div>
 
                     <div class="feature-list">
-                      @if($vehicle->air_conditioned == 1)
-    <div class="feature-item">
-        <div class="feature-icon {{ $vehicle->first_aid_kit ? 'feature-available' : 'feature-unavailable' }}">
-            <i class="fas fa-snowflake"></i>
-        </div>
-        <span>Air Conditioned</span>
-    </div>
-@endif
+                        @if ($vehicle->air_conditioned == 1)
+                            <div class="feature-item">
+                                <div
+                                    class="feature-icon {{ $vehicle->first_aid_kit ? 'feature-available' : 'feature-unavailable' }}">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                                <span>Air Conditioned</span>
+                            </div>
+                        @endif
 
                         <div class="feature-item">
                             <div
@@ -1402,17 +1407,17 @@
             }
         }, 5000);
     </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const modalImage = document.getElementById("modalImage");
-        const subImages = document.querySelectorAll(".sub-image");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const modalImage = document.getElementById("modalImage");
+            const subImages = document.querySelectorAll(".sub-image");
 
-        subImages.forEach(img => {
-            img.addEventListener("click", function () {
-                modalImage.src = this.getAttribute("data-img");
+            subImages.forEach(img => {
+                img.addEventListener("click", function() {
+                    modalImage.src = this.getAttribute("data-img");
+                });
             });
         });
-    });
-</script>
+    </script>
 
 @endsection
