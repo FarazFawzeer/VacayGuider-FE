@@ -12,34 +12,39 @@ use App\Models\DrivingPermitRequest;
 class RentVehicleController extends Controller
 {
 
-    public function index(Request $request)
-    {
-        $query = VehicleDetail::query();
+   public function index(Request $request)
+{
+    $query = VehicleDetail::query()->where('status', 1); // <-- SHOW ONLY ACTIVE VEHICLES
 
-        // Get distinct vehicle types
-        $vehicleTypes = VehicleDetail::select('type')->distinct()->pluck('type')->map(function ($type) {
-            return strtolower($type); // Normalize casing
+    // Get distinct vehicle types
+    $vehicleTypes = VehicleDetail::where('status', 1) // <-- also apply status here
+        ->select('type')
+        ->distinct()
+        ->pluck('type')
+        ->map(function ($type) {
+            return strtolower($type);
         });
 
-        // Define the desired custom order
-        $customOrder = ['cycle', 'electricbike', 'tuktuk', 'scooter', 'motorcycle', 'car', 'jeep', 'van'];
+    // Custom order
+    $customOrder = ['cycle', 'electricbike', 'tuktuk', 'scooter', 'motorcycle', 'car', 'jeep', 'van'];
 
-        // Sort the vehicle types by the custom order
-        $vehicleTypes = collect($customOrder)->filter(function ($type) use ($vehicleTypes) {
-            return $vehicleTypes->contains($type);
-        })->values(); // Keeps only existing types in the correct order
+    $vehicleTypes = collect($customOrder)
+        ->filter(fn($type) => $vehicleTypes->contains($type))
+        ->values();
 
-        // Apply filtering if vehicle types are selected
-        if ($request->has('types')) {
-            $types = $request->input('types');
-            $query->whereIn('type', $types);
-        }
-
-        $vehicles = $query->paginate(6);
-        $vehiclesslide = VehicleDetail::all();
-
-        return view('frontend.pages.rent', compact('vehicles', 'vehicleTypes', 'vehiclesslide'));
+    // Filter by types
+    if ($request->has('types')) {
+        $query->whereIn('type', $request->types);
     }
+
+    $vehicles = $query->paginate(6);
+
+    // Slider vehicles also must be active only
+    $vehiclesslide = VehicleDetail::where('status', 1)->get();
+
+    return view('frontend.pages.rent', compact('vehicles', 'vehicleTypes', 'vehiclesslide'));
+}
+
 
 
 
@@ -50,18 +55,19 @@ class RentVehicleController extends Controller
         return view('frontend.pages.rent-detail', compact('vehicle'));
     }
 
-    public function filterVehicles(Request $request)
-    {
-        $query = VehicleDetail::query()->where('availability', true);
+  public function filterVehicles(Request $request)
+{
+    $query = VehicleDetail::query()->where('status', 1); // <-- ONLY ACTIVE VEHICLES
 
-        if ($request->filled('types')) {
-            $query->whereIn('type', (array) $request->types);
-        }
-
-        $vehicles = $query->paginate(6);
-
-        return view('frontend.partials.vehicle_cards', compact('vehicles'))->render();
+    if ($request->filled('types')) {
+        $query->whereIn('type', (array) $request->types);
     }
+
+    $vehicles = $query->paginate(6);
+
+    return view('frontend.partials.vehicle_cards', compact('vehicles'))->render();
+}
+
 
     public function store(Request $request)
     {
