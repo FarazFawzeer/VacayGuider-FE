@@ -1265,7 +1265,7 @@
 
                 // Main image URL
                 $finalImage = !empty($vehicle->vehicle_image)
-                    ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
+                    ? $backendBaseUrl . '/admin/storage/' . ltrim($vehicle->vehicle_image, '/')
                     : asset('assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg');
 
                 // Prepare sub-images array
@@ -1283,7 +1283,7 @@
                 }
 
                 // Build full URLs for sub-images
-                $subImageUrls = array_map(fn($img) => $backendBaseUrl . '/storage/' . ltrim($img, '/'), $subImages);
+                $subImageUrls = array_map(fn($img) => $backendBaseUrl . '/admin/storage/' . ltrim($img, '/'), $subImages);
             @endphp
 
             <!-- Main Image -->

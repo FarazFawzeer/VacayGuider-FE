@@ -804,7 +804,7 @@
                                    @php
                     $backendBaseUrl = config('app.backend_url');
                     $vehicleImageUrl = $vehicle->vehicle_image
-                        ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
+                        ? $backendBaseUrl . '/admin/storage/' . ltrim($vehicle->vehicle_image, '/')
                         : asset('assets/img/bike3.png');
                 @endphp
                                 <div class="col-12 col-sm-6 col-md-4 mb-4 vehicle-card" data-type="{{ $vehicle->type }}">

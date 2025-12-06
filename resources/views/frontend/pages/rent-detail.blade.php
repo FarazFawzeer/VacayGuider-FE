@@ -1522,7 +1522,7 @@
                                                 $backendBaseUrl = config('app.backend_url');
                                                 $vehicleImageUrl = $vehicle->vehicle_image
                                                     ? $backendBaseUrl .
-                                                        '/storage/' .
+                                                        '/admin/storage/' .
                                                         ltrim($vehicle->vehicle_image, '/')
                                                     : asset('assets/img/bike3.png');
                                             @endphp
@@ -1673,7 +1673,7 @@
 
                     <!-- Main Image -->
                     <div class="main-image-container position-relative mb-3" style="width: 100%;">
-                        <img src="{{ $vehicle->vehicle_image ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/') : asset('/images/no-image.jpg') }}"
+                        <img src="{{ $vehicle->vehicle_image ? $backendBaseUrl . '/admin/storage/' . ltrim($vehicle->vehicle_image, '/') : asset('/images/no-image.jpg') }}"
                             class="main-image img-fluid rounded" alt="{{ $vehicle->name }}"
                             style=" object-fit: contain; transform: scale(1.1); transition: transform 0.5s ease;height: 300px;">
                     </div>
@@ -1684,11 +1684,11 @@
                         <div class="row g-2 w-100 sub-img-mob" style="margin-top: -50px;">
                             @foreach ($subImages as $index => $img)
                                 <div class="col-6">
-                                    <img src="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}"
+                                    <img src="{{ $backendBaseUrl . '/admin/storage/' . ltrim($img, '/') }}"
                                         class="img-fluid rounded sub-image" alt="Sub Image {{ $index + 1 }}"
                                         style="object-fit: cover; cursor: pointer; width: 100%; height: 150px;"
                                         data-bs-toggle="modal" data-bs-target="#imageModal"
-                                        data-img="{{ $backendBaseUrl . '/storage/' . ltrim($img, '/') }}">
+                                        data-img="{{ $backendBaseUrl . '/admin/storage/' . ltrim($img, '/') }}">
                                 </div>
                             @endforeach
                         </div>

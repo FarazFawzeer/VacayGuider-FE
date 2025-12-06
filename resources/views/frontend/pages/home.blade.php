@@ -2823,7 +2823,7 @@
                                                         $backendBaseUrl = config('app.backend_url');
                                                         $vehicleImageUrl = $vehicle->vehicle_image
                                                             ? $backendBaseUrl .
-                                                                '/storage/' .
+                                                                '/admin/storage/' .
                                                                 ltrim($vehicle->vehicle_image, '/')
                                                             : asset('assets/img/bike3.png');
                                                     @endphp
