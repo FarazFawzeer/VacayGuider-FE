@@ -6,6 +6,17 @@
 
 
     <style>
+        .page-item.active .page-link {
+            z-index: 3;
+            color: #fff;
+            background-color: #0a3d52 !important;
+            border-color: #0a3d52;
+        }
+
+        .page-link {
+            color: #000;
+        }
+
         @media (max-width: 480px) {
             .post-image {
                 height: 200px !important;
@@ -185,10 +196,87 @@
 
         }
 
+
         .testimonials-section {
             background-color: var(--secondary);
             background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
         }
+
+
+        .card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-summary .card-body {
+            padding: 2rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .progress {
+            background-color: var(--secondary);
+            border-radius: var(--radius);
+        }
+
+        .progress-bar {
+            background-color: var(--primary);
+            border-radius: var(--radius);
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+        }
+
+        .platform-item {
+            padding: 0.5rem 0;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+
+
+        :root {
+            --primary: #0284c7;
+            --primary-foreground: #ffffff;
+            --secondary: #f1f5f9;
+            --secondary-foreground: #0f172a;
+            --background: #ffffff;
+            --foreground: #0f172a;
+            --card: #ffffff;
+            --card-foreground: #0f172a;
+            --border: #e2e8f0;
+            --ring: #0284c7;
+            --radius: 0.5rem;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+
 
         .modal-content {
             border: none;
@@ -222,7 +310,6 @@
         .carousel-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
             border-radius: 20px 0 0 20px;
         }
 
@@ -560,25 +647,25 @@
         }
 
         /* .share-btn {
-                                                                                            background: linear-gradient(45deg, #3498db, #028ccc);
-                                                                                            color: white;
-                                                                                        }
+                                                                                                        background: linear-gradient(45deg, #3498db, #028ccc);
+                                                                                                        color: white;
+                                                                                                    }
 
-                                                                                        .share-btn:hover {
-                                                                                            transform: translateY(-2px);
-                                                                                            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                                                                        }
+                                                                                                    .share-btn:hover {
+                                                                                                        transform: translateY(-2px);
+                                                                                                        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                                                                                    }
 
-                                                                                        .view-btn {
-                                                                                            background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                                                                            background-color: #94d106;
-                                                                                            color: white;
-                                                                                        }
+                                                                                                    .view-btn {
+                                                                                                        background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                                                                                        background-color: #94d106;
+                                                                                                        color: white;
+                                                                                                    }
 
-                                                                                        .view-btn:hover {
-                                                                                            transform: translateY(-2px);
-                                                                                            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                                                                        } */
+                                                                                                    .view-btn:hover {
+                                                                                                        transform: translateY(-2px);
+                                                                                                        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                                                                                    } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -661,9 +748,7 @@
                 flex-direction: column;
             }
 
-            body {
-                padding: 10px;
-            }
+           
         }
 
         /* Animation for new posts */
@@ -1451,7 +1536,7 @@
                     {{-- <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
                     <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                         Social Feed</h2>
                 </div>
 
@@ -1496,6 +1581,8 @@
 
                             <form method="GET" action="{{ route('blog') }}" id="blogFilterForm">
                                 <div class="filter-section mb-4">
+                                    <h6 class="text-black" style="font-size: 16px;font-weight: 700;">
+                                        Title</h6>
                                     <div class="ps-1">
                                         @foreach ($blogTypes as $index => $type)
                                             <div class="form-check mb-2 d-flex align-items-center">
@@ -1518,15 +1605,14 @@
 
 
 
-
-                <div class="posts-grid col-md-9" id="postsGrid" style="margin-top: -20px; border-radius: 15px;">
+                <div class="posts-grid col-md-9" id="postsGrid" style="margin-top: -20px;">
                     @php
                         $backendBaseUrl = config('app.backend_url');
                         $defaultImage = asset('/images/no-image.jpg');
                     @endphp
 
                     @foreach ($blogPosts->chunk(6) as $postChunk)
-                        <div class="row">
+                        <div class="row g-4">
                             @foreach ($postChunk as $index => $post)
                                 @php
                                     $imgArray = is_array($post->image_post) ? $post->image_post : [];
@@ -1549,21 +1635,51 @@
                                         data-date="{{ $post->created_at->format('F j, Y') }}"
                                         data-likes="{{ $post->likes_count ?? 0 }}"
                                         data-comments="{{ $post->comments ?? 0 }}" data-shares="{{ $post->shares ?? 0 }}"
-                                        data-images='@json($imageUrls)'>
+                                        data-images='@json($imageUrls)'
+                                        style="cursor: pointer; transition: all 0.3s ease;">
 
-                                        <div class="position-relative">
-                                            <img src="{{ $firstImage }}" alt="{{ $post->title }}"
-                                                class="post-image w-100 rounded" style="">
-                                            @if ($imgCount > 1)
-                                                <div
-                                                    class="image-count-badge position-absolute top-0 end-0 m-2 bg-dark text-white px-2 py-1 rounded">
-                                                    <i class="fas fa-images"></i> {{ $imgCount }}
+                                        <div class="card h-100 border-0 shadow-sm hover-lift">
+                                            <!-- Image Container -->
+                                            <div class="position-relative overflow-hidden"
+                                                style="height: auto; max-height: 300px;">
+                                                <img src="{{ $firstImage }}" alt="{{ $post->title }}"
+                                                    class="card-img-top w-100 h-100"
+                                                    style="
+            height: auto;
+            max-height: 280px;
+       
+           
+        ">
+
+                                                @if ($imgCount > 1)
+                                                    <div class="position-absolute top-0 end-0 m-3">
+                                                        <span class="badge bg-dark bg-opacity-75 px-3 py-2">
+                                                            <i class="fas fa-images me-1"></i> {{ $imgCount }}
+                                                        </span>
+                                                    </div>
+                                                @endif
+
+                                                <!-- Hover Overlay -->
+                                                <div class="overlay-gradient position-absolute bottom-0 start-0 w-100"
+                                                    style="height: 50%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); opacity: 0; transition: opacity 0.3s ease;">
                                                 </div>
-                                            @endif
-                                        </div>
+                                            </div>
 
-                                        <div class="post-content text-center mt-2">
-                                            <h2 class="post-title text-xl font-bold mt-3">{{ $post->title }}</h2>
+                                            <!-- Card Body -->
+                                            <div class="card-body d-flex flex-column">
+                                                <!-- Date Badge -->
+                                                <div class="mb-3">
+                                                    <i class="bi bi-calendar-event me-2" style="font-size:16px; font-family: monospace;"></i>
+                                                    {{ $post->created_at->format('F j, Y') }}
+                                                    </span>
+                                                </div>
+
+                                                <!-- Title -->
+                                                <h3 class="card-title h5 mb-0"
+                                                    style="font-weight: 600; line-height: 1.4; color: #2c3e50;font-family: monospace;">
+                                                    {{ Str::limit($post->title, 60) }}
+                                                </h3>
+                                            </div>
                                         </div>
                                     </article>
                                 </div>
@@ -1572,14 +1688,20 @@
                     @endforeach
                 </div>
 
-
                 <!-- Overlay -->
                 <div id="blogSidebarOverlay" class="sidebar-overlay"></div>
 
-
-                <div class="load-more">
-                    <button id="togglePostsBtn" class="load-more-btn" onclick="togglePosts()"
-                        style="   background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Load More Posts</button>
+                <!-- Load More Button -->
+                <div class="load-more text-center my-5">
+                    <button id="togglePostsBtn" class="btn btn-lg px-5 py-3 shadow-sm" onclick="togglePosts()"
+                        style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); 
+                   color: white; 
+                   border: none; 
+                   border-radius: 50px; 
+                   font-weight: 600;
+                   transition: all 0.3s ease;">
+                        Load More Posts
+                    </button>
                 </div>
 
             </div>
@@ -1646,7 +1768,7 @@
                 {{-- <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
                 <h2 class="sec-title title-tesimonal-mob"
-                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                    style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                     What our client Says</h2>
             </div>
             <div class="row">
@@ -1723,92 +1845,62 @@
                             <div class="row">
                                 @forelse ($testimonials as $testimonial)
                                     <div class="col-md-4 mb-4">
-                                        <div class="testimonial-wrapper">
-                                            <div class="testimonial-card">
-                                                <!-- Decorative elements -->
-                                                <div class="card-decoration">
-                                                    <div class="decoration-dot"></div>
-                                                    <div class="decoration-line"></div>
-                                                </div>
+                                        <div class="card testimonial-card shadow-sm h-100 border-0"
+                                            style="border-radius: 14px;">
 
-                                                <!-- Quote background -->
-                                                <div class="quote-background">
-                                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                                        <path
-                                                            d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                                                    </svg>
-                                                </div>
+                                            <div class="card-body d-flex flex-column" style="height: 260px;">
 
-                                                <!-- Header with premium styling -->
-                                                <div class="testimonial-header">
-                                                    <div class="user-section">
-                                                        <div class="avatar-container">
-                                                     
-                                                            @php
-                                                                $backendBaseUrl = config('app.backend_url');
-                                                            @endphp
+                                                <!-- Header -->
+                                                <div class="d-flex align-items-center mb-3">
+                                                    @php
+                                                        $backendBaseUrl = config('app.backend_url');
+                                                        $avatar = $testimonial->image
+                                                            ? $backendBaseUrl .
+                                                                '/storage/' .
+                                                                ltrim($testimonial->image, '/')
+                                                            : 'https://ui-avatars.com/api/?name=' .
+                                                                urlencode($testimonial->name);
+                                                    @endphp
 
-                                                            <img src="{{ $testimonial->image ? $backendBaseUrl . '/storage/' . ltrim($testimonial->image, '/') : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
-                                                                class="user-avatar" alt="{{ $testimonial->name }}">
+                                                    <img src="{{ $avatar }}" class="rounded-circle me-3"
+                                                        style="width: 48px; height: 48px; object-fit: cover;"
+                                                        alt="{{ $testimonial->name }}">
 
-                                                        </div>
-                                                        <div class="user-info">
-                                                            <h3 class="user-name">{{ $testimonial->name }}</h3>
-                                                            <div class="source-badge">
-                                                                <i
-                                                                    class="bi bi-{{ strtolower($testimonial->source) }}"></i>
-                                                                <span>{{ $testimonial->source }}</span>
-                                                          
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Enhanced rating display -->
-                                                    <div class="rating-container">
-                                                        <div class="rating-stars">
-                                                            @for ($i = 1; $i <= 5; $i++)
-                                                                <div class="star-wrapper">
-                                                                    <i class="bi bi-star-fill star-background"></i>
-                                                                    <i
-                                                                        class="bi bi-star-fill star-fill {{ $i <= $testimonial->rating ? 'active' : '' }}"></i>
-                                                                </div>
-                                                            @endfor
-                                                        </div>
-
+                                                    <div>
+                                                        <h6 class="mb-0" style="font-weight:600;">
+                                                            {{ $testimonial->name }}</h6>
+                                                        <small class="text-muted d-flex align-items-center">
+                                                            <i
+                                                                class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
+                                                            {{ $testimonial->source }}
+                                                        </small>
                                                     </div>
                                                 </div>
 
-                                                <!-- Premium content section -->
-                                                <div class="testimonial-content">
-                                                    <div class="content-wrapper">
-                                                        <p class="testimonial-text">{{ $testimonial->message }}</p>
-                                                        <div class="content-fade"></div>
-                                                    </div>
+                                                <!-- Stars -->
+                                                <div class="stars mb-2">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <i class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"
+                                                            style="font-size: 16px;"></i>
+                                                    @endfor
                                                 </div>
 
-                                                <!-- Elegant footer -->
-                                                <div class="testimonial-footer">
-                                                    <div class="footer-content">
-                                                        <div class="date-section">
-                                                            <div class="date-icon">
-                                                                <i class="bi bi-calendar-event"></i>
-                                                            </div>
-                                                            <span
-                                                                class="date-text">{{ \Carbon\Carbon::parse($testimonial->postedate)->format('M j, Y') }}</span>
-                                                        </div>
-                                                        {{-- <div class="engagement-indicators">
-                                                            <div class="indicator helpful" style="cursor: pointer;"
-                                                                onclick="markHelpful({{ $testimonial->id }}, this)">
-                                                                <i class="bi bi-hand-thumbs-up"></i>
-                                                                <span>Helpful</span>
-                                                            </div>
-                                                        </div> --}}
+                                                <!-- Message -->
+                                                <p class="flex-grow-1"
+                                                    style="font-size:14px; line-height:1.6; color:#555;">
+                                                    “{{ $testimonial->message }}”
+                                                </p>
 
-                                                    </div>
-                                                </div>
+                                                <!-- Date -->
+                                                <small class="text-muted d-flex align-items-center ">
+                                                    <i class="bi bi-calendar-event me-2"></i>
+                                                    {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}
+                                                </small>
                                             </div>
+
                                         </div>
                                     </div>
+
                                 @empty
                                     <div class="empty-state">
                                         <div class="empty-illustration">

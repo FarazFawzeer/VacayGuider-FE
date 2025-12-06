@@ -11,9 +11,7 @@ class ContactController extends Controller
 {
     public function submit(Request $request)
     {
-
-
-        // Validate form input
+        // Validate input
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -24,11 +22,25 @@ class ContactController extends Controller
         ]);
 
         // Store in database
-        $contact = ContactInfor::create($validated);
+        $contact = ContactInfor::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'country' => $validated['country'],
+            'service' => $validated['service'],
+            'message' => $validated['message'],
+            'status' => 'pending',
+        ]);
 
-        // Send email to customer
-        Mail::to($validated['email'])->send(new ContactConfirmation($contact));
+        // If AJAX request, return JSON
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Thank you! Your message has been sent.'
+            ]);
+        }
 
+        // For normal form submission fallback
         return back()->with('success', 'Thank you! Your message has been sent.');
     }
 }

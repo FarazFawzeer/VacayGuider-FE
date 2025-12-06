@@ -40,11 +40,11 @@ class HomeController extends Controller
 
         $vehicles = VehicleDetail::where('status', 1)->get();
 
+        // --- 🛠️ MODIFICATION STARTS HERE 🛠️ ---
 
-        $testimonials = Testimonial::orderBy('postedate', 'desc')->get();
+    $allTestimonials = Testimonial::orderBy('postedate', 'desc')->get();
 
-
-        return view('frontend.pages.home', compact('packages', 'inboundPackages', 'vehicles', 'testimonials'));
+        return view('frontend.pages.home', compact('packages', 'inboundPackages', 'vehicles', 'allTestimonials'));
     }
 
 

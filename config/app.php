@@ -52,8 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
-    'backend_url' => env('BACKEND_URL', 'http://127.0.0.1:8000'),
+    'url' => env('APP_URL', 'https://vacayguider.com'),
+    'backend_url' => env('BACKEND_URL', 'https://admin.vacayguider.com/login'),
 
     /*
     |--------------------------------------------------------------------------

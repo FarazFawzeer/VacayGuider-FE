@@ -2,7 +2,7 @@
     <div class="th-menu-area text-center">
         <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
         <div class="mobile-logo ">
-            <a href="home-travel.html"><img src="{{ asset('assets/img/vacayguider.png') }}" alt="Tourm"></a>
+            <a href="{{ url('/') }}"><img src="{{ asset('assets/img/vacayguider.png') }}" alt="Tourm"></a>
         </div>
         <div class="th-mobile-menu">
             <ul>
@@ -42,7 +42,7 @@
     <div class="container">
         <div class="header-content">
             <div class="header-logo">
-                <a href="#">
+                <a href="{{ url('/') }}">
                     <img src="{{ asset('assets/img/vacayguider.png') }}" alt="VacayGuider Logo"
                         style="max-height: 75px;">
                 </a>
@@ -99,13 +99,13 @@
                     <div class="language-menu">
                         <a href="#"><img src="https://flagcdn.com/us.svg" alt="English" width="24">
                             English</a>
-                        <a href="#"><img src="https://flagcdn.com/es.svg" alt="Español" width="24">
+                        {{-- <a href="#"><img src="https://flagcdn.com/es.svg" alt="Español" width="24">
                             Español</a>
                         <a href="#"><img src="https://flagcdn.com/fr.svg" alt="Français" width="24">
                             Français</a>
                         <a href="#"><img src="https://flagcdn.com/de.svg" alt="Deutsch" width="24">
                             Deutsch</a>
-                        <a href="#"><img src="https://flagcdn.com/cn.svg" alt="中文" width="24"> 中文</a>
+                        <a href="#"><img src="https://flagcdn.com/cn.svg" alt="中文" width="24"> 中文</a> --}}
                     </div>
                 </div>
             </div>
@@ -297,8 +297,10 @@
         color: #ffffff;
     }
 
-    .main-nav a.active {
-        color: #ffffff;
+  
+
+    sub-menu a.active {
+       color: #000; 
     }
 
     .main-nav a.active::after {
@@ -308,6 +310,7 @@
     }
 
     .sub-menu {
+        color: #000;
         position: absolute;
         top: 100%;
         left: 0;
@@ -343,7 +346,7 @@
     .sub-menu a:hover {
         background: #f8f9fa;
         color: #0d4e6b;
-        transform: translateX(5px);
+
     }
 
     .header-right {

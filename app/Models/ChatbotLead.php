@@ -9,5 +9,5 @@ class ChatbotLead extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'phone', 'service'];
+    protected $fillable = ['name', 'email', 'phone', 'service','status'];
 }

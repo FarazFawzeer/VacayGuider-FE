@@ -98,6 +98,9 @@ Route::post('/chatbot/save', [ChatbotController::class, 'store'])->name('chatbot
 
 Route::get('/blog', [TestimonialController::class, 'index'])->name('blog');
 
+Route::get('/blog/filter-posts', [TestimonialController::class, 'filterPosts'])->name('blog.filter.posts');
+Route::get('/blog/filter-testimonials', [TestimonialController::class, 'filterTestimonials'])->name('blog.filter.testimonials');
+
 Route::get('/tours/load-more/{category}', [TourPackageController::class, 'loadMore'])->name('tour.load_more');
 
 

@@ -1499,12 +1499,7 @@
                                 <span
                                     class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
                                     aria-current="page">
-                                    <!-- About Icon -->
-                                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
+                                  
                                     <span>About Us</span>
                                 </span>
                             </li>
@@ -1524,7 +1519,7 @@
                 <div class="row vertical_content_manage mt-5">
                     <div class="title-area text-center " style="">
                         <h2 class="sec-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                             Explore the World with Vacay Guider </h2>
                     </div>
 
@@ -1640,12 +1635,12 @@
                                        We aspire to be a globally recognized leader in the travel and tourism industry by redefining the way people experience the world. We aim to empower travelers through personalized, innovative, and seamless travel solutions that not only meet their expectations but exceed them. We envision a future where every journey we create fosters cultural connection, personal growth, and unforgettable memories. With a strong commitment to quality, trust, and sustainability, we strive to build lasting relationships with our clients and partners—becoming the go-to travel companion for explorers around the globe.
                                     </p>
                                 </div>
-                                <div class="decorative-shape"
+                                {{-- <div class="decorative-shape"
                                     style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(46, 125, 50, 0.1); z-index: 1;">
                                 </div>
                                 <div class="decorative-shape"
                                     style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(46, 125, 50, 0.07); z-index: 1;">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -1682,12 +1677,12 @@
                                        At VacayGuider, we deliver exceptional travel experiences through personalized, reliable, and comprehensive solutions. Committed to understanding each traveler’s unique needs, we transform dreams into reality with carefully crafted tours, trusted support services, and our passionate team. Whether exploring Sri Lanka’s beauty or discovering global destinations, we ensure every journey is smooth, enriching, and memorable. With our focus on quality, customer satisfaction, and innovation, we are the trusted travel partner clients rely on—every step of the way.
                                     </p>
                                 </div>
-                                <div class="decorative-shape"
+                                {{-- <div class="decorative-shape"
                                     style="position: absolute; top: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(21, 101, 192, 0.1); z-index: 1;">
                                 </div>
                                 <div class="decorative-shape"
                                     style="position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(21, 101, 192, 0.07); z-index: 1;">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -1791,7 +1786,7 @@
         <div class="container-fluid">
             <div class="title-area text-center " style="">
                 <h2 class="sec-title"
-                    style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                    style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                     The Team </h2>
             </div>
             <div class="responsive-container-block outer-container ">
@@ -1864,7 +1859,7 @@
 
                     <div class="title-area text-center mb-5" style="margin-top: -5px;">
                         <span class="sub-title mob-team"
-                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 600;color: #000000;">
+                            style="  font-family: monospace ; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 600;color: #000000;">
                             Meet Our Team</span>
 
                     </div>
@@ -2000,7 +1995,7 @@
 
     <section class="testimonials-section py-5">
         <div class="container-fluid">
-            <div class="heading white-heading text-center mb-4">Testimonial</div>
+            <div class="heading white-heading text-center mb-4"  style="font-family: monospace;">What Pepole Say</div>
 
             <div id="testimonial4"
                 class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
@@ -2014,7 +2009,7 @@
                                 <div class="swiper-wrapper">
                                     @foreach ($testimonials as $testimonial)
                                         <div class="swiper-slide">
-                                            <div class="testimonial-card card h-100">
+                                            <div class="testimonial-card card h-100" style="background: rgb(239 248 242);">
                                                 <div class="card-body" style="height: 240px;">
                                                     <div class="d-flex align-items-center mb-3">
                                                         <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"

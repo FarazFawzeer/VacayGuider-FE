@@ -22,7 +22,7 @@ class RentVehicleController extends Controller
         });
 
         // Define the desired custom order
-        $customOrder = ['cycle', 'electricbike', 'tuktuk', 'scooter','motorcycle', 'car', 'jeep', 'van'];
+        $customOrder = ['cycle', 'electricbike', 'tuktuk', 'scooter', 'motorcycle', 'car', 'jeep', 'van'];
 
         // Sort the vehicle types by the custom order
         $vehicleTypes = collect($customOrder)->filter(function ($type) use ($vehicleTypes) {
@@ -36,9 +36,9 @@ class RentVehicleController extends Controller
         }
 
         $vehicles = $query->paginate(6);
-         $vehiclesslide = VehicleDetail::all();
+        $vehiclesslide = VehicleDetail::all();
 
-        return view('frontend.pages.rent', compact('vehicles', 'vehicleTypes','vehiclesslide'));
+        return view('frontend.pages.rent', compact('vehicles', 'vehicleTypes', 'vehiclesslide'));
     }
 
 
@@ -91,9 +91,9 @@ class RentVehicleController extends Controller
         ]);
 
         $bookingData->load('vehicle');
-        Mail::to($bookingData->email)->send(new \App\Mail\BookingConfirmationMail($bookingData));
 
-        return redirect()->back()->with('success', 'Booking submitted successfully!');
+
+        return response()->json(['message' => 'Application submitted successfully!'], 200);
     }
 
     public function rentStore(Request $request)
@@ -109,12 +109,12 @@ class RentVehicleController extends Controller
             'collection_method' => 'required|in:pick_up,delivery',
         ]);
 
-        // Store uploaded files
+        // Store files
         $licenseFrontPath = $request->file('license_front')->store('licenses', 'public');
         $licenseBackPath = $request->file('license_back')->store('licenses', 'public');
         $selfiePath = $request->file('selfie')->store('selfies', 'public');
 
-        // Save to database
+        // Save to DB
         DrivingPermitRequest::create([
             'guest_name' => $validated['guest_name'],
             'email' => $validated['email'],
@@ -124,8 +124,10 @@ class RentVehicleController extends Controller
             'license_back' => $licenseBackPath,
             'selfie' => $selfiePath,
             'collection_method' => $validated['collection_method'],
+            'status' => 'pending',
         ]);
 
-        return back()->with('success', 'Your driving permit request has been submitted successfully!');
+        // Always return JSON
+        return response()->json(['message' => 'Application submitted successfully!'], 200);
     }
 }

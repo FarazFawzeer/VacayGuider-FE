@@ -15,6 +15,6 @@
     <p>We’ll get back to you soon!</p>
     <br>
     <p>Best regards,</p>
-    <p>Your Company Name</p>
+    <p>VacayGuider</p>
 </body>
 </html>

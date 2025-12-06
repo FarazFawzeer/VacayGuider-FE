@@ -10,6 +10,113 @@
             font-family: 'Inter', sans-serif;
         }
 
+        @media (max-width: 576px) {
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 80px !important;
+                
+            }
+            .breadcrumb-mobile, ol{
+                padding-left: 0!important;
+            }
+
+            /* ol,
+                ul {
+                    padding-left: 2rem !important;
+                } */
+
+            .inbound-title {
+                margin-top: 32px !important;
+                margin-block: 20px;
+                margin-bottom: 16px;
+            }
+
+            /* Reduce container padding */
+            .booking-container {
+                padding: 15px;
+            }
+
+            /* Header text */
+            .booking-header h1 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            .booking-header p {
+                font-size: 14px;
+                line-height: 20px;
+                  margin-top: 20px !important;
+            }
+
+            /* Step Progress Bar */
+            .step-progress {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .step-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .step-title {
+                font-size: 14px;
+                margin-left: 10px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+
+            /* Form Inputs */
+            .form-control,
+            .form-select {
+                width: 100% !important;
+            }
+
+            /* Fix Phone + WhatsApp fields */
+            #phone,
+            #whatsapp {
+                width: 100% !important;
+            }
+
+            .row>div {
+                margin-bottom: 15px;
+            }
+
+            /* Review Page Fix */
+            #reviewGreeting {
+                font-size: 20px;
+            }
+
+            #reviewSummary {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            /* Navigation Buttons */
+            .navigation-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .navigation-buttons button {
+                width: 48%;
+            }
+        }
 
         .message {
             max-width: 500px;
@@ -24,7 +131,7 @@
 
         .message.success {
             background-color: #e6ffed;
-            s color: #155724;
+            color: #155724;
         }
 
         .message.error {
@@ -909,19 +1016,19 @@
 
         /* .btn {
 
-                                                                                                            padding: 18px 40px;
-                                                                                                            border: none;
-                                                                                                            border-radius: 50px;
-                                                                                                            font-size: 1.1rem;
-                                                                                                            font-weight: 600;
-                                                                                                            cursor: pointer;
-                                                                                                            transition: all 0.3s ease;
-                                                                                                            text-decoration: none;
-                                                                                                            display: inline-block;
-                                                                                                            text-align: center;
-                                                                                                            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-                                                                                                            margin-top: 20px;
-                                                                                                        } */
+                                                                                                                padding: 18px 40px;
+                                                                                                                border: none;
+                                                                                                                border-radius: 50px;
+                                                                                                                font-size: 1.1rem;
+                                                                                                                font-weight: 600;
+                                                                                                                cursor: pointer;
+                                                                                                                transition: all 0.3s ease;
+                                                                                                                text-decoration: none;
+                                                                                                                display: inline-block;
+                                                                                                                text-align: center;
+                                                                                                                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                                                                                                                margin-top: 20px;
+                                                                                                            } */
 
         .btn:hover {
             color: #ffff;
@@ -1326,8 +1433,8 @@
                                 : asset('/images/no-image.jpg');
                         @endphp
 
-                        <img class="w-full h-72 rounded-t-2xl mt-3 " src="{{ $imageUrl }}"
-                            alt="{{ $package->place }}" style="height: 500px;" style="object-fit: cover;">
+                        <img class="w-full h-72 rounded-t-2xl mt-3 " src="{{ $imageUrl }}" alt="{{ $package->place }}"
+                            style="height: 500px;" style="object-fit: cover;">
                     </div>
                 </div>
 
@@ -1609,8 +1716,8 @@
                                                 <div class="flex flex-col">
                                                     <div class="overflow-hidden rounded-lg">
                                                         <img src="{{ $imageUrls[0] ?? $defaultImage }}" alt="Highlight"
-                                                            class="w-full   highlight-image"
-                                                            style="height: 200px" style="object-fit: cover;" />
+                                                            class="w-full   highlight-image" style="height: 200px"
+                                                            style="object-fit: cover;" />
                                                     </div>
                                                     <p class="text-center text-sm text-gray-600 mt-3">
                                                         {{ $highlight->highlight_places ?? 'Highlight' }}
@@ -2153,218 +2260,216 @@
 
         </div>
 
-
-        <div class="container-fluid">
-
-            <div class="booking-container">
-                <!-- Header -->
-                <div class="booking-header ">
-                    <h1>Request a Quote</h1>
-                    <p>Our team of travel experts is at your service 24/7,
-                        always ready to assist <br> you with reliable support whenever you need it.</p>
-                </div>
-
-                <!-- Progress -->
-                <div class="progress-section">
-                    <div class="step-progress">
-                        <div class="step-item active" id="indicator-1">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Contact Info</div>
-                            <div class="progress-line"></div>
-                        </div>
-                        <div class="step-item" id="indicator-2">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Travel Details</div>
-                            <div class="progress-line"></div>
-                        </div>
-                        <div class="step-item" id="indicator-3">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Preferences</div>
-                            <div class="progress-line"></div>
-                        </div>
-                        <div class="step-item" id="indicator-4">
-                            <div class="step-number">4</div>
-                            <div class="step-title">Review & Book</div>
-                        </div>s
-                    </div>
-                </div>
-
-
-                <div id="formMessage" class="message" style="display:none;"></div>
-                <!-- Form -->
-                <form id="bookingForm" method="POST" action="{{ route('package.booking.store') }}">
-                    @csrf
-                    <input type="hidden" name="package" value="{{ $package->id }}">
-
-                    <div class="form-section">
-                        <!-- Step 1: Contact Details -->
-                        <div class="step-content" id="step-1">
-                            <h4>Contact Information</h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Full Name *</label>
-                                    <input type="text" name="full_name" class="form-control"
-                                        placeholder="Enter your full name" required>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Email Address *</label>
-                                    <input type="email" name="email" class="form-control"
-                                        placeholder="your@email.com" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Phone Number *</label>
-
-                                    <input type="tel" id="phone" name="phone" class="form-control" required
-                                        style="width: 514px;">
-
-                                </div>
-
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">WhatsApp (Optional)</label>
-                                    <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
-                                        style="width: 514px;">
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label">Country *</label>
-                                <input type="text" name="country" class="form-control"
-                                    placeholder="Enter your country" required>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Travel Details -->
-                        <div class="step-content hidden" id="step-2">
-                            <h4>Travel Information</h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Number of Adults (13+) *</label>
-                                    <input type="number" name="adults" min="1" value="2"
-                                        class="form-control" required>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Number of Children (0-13)</label>
-                                    <input type="number" name="children" min="0" value="0"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Check-in Date *</label>
-                                    <input type="date" name="check_in" class="form-control" required>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Check-out Date *</label>
-                                    <input type="date" name="check_out" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label">Pickup Location / Flight Information</label>
-                                <input type="text" name="pickup" class="form-control"
-                                    placeholder="Airport code, hotel name, or specific address">
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Preferences -->
-                        <div class="step-content hidden" id="step-3">
-                            <h4>Your Travel Preferences</h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Hotel Category *</label>
-                                    <select name="hotel_type" class="form-select" required>
-                                        <option value="">Choose your preferred hotel category</option>
-                                        <option value="3-star">3 Star </option>
-                                        <option value="4-star">4 Star</option>
-                                        <option value="5-star">5 Star </option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Travelling From *</label>
-                                    <input type="text" name="travelling_from" class="form-control"
-                                        placeholder="Your departure city or country" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Occasion for Travel</label>
-                                    <select name="travel_reason" class="form-select">
-                                        <option value="leisure">Leisure & Vacation</option>
-                                        <option value="honeymoon">Honeymoon</option>
-                                        <option value="anniversary">Anniversary Celebration</option>
-                                        <option value="birthday">Birthday Trip</option>
-                                        <option value="annual-trip">Annual Family Trip</option>
-                                        <option value="business">Business & Leisure</option>
-                                        <option value="other">Other Special Occasion</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <label class="form-label">Travel Experience Theme</label>
-                                    <select name="theme[]" class="form-select" id="themeSelect" multiple>
-                                        <option value="wildlife">Wildlife</option>
-                                        <option value="water_sports">Water Sports</option>
-                                        <option value="adventure">Adventure</option>
-                                        <option value="snorkeling">Snorkeling</option>
-                                        <option value="culture">Culture</option>
-                                        <option value="whale_watching">Whale Watching</option>
-                                        <option value="history">History</option>
-                                        <option value="dolphin_watching">Dolphin Watching</option>
-                                        <option value="hikes">Hikes</option>
-                                        <option value="diving">Diving</option>
-                                        <option value="nature">Nature</option>
-                                        <option value="yoga_meditation">Yoga & Meditation</option>
-                                        <option value="beach">Beach</option>
-                                        <option value="mountains">Mountains</option>
-                                        <option value="tea_gardens">Tea Gardens</option>
-                                        <option value="train_rides">Train Rides</option>
-                                        <option value="boat_rides">Boat Rides</option>
-                                        <option value="birds_watching">Birds Watching</option>
-                                        <option value="village_walks">Village Walks</option>
-                                        <option value="handcrafts">Handcrafts</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Review -->
-                        <div class="step-content hidden" id="step-4">
-                            <div class="icon">
-                                <svg class="checkmark" viewBox="0 0 24 24">
-                                    <polyline points="20,6 9,17 4,12"></polyline>
-                                </svg>
-                            </div>
-                            <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi there!
-                            </h4>
-                            <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
-                                style="margin-top: -10px;padding-bottom: 20px;"></p>
-                            <div class="text-center mt-4">
-                                <button type="submit" class="submit-btn">
-                                    Submit Request
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Navigation -->
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary hidden" id="prevBtn">
-                            Previous
-                        </button>
-                        <div></div>
-                        <button type="button" class="btn btn-primary" id="nextBtn">
-                            Next
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-
     </section>
+
+
+    <section class="bg-gradient-to-r from-blue-50 to-white" style="margin-top: -80px;">
+
+        <div class="booking-container">
+            <!-- Header -->
+            <div class="booking-header ">
+                <h1>Request a Quote</h1>
+                <p>Our team of travel experts is at your service 24/7,
+                    always ready to assist <br> you with reliable support whenever you need it.</p>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="step-progress">
+                    <div class="step-item active" id="indicator-1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Contact Info</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="indicator-2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Travel Details</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="indicator-3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Preferences</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="indicator-4">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Review & Book</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="formMessage" class="message" style="display:none;"></div>
+            <!-- Form -->
+            <form id="bookingForm" method="POST" action="{{ route('package.booking.store') }}">
+                @csrf
+                <input type="hidden" name="package" value="{{ $package->id }}">
+
+                <div class="form-section">
+                    <!-- Step 1: Contact Details -->
+                    <div class="step-content" id="step-1">
+                        <h4>Contact Information</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" name="full_name" class="form-control"
+                                    placeholder="Enter your full name" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" name="email" class="form-control" placeholder="your@email.com"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Phone Number *</label>
+
+                                <input type="tel" id="phone" name="phone" class="form-control" required
+                                    style="width: 514px;">
+
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">WhatsApp (Optional)</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
+                                    style="width: 514px;">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Country *</label>
+                            <input type="text" name="country" class="form-control" placeholder="Enter your country"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Travel Details -->
+                    <div class="step-content hidden" id="step-2">
+                        <h4>Travel Information</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Number of Adults (13+) *</label>
+                                <input type="number" name="adults" min="1" value="2" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Number of Children (0-13)</label>
+                                <input type="number" name="children" min="0" value="0"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Check-in Date *</label>
+                                <input type="date" name="check_in" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Check-out Date *</label>
+                                <input type="date" name="check_out" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Pickup Location / Flight Information</label>
+                            <input type="text" name="pickup" class="form-control"
+                                placeholder="Airport code, hotel name, or specific address">
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Preferences -->
+                    <div class="step-content hidden" id="step-3">
+                        <h4>Your Travel Preferences</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Hotel Category *</label>
+                                <select name="hotel_type" class="form-select" required>
+                                    <option value="">Choose your preferred hotel category</option>
+                                    <option value="3-star">3 Star </option>
+                                    <option value="4-star">4 Star</option>
+                                    <option value="5-star">5 Star </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Travelling From *</label>
+                                <input type="text" name="travelling_from" class="form-control"
+                                    placeholder="Your departure city or country" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Occasion for Travel</label>
+                                <select name="travel_reason" class="form-select">
+                                    <option value="leisure">Leisure & Vacation</option>
+                                    <option value="honeymoon">Honeymoon</option>
+                                    <option value="anniversary">Anniversary Celebration</option>
+                                    <option value="birthday">Birthday Trip</option>
+                                    <option value="annual-trip">Annual Family Trip</option>
+                                    <option value="business">Business & Leisure</option>
+                                    <option value="other">Other Special Occasion</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Travel Experience Theme</label>
+                                <select name="theme[]" class="form-select" id="themeSelect" multiple>
+                                    <option value="wildlife">Wildlife</option>
+                                    <option value="water_sports">Water Sports</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="snorkeling">Snorkeling</option>
+                                    <option value="culture">Culture</option>
+                                    <option value="whale_watching">Whale Watching</option>
+                                    <option value="history">History</option>
+                                    <option value="dolphin_watching">Dolphin Watching</option>
+                                    <option value="hikes">Hikes</option>
+                                    <option value="diving">Diving</option>
+                                    <option value="nature">Nature</option>
+                                    <option value="yoga_meditation">Yoga & Meditation</option>
+                                    <option value="beach">Beach</option>
+                                    <option value="mountains">Mountains</option>
+                                    <option value="tea_gardens">Tea Gardens</option>
+                                    <option value="train_rides">Train Rides</option>
+                                    <option value="boat_rides">Boat Rides</option>
+                                    <option value="birds_watching">Birds Watching</option>
+                                    <option value="village_walks">Village Walks</option>
+                                    <option value="handcrafts">Handcrafts</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review -->
+                    <div class="step-content hidden" id="step-4">
+                        <div class="icon">
+                            <svg class="checkmark" viewBox="0 0 24 24">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi there!
+                        </h4>
+                        <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
+                            style="margin-top: -10px;padding-bottom: 20px;"></p>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="submit-btn">
+                                Submit Request
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation-buttons">
+                    <button type="button" class="btn btn-secondary hidden" id="prevBtn">
+                        Previous
+                    </button>
+                    <div></div>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Next
+                    </button>
+                </div>
+            </form>
+        </div>
+        </section >
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

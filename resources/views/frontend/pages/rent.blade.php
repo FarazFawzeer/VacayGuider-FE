@@ -5,6 +5,577 @@
 @section('content')
 
     <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+
+        .message {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .message.success {
+            background-color: #e6ffed;
+            color: #155724;
+        }
+
+        .message.error {
+            background-color: #fdecea;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .message.warning {
+            background-color: #fff4e5;
+            border-left: 4px solid #f0ad4e;
+            color: #856404;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .booking-header {
+
+            color: rgb(0, 0, 0);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .booking-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .booking-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .booking-header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+        }
+
+        .progress-section {
+            padding: 2rem;
+
+            position: relative;
+        }
+
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.active .step-number {
+            background: #3596d3;
+            color: white;
+            transform: scale(1.1);
+
+        }
+
+        .step-item.completed .step-number {
+            background: #96c93e;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .step-title {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step-item.active .step-title {
+            color: #3596d3;
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            right: -50%;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 1;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .step-item.completed .progress-line {
+            background: #96c93e;
+        }
+
+        .step-item:last-child .progress-line {
+            display: none;
+        }
+
+        .form-section {
+            padding: 0 2rem 2rem;
+        }
+
+        .step-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.5s ease;
+            position: relative;
+        }
+
+
+        .greeting {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0d4e6b, #1a5a78);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(13, 78, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 78, 107, 0.4);
+            background: linear-gradient(135deg, #1a5a78, #0d4e6b);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgb(37, 150, 190), rgb(150, 201, 62));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .greeting {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-content h4 {
+            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+
+
+        .form-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #e2e8f0;
+            /* border-radius: 12px; */
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            font-weight: 500;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            outline: none;
+            background: white;
+            transform: translateY(-1px);
+        }
+
+        /* Fix Bootstrap validation icons for <select> fields */
+        select.form-select.is-valid option,
+        select.form-select.is-invalid option {
+            background-image: none !important;
+            /* remove icons from dropdown items */
+        }
+
+        /* Show icon only on the select box itself */
+        select.form-select.is-valid,
+        select.form-select.is-invalid {
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem 1rem;
+            padding-right: 2.25rem;
+            /* spacing for icon */
+        }
+
+        /* Green check for valid */
+        select.form-select.is-valid {
+            border-color: #198754;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23198754'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7' /%3e%3c/svg%3e");
+        }
+
+        /* Red cross for invalid */
+        select.form-select.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23dc3545'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 18L18 6M6 6l12 12' /%3e%3c/svg%3e");
+        }
+
+
+
+        .form-control.is-invalid {
+            border-color: #f56565;
+            box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.1);
+        }
+
+        .form-control.is-valid {
+            border-color: #96c93e;
+            box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.1);
+        }
+
+        .btn {
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: #0d4e6b;
+            color: white;
+            border: 1px solid #0d4e6b;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+            border: none
+        }
+
+     
+
+
+        .btn-primary:focus {
+
+            color: white;
+            background: #0d4e6b;
+            border: 1px solid #0d4e6b !important;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: rgb(0, 0, 0);
+            border: 1px solid #0d4e6b;
+            border-radius: 50px;
+        }
+
+        .btn-secondary:hover {
+            background: #0d4e6b;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-success {
+            background: #96c93e color: white;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-success:hover::before {
+            left: 100%;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(72, 187, 120, 0.4);
+            color: white;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-top: -30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .review-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .review-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #2d3748;
+            flex: 1;
+        }
+
+        .review-value {
+            color: #1a202c;
+            font-weight: 500;
+            flex: 1;
+            text-align: right;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0;
+            }
+
+            .booking-container {
+                margin: 0 1rem;
+                border-radius: 16px;
+            }
+
+            .booking-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .booking-header h1 {
+                font-size: 2rem;
+            }
+
+            .progress-section,
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .navigation-buttons {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navigation-buttons .btn {
+                width: 100%;
+            }
+
+            .step-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .step-item {
+                flex: none;
+                min-width: 80px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+        }
+    </style>
+
+    <style>
         @media (max-width: 480px) {
 
             .hero-section {
@@ -21,6 +592,37 @@
 
             /* Mobile adjustments */
             @media (max-width: 576px) {
+
+                .step-progress {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 25px;
+                    padding-left: 10px;
+                }
+
+                .step-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    width: 100%;
+                }
+
+                .step-number {
+                    width: 35px;
+                    height: 35px;
+                    font-size: 16px;
+                }
+
+                .step-title {
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+
+                /* Remove horizontal line for mobile */
+                .progress-line {
+                    display: none;
+                }
+
                 .title-area {
                     margin-top: 0 !important;
                     padding: 0 10px;
@@ -177,10 +779,12 @@
         }
 
         @media (max-width: 640px) {
+            
             .breadcrumb-mobile {
                 overflow-x: auto;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
+                margin-top: 100px !important;
             }
 
             .breadcrumb-mobile::-webkit-scrollbar {
@@ -389,26 +993,8 @@
 
         }
 
-        .step-number {
-            background: linear-gradient(135deg, #2596be, #96c93e);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: 20px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
-        }
 
-        .step-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
+
 
         .form-grid {
             display: grid;
@@ -457,22 +1043,22 @@
             border: 2px dashed #667eea;
         }
 
-        .btn {
-            background: linear-gradient(135deg, #000000, #000000);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            margin-top: 20px;
-        }
+        /* .btn {
+                        background: linear-gradient(135deg, #000000, #000000);
+                        color: white;
+                        padding: 18px 40px;
+                        border: none;
+                        border-radius: 50px;
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        text-decoration: none;
+                        display: inline-block;
+                        text-align: center;
+                        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                        margin-top: 20px;
+                    } */
 
         .btn:hover {
             color: #ffff;
@@ -490,7 +1076,7 @@
             background: rgba(52, 152, 219, 0.1);
             padding: 25px;
             border-radius: 15px;
-            margin: 25px 0;
+            margin: 25px 25px;
             text-align: center;
         }
 
@@ -537,7 +1123,6 @@
 
         .info-badge {
             background: rgba(52, 152, 219, 0.1);
-            border-left: 4px solid #3498db;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
@@ -648,7 +1233,7 @@
                     {{-- <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
                     <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                         Select Your Vehicle </h2>
                 </div>
             </div>
@@ -701,21 +1286,21 @@
                                                 <!-- Left Section -->
                                                 <div class="content-section" style="flex: 1; padding-right: 20px;">
                                                     <div
-                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 4px 8px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
+                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 4px 8px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; ">
                                                         {{ $vehicle->label ?? 'Premium ' }}
                                                     </div>
 
                                                     <h3
-                                                        style="margin-bottom: 8px; font-family: 'Montserrat', sans-serif; color: #ffffff; font-weight: 700; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
+                                                        style="margin-bottom: 8px; font-family: 'Montserrat', sans-serif; color: #ffffff; font-weight: 700; font-size: 44px; ">
                                                         {{ $vehicle->make }}
                                                     </h3>
                                                     <h3
-                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
+                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; ">
                                                         {{ $vehicle->name }}
                                                     </h3>
 
                                                     <div class="rent-undrline"
-                                                        style="width: 60px; height: 6px; background: linear-gradient(90deg, #3596d3, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
+                                                        style="width: 60px; height: 6px; background: #e91e22; margin: 10px 0 20px; border-radius: 3px;">
                                                     </div>
                                                 </div>
 
@@ -767,7 +1352,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #3596D3; font-weight: 700; font-size: 18px;">
                                                     <i class="fas fa-helmet-safety"
-                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D3; font-size: 20px; border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Helmets</span>
@@ -781,7 +1366,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #3596D3;">
                                                     <i class="fas fa-kit-medical"
-                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D3; font-size: 20px;border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">First-Aid
@@ -797,7 +1382,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #3596D3;">
                                                     <i class="fas fa-cogs"
-                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D3; font-size: 20px; border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Transmission</span>
@@ -812,7 +1397,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #3596D3;">
                                                     <i class="fas fa-road"
-                                                        style="color: #3596D3; font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D3; font-size: 20px;  border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Mileage</span>
@@ -873,7 +1458,7 @@
                     <div class="title-area text-center " style="">
 
                         <h2 class="sec-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                             Find Your Perfect Ride </h2>
                     </div>
                 </div>
@@ -953,172 +1538,236 @@
 
 
                 <div class="title-area text-center " style="">
-                    <span class="sub-title"
-                        style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Get
-                        your Driving Permit</span>
+                    {{-- <span class="sub-title"
+                        style="  font-family: monospace; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;"></span> --}}
                     <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                        Apply your Driving Permit</h2>
+                        style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                       Get
+                        your Driving Permit</h2>
                 </div>
             </div>
 
             <!-- Hero Section -->
             <div class="hero-section">
                 <div class="container permint-post-mob">
-                    <img src="{{ asset('assets/img/post new.jpg') }}"
-                        alt="Driving in Sri Lanka" class="hero-image">
+                    <img src="{{ asset('assets/img/post_new.jpg') }}" alt="Driving in Sri Lanka" class="hero-image">
 
 
                     <div class="overview-text">
                         <div class="info-badge">
-                            <p><strong>Important:</strong> SSri Lanka requires foreign nationals to verify their license locally. You cannot legally drive using an IDP or foreign license alone.</p>
+                            <p><strong>Important:</strong> SSri Lanka requires foreign nationals to verify their license
+                                locally. You cannot legally drive using an IDP or foreign license alone.</p>
                         </div>
                         <p>
-                            To ensure a seamless trip, we assist in arranging your temporary driving license in advance. By choosing to arrange your license beforehand, you’ve made the right decision to save time and enjoy every moment of your stay.
+                            To ensure a seamless trip, we assist in arranging your temporary driving license in advance. By
+                            choosing to arrange your license beforehand, you’ve made the right decision to save time and
+                            enjoy every moment of your stay.
                         </p>
                     </div>
-                    <!--<div class="bottom-image">-->
-                    <!--    <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"-->
-                    <!--        alt="Sri Lanka scenic roads">-->
 
-                    <!--</div>-->
 
                 </div>
 
 
-                <!-- Steps Container -->
-                <div class="steps-container">
-                    <!-- Step 1: Form -->
-                    <div class="step-card">
-                        <div class="step-header">
-                            <div class="step-number">01</div>
-                            <h2 class="step-title">Fill the Request Form</h2>
-                        </div>
-                        <!-- Alerts -->
-                        @if (session('success'))
-                            <div class="alert alert-success" id="alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
-                        @if ($errors->any())
-                            <div class="alert alert-danger" id="alert-danger">
-                                <ul style="margin: 0; padding-left: 20px;">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form action="{{ route('driving-permit.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="guest_name">Guest Name *</label>
-                                    <input type="text" id="guest_name" name="guest_name" required
-                                        placeholder="Enter your full name">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" required
-                                        placeholder="your.email@example.com">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="license_no">License Number *</label>
-                                    <input type="text" id="license_no" name="license_no" required
-                                        placeholder="Your license number">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="whatsapp">WhatsApp Number *</label>
-                                    <input type="tel" id="whatsapp" name="whatsapp" required
-                                        placeholder="+1 234 567 8900">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="license_front">Front Side of Your License *</label>
-                                    <input type="file" id="license_front" name="license_front" required
-                                        accept="image/*">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="license_back">Back Side of Your License *</label>
-                                    <input type="file" id="license_back" name="license_back" required
-                                        accept="image/*">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="selfie">Picture of Yourself - Upper Body *</label>
-                                    <input type="file" id="selfie" name="selfie" required accept="image/*">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="collection_method">Collection Method *</label>
-                                    <select id="collection_method" name="collection_method" required>
-                                        <option value="">—Please choose an option—</option>
-                                        <option value="pick_up">Pick Up from Office</option>
-                                        <option value="delivery">Home/Hotel Delivery</option>
-                                    </select>
-                                </div>
-
-                                <button type="submit" class="btn btn-submit"
-                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit
-                                    Application</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <Div class="row" style="gap: 0px">
-                        <!-- Step 2: Payment -->
-                        <div class="step-card col-md-6" style="  box-shadow: none !important;">
-                            <div class="step-header">
-                                <div class="step-number">02</div>
-                                <h2 class="step-title">Make the Payment</h2>
-                            </div>
-
-                            <div class="payment-info">
-                                <p>
-                                    <strong>Processing Fee: $40</strong><br>
-                                    Processing Time: 2–3 business days
-                                </p>
-                                <p>Once you've submitted the form above, proceed with the secure payment to process your
-                                    temporary
-                                    driving license.</p>
-                            </div>
-
-                            {{-- <div style="text-align: center;">
-                        <a href="#" class="btn">Pay $40 </a>
-                    </div>
-
-                    <p style="margin-top: 20px; text-align: center; color: #7f8c8d;">
-                        💬 Have questions? Contact us via WhatsApp for instant support.
-                    </p> --}}
-                        </div>
-
-                        <!-- Step 3: Enjoy -->
-                        <div class="step-card step-card-mob success-section col-md-6"
-                            style="  box-shadow: none !important;">
-                            <div class="step-header">
-                                <div class="step-number">03</div>
-                                <h2 class="step-title">Enjoy Your Ride</h2>
-                            </div>
-
-
-                            <div class="payment-info" style="background: rgba(52, 152, 219, 0.1);">
-                                <p>
-                                    You will receive your driving license at the requested location on time.
-                                    For any clarifications, feel free to contact us
-                                </p>
-                                <p> Ready to explore the beautiful roads of Sri Lanka with complete peace of mind!</p>
-                            </div>
-                        </div>
-                    </Div>
-                </div>
             </div>
+
+
             <!-- Bottom Image -->
     </section>
+
+
+   <section >
+        <div class="booking-container"  style="background: rgb(245 245 245);padding: 15px;">
+            <!-- Header -->
+            <div class="booking-header text-center">
+                <h1 style="font-family: monospace;">Apply for a Temporary Driving Permit</h1>
+                <p>Submit your application and get your temporary driving license quickly and securely.<br>
+                    Our team will process your request within 2–3 business days.</p>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="step-progress">
+                    <div class="step-item active" id="indicator-1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Personal Info</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="indicator-2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">License Upload</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="indicator-3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Collection Method</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="indicator-4">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Review & Submit</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message -->
+            @if (session('success'))
+                <div class="alert alert-success text-center" id="alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger" id="alert-danger">
+                    <ul style="margin: 0; padding-left: 20px;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Form -->
+            <form id="drivingPermitForm" method="POST" action="{{ route('driving-permit.store') }}"
+                enctype="multipart/form-data">
+                @csrf
+
+                <!-- Step 1: Personal Info -->
+                <div class="step-content" id="step-1">
+                    <h4>Personal Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">Guest Name *</label>
+                            <input type="text" name="guest_name" class="form-control" required
+                                placeholder="Enter your full name">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email" class="form-control" required
+                                placeholder="your@email.com">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">License Number *</label>
+                            <input type="text" name="license_no" class="form-control" required
+                                placeholder="Your license number">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">WhatsApp Number *</label>
+                            <input type="tel" name="whatsapp" class="form-control" required
+                                placeholder="+94 71 234 5678">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: License Upload -->
+                <div class="step-content hidden" id="step-2">
+                    <h4>Upload License Images</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label class="form-label">Front Side of License *</label>
+                            <input type="file" name="license_front" accept="image/*" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label class="form-label">Back Side of License *</label>
+                            <input type="file" name="license_back" accept="image/*" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label class="form-label">Picture of Yourself (Upper Body) *</label>
+                            <input type="file" name="selfie" accept="image/*" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Collection Method -->
+                <div class="step-content hidden" id="step-3">
+                    <h4>Choose Collection Method</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">Collection Method *</label>
+                            <select name="collection_method" class="form-select" required>
+                                <option value="">— Select Option —</option>
+                                <option value="pick_up">Pick Up from Office</option>
+                                <option value="delivery">Home/Hotel Delivery</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>Processing Fee:</strong> $40<br>
+                        <strong>Processing Time:</strong> 2–3 business days
+                    </div>
+                </div>
+
+                <!-- Step 4: Review & Submit -->
+                <div class="step-content hidden" id="step-4">
+                    <div class="icon">
+                        <svg class="checkmark" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                    </div>
+                    <h4 class="text-center">Review & Confirm</h4>
+                    <p class="text-center">Please confirm all your details before submitting your application.</p>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="submit-btn btn btn-primary">
+                            Submit Application
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="navigation-buttons">
+                    <button type="button" class="btn btn-secondary hidden" id="prevBtn">Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="steps-container">
+
+
+        <Div class="row" style="gap: 0px">
+            <!-- Step 2: Payment -->
+            <div class="step-card col-md-6" style="  box-shadow: none !important;">
+                <div class="step-header">
+                    <div class="step-number" style="background: #3596d3; color:#ffffff;">02</div>
+                    <h2 class="step-title ml-2" style="font-size: 1.2rem;">Make the Payment</h2>
+                </div>
+
+                <div class="payment-info">
+                    <p>
+                        <strong>Processing Fee: $40</strong><br>
+                        Processing Time: 2–3 business days
+                    </p>
+                    <p>Once you've submitted the form above, proceed with the secure payment to process your
+                        temporary
+                        driving license.</p>
+                </div>
+
+            </div>
+
+            <!-- Step 3: Enjoy -->
+            <div class="step-card step-card-mob  col-md-6" style="  box-shadow: none !important;">
+                <div class="step-header">
+                    <div class="step-number" style="background: #3596d3; color:#ffffff;">03</div>
+                    <h2 class="step-title ml-2" style="font-size: 1.2rem;">Enjoy Your Ride</h2>
+                </div>
+
+
+                <div class="payment-info" style="background: rgba(52, 152, 219, 0.1);">
+                    <p>
+                        You will receive your driving license at the requested location on time.
+                        For any clarifications, feel free to contact us
+                    </p>
+                    <p> Ready to explore the beautiful roads of Sri Lanka with complete peace of mind!</p>
+                </div>
+            </div>
+        </Div>
+    </div>
+    </div>
 
 
     <section style="background: linear-gradient(135deg, #071f2b 0%, #000000 100%);"margin-top: -80px;">
@@ -1131,7 +1780,7 @@
             <div class="container position-relative" style="z-index: 1;">
                 <div class="section-header text-center mb-5">
                     <h3
-                        style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">
+                        style="font-family: monospace; font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">
                         Why Choose Our Vehicles</h3>
                     <div
                         style="width: 60px; height: 3px; background: linear-gradient(90deg, #00A2FF, #0069d9); margin: 0 auto 20px; border-radius: 2px;">
@@ -1245,59 +1894,7 @@
     </script>
 
 
-    {{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        try {
-            // Initialize Swiper
-            const swiper = new Swiper('.th-slider', {
-                
-                navigation: {
-                    nextEl: '.swiper-button-next-rental',
-                    prevEl: '.swiper-button-prev-rental'
-                },
-                loop: false,
-          
-                 // Important for correct index mapping
-                // Other options...
-            });
-            
-            const reserveBtn = document.getElementById('reserveButton');
-            
-            // Update button URL when slide changes
-            swiper.on('slideChange', function() {
-                updateReserveButtonUrl(swiper.activeIndex);
-            });
-            
-            // Initialize with first vehicle
-            if (vehiclesData.length > 0) {
-                updateReserveButtonUrl(0);
-            }
-            
-            // Handle button click
-            reserveBtn.addEventListener('click', function(e) {
-                if (this.href === '#') {
-                    e.preventDefault();
-                    return;
-                }
-                
-                // Optional: Add loading state
-                this.querySelector('.loading-spinner').style.display = 'inline-block';
-                this.querySelector('span:not(.loading-spinner)').style.display = 'none';
-            });
-            
-            function updateReserveButtonUrl(index) {
-                if (vehiclesData[index]) {
-                    reserveBtn.href = `/rent-detail/${vehiclesData[index].id}`;
-                    reserveBtn.querySelector('.loading-spinner').style.display = 'none';
-                    reserveBtn.querySelector('span:not(.loading-spinner)').style.display = 'inline';
-                }
-            }
-            
-        } catch (error) {
-            console.error('Swiper initialization error:', error);
-        }
-    });
-</script> --}}
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -1324,6 +1921,115 @@
             overlay.addEventListener("click", closeSidebar);
         });
     </script>
+    <script>
+        class DrivingPermitForm {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 4;
+                this.init();
+            }
 
+            init() {
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
+                document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
+                document.getElementById('drivingPermitForm').addEventListener('submit', (e) => this.handleSubmit(e));
+                this.showStep(1);
+            }
+
+            showStep(step) {
+                for (let i = 1; i <= this.totalSteps; i++) {
+                    document.getElementById(`step-${i}`).classList.add('hidden');
+                    document.getElementById(`indicator-${i}`).classList.remove('active', 'completed');
+                }
+                document.getElementById(`step-${step}`).classList.remove('hidden');
+                document.getElementById(`indicator-${step}`).classList.add('active');
+                for (let i = 1; i < step; i++) document.getElementById(`indicator-${i}`).classList.add('completed');
+                document.getElementById('prevBtn').classList.toggle('hidden', step === 1);
+                document.getElementById('nextBtn').classList.toggle('hidden', step === this.totalSteps);
+            }
+
+            nextStep() {
+                const currentFields = document.querySelectorAll(
+                    `#step-${this.currentStep} input[required], #step-${this.currentStep} select[required]`);
+                let valid = true;
+                currentFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('is-invalid');
+                        valid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!valid) return;
+
+                if (this.currentStep < this.totalSteps) {
+                    this.currentStep++;
+                    this.showStep(this.currentStep);
+                }
+            }
+
+            prevStep() {
+                if (this.currentStep > 1) {
+                    this.currentStep--;
+                    this.showStep(this.currentStep);
+                }
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+                const submitBtn = form.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Submitting...';
+
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+                            'X-Requested-With': 'XMLHttpRequest', // Important for Laravel
+                            'Accept': 'application/json',
+                        },
+                        body: formData,
+                    });
+
+                    let data;
+                    try {
+                        data = await res.json();
+                    } catch (jsonErr) {
+                        throw new Error('Invalid JSON response. Maybe a redirect occurred.');
+                    }
+
+                    if (res.ok) {
+                        // Immediately replace form with success message
+                        document.querySelector('.booking-container').innerHTML = `
+                <div class="text-center p-5">
+                    <h3>✅ Your application was submitted successfully!</h3>
+                    <p>Our team will process it within 2–3 business days.</p>
+                </div>
+            `;
+                    } else {
+                        const message = data.message || 'Please check your input fields.';
+                        Swal.fire('Error', message, 'error');
+                    }
+
+                } catch (err) {
+                    console.error(err);
+                    Swal.fire('Error', err.message || 'Something went wrong. Please try again.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Submit Application';
+                }
+            }
+
+
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new DrivingPermitForm();
+        });
+    </script>
 
 @endsection

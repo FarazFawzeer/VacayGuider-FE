@@ -4,6 +4,677 @@
 
 @section('content')
 
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 576px) {
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 80px !important;
+            }
+
+            /* ol,
+                    ul {
+                        padding-left: 2rem !important;
+                    } */
+
+            .inbound-title {
+                margin-top: 32px !important;
+                margin-block: 20px;
+                margin-bottom: 16px;
+            }
+
+            /* Reduce container padding */
+            .booking-container {
+                padding: 15px;
+            }
+
+            /* Header text */
+            .booking-header h1 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            .booking-header p {
+                font-size: 14px;
+                line-height: 20px;
+                margin-top: 20px !important;
+            }
+
+            /* Step Progress Bar */
+            .step-progress {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .step-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .step-title {
+                font-size: 14px;
+                margin-left: 10px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+
+            /* Form Inputs */
+            .form-control,
+            .form-select {
+                width: 100% !important;
+            }
+
+            /* Fix Phone + WhatsApp fields */
+            #phone,
+            #whatsapp {
+                width: 100% !important;
+            }
+
+            .row>div {
+                margin-bottom: 15px;
+            }
+
+            /* Review Page Fix */
+            #reviewGreeting {
+                font-size: 20px;
+            }
+
+            #reviewSummary {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            /* Navigation Buttons */
+            .navigation-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .navigation-buttons button {
+                width: 48%;
+            }
+        }
+
+        .message {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .message.success {
+            background-color: #e6ffed;
+            s color: #155724;
+        }
+
+        .message.error {
+            background-color: #fdecea;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .message.warning {
+            background-color: #fff4e5;
+            border-left: 4px solid #f0ad4e;
+            color: #856404;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .booking-header {
+
+            color: rgb(0, 0, 0);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .booking-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .booking-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .booking-header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+        }
+
+        .progress-section {
+            padding: 2rem;
+
+            position: relative;
+        }
+
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.active .step-number {
+            background: #3596d3;
+            color: white;
+            transform: scale(1.1);
+
+        }
+
+        .step-item.completed .step-number {
+            background: #96c93e;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .step-title {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step-item.active .step-title {
+            color: #3596d3;
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            right: -50%;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 1;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .step-item.completed .progress-line {
+            background: #96c93e;
+        }
+
+        .step-item:last-child .progress-line {
+            display: none;
+        }
+
+        .form-section {
+            padding: 0 2rem 2rem;
+        }
+
+        .step-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.5s ease;
+            position: relative;
+        }
+
+
+        .greeting {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0d4e6b, #1a5a78);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(13, 78, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 78, 107, 0.4);
+            background: linear-gradient(135deg, #1a5a78, #0d4e6b);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgb(37, 150, 190), rgb(150, 201, 62));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .greeting {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-content h4 {
+            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+
+
+        .form-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #e2e8f0;
+            /* border-radius: 12px; */
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            font-weight: 500;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            outline: none;
+            background: white;
+            transform: translateY(-1px);
+        }
+
+        /* Fix Bootstrap validation icons for <select> fields */
+        select.form-select.is-valid option,
+        select.form-select.is-invalid option {
+            background-image: none !important;
+            /* remove icons from dropdown items */
+        }
+
+        /* Show icon only on the select box itself */
+        select.form-select.is-valid,
+        select.form-select.is-invalid {
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem 1rem;
+            padding-right: 2.25rem;
+            /* spacing for icon */
+        }
+
+        /* Green check for valid */
+        select.form-select.is-valid {
+            border-color: #198754;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23198754'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7' /%3e%3c/svg%3e");
+        }
+
+        /* Red cross for invalid */
+        select.form-select.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23dc3545'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 18L18 6M6 6l12 12' /%3e%3c/svg%3e");
+        }
+
+
+
+        .form-control.is-invalid {
+            border-color: #f56565;
+            box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.1);
+        }
+
+        .form-control.is-valid {
+            border-color: #96c93e;
+            box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.1);
+        }
+
+
+
+        .btn-primary {
+            background: #0d4e6b;
+            color: white;
+            border: 1px solid #0d4e6b;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+            border: none
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            color: white;
+            background: #0d4e6b;
+
+        }
+
+
+
+        .btn-primary:focus {
+
+            color: white;
+            background: #0d4e6b;
+            border: 1px solid #0d4e6b !important;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: rgb(0, 0, 0);
+            border: 1px solid #0d4e6b;
+            border-radius: 50px;
+        }
+
+        .btn-secondary:hover {
+            background: #0d4e6b;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-success {
+            background: #96c93e color: white;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-success:hover::before {
+            left: 100%;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(72, 187, 120, 0.4);
+            color: white;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-top: -30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .review-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .review-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #2d3748;
+            flex: 1;
+        }
+
+        .review-value {
+            color: #1a202c;
+            font-weight: 500;
+            flex: 1;
+            text-align: right;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0;
+            }
+
+            .booking-container {
+                margin: 0 1rem;
+                border-radius: 16px;
+            }
+
+            .booking-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .booking-header h1 {
+                font-size: 2rem;
+            }
+
+            .progress-section,
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .navigation-buttons {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navigation-buttons .btn {
+                width: 100%;
+            }
+
+            .step-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .step-item {
+                flex: none;
+                min-width: 80px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -308,26 +979,9 @@
 
         }
 
-        .step-number {
-            background: linear-gradient(135deg, #2596be, #96c93e);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: 20px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
-        }
 
-        .step-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
+
+
 
         .form-grid {
             display: grid;
@@ -376,22 +1030,7 @@
             border: 2px dashed #667eea;
         }
 
-        .btn {
-            background: linear-gradient(135deg, #000000, #000000);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            margin-top: 20px;
-        }
+
 
         .btn:hover {
             color: #ffff;
@@ -583,324 +1222,319 @@
             <!-- Section Header -->
 
 
-        
-              
 
 
 
-                <!-- Vehicle Details Section -->
-                <div class=" w-full flex flex-col animate-fade-up" style="animation-delay: 0.3s;">
-                    
-                              <!-- Header with Price -->
-                        <div class="flex items-start justify-between flex-wrap gap-4">
-                            <!-- Vehicle Info -->
-                            <div class="flex-1 min-w-0">
-                                <h2
-                                    class="text-2xl lg:text-2xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
-                                    {{ $vehicle->make }}
-                                </h2>
-                                <h1
-                                    class="text-4xl lg:text-4xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
-                                    {{ $vehicle->name }}
-                                </h1>
-
-                            </div>
-
-                            <!-- Price Info -->
-                            <div class="relative">
-                                <div class=" text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden"
-                                    style="border-radius: 58px;background: #96c93e;">
-                                    <span class="relative z-10">${{ number_format($vehicle->price) }}/day</span>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-full hover:translate-x-[-100%] transition-transform duration-700">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        </div>
-                    <!-- Vehicle Main Image -->
-@php
-    $backendBaseUrl = config('app.backend_url');
-    $vehicleType = strtolower($vehicle->type); // car, bike, etc.
-
-    // Main image URL
-    $finalImage = !empty($vehicle->vehicle_image)
-        ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
-        : asset('assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg');
-
-    // Prepare sub-images array
-    $subImages = [];
-    if (!empty($vehicle->sub_image)) {
-        $decoded = json_decode($vehicle->sub_image, true);
-        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
-            $subImages = $decoded;
-        } else {
-            $subImages = explode(',', $vehicle->sub_image);
-        }
-
-        // Clean extra quotes and spaces
-        $subImages = array_map(fn($img) => trim($img, " \t\n\r\0\x0B\""), $subImages);
-    }
-
-    // Build full URLs for sub-images
-    $subImageUrls = array_map(
-        fn($img) => $backendBaseUrl . '/storage/' . ltrim($img, '/'),
-        $subImages,
-    );
-@endphp
-
-<!-- Main Image -->
-<div class="relative overflow-hidden mb-4 group text-center" style="margin-top: -50px;">
-    <img src="{{ $finalImage }}" alt="{{ $vehicle->name }}"
-        class="mx-auto block object-contain transition-transform duration-500 group-hover:scale-105 rounded-3xl cursor-pointer"
-        style=" max-width: 100%;"
-        data-bs-toggle="modal" data-bs-target="#imageModal" data-img="{{ $finalImage }}">
-</div>
-
-<!-- Sub Images Grid (4 per row) -->
-@if (count($subImageUrls) > 0)
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sub-img-mob" style="margin-top: -70px">
-        @foreach ($subImageUrls as $url)
-            <img src="{{ $url }}" alt="Sub Image"
-                class="object-cover rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
-                style=" width: 100%;"
-                data-bs-toggle="modal" data-bs-target="#imageModal" data-img="{{ $url }}">
-        @endforeach
-    </div>
-@endif
-
-<!-- Image Modal (Popup) -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark border-0">
-            <div class="modal-body text-center p-0">
-                <img id="modalImage" src="" class="img-fluid rounded" alt="Large Image">
-            </div>
-        </div>
-    </div>
-</div>
 
 
+            <!-- Vehicle Details Section -->
+            <div class=" w-full flex flex-col animate-fade-up" style="animation-delay: 0.3s;">
 
+                <!-- Header with Price -->
+                <div class="flex items-start justify-between flex-wrap gap-4">
                     <!-- Vehicle Info -->
-                    <div class="flex-1 space-y-8" style="margin-top: 65px;">
-                     
+                    <div class="flex-1 min-w-0">
+                        <h2
+                            class="text-2xl lg:text-2xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
+                            {{ $vehicle->make }}
+                        </h2>
+                        <h1
+                            class="text-4xl lg:text-4xl font-bold text-black bg-clip-text text-transparent mb-3 text-shadow leading-tight">
+                            {{ $vehicle->name }}
+                        </h1>
 
+                    </div>
 
-                        <!-- Enhanced Vehicle Specs Grid -->
-                        <div class="max-w-7xl mx-auto">
-
-                            <!-- Main Desktop Grid -->
-                            <div class="hidden md:grid md:grid-cols-3 gap-8 mb-16">
-                                <!-- Vehicle Type Card -->
-                                <div
-                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
-                                    <div class="flex flex-col items-center text-center space-y-4">
-                                        <div
-                                            class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-8 h-8 " fill="currentColor" viewBox="0 0 24 24"
-                                                style="color: #3596d3;">
-                                                <path
-                                                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
-                                                Vehicle Type</p>
-                                            <p class="text-xl font-bold text-slate-800">Sedan</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                    </div>
-                                </div>
-
-                                <!-- Availability Card -->
-                                <div
-                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
-                                    <div class="flex flex-col items-center text-center space-y-4">
-                                        <div
-                                            class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-8 h-8 " fill="currentColor" viewBox="0 0 24 24"
-                                                style="color: #3596d3;">
-                                                <path fill-rule="evenodd"
-                                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
-                                                Availability</p>
-                                            <div class="flex items-center justify-center space-x-2">
-                                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                                                <p class="text-xl font-bold text-emerald-600">Available Now</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                    </div>
-                                </div>
-
-                                <!-- Capacity Card -->
-                                <div
-                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
-                                    <div class="flex flex-col items-center text-center space-y-4">
-                                        <div
-                                            class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-8 h-8 " fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" style="color: #3596d3;">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
-                                                Capacity</p>
-                                            <p class="text-xl font-bold text-slate-800">5 Passengers</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                    </div>
-                                </div>
-
-
+                    <!-- Price Info -->
+                    <div class="relative">
+                        <div class=" text-white font-bold text-2xl px-4 py-2 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                            style="border-radius: 58px;background: #96c93e;">
+                            <span class="relative z-10">${{ number_format($vehicle->price) }}/day</span>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-full hover:translate-x-[-100%] transition-transform duration-700">
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <!-- Mobile/Tablet Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:hidden">
-                                <!-- Vehicle Type Card - Mobile -->
+            </div>
+            <!-- Vehicle Main Image -->
+            @php
+                $backendBaseUrl = config('app.backend_url');
+                $vehicleType = strtolower($vehicle->type); // car, bike, etc.
+
+                // Main image URL
+                $finalImage = !empty($vehicle->vehicle_image)
+                    ? $backendBaseUrl . '/storage/' . ltrim($vehicle->vehicle_image, '/')
+                    : asset('assets/img/dummy/' . ($vehicleType ?: 'default') . '.jpg');
+
+                // Prepare sub-images array
+                $subImages = [];
+                if (!empty($vehicle->sub_image)) {
+                    $decoded = json_decode($vehicle->sub_image, true);
+                    if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                        $subImages = $decoded;
+                    } else {
+                        $subImages = explode(',', $vehicle->sub_image);
+                    }
+
+                    // Clean extra quotes and spaces
+                    $subImages = array_map(fn($img) => trim($img, " \t\n\r\0\x0B\""), $subImages);
+                }
+
+                // Build full URLs for sub-images
+                $subImageUrls = array_map(fn($img) => $backendBaseUrl . '/storage/' . ltrim($img, '/'), $subImages);
+            @endphp
+
+            <!-- Main Image -->
+            <div class="relative overflow-hidden mb-4 group text-center" style="margin-top: -50px;">
+                <img src="{{ $finalImage }}" alt="{{ $vehicle->name }}"
+                    class="mx-auto block object-contain transition-transform duration-500 group-hover:scale-105 rounded-3xl cursor-pointer"
+                    style=" max-width: 100%;" data-bs-toggle="modal" data-bs-target="#imageModal"
+                    data-img="{{ $finalImage }}">
+            </div>
+
+            <!-- Sub Images Grid (4 per row) -->
+            @if (count($subImageUrls) > 0)
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sub-img-mob" style="margin-top: -70px">
+                    @foreach ($subImageUrls as $url)
+                        <img src="{{ $url }}" alt="Sub Image"
+                            class="object-cover rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                            style=" width: 100%;" data-bs-toggle="modal" data-bs-target="#imageModal"
+                            data-img="{{ $url }}">
+                    @endforeach
+                </div>
+            @endif
+
+            <!-- Image Modal (Popup) -->
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content bg-dark border-0">
+                        <div class="modal-body text-center p-0">
+                            <img id="modalImage" src="" class="img-fluid rounded" alt="Large Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Vehicle Info -->
+            <div class="flex-1 space-y-8" style="margin-top: 65px;">
+
+
+
+                <!-- Enhanced Vehicle Specs Grid -->
+                <div class="max-w-7xl mx-auto">
+
+                    <!-- Main Desktop Grid -->
+                    <div class="hidden md:grid md:grid-cols-3 gap-8 mb-16">
+                        <!-- Vehicle Type Card -->
+                        <div
+                            class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                            <div class="flex flex-col items-center text-center space-y-4">
                                 <div
-                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
-                                    <div class="flex items-center space-x-4">
-                                        <div
-                                            class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-7 h-7 " fill="currentColor" viewBox="0 0 24 24"
-                                                style="color: #3596d3;">
-                                                <path
-                                                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
-                                                Vehicle Type</p>
-                                            <p class="text-lg font-bold text-slate-800">Sedan</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                    </div>
+                                    class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 " fill="currentColor" viewBox="0 0 24 24"
+                                        style="color: #3596d3;">
+                                        <path
+                                            d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
+                                    </svg>
                                 </div>
-
-                                <!-- Availability Card - Mobile -->
-                                <div
-                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
-                                    <div class="flex items-center space-x-4">
-                                        <div
-                                            class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-7 h-7 " fill="currentColor" viewBox="0 0 24 24"
-                                                style="color: #3596d3;">
-                                                <path fill-rule="evenodd"
-                                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
-                                                Availability</p>
-                                            <div class="flex items-center space-x-2">
-                                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                                                <p class="text-lg font-bold text-emerald-600">Available Now</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                    </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
+                                        Vehicle Type</p>
+                                    <p class="text-xl font-bold text-slate-800">Sedan</p>
                                 </div>
-
-                                <!-- Capacity Card - Mobile -->
-                                <div
-                                    class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
-                                    <div class="flex items-center space-x-4">
-                                        <div
-                                            class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                            <svg class="w-7 h-7 " fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" style="color: #3596d3;">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
-                                                Capacity</p>
-                                            <p class="text-lg font-bold text-slate-800">5 Passengers</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                    </div>
-                                </div>
-
-
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                             </div>
                         </div>
 
-                        <!-- Enhanced Description -->
+                        <!-- Availability Card -->
                         <div
-                            class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 p-8 rounded-3xl border border-blue-100/50 shadow-lg">
-                            <div class="relative z-10">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-8 h-8  rounded-lg flex items-center justify-center mr-3"
-                                        style="margin-top: -9px;background: linear-gradient(135deg, #2596be, #96c93e);">
-                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="text-2xl font-bold text-gray-900">Premium Features & Comfort</h3>
+                            class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                            <div class="flex flex-col items-center text-center space-y-4">
+                                <div
+                                    class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 " fill="currentColor" viewBox="0 0 24 24"
+                                        style="color: #3596d3;">
+                                        <path fill-rule="evenodd"
+                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                            clip-rule="evenodd" />
+                                    </svg>
                                 </div>
-                                <p class="text-gray-700 leading-relaxed text-lg">
-                                    {{ $vehicle->description ?? 'Experience unparalleled comfort and reliability with this meticulously maintained premium sedan. Perfect for exploring Sri Lanka\'s breathtaking landscapes and vibrant cities.' }}
-                                </p>
-                                <!-- Feature Tags -->
-                                <div class="flex flex-wrap gap-3 mt-6">
-                                    <span
-                                        class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">🚗
-                                        GPS Navigation</span>
-                                    <span
-                                        class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">❄️
-                                        AC Climate Control</span>
-                                    <span
-                                        class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">🛡️
-                                        Full Insurance</span>
-                                    <span
-                                        class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">🔧
-                                        24/7 Support</span>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
+                                        Availability</p>
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                        <p class="text-xl font-bold text-emerald-600">Available Now</p>
+                                    </div>
                                 </div>
                             </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+                            </div>
+                        </div>
 
-                            <!-- Background Pattern -->
-                            <div class="absolute top-0 right-0 w-32 h-32 opacity-10">
-                                <svg viewBox="0 0 100 100" class="w-full h-full text-blue-500">
-                                    <defs>
-                                        <pattern id="grid" width="10" height="10"
-                                            patternUnits="userSpaceOnUse">
-                                            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor"
-                                                stroke-width="1" />
-                                        </pattern>
-                                    </defs>
-                                    <rect width="100" height="100" fill="url(#grid)" />
+                        <!-- Capacity Card -->
+                        <div
+                            class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                            <div class="flex flex-col items-center text-center space-y-4">
+                                <div
+                                    class="icon-container w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        style="color: #3596d3;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">
+                                        Capacity</p>
+                                    <p class="text-xl font-bold text-slate-800">5 Passengers</p>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Mobile/Tablet Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:hidden">
+                        <!-- Vehicle Type Card - Mobile -->
+                        <div
+                            class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-7 h-7 " fill="currentColor" viewBox="0 0 24 24"
+                                        style="color: #3596d3;">
+                                        <path
+                                            d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
+                                        Vehicle Type</p>
+                                    <p class="text-lg font-bold text-slate-800">Sedan</p>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+                            </div>
+                        </div>
+
+                        <!-- Availability Card - Mobile -->
+                        <div
+                            class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-7 h-7 " fill="currentColor" viewBox="0 0 24 24"
+                                        style="color: #3596d3;">
+                                        <path fill-rule="evenodd"
+                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
+                                        Availability</p>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                        <p class="text-lg font-bold text-emerald-600">Available Now</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+                            </div>
+                        </div>
+
+                        <!-- Capacity Card - Mobile -->
+                        <div
+                            class="spec-card glass-effect hover-lift rounded-2xl p-6 professional-shadow transition-all duration-500 group">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="icon-container w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-7 h-7 " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        style="color: #3596d3;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">
+                                        Capacity</p>
+                                    <p class="text-lg font-bold text-slate-800">5 Passengers</p>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Enhanced Description -->
+                <div
+                    class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 p-8 rounded-3xl border border-blue-100/50 shadow-lg">
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8  rounded-lg flex items-center justify-center mr-3"
+                                style="margin-top: -9px;background: linear-gradient(135deg, #2596be, #96c93e);">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                 </svg>
                             </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Premium Features & Comfort</h3>
                         </div>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            {{ $vehicle->description ?? 'Experience unparalleled comfort and reliability with this meticulously maintained premium sedan. Perfect for exploring Sri Lanka\'s breathtaking landscapes and vibrant cities.' }}
+                        </p>
+                        <!-- Feature Tags -->
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <span
+                                class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">🚗
+                                GPS Navigation</span>
+                            <span
+                                class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">❄️
+                                AC Climate Control</span>
+                            <span
+                                class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">🛡️
+                                Full Insurance</span>
+                            <span
+                                class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 border border-gray-200">🔧
+                                24/7 Support</span>
+                        </div>
+                    </div>
 
-                        <!-- Enhanced Action Button -->
-                        <div class="pt-6">
-                            <button
+                    <!-- Background Pattern -->
+                    <div class="absolute top-0 right-0 w-32 h-32 opacity-10">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-blue-500">
+                            <defs>
+                                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="1" />
+                                </pattern>
+                            </defs>
+                            <rect width="100" height="100" fill="url(#grid)" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Enhanced Action Button -->
+                <div class="pt-6">
+                    {{-- <button
                                 class="relative w-full group overflow-hidden bg-black text-white font-bold text-xl py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-[1.02] transition-all duration-300 bg-size-200 hover:bg-pos-100"
                                 style="background-size: 200% 100%; background-position: 0% 0%;background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);"
                                 onmouseover="this.style.backgroundPosition = '100% 0%'"
@@ -921,37 +1555,37 @@
                                     class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div class="absolute inset-0 rounded-2xl bg-white/10 animate-ping"></div>
                                 </div>
-                            </button>
+                            </button> --}}
 
-                            <!-- Additional Info -->
-                            <div class="flex items-center justify-center space-x-6 mt-6 text-sm text-gray-600">
-                                <div class="flex items-center space-x-2">
-                                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span>Cancellation</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span>Confirmation</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span>Best Price </span>
-                                </div>
-                            </div>
+                    <!-- Additional Info -->
+                    <div class="flex items-center justify-center space-x-6 mt-6 text-sm text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Cancellation</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Confirmation</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Best Price </span>
                         </div>
                     </div>
                 </div>
-       
+            </div>
+        </div>
+
         </div>
     </section>
 
@@ -996,7 +1630,7 @@
         </div>
 
 
-        <div class="">
+        {{-- <div class="">
 
 
             <div class="steps-container">
@@ -1132,11 +1766,147 @@
 
 
 
-        </div>
+        </div> --}}
 
 
 
     </section>
+
+
+    {{-- <div class="container-fluid"> --}}
+    <section>
+        <div class="booking-container">
+            <!-- Header -->
+            <div class="booking-header text-center">
+                <h1 style="font-family: monospace;">Book This Vehicle</h1>
+                <p style="margin-top: 10px;">Fill in your details and submit your booking request. Our team will
+                    confirm your reservation shortly.</p>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="step-progress">
+                    <div class="step-item active" id="v-indicator-1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Personal Info</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="v-indicator-2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Reservation Details</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="v-indicator-3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Additional Info</div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="vehicleBookingForm" method="POST" action="{{ route('transport.booking.store') }}">
+                @csrf
+                <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+
+                <!-- Step 1: Personal Info -->
+                <div class="step-content" id="v-step-1">
+                    <h4>Personal Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label>Full Name *</label>
+                            <input type="text" name="fullName" class="form-control" required placeholder="John Doe">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Email *</label>
+                            <input type="email" name="email" class="form-control" required
+                                placeholder="example@mail.com">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Phone *</label>
+                            <input type="tel" name="phone" class="form-control" required
+                                placeholder="+1 123-456-7890">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>WhatsApp *</label>
+                            <input type="text" name="whatsapp" class="form-control" required
+                                placeholder="+1 123-456-7890">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Country *</label>
+                            <input type="text" name="country" class="form-control" required placeholder="USA">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Reservation Details -->
+                <div class="step-content hidden" id="v-step-2">
+                    <h4>Reservation Details</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label>Start Date *</label>
+                            <input type="date" name="startDate" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Start Time *</label>
+                            <input type="time" name="startTime" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>End Date *</label>
+                            <input type="date" name="endDate" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>End Time *</label>
+                            <input type="time" name="endTime" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Pickup Location *</label>
+                            <input type="text" name="pickupLocation" class="form-control" required
+                                placeholder="Enter pickup address">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Drop Location *</label>
+                            <input type="text" name="dropLocation" class="form-control" required
+                                placeholder="Enter drop-off address">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label>Service Type *</label>
+                            <select name="serviceType" class="form-control" required>
+                                <option value="">Select Service</option>
+                                <option value="transport">Transport</option>
+                                <option value="hourly">Hourly Based</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-4" id="hourInputWrapper" style="display:none;">
+                            <label>Hours</label>
+                            <input type="number" name="hourCount" min="1" class="form-control"
+                                placeholder="e.g. 3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Additional Info -->
+                <div class="step-content hidden" id="v-step-3">
+                    <h4>Additional Information</h4>
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label>Message</label>
+                            <textarea name="message" rows="4" class="form-control" placeholder="Tell us your preferences or questions..."></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="submit-btn btn btn-primary">Submit Booking</button>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="navigation-buttons mt-3">
+                    <button type="button" class="btn btn-secondary hidden" id="v-prevBtn">Previous</button>
+                    <button type="button" class="btn btn-primary" id="v-nextBtn">Next</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    {{-- </div> --}}
+
 
     <script>
         document.getElementById('serviceType').addEventListener('change', function() {
@@ -1161,17 +1931,125 @@
     </script>
 
     <!-- Script -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const modalImage = document.getElementById("modalImage");
-        const imageTriggers = document.querySelectorAll("[data-bs-target='#imageModal']");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const modalImage = document.getElementById("modalImage");
+            const imageTriggers = document.querySelectorAll("[data-bs-target='#imageModal']");
 
-        imageTriggers.forEach(img => {
-            img.addEventListener("click", function () {
-                modalImage.src = this.getAttribute("data-img");
+            imageTriggers.forEach(img => {
+                img.addEventListener("click", function() {
+                    modalImage.src = this.getAttribute("data-img");
+                });
             });
         });
-    });
-</script>
+    </script>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Clear all fields on load
+            document.getElementById('vehicleBookingForm').reset();
+
+            const form = new VehicleBookingForm();
+
+            // Show Hour Count field when Service Type is Hourly
+            const serviceType = document.querySelector('select[name="serviceType"]');
+            const hourWrapper = document.getElementById('hourInputWrapper');
+            serviceType.addEventListener('change', () => {
+                hourWrapper.style.display = serviceType.value === 'hourly' ? 'block' : 'none';
+            });
+        });
+
+        class VehicleBookingForm {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 3;
+                this.init();
+            }
+            init() {
+                document.getElementById('v-nextBtn').addEventListener('click', () => this.nextStep());
+                document.getElementById('v-prevBtn').addEventListener('click', () => this.prevStep());
+
+                const form = document.getElementById('vehicleBookingForm');
+                form.addEventListener('submit', (e) => this.handleSubmit(e))
+                this.showStep(this.currentStep);
+            }
+            showStep(step) {
+                for (let i = 1; i <= this.totalSteps; i++) {
+                    document.getElementById(`v-step-${i}`).classList.add('hidden');
+                    document.getElementById(`v-indicator-${i}`).classList.remove('active', 'completed');
+                }
+                document.getElementById(`v-step-${step}`).classList.remove('hidden');
+                document.getElementById(`v-indicator-${step}`).classList.add('active');
+                for (let i = 1; i < step; i++)
+                    document.getElementById(`v-indicator-${i}`).classList.add('completed');
+
+                document.getElementById('v-prevBtn').classList.toggle('hidden', step === 1);
+                document.getElementById('v-nextBtn').classList.toggle('hidden', step === this.totalSteps);
+            }
+            nextStep() {
+                const currentFields = document.querySelectorAll(
+                    `#v-step-${this.currentStep} input[required], #v-step-${this.currentStep} select[required], #v-step-${this.currentStep} textarea[required]`
+                );
+                let valid = true;
+                currentFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('is-invalid');
+                        valid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                if (!valid) return;
+                if (this.currentStep < this.totalSteps) {
+                    this.currentStep++;
+                    this.showStep(this.currentStep);
+                }
+            }
+            prevStep() {
+                if (this.currentStep > 1) {
+                    this.currentStep--;
+                    this.showStep(this.currentStep);
+                }
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+                const submitBtn = form.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Submitting...';
+
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json',
+                        },
+                        body: formData,
+                    });
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                        document.querySelector('.booking-container').innerHTML = `
+                <div class="text-center p-5">
+                    <h3>✅ ${data.message}</h3>
+                    <p>Our team will contact you to confirm your reservation.</p>
+                </div>`;
+                    } else {
+                        Swal.fire('Error', data.message || 'Please check your input fields.', 'error');
+                    }
+                } catch (err) {
+                    Swal.fire('Error', err.message || 'Something went wrong.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Submit Booking';
+                }
+            }
+        }
+    </script>
 @endsection

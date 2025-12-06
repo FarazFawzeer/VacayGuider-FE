@@ -26,6 +26,7 @@ class TransportationBooking extends Model
         'service_type',
         'hour_count',
         'message',
+        'status',
     ];
 
     // Cast date/time fields to appropriate types

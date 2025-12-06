@@ -211,7 +211,7 @@
                         style="width:150px; height:auto; display:block; margin:0 auto;">
                 </div>
             </div>
-            <h1>Booking Confirmation</h1>
+            <h1>VacayGuider</h1>
             <div class="subtitle">Ready For Adventure!</div>
         </div>
 
@@ -221,15 +221,13 @@
             </div>
 
             <div class="confirmation-message">
-                <h2>Your Booking is Confirmed</h2>
+                <h2>Thank You!</h2>
                 <p>
-                    We are happy to inform you about your booking confirmation of the
-                    <strong>{{ $booking->package->heading ?? 'Selected Package' }}</strong>
-                    that will begin from
-                    <strong>{{ \Carbon\Carbon::parse($booking->start_date)->format('d M, Y') }}</strong>.
+                    Your details have been submitted successfully. Our team has received your request for the
+                    <strong>{{ $booking->package->heading ?? 'Selected Package' }}</strong>.
+                    We will review the information and contact you shortly with the next steps.
                 </p>
             </div>
-
             <div class="booking-details">
                 <h3>Your Booking Details:</h3>
 

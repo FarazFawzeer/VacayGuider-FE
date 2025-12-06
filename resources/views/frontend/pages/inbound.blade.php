@@ -11,6 +11,107 @@
             font-family: 'Inter', sans-serif;
         }
 
+        @media (max-width: 576px) {
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 100px !important;
+            }
+
+            /* ol,
+            ul {
+                padding-left: 2rem !important;
+            } */
+
+            .inbound-title {
+                margin-top: 32px !important;
+                margin-block: 20px;
+                margin-bottom: 16px;
+            }
+
+            /* Reduce container padding */
+           
+
+            /* Header text */
+            .booking-header h1 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            .booking-header p {
+                font-size: 14px;
+                line-height: 20px;
+                margin-top: 20px !important;
+            }
+
+            /* Step Progress Bar */
+            .step-progress {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .step-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .step-title {
+                font-size: 14px;
+                margin-left: 10px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+
+            /* Form Inputs */
+            .form-control,
+            .form-select {
+                width: 100% !important;
+            }
+
+            /* Fix Phone + WhatsApp fields */
+            #phone,
+            #whatsapp {
+                width: 100% !important;
+            }
+
+            .row>div {
+                margin-bottom: 15px;
+            }
+
+            /* Review Page Fix */
+            #reviewGreeting {
+                font-size: 20px;
+            }
+
+            #reviewSummary {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            /* Navigation Buttons */
+            .navigation-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .navigation-buttons button {
+                width: 48%;
+            }
+        }
 
         .message {
             max-width: 500px;
@@ -535,7 +636,6 @@
             }
 
             .booking-container {
-                margin: 0 1rem;
                 border-radius: 16px;
             }
 
@@ -841,22 +941,22 @@
         }
 
         /*
-                .btn {
-                    background: linear-gradient(135deg, #000000, #000000);
-                    color: white;
-                    padding: 18px 40px;
-                    border: none;
-                    border-radius: 50px;
-                    font-size: 1.1rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    text-decoration: none;
-                    display: inline-block;
-                    text-align: center;
-                    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-                    margin-top: 20px;
-                } */
+                                        .btn {
+                                            background: linear-gradient(135deg, #000000, #000000);
+                                            color: white;
+                                            padding: 18px 40px;
+                                            border: none;
+                                            border-radius: 50px;
+                                            font-size: 1.1rem;
+                                            font-weight: 600;
+                                            cursor: pointer;
+                                            transition: all 0.3s ease;
+                                            text-decoration: none;
+                                            display: inline-block;
+                                            text-align: center;
+                                            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                                            margin-top: 20px;
+                                        } */
 
         .btn:hover {
             color: #ffff;
@@ -975,6 +1075,11 @@
     </style>
 
     <style>
+        ol,
+        ul {
+            padding-left: 0;
+        }
+
         .th-btn:hover {
             color: #ffffff;
             background-color: #0083a3 !important;
@@ -1070,9 +1175,9 @@
 
         /*
 
-                                                                                                                                                            .space, .space-top {
-                                                                                                                                                              padding-top: 20px;
-                                                                                                                                                            } */
+                                                                                                                                                                                    .space, .space-top {
+                                                                                                                                                                                      padding-top: 20px;
+                                                                                                                                                                                    } */
         .custom-btn {
             background: linear-gradient(45deg, #60D522, #A3EB58);
 
@@ -1530,14 +1635,7 @@
             width: 0;
         }
 
-        breadcumb-wrapper {
-            position: relative;
-            background-image: url('assets/img/hero/carousel-2.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-        }
+    
 
         .breadcumb-wrapper::before {
             content: "";
@@ -1636,645 +1734,355 @@
         }
     </style>
 
-    {{-- 
-    <div class="container-fluid about-hero text-white position-relative"
-        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('assets/img/avenue-815297_1920.jpg') }}')  center center / cover no-repeat;;
-     display: flex;
-     align-items: center;">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="hero-style7">
-                        <span class="sub-title style1 text-white d-block mb-2">Inbound</span>
-                        <h1 class="hero-title text-white display-4 mb-0" style="font-weight: 700;">Discover the Wonders of Sri
-                            Lanka</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+
 
     <div>
-    <div class="w-full ">
-        <div class="mx-auto  px-4 sm:px-6 lg:px-8">
-            <div class="py-3">
-                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
-                    <ol class="flex items-center space-x-1 text-sm font-medium">
-                        <!-- Home Link -->
-                        <li class="flex items-center">
-                            <a href="{{ url('/') }}"
-                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
-                                <!-- Home Icon -->
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-full ">
+            <div class="mx-auto  px-4 sm:px-6 lg:px-8">
+                <div class="py-3">
+                    <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
+                        <ol class="flex items-center space-x-1 text-sm font-medium">
+                            <!-- Home Link -->
+                            <li class="flex items-center">
+                                <a href="{{ url('/') }}"
+                                    class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
+                                    <!-- Home Icon -->
+                                    <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                    <span class="group-hover:text-blue-600">Home</span>
+                                </a>
+                            </li>
+
+                            <!-- Separator -->
+                            <li class="flex items-center">
+                                <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                        d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span class="group-hover:text-blue-600">Home</span>
-                            </a>
-                        </li>
+                            </li>
 
-                        <!-- Separator -->
-                        <li class="flex items-center">
-                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </li>
+                            <!-- Current Page -->
+                            <li class="flex items-center">
+                                <span
+                                    class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
+                                    aria-current="page">
+                                    <!-- About Icon -->
 
-                        <!-- Current Page -->
-                        <li class="flex items-center">
-                            <span
-                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
-                                aria-current="page">
-                                <!-- About Icon -->
-
-                                <span>Inbound Tours</span>
-                            </span>
-                        </li>
-                    </ol>
-                </nav>
+                                    <span>Inbound Tours</span>
+                                </span>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="sidebar-overlay"></div>
-
+        <div class="sidebar-overlay"></div>
 
 
-    <!-- Tour Page with Sidebar Filter Section -->
-    <section class="position-relative overflow-hidden space" id="service-sec" data-bg-src="">
-        <div class="container-fluid" style="margin-top: -104px;">
-            <div class="row">
-                <div class="title-area text-center inbound-title" style="">
-                    <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                        Discover the Wonders of Sri Lanka </h2>
-                </div>
-            </div>
 
-
-            <div class="row " style="margin-top: -20px;">
-
-
-                <!-- Filter Toggle Button for Mobile -->
-                <!-- Filter Toggle Button (Visible only on mobile) -->
-                <div class="d-md-none w-100 px-3 mb-3">
-                    <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
-                        style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                        </svg>
-                        <span style="font-size: 14px;">Filter</span>
-                    </button>
+        <!-- Tour Page with Sidebar Filter Section -->
+        <section class="position-relative overflow-hidden space" id="service-sec" data-bg-src="">
+            <div class="container-fluid" style="margin-top: -104px;">
+                <div class="row">
+                    <div class="title-area text-center inbound-title" style="">
+                        <h2 class="sec-title"
+                            style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            Discover the Wonders of Sri Lanka </h2>
+                    </div>
                 </div>
 
 
-                <!-- Sidebar Filter Section - 1/4 width -->
-                <div class="col-md-3 sidebar-container" id="mobileSidebar">
-                    <div class="sidebar-content p-4" style=" width: 100%;">
-                        <div class="filter-sidebar  p-4" style="  border-radius: 10px; border: 1px solid #dee2e6;">
-                            <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
-                                <button id="closeSidebarBtn" class=" btn-sm text-danger border-0 shadow-none">
-                                    <i class="fas fa-times fa-lg"></i>
-                                </button>
-                            </div>
-                            <form id="filterForm">
-                                <!-- Tour Category Selection -->
-                                <div class="filter-section mb-4">
-                                    <div class="ps-1">
-                                        @php
-                                            $options = [
-                                                'special' => 'Special',
-                                                'city' => 'City',
-                                                'tailor' => 'Tailor Made',
-                                                'customize' => 'Customize',
-                                            ];
-                                        @endphp
-                                        @foreach ($options as $key => $label)
-                                            <div
-                                                class="form-check mb-2 d-flex align-items-start align-items-center justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <input class="form-check-input tour-option-radio" type="checkbox"
-                                                        name="tour_category" id="category_{{ $key }}"
-                                                        value="{{ $key }}" {{ $loop->first ? 'checked' : '' }}
-                                                        data-section="{{ $key }}">
-                                                    <label class="form-check-label ms-2"
-                                                        for="category_{{ $key }}">
-                                                        {{ $label }}
-                                                    </label>
+                <div class="row " style="margin-top: -20px;">
+
+
+                    <!-- Filter Toggle Button for Mobile -->
+                    <!-- Filter Toggle Button (Visible only on mobile) -->
+                    <div class="d-md-none w-100 px-3 mb-3">
+                        <button id="toggleFilterBtn" class="w-100 d-flex align-items-center gap-2  rounded-lg p-2"
+                            style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                            <span style="font-size: 14px;">Filter</span>
+                        </button>
+                    </div>
+
+
+                    <!-- Sidebar Filter Section - 1/4 width -->
+                    <div class="col-md-3 sidebar-container" id="mobileSidebar">
+                        <div class="sidebar-content p-4" style=" width: 100%;">
+                            <div class="filter-sidebar  p-4" style="  border-radius: 10px; border: 1px solid #dee2e6;">
+                                <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
+                                    <button id="closeSidebarBtn" class=" btn-sm text-danger border-0 shadow-none">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </button>
+                                </div>
+                                <form id="filterForm">
+                                    <!-- Tour Category Selection -->
+                                    <div class="filter-section mb-4">
+                                        <div class="ps-1">
+                                            @php
+                                                $options = [
+                                                    'special' => 'Special',
+                                                    'city' => 'City',
+                                                    'tailor' => 'Tailor Made',
+                                                    'customize' => 'Customize',
+                                                ];
+                                            @endphp
+                                            @foreach ($options as $key => $label)
+                                                <div
+                                                    class="form-check mb-2 d-flex align-items-start align-items-center justify-content-between">
+                                                    <div class="d-flex align-items-center">
+                                                        <input class="form-check-input tour-option-radio" type="checkbox"
+                                                            name="tour_category" id="category_{{ $key }}"
+                                                            value="{{ $key }}" {{ $loop->first ? 'checked' : '' }}
+                                                            data-section="{{ $key }}">
+                                                        <label class="form-check-label ms-2"
+                                                            for="category_{{ $key }}">
+                                                            {{ $label }}
+                                                        </label>
+                                                    </div>
+
+                                                    @if ($key === 'tailor')
+                                                        <span class="tailor-arrow" style="font-size: 16px;">&#9656;</span>
+                                                        {{-- ▶ --}}
+                                                    @endif
                                                 </div>
 
                                                 @if ($key === 'tailor')
-                                                    <span class="tailor-arrow" style="font-size: 16px;">&#9656;</span>
-                                                    {{-- ▶ --}}
+                                                    <!-- Tailor Made Sub-Filters (indented under Tailor) -->
+                                                    <div id="tailor-section"
+                                                        class="filter-section-content  ms-4 mt-2 border-start ps-3">
+                                                        <!-- Days Filter -->
+                                                        <div class="filter-section mb-3">
+                                                            <h6 class="text-black"
+                                                                style="font-size: 14px;font-weight: 500;">
+                                                                Number of Days</h6>
+                                                            <div class="d-flex justify-content-between mb-2">
+                                                                <span id="durationMinLabel"
+                                                                    style="font-size: 13px;">{{ $minDay }} Day</span>
+                                                                <span id="durationMaxLabel"
+                                                                    style="font-size: 13px;">{{ $maxDay }}
+                                                                    Days</span>
+                                                            </div>
+                                                            <input type="range" class="form-range" id="daysRangeSlider"
+                                                                name="days" min="{{ $minDay }}"
+                                                                max="{{ $maxDay }}" value=""
+                                                                style="border: none;" />
+                                                            <div class="text-center">
+                                                                <small>Selected: <span id="selectedDay">Not selected</span>
+                                                                    Days</small>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Themes Filter -->
+                                                        <div class="filter-section mb-2">
+                                                            <h6 class="text-black"
+                                                                style="font-size: 14px;font-weight: 500;">
+                                                                Theme</h6>
+                                                            <div class="ps-2">
+                                                                @foreach ($allThemes as $theme)
+                                                                    <div class="form-check mb-2 d-flex align-items-center">
+                                                                        <input class="form-check-input" name="theme[]"
+                                                                            value="{{ $theme }}" type="checkbox"
+                                                                            id="theme_{{ $loop->index }}">
+                                                                        <label class="form-check-label theme-lable ms-2"
+                                                                            syle="font-size: 12px !important;font-weight: 300 !important;"
+                                                                            for="theme_{{ $loop->index }}">
+                                                                            {{ ucfirst($theme) }}
+                                                                        </label>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 @endif
-                                            </div>
-
-                                            @if ($key === 'tailor')
-                                                <!-- Tailor Made Sub-Filters (indented under Tailor) -->
-                                                <div id="tailor-section"
-                                                    class="filter-section-content  ms-4 mt-2 border-start ps-3">
-                                                    <!-- Days Filter -->
-                                                    <div class="filter-section mb-3">
-                                                        <h6 class="text-black" style="font-size: 14px;font-weight: 500;">
-                                                            Number of Days</h6>
-                                                        <div class="d-flex justify-content-between mb-2">
-                                                            <span id="durationMinLabel"
-                                                                style="font-size: 13px;">{{ $minDay }} Day</span>
-                                                            <span id="durationMaxLabel"
-                                                                style="font-size: 13px;">{{ $maxDay }} Days</span>
-                                                        </div>
-                                                        <input type="range" class="form-range" id="daysRangeSlider"
-                                                            name="days" min="{{ $minDay }}"
-                                                            max="{{ $maxDay }}" value=""
-                                                            style="border: none;" />
-                                                        <div class="text-center">
-                                                            <small>Selected: <span id="selectedDay">Not selected</span>
-                                                                Days</small>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Themes Filter -->
-                                                    <div class="filter-section mb-2">
-                                                        <h6 class="text-black" style="font-size: 14px;font-weight: 500;">
-                                                            Theme</h6>
-                                                        <div class="ps-2">
-                                                            @foreach ($allThemes as $theme)
-                                                                <div class="form-check mb-2 d-flex align-items-center">
-                                                                    <input class="form-check-input" name="theme[]"
-                                                                        value="{{ $theme }}" type="checkbox"
-                                                                        id="theme_{{ $loop->index }}">
-                                                                    <label class="form-check-label theme-lable ms-2"
-                                                                        syle="font-size: 12px !important;font-weight: 300 !important;"
-                                                                        for="theme_{{ $loop->index }}">
-                                                                        {{ ucfirst($theme) }}
-                                                                    </label>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
 
 
-                            </form>
+                                </form>
 
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Tour Cards Section - 3/4 width -->
-                <div class="col-md-9" id="filteredResults">
-                    <div id="all-tours">
-                        {{-- Show all three on page load --}}
-
-                        <!-- Special Tours -->
-                        <h1 class="page-title text-start ml-2 special-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
-                            Special Tours</h1>
-                        <div class="row">
-                            @forelse ($specialTours as $package)
-                                @include('frontend.components.tour-cards', ['package' => $package])
-                            @empty
-                                <div class="col-12 text-center">No special tours found.</div>
-                            @endforelse
-                        </div>
-                        <!-- City Tours -->
-                        <h1 class="page-title text-start ml-2"
-                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;margin-top: 45px;">
-                            City Tours</h1>
-                        <div class="row">
-                            @forelse ($cityTours as $package)
-                                @include('frontend.components.tour-cards', ['package' => $package])
-                            @empty
-                                <div class="col-12 text-center">No city tours found.</div>
-                            @endforelse
-                        </div>
-
-                        <!-- Tailor Made Tours -->
-                        <h1 class="page-title text-start ml-2"
-                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;margin-top: 45px;">
-                            Tailor Made Tours</h1>
-                        <div class="row">
-                            @forelse ($tailorTours as $package)
-                                @include('frontend.components.tour-cards', ['package' => $package])
-                            @empty
-                                <div class="col-12 text-center">No tailor-made tours found.</div>
-                            @endforelse
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Filtered Section (used when user clicks Special, City, Tailor) -->
-                    <div id="single-tour-section" class="d-none">
-                        <h1 class="page-title text-start ml-2" id="selectedTourTitle"
-                            style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
-                        </h1>
-                        <div id="tourPackageList"></div>
-                    </div>
 
+                    <!-- Tour Cards Section - 3/4 width -->
+                    <div class="col-md-9" id="filteredResults">
+                        <div id="all-tours">
+                            {{-- Show all three on page load --}}
 
+                            <!-- Special Tours -->
+                            <h1 class="page-title text-start ml-2 special-title"
+                                style="font-family: monospace;font-size: 32px; font-weight: 600; color: #1a1a1a;">
+                                Special Tours</h1>
+                            <div class="row">
+                                @forelse ($specialTours as $package)
+                                    @include('frontend.components.tour-cards', ['package' => $package])
+                                @empty
+                                    <div class="col-12 text-center">No special tours found.</div>
+                                @endforelse
+                            </div>
+                            <!-- City Tours -->
+                            <h1 class="page-title text-start ml-2"
+                                style="font-family: monospace;font-size: 32px; font-weight: 600; color: #1a1a1a;margin-top: 45px;">
+                                City Tours</h1>
+                            <div class="row">
+                                @forelse ($cityTours as $package)
+                                    @include('frontend.components.tour-cards', ['package' => $package])
+                                @empty
+                                    <div class="col-12 text-center">No city tours found.</div>
+                                @endforelse
+                            </div>
 
-                    <!-- Customize Tour Form -->
-                    <div id="customize-tour-form" class="d-none">
-                        <div class="card p-4 shadow">
-                            <h3 class="mb-3"
+                            <!-- Tailor Made Tours -->
+                            <h1 class="page-title text-start ml-2"
+                                style="font-family: monospace;font-size: 32px; font-weight: 600; color: #1a1a1a;margin-top: 45px;">
+                                Tailor Made Tours</h1>
+                            <div class="row">
+                                @forelse ($tailorTours as $package)
+                                    @include('frontend.components.tour-cards', ['package' => $package])
+                                @empty
+                                    <div class="col-12 text-center">No tailor-made tours found.</div>
+                                @endforelse
+                            </div>
+                        </div>
+
+                        <!-- Filtered Section (used when user clicks Special, City, Tailor) -->
+                        <div id="single-tour-section" class="d-none">
+                            <h1 class="page-title text-start ml-2" id="selectedTourTitle"
                                 style="font-family: 'Poppins', sans-serif;font-size: 32px; font-weight: 600; color: #1a1a1a;">
-                                Customize Your Tour</h3>
-                            <form id="customizeForm" style="margin-top: 30px;">
-                                <!-- Row 1: Name + Email -->
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="custom_name" class="form-label">Your Name</label>
-                                        <input type="text" class="form-control" id="custom_name" name="custom_name"
-                                            placeholder="Ex: John" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="custom_email" class="form-label">Your Email</label>
-                                        <input type="email" class="form-control" id="custom_email" name="custom_email"
-                                            placeholder="Ex: john@gmail.com" required>
-                                    </div>
-                                </div>
-
-                                <!-- Row 2: Phone + Dates -->
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="custom_phone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="custom_phone" name="custom_phone"
-                                            placeholder="Ex: 0xxxxxxxxx" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="custom_dates" class="form-label">Preferred Travel Dates</label>
-                                        <input type="text" class="form-control" id="custom_dates" name="custom_dates"
-                                            placeholder="e.g., 12th Dec to 18th Dec">
-                                    </div>
-                                </div>
-
-                                <!-- Row 3: Travelers + empty (optional future use) -->
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="custom_travelers" class="form-label">Number of Travelers</label>
-                                        <input type="number" class="form-control" id="custom_travelers"
-                                            name="custom_travelers" min="1" placeholder="e.g., 2 Adults, 1 Child">
-                                    </div>
-                                    <div class="col-md-6 mb-3"></div>
-                                </div>
-
-                                <!-- Message (Full Row) -->
-                                <div class="mb-3">
-                                    <label for="custom_message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="custom_message" name="custom_message" rows="4"
-                                        placeholder="Describe your tour..."></textarea>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary btn-sm"
-                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit</button>
-                            </form>
+                            </h1>
+                            <div id="tourPackageList"></div>
                         </div>
+
+
+
+                        <!-- Customize Tour Form -->
+                        <div id="customize-tour-form" class="d-none">
+                            <div class="card p-4 shadow">
+                                <h3 class="mb-3"
+                                    style="font-family: monospace;font-size: 32px; font-weight: 600; color: #1a1a1a;">
+                                    Customize Your Tour</h3>
+                                <form id="customizeForm" style="margin-top: 30px;">
+                                    <!-- Row 1: Name + Email -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="custom_name" class="form-label">Your Name</label>
+                                            <input type="text" class="form-control" id="custom_name"
+                                                name="custom_name" placeholder="Ex: John" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="custom_email" class="form-label">Your Email</label>
+                                            <input type="email" class="form-control" id="custom_email"
+                                                name="custom_email" placeholder="Ex: john@gmail.com" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2: Phone + Dates -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="custom_phone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="custom_phone"
+                                                name="custom_phone" placeholder="Ex: 0xxxxxxxxx" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="custom_dates" class="form-label">Preferred Travel Dates</label>
+                                            <input type="text" class="form-control" id="custom_dates"
+                                                name="custom_dates" placeholder="e.g., 12th Dec to 18th Dec">
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 3: Travelers + empty (optional future use) -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="custom_travelers" class="form-label">Number of Travelers</label>
+                                            <input type="number" class="form-control" id="custom_travelers"
+                                                name="custom_travelers" min="1"
+                                                placeholder="e.g., 2 Adults, 1 Child">
+                                        </div>
+                                        <div class="col-md-6 mb-3"></div>
+                                    </div>
+
+                                    <!-- Message (Full Row) -->
+                                    <div class="mb-3">
+                                        <label for="custom_message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="custom_message" name="custom_message" rows="4"
+                                            placeholder="Describe your tour..."></textarea>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button type="submit" class="btn btn-primary btn-sm"
+                                        style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+
+
                     </div>
 
 
                 </div>
-
-
             </div>
-        </div>
-    </section>
+        </section>
 
 
 
-    <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8" style="padding-bottom: 20px;">
+        <section class="bg-gradient-to-r from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8" style="padding-bottom: 20px;">
 
-        <!-- 🔁 How It Works -->
-        <div class="text-center " style="margin-bottom: 70px;">
-            <h2 class="sec-title" style="font-weight: bold;">How It Works</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+            <!-- 🔁 How It Works -->
+            <div class="text-center " style="margin-bottom: 70px;">
+                <h2 class="sec-title" style="font-weight: bold;">How It Works</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
 
-                    <!-- Step 1 -->
-                    <div class="rounded-2xl shadow-md p-6 transition hover:shadow-lg"
-                        style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
-                        <div class="text-black-700 font-bold text-lg mb-2">1. Submit Your Request</div>
-                        <p class="text-gray-600 text-base">Use the form below to tell us your travel dates and preferences.
-                        </p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
-                        style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
-                        <div class="text-black-700 font-bold text-lg mb-2">2. Get a Quote</div>
-                        <p class="text-gray-600 text-base">We’ll send you a personalized package and price within 24 hours.
-                        </p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
-                        style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
-                        <div class="text-black-700 font-bold text-lg mb-2">3. Confirm & Travel</div>
-                        <p class="text-gray-600 text-base">Once confirmed, we handle everything so you can enjoy your trip
-                            worry-free.</p>
-                    </div>
-
-                </div>
-        </div>
-
-
-        <div class="">
-
-
-            {{-- <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-blue-900 mb-4">Check Your Reservation</h2>
-                <p class="text-center text-gray-600 mb-6 sm:mb-8">Fill out the form below to check availability and receive
-                    a personalized quote.</p>
-
-
-                <div id="success-message"
-                    class="bg-green-100 text-green-800 p-4 rounded mb-4 transition-opacity duration-500">
-                    {{ session('success') }}
-                </div>
-                <form method="POST" action="{{ route('package.booking.store') }}"
-                    class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    @csrf
-                    <!-- Full Name -->
-                            <div class="form-group md:col-span-2">
-                                <label for="fullName">First Name *</label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
-                            </div>
-
-                            <!-- Last Name -->
-                            <div class="form-group md:col-span-2">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
-                            </div>
-
-                            <!-- Street -->
-                            <div class="form-group md:col-span-2">
-                                <label for="street">Street *</label>
-                                <input type="text" id="street" name="street" required placeholder="123 Main St">
-                            </div>
-
-                            <!-- City -->
-                            <div class="form-group md:col-span-2">
-                                <label for="city">City *</label>
-                                <input type="text" id="city" name="city" required placeholder="New York">
-                            </div>
-
-                    <!-- Country -->
-                    <div>
-                        <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                        <input type="text" id="country" name="country" required placeholder="USA"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Email -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="example@mail.com"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Phone -->
-                    <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+1 123-456-7890"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- WhatsApp -->
-                    <div>
-                        <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp</label>
-                        <input type="text" id="whatsapp" name="whatsapp" required placeholder="+1 123-456-7890"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Adults -->
-                    <div>
-                        <label for="adults" class="block text-sm font-medium text-gray-700 mb-1">Adults</label>
-                        <input type="number" id="adults" name="adults" min="0" required placeholder="2"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Children -->
-                    <div>
-                        <label for="children" class="block text-sm font-medium text-gray-700 mb-1">Children</label>
-                        <input type="number" id="children" name="children" min="0" placeholder="1"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Infants -->
-                    <div>
-                        <label for="infants" class="block text-sm font-medium text-gray-700 mb-1">Infants</label>
-                        <input type="number" id="infants" name="infants" min="0" placeholder="0"
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Choose Package -->
-                    <div>
-                        <label for="package" class="block text-sm font-medium text-gray-700 mb-1">Choose Package</label>
-                        <select id="package" name="package" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none">
-                            <option value="">Select a package</option>
-                            @foreach ($packages as $package)
-                                <option value="{{ $package->id }}">{{ $package->heading }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Start Date -->
-                    <div>
-                        <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
-                        <input type="date" id="startDate" name="startDate" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- End Date -->
-                    <div>
-                        <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-                        <input type="date" id="endDate" name="endDate" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none" />
-                    </div>
-
-                    <!-- Message -->
-                    <div class="md:col-span-3">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"></textarea>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="md:col-span-3 text-center pt-4">
-                        <button type="submit"
-                            class="w-full md:w-auto px-10 py-3 bg-black text-white font-bold rounded-xl bg-black transition duration-300">
-                            Submit Request
-                        </button>
-                    </div>
-                </form>
-
-
-
-            </div> --}}
-            {{-- <div class="steps-container">
-                <div class="step-card">
-                    <div class="step-header text-center">
-                        <div class="step-number">01</div>
-                        <h2 class="step-title text-blue-900 text-center">Check Your Reservation</h2>
-                    </div>
-
-                    <!-- Alerts -->
-                    @if (session('success'))
-                        <div class="alert alert-success" id="success-message">
-                            {{ session('success') }}
+                        <!-- Step 1 -->
+                        <div class="rounded-2xl shadow-md p-6 transition hover:shadow-lg"
+                            style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                            <div class="text-black-700 font-bold text-lg mb-2">1. Submit Your Request</div>
+                            <p class="text-gray-600 text-base">Use the form below to tell us your travel dates and
+                                preferences.
+                            </p>
                         </div>
-                    @endif
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger" id="alert-danger">
-                            <ul style="margin: 0; padding-left: 20px;">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                        <!-- Step 2 -->
+                        <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
+                            style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                            <div class="text-black-700 font-bold text-lg mb-2">2. Get a Quote</div>
+                            <p class="text-gray-600 text-base">We’ll send you a personalized package and price within 24
+                                hours.
+                            </p>
                         </div>
-                    @endif
 
-                    <form method="POST" action="{{ route('package.booking.store') }}">
-                        @csrf
-                        <div class="form-grid">
-                            <!-- Full Name -->
-                            <div class="form-group md:col-span-2">
-                                <label for="fullName">First Name *</label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
-                            </div>
-
-                            <!-- Last Name -->
-                            <div class="form-group md:col-span-2">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
-                            </div>
-
-                            <!-- Street -->
-                            <div class="form-group md:col-span-2">
-                                <label for="street">Street *</label>
-                                <input type="text" id="street" name="street" required placeholder="123 Main St">
-                            </div>
-
-                            <!-- City -->
-                            <div class="form-group md:col-span-2">
-                                <label for="city">City *</label>
-                                <input type="text" id="city" name="city" required placeholder="New York">
-                            </div>
-
-                            <!-- Country -->
-                            <div class="form-group">
-                                <label for="country">Country *</label>
-                                <input type="text" id="country" name="country" required placeholder="USA">
-                            </div>
-
-                            <!-- Email -->
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required
-                                    placeholder="example@mail.com">
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="form-group">
-                                <label for="phone">Phone *</label>
-                                <input type="tel" id="phone" name="phone" required
-                                    placeholder="+1 123-456-7890">
-                            </div>
-
-                            <!-- WhatsApp -->
-                            <div class="form-group">
-                                <label for="whatsapp">WhatsApp *</label>
-                                <input type="text" id="whatsapp" name="whatsapp" required
-                                    placeholder="+1 123-456-7890">
-                            </div>
-
-                            <!-- Adults -->
-                            <div class="form-group">
-                                <label for="adults">Adults *</label>
-                                <input type="number" id="adults" name="adults" min="0" required
-                                    placeholder="2">
-                            </div>
-
-                            <!-- Children -->
-                            <div class="form-group">
-                                <label for="children">Children</label>
-                                <input type="number" id="children" name="children" min="0" placeholder="1">
-                            </div>
-
-                            <!-- Infants -->
-                            <div class="form-group">
-                                <label for="infants">Infants</label>
-                                <input type="number" id="infants" name="infants" min="0" placeholder="0">
-                            </div>
-
-                            <!-- Choose Package -->
-                            <div class="form-group">
-                                <label for="package">Choose Package *</label>
-                                <select id="package" name="package" required>
-                                    <option value="">Select a package</option>
-                                    @foreach ($packages as $package)
-                                        <option value="{{ $package->id }}">{{ $package->heading }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <!-- Start Date -->
-                            <div class="form-group">
-                                <label for="startDate">Start Date *</label>
-                                <input type="date" id="startDate" name="startDate" required>
-                            </div>
-
-                            <!-- End Date -->
-                            <div class="form-group">
-                                <label for="endDate">End Date *</label>
-                                <input type="date" id="endDate" name="endDate" required>
-                            </div>
-
-                            <!-- Message -->
-                            <div class="form-group md:col-span-3">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Tell us your preferences or questions..."></textarea>
-                            </div>
-
-                            <!-- Button -->
-                            <div class="form-group md:col-span-3 text-center pt-4">
-                                <button type="submit" class="btn btn-submit"
-                                    style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
-                                    Submit Request
-                                </button>
-                            </div>
+                        <!-- Step 3 -->
+                        <div class=" rounded-2xl shadow-md p-6 transition hover:shadow-lg"
+                            style="background: linear-gradient(135deg, #e6f7e9 0%, #c8e6d2 100%);">
+                            <div class="text-black-700 font-bold text-lg mb-2">3. Confirm & Travel</div>
+                            <p class="text-gray-600 text-base">Once confirmed, we handle everything so you can enjoy your
+                                trip
+                                worry-free.</p>
                         </div>
-                    </form>
-                </div>
-            </div> --}}
 
-            {{-- <div class="text-center mt-15">
-                <p class="text-sm text-gray-500">🌟 Rated 4.8/5 by over 1,200 happy travelers</p>
-                <p class="text-xs text-gray-400 mt-1">Your data is secure and never shared. We value your privacy.</p>
-            </div> --}}
+                    </div>
+            </div>
 
+        </section>
 
+        <section class="bg-gradient-to-r from-blue-50 to-white" style="margin-top: -80px;">
 
-        </div>
-
-
-
-
-        <div class="container-fluid">
             <div class="booking-container">
                 <!-- Header -->
                 <div class="booking-header ">
-                    <h1>Request a Quote</h1>
-                    <p>Our team of travel experts is at your service 24/7,
+                    <h1 >Request a Quote</h1>
+                    <p >Our team of travel experts is at your service 24/7,
                         always ready to assist <br> you with reliable support whenever you need it.</p>
                 </div>
 
@@ -2299,7 +2107,7 @@
                         <div class="step-item" id="indicator-4">
                             <div class="step-number">4</div>
                             <div class="step-title">Review & Book</div>
-                        </div>s
+                        </div>
                     </div>
                 </div>
 
@@ -2314,6 +2122,17 @@
                         <!-- Step 1: Contact Details -->
                         <div class="step-content" id="step-1">
                             <h4>Contact Information</h4>
+
+                            <div class="mb-4">
+                                <label class="form-label">Choose Package *</label>
+                                <select name="package" class="form-select" required>
+                                    <option value="">Select a package</option>
+                                    @foreach ($packages as $package)
+                                        <option value="{{ $package->id }}">{{ $package->heading }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label class="form-label">Full Name *</label>
@@ -2341,668 +2160,649 @@
                                         style="width: 514px;">
                                 </div>
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label">Country *</label>
+                                <input type="text" name="country" class="form-control"
+                                    placeholder="Enter your country" required>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Travel Details -->
+                        <div class="step-content hidden" id="step-2">
+                            <h4>Travel Information</h4>
                             <div class="row">
                                 <div class="col-md-6 mb-4">
-                                    <label class="form-label">Country *</label>
-                                    <input type="text" name="country" class="form-control"
-                                        placeholder="Enter your country" required>
+                                    <label class="form-label">Number of Adults (13+) *</label>
+                                    <input type="number" name="adults" min="1" value="2"
+                                        class="form-control" required>
                                 </div>
-
                                 <div class="col-md-6 mb-4">
-                                    <label for="package">Tour Packages</label>
-                                    <select select id="package" name="package" class="form-select">
-                                        <option value="">Select a package</option>
-                                        @foreach ($packages as $package)
-                                            <option value="{{ $package->id }}">{{ $package->heading }}</option>
-                                        @endforeach
+                                    <label class="form-label">Number of Children (0-13)</label>
+                                    <input type="number" name="children" min="0" value="0"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Check-in Date *</label>
+                                    <input type="date" name="check_in" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Check-out Date *</label>
+                                    <input type="date" name="check_out" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Pickup Location / Flight Information</label>
+                                <input type="text" name="pickup" class="form-control"
+                                    placeholder="Airport code, hotel name, or specific address">
+                            </div>
+
+                        </div>
+
+                        <!-- Step 3: Preferences -->
+                        <div class="step-content hidden" id="step-3">
+                            <h4>Your Travel Preferences</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Hotel Category *</label>
+                                    <select name="hotel_type" class="form-select" required>
+                                        <option value="">Choose your preferred hotel category</option>
+                                        <option value="3-star">3 Star </option>
+                                        <option value="4-star">4 Star</option>
+                                        <option value="5-star">5 Star </option>
                                     </select>
                                 </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Travelling From *</label>
+                                    <input type="text" name="travelling_from" class="form-control"
+                                        placeholder="Your departure city or country" required>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Occasion for Travel</label>
+                                    <select name="travel_reason" class="form-select">
+                                        <option value="leisure">Leisure & Vacation</option>
+                                        <option value="honeymoon">Honeymoon</option>
+                                        <option value="anniversary">Anniversary Celebration</option>
+                                        <option value="birthday">Birthday Trip</option>
+                                        <option value="annual-trip">Annual Family Trip</option>
+                                        <option value="business">Business & Leisure</option>
+                                        <option value="other">Other Special Occasion</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Travel Experience Theme</label>
+                                    <select name="theme[]" class="form-select" id="themeSelect" multiple>
+                                        <option value="wildlife">Wildlife</option>
+                                        <option value="water_sports">Water Sports</option>
+                                        <option value="adventure">Adventure</option>
+                                        <option value="snorkeling">Snorkeling</option>
+                                        <option value="culture">Culture</option>
+                                        <option value="whale_watching">Whale Watching</option>
+                                        <option value="history">History</option>
+                                        <option value="dolphin_watching">Dolphin Watching</option>
+                                        <option value="hikes">Hikes</option>
+                                        <option value="diving">Diving</option>
+                                        <option value="nature">Nature</option>
+                                        <option value="yoga_meditation">Yoga & Meditation</option>
+                                        <option value="beach">Beach</option>
+                                        <option value="mountains">Mountains</option>
+                                        <option value="tea_gardens">Tea Gardens</option>
+                                        <option value="train_rides">Train Rides</option>
+                                        <option value="boat_rides">Boat Rides</option>
+                                        <option value="birds_watching">Birds Watching</option>
+                                        <option value="village_walks">Village Walks</option>
+                                        <option value="handcrafts">Handcrafts</option>
+                                    </select>
+                                </div>
 
 
-
+                            </div>
                         </div>
+
+                        <!-- Step 4: Review -->
+                        <div class="step-content hidden" id="step-4">
+                            <div class="icon">
+                                <svg class="checkmark" viewBox="0 0 24 24">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                            </div>
+                            <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi
+                                there!
+                            </h4>
+                            <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
+                                style="margin-top: -10px;padding-bottom: 20px;"></p>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="submit-btn">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Step 2: Travel Details -->
-                    <div class="step-content hidden" id="step-2">
-                        <h4>Travel Information</h4>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Number of Adults (13+) *</label>
-                                <input type="number" name="adults" min="1" value="2" class="form-control"
-                                    required>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Number of Children (0-13)</label>
-                                <input type="number" name="children" min="0" value="0"
-                                    class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Check-in Date *</label>
-                                <input type="date" name="check_in" class="form-control" required>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Check-out Date *</label>
-                                <input type="date" name="check_out" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label">Pickup Location / Flight Information</label>
-                            <input type="text" name="pickup" class="form-control"
-                                placeholder="Airport code, hotel name, or specific address">
-                        </div>
+                    <!-- Navigation -->
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn btn-secondary hidden" id="prevBtn">
+                            Previous
+                        </button>
+                        <div></div>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Next
+                        </button>
                     </div>
-
-                    <!-- Step 3: Preferences -->
-                    <div class="step-content hidden" id="step-3">
-                        <h4>Your Travel Preferences</h4>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Hotel Category *</label>
-                                <select name="hotel_type" class="form-select" required>
-                                    <option value="">Choose your preferred hotel category</option>
-                                    <option value="3-star">3 Star </option>
-                                    <option value="4-star">4 Star</option>
-                                    <option value="5-star">5 Star </option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Travelling From *</label>
-                                <input type="text" name="travelling_from" class="form-control"
-                                    placeholder="Your departure city or country" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Occasion for Travel</label>
-                                <select name="travel_reason" class="form-select">
-                                    <option value="leisure">Leisure & Vacation</option>
-                                    <option value="honeymoon">Honeymoon</option>
-                                    <option value="anniversary">Anniversary Celebration</option>
-                                    <option value="birthday">Birthday Trip</option>
-                                    <option value="annual-trip">Annual Family Trip</option>
-                                    <option value="business">Business & Leisure</option>
-                                    <option value="other">Other Special Occasion</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label">Travel Experience Theme</label>
-                                <select name="theme[]" class="form-select" id="themeSelect" multiple>
-                                    <option value="wildlife">Wildlife</option>
-                                    <option value="water_sports">Water Sports</option>
-                                    <option value="adventure">Adventure</option>
-                                    <option value="snorkeling">Snorkeling</option>
-                                    <option value="culture">Culture</option>
-                                    <option value="whale_watching">Whale Watching</option>
-                                    <option value="history">History</option>
-                                    <option value="dolphin_watching">Dolphin Watching</option>
-                                    <option value="hikes">Hikes</option>
-                                    <option value="diving">Diving</option>
-                                    <option value="nature">Nature</option>
-                                    <option value="yoga_meditation">Yoga & Meditation</option>
-                                    <option value="beach">Beach</option>
-                                    <option value="mountains">Mountains</option>
-                                    <option value="tea_gardens">Tea Gardens</option>
-                                    <option value="train_rides">Train Rides</option>
-                                    <option value="boat_rides">Boat Rides</option>
-                                    <option value="birds_watching">Birds Watching</option>
-                                    <option value="village_walks">Village Walks</option>
-                                    <option value="handcrafts">Handcrafts</option>
-                                </select>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <!-- Step 4: Review -->
-                    <div class="step-content hidden" id="step-4">
-                        <div class="icon">
-                            <svg class="checkmark" viewBox="0 0 24 24">
-                                <polyline points="20,6 9,17 4,12"></polyline>
-                            </svg>
-                        </div>
-                        <h4 id="reviewGreeting" class="greeting text-center" style="margin-bottom: -5px;">Hi there!
-                        </h4>
-                        <p id="reviewSummary" class="summary text-center" class="mb-3 text-center"
-                            style="margin-top: -10px;padding-bottom: 20px;"></p>
-                        <div class="text-center mt-4">
-                            <button type="submit" class="submit-btn">
-                                Submit Request
-                            </button>
-                        </div>
-                    </div>
-
+                </form>
             </div>
-
-            <!-- Navigation -->
-            <div class="navigation-buttons">
-                <button type="button" class="btn btn-secondary hidden" id="prevBtn">
-                    Previous
-                </button>
-                <div></div>
-                <button type="button" class="btn btn-primary" id="nextBtn">
-                    Next
-                </button>
-            </div>
-            </form>
-        </div>
-        </div>
+        </section >
 
 
 
-    </section>
 
 
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            $('#themeSelect').select2({
-                placeholder: "Select travel themes",
-                allowClear: true,
-                width: "100%"
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                $('#themeSelect').select2({
+                    placeholder: "Select travel themes",
+                    allowClear: true,
+                    width: "100%"
+                });
             });
-        });
-    </script>
+        </script>
 
 
-    <script>
-        // Initialize intl-tel-input for both phone and WhatsApp
-        function initIntlTel(selector) {
-            var input = document.querySelector(selector);
-            return window.intlTelInput(input, {
-                initialCountry: "auto",
-                separateDialCode: true, // ✅ shows code in input
-                geoIpLookup: function(success) {
-                    fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
-                        .then(resp => resp.json())
-                        .then(resp => success(resp.country))
-                        .catch(() => success("us"));
-                },
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-            });
-        }
-
-        var itiPhone = initIntlTel("#phone");
-        var itiWhatsapp = initIntlTel("#whatsapp");
-
-        // ✅ On form submit, set full numbers with code
-        document.querySelector("form").addEventListener("submit", function() {
-            document.querySelector("#phone").value = itiPhone.getNumber();
-            document.querySelector("#whatsapp").value = itiWhatsapp.getNumber();
-        });
-    </script>
-    <script>
-        class PremiumBookingForm {
-            constructor() {
-                this.currentStep = 1;
-                this.totalSteps = 4;
-                this.init();
-            }
-
-            init() {
-                this.bindEvents();
-                this.setMinDate();
-                document.getElementById('bookingForm').addEventListener('submit', (e) => this.handleSubmit(e));
-            }
-
-            bindEvents() {
-                document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
-                document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
-
-                const inputs = document.querySelectorAll('input[required], select[required]');
-                inputs.forEach(input => {
-                    input.addEventListener('blur', () => this.validateField(input));
-                    input.addEventListener('input', () => this.clearValidation(input));
+        <script>
+            // Initialize intl-tel-input for both phone and WhatsApp
+            function initIntlTel(selector) {
+                var input = document.querySelector(selector);
+                return window.intlTelInput(input, {
+                    initialCountry: "auto",
+                    separateDialCode: true, // ✅ shows code in input
+                    geoIpLookup: function(success) {
+                        fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
+                            .then(resp => resp.json())
+                            .then(resp => success(resp.country))
+                            .catch(() => success("us"));
+                    },
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
                 });
             }
 
-            setMinDate() {
-                const today = new Date().toISOString().split('T')[0];
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            var itiPhone = initIntlTel("#phone");
+            var itiWhatsapp = initIntlTel("#whatsapp");
 
-                document.querySelector('input[name="check_in"]').min = today;
-                document.querySelector('input[name="check_out"]').min = tomorrowStr;
-
-                document.querySelector('input[name="check_in"]').addEventListener('change', (e) => {
-                    const checkIn = new Date(e.target.value);
-                    const checkOut = new Date(checkIn);
-                    checkOut.setDate(checkOut.getDate() + 1);
-                    document.querySelector('input[name="check_out"]').min = checkOut.toISOString().split('T')[
-                        0];
-                });
-            }
-
-            validateField(field) {
-                if (field.hasAttribute('required') && !field.value.trim()) {
-                    field.classList.add('is-invalid');
-                    return false;
+            // ✅ On form submit, set full numbers with code
+            document.querySelector("form").addEventListener("submit", function() {
+                document.querySelector("#phone").value = itiPhone.getNumber();
+                document.querySelector("#whatsapp").value = itiWhatsapp.getNumber();
+            });
+        </script>
+        <script>
+            class PremiumBookingForm {
+                constructor() {
+                    this.currentStep = 1;
+                    this.totalSteps = 4;
+                    this.init();
                 }
 
-                if (field.type === 'email' && field.value) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(field.value)) {
+                init() {
+                    this.bindEvents();
+                    this.setMinDate();
+                    document.getElementById('bookingForm').addEventListener('submit', (e) => this.handleSubmit(e));
+                }
+
+                bindEvents() {
+                    document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
+                    document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
+
+                    const inputs = document.querySelectorAll('input[required], select[required]');
+                    inputs.forEach(input => {
+                        input.addEventListener('blur', () => this.validateField(input));
+                        input.addEventListener('input', () => this.clearValidation(input));
+                    });
+                }
+
+                setMinDate() {
+                    const today = new Date().toISOString().split('T')[0];
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+
+                    document.querySelector('input[name="check_in"]').min = today;
+                    document.querySelector('input[name="check_out"]').min = tomorrowStr;
+
+                    document.querySelector('input[name="check_in"]').addEventListener('change', (e) => {
+                        const checkIn = new Date(e.target.value);
+                        const checkOut = new Date(checkIn);
+                        checkOut.setDate(checkOut.getDate() + 1);
+                        document.querySelector('input[name="check_out"]').min = checkOut.toISOString().split('T')[
+                            0];
+                    });
+                }
+
+                validateField(field) {
+                    if (field.hasAttribute('required') && !field.value.trim()) {
                         field.classList.add('is-invalid');
                         return false;
                     }
-                }
 
-                field.classList.remove('is-invalid');
-                field.classList.add('is-valid');
-                return true;
-            }
-
-            clearValidation(field) {
-                field.classList.remove('is-invalid', 'is-valid');
-            }
-
-            validateStep(step) {
-                const stepElement = document.getElementById(`step-${step}`);
-                const requiredFields = stepElement.querySelectorAll('input[required], select[required]');
-                let isValid = true;
-
-                requiredFields.forEach(field => {
-                    if (!this.validateField(field)) {
-                        isValid = false;
+                    if (field.type === 'email' && field.value) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(field.value)) {
+                            field.classList.add('is-invalid');
+                            return false;
+                        }
                     }
-                });
 
-                return isValid;
-            }
-
-            showStep(step) {
-                for (let i = 1; i <= this.totalSteps; i++) {
-                    document.getElementById(`step-${i}`).classList.add('hidden');
-                    document.getElementById(`indicator-${i}`).classList.remove('active', 'completed');
+                    field.classList.remove('is-invalid');
+                    field.classList.add('is-valid');
+                    return true;
                 }
 
-                document.getElementById(`step-${step}`).classList.remove('hidden');
-                document.getElementById(`indicator-${step}`).classList.add('active');
-
-                for (let i = 1; i < step; i++) {
-                    document.getElementById(`indicator-${i}`).classList.add('completed');
+                clearValidation(field) {
+                    field.classList.remove('is-invalid', 'is-valid');
                 }
 
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
+                validateStep(step) {
+                    const stepElement = document.getElementById(`step-${step}`);
+                    const requiredFields = stepElement.querySelectorAll('input[required], select[required]');
+                    let isValid = true;
 
-                prevBtn.classList.toggle('hidden', step === 1);
+                    requiredFields.forEach(field => {
+                        if (!this.validateField(field)) {
+                            isValid = false;
+                        }
+                    });
 
-                if (step === this.totalSteps) {
-                    nextBtn.classList.add('hidden');
-                    this.populateReview();
-                } else {
-                    nextBtn.classList.remove('hidden');
+                    return isValid;
                 }
-            }
 
-            nextStep() {
-                if (this.validateStep(this.currentStep)) {
-                    if (this.currentStep < this.totalSteps) {
-                        this.currentStep++;
+                showStep(step) {
+                    for (let i = 1; i <= this.totalSteps; i++) {
+                        document.getElementById(`step-${i}`).classList.add('hidden');
+                        document.getElementById(`indicator-${i}`).classList.remove('active', 'completed');
+                    }
+
+                    document.getElementById(`step-${step}`).classList.remove('hidden');
+                    document.getElementById(`indicator-${step}`).classList.add('active');
+
+                    for (let i = 1; i < step; i++) {
+                        document.getElementById(`indicator-${i}`).classList.add('completed');
+                    }
+
+                    const prevBtn = document.getElementById('prevBtn');
+                    const nextBtn = document.getElementById('nextBtn');
+
+                    prevBtn.classList.toggle('hidden', step === 1);
+
+                    if (step === this.totalSteps) {
+                        nextBtn.classList.add('hidden');
+                        this.populateReview();
+                    } else {
+                        nextBtn.classList.remove('hidden');
+                    }
+                }
+
+                nextStep() {
+                    if (this.validateStep(this.currentStep)) {
+                        if (this.currentStep < this.totalSteps) {
+                            this.currentStep++;
+                            this.showStep(this.currentStep);
+                        }
+                    } else {
+                        const firstInvalid = document.querySelector('.is-invalid');
+                        if (firstInvalid) {
+                            firstInvalid.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                            firstInvalid.focus();
+                        }
+                    }
+                }
+
+                prevStep() {
+                    if (this.currentStep > 1) {
+                        this.currentStep--;
                         this.showStep(this.currentStep);
                     }
-                } else {
-                    const firstInvalid = document.querySelector('.is-invalid');
-                    if (firstInvalid) {
-                        firstInvalid.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                        firstInvalid.focus();
-                    }
                 }
-            }
 
-            prevStep() {
-                if (this.currentStep > 1) {
-                    this.currentStep--;
-                    this.showStep(this.currentStep);
-                }
-            }
+                populateReview() {
+                    const formData = new FormData(document.getElementById('bookingForm'));
+                    const fullName = formData.get('full_name') || '';
 
-            populateReview() {
-                const formData = new FormData(document.getElementById('bookingForm'));
-                const fullName = formData.get('full_name') || '';
+                    // Greeting with name
+                    document.getElementById('reviewGreeting').innerText = `Hi ${fullName}!`;
 
-                // Greeting with name
-                document.getElementById('reviewGreeting').innerText = `Hi ${fullName}!`;
-
-                // Friendly thank you message
-                const message = `
+                    // Friendly thank you message
+                    const message = `
         Thank you for your booking request. 
         Our travel specialists will review your preferences and contact you shortly to arrange the perfect trip for you. 
         We look forward to creating an unforgettable experience!
     `;
-                document.getElementById('reviewSummary').innerText = message;
+                    document.getElementById('reviewSummary').innerText = message;
+                }
+
+
+
+                async handleSubmit(e) {
+                    e.preventDefault();
+                    const form = e.target;
+                    const formData = new FormData(form);
+                    const submitBtn = form.querySelector('.submit-btn');
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = 'Submitting...';
+
+                    try {
+                        const res = await fetch(form.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Accept': 'application/json',
+                            },
+                            body: formData,
+                        });
+
+                        // If not OK, try to extract error message
+                        if (!res.ok) {
+                            let errMsg = 'An unexpected error occurred.';
+                            try {
+                                const errData = await res.json();
+                                errMsg = errData.message || JSON.stringify(errData);
+                            } catch (_) {}
+                            Swal.fire('Error', errMsg, 'error');
+                            return;
+                        }
+
+                        // ✅ Success — safely parse JSON now
+                        const data = await res.json();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: data.message || 'Your request has been submitted successfully!',
+                            confirmButtonText: 'OK',
+                        }).then(() => {
+                            // Replace booking container with confirmation screen
+                            const container = document.querySelector('.booking-container');
+                            container.innerHTML = `
+                <div class="text-center p-5">
+                    <h3>✅ Your application was submitted successfully!</h3>
+                    <p>Our team will process it within 2–3 business days.</p>
+                    <button id="newApplicationBtn" class="btn btn-primary mt-3">Submit Another Application</button>
+                </div>
+            `;
+
+                            // Allow user to submit again
+                            document.getElementById('newApplicationBtn').addEventListener('click', () => {
+                                location.reload();
+                            });
+                        });
+
+                    } catch (err) {
+                        console.error('Fetch error:', err);
+                        Swal.fire('Error', 'Something went wrong. Please try again.', 'error');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Submit Application';
+                    }
+                }
+
+
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                new PremiumBookingForm();
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $(document).on('click', '#show-more-btn', function() {
+                    $('.extra-package').removeClass('d-none');
+                    $(this).hide();
+                    $('#hide-btn').show();
+                });
+
+                $(document).on('click', '#hide-btn', function() {
+                    $('.extra-package').addClass('d-none');
+                    $(this).hide();
+                    $('#show-more-btn').show();
+                    // Optional: Scroll back to top of the package section
+                    $('html, body').animate({
+                        scrollTop: $('#package-container').offset().top - 100
+                    }, 400);
+                });
+            });
+        </script>
+
+
+
+
+        <script>
+            let daysTouched = false;
+
+            function updateDayLabel(value) {
+                const label = document.getElementById('selectedDay');
+                label.innerText = value ? value : 'Not selected';
+            }
+
+            function fetchFilteredResults() {
+                const form = document.getElementById('filterForm');
+                const params = new URLSearchParams();
+
+                // Tour category
+                const selectedCategory = document.querySelector('.tour-option-radio:checked');
+                if (selectedCategory) {
+                    params.append('category', selectedCategory.value);
+                }
+
+                // Themes
+                form.querySelectorAll('input[name="theme[]"]:checked').forEach(input => {
+                    params.append('theme[]', input.value);
+                });
+
+                // Days
+                if (daysTouched) {
+                    const daysInput = form.querySelector('input[name="days"]');
+                    if (daysInput && daysInput.value) {
+                        params.append('days', daysInput.value);
+                    }
+                }
+
+                fetch("{{ route('filter.tours') }}?" + params.toString(), {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.text())
+                    .then(data => {
+                        document.getElementById('tourPackageList').innerHTML = data;
+                    });
             }
 
 
+            // 🔁 Handle Radio Button Selection
+            document.querySelectorAll('.tour-option-radio').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // ✅ Uncheck all others
+                    document.querySelectorAll('.tour-option-radio').forEach(cb => {
+                        if (cb !== this) cb.checked = false;
+                    });
 
-            handleSubmit(e) {
-                e.preventDefault();
+                    const checkedBox = document.querySelector('.tour-option-radio:checked');
 
-                const form = document.getElementById('bookingForm');
-                const formData = new FormData(form);
+                    // Clear all UI sections
+                    document.getElementById('all-tours').classList.add('d-none');
+                    document.getElementById('single-tour-section').classList.add('d-none');
+                    document.getElementById('customize-tour-form').classList.add('d-none');
+                    document.getElementById('tailor-section')?.classList.add('d-none');
+                    document.getElementById('selectedTourTitle').innerText = '';
 
-                const submitBtn = e.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = 'Processing Your Booking...';
-                submitBtn.disabled = true;
+                    if (!checkedBox) {
+                        // ✅ Nothing is selected - reset UI
+                        document.getElementById('all-tours').classList.remove('d-none');
+                        return;
+                    }
 
-                function showMessage(type, text) {
-                    const messageBox = document.getElementById("formMessage");
-                    messageBox.className = `message ${type}`;
-                    messageBox.innerHTML = text;
-                    messageBox.style.display = "block";
+                    const selected = checkedBox.value;
 
-                    // Hide after 5 seconds
-                    setTimeout(() => {
-                        messageBox.classList.add("hide");
-                        // Fully hide after transition
-                        setTimeout(() => messageBox.style.display = "none", 500);
-                    }, 5000);
+                    if (selected === 'customize') {
+                        document.getElementById('customize-tour-form').classList.remove('d-none');
+                    } else {
+                        document.getElementById('single-tour-section').classList.remove('d-none');
+                        const label = document.querySelector(`label[for="category_${selected}"]`);
+                        document.getElementById('selectedTourTitle').innerText = label?.innerText ?? '';
+
+                        if (selected === 'tailor') {
+                            document.getElementById('tailor-section')?.classList.remove('d-none');
+                        }
+
+                        fetchCategoryTours(selected);
+                    }
+                });
+            });
+
+
+
+
+            function fetchCategoryTours(category) {
+                fetch("{{ route('tours.by-category', ':category') }}".replace(':category', category), {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.text())
+                    .then(html => {
+                        document.getElementById('tourPackageList').innerHTML = html;
+                    });
+            }
+
+            // 🧹 Reset on page load
+            // 🧹 Reset on page load
+            window.addEventListener('DOMContentLoaded', () => {
+                // Clear all checkboxes and radio buttons
+                document.querySelectorAll('#filterForm input[type=checkbox]').forEach(cb => cb.checked = false);
+                document.querySelectorAll('#filterForm input[type=radio]').forEach(rb => rb.checked = false);
+
+                // ✅ Don't set range value; show "Not selected"
+                const rangeSlider = document.getElementById('daysRangeSlider');
+                if (rangeSlider) {
+                    rangeSlider.value = ""; // <-- IMPORTANT: clear default
+                    updateDayLabel(""); // <-- show "Not selected"
+                    rangeSlider.addEventListener('input', (e) => {
+                        daysTouched = true;
+                        updateDayLabel(e.target.value);
+                    });
                 }
 
-                fetch(form.action, {
-                        method: "POST",
+                // Show full list by default
+                document.getElementById('all-tours').classList.remove('d-none');
+
+                // Trigger fetch on form changes
+                document.getElementById('filterForm').addEventListener('change', fetchFilteredResults);
+            });
+
+            document.getElementById('customizeForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const form = e.target;
+                const formData = new FormData(form);
+
+                fetch("{{ route('custom.tour.store') }}", {
+                        method: 'POST',
                         headers: {
-                            "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value,
-                            "Accept": "application/json"
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json',
                         },
                         body: formData
                     })
-                    .then(async (res) => {
-                        if (!res.ok) {
-                            const errorData = await res.json();
-                            throw errorData;
-                        }
-                        return res.json();
-                    })
-                    .then((data) => {
+                    .then(res => res.json())
+                    .then(data => {
                         if (data.success) {
-                            showMessage("success", `<strong>Success!</strong> ${data.message}`);
-
-                            // Reset form + steps
-                            this.currentStep = 1;
-                            this.showStep(1);
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Request Submitted!',
+                                text: 'Your custom tour request has been successfully sent.',
+                                confirmButtonColor: '#3085d6',
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
                             form.reset();
-                            document.querySelectorAll(".is-valid, .is-invalid").forEach(el => {
-                                el.classList.remove("is-valid", "is-invalid");
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops!',
+                                text: 'Something went wrong. Try again.',
                             });
                         }
                     })
-                    .catch((err) => {
-                        console.error("Error submitting form:", err);
-                        if (err.errors) {
-                            let messages = Object.values(err.errors).flat().join("<br>");
-                            showMessage("warning", `<strong>⚠️ Please fix:</strong><br>${messages}`);
-                        } else {
-                            showMessage("error",
-                                `<strong>Oops...</strong> Something went wrong. Please try again.`);
-                        }
-                    })
-                    .finally(() => {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    });
-
-
-            }
-
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            new PremiumBookingForm();
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $(document).on('click', '#show-more-btn', function() {
-                $('.extra-package').removeClass('d-none');
-                $(this).hide();
-                $('#hide-btn').show();
-            });
-
-            $(document).on('click', '#hide-btn', function() {
-                $('.extra-package').addClass('d-none');
-                $(this).hide();
-                $('#show-more-btn').show();
-                // Optional: Scroll back to top of the package section
-                $('html, body').animate({
-                    scrollTop: $('#package-container').offset().top - 100
-                }, 400);
-            });
-        });
-    </script>
-
-
-
-
-    <script>
-        let daysTouched = false;
-
-        function updateDayLabel(value) {
-            const label = document.getElementById('selectedDay');
-            label.innerText = value ? value : 'Not selected';
-        }
-
-        function fetchFilteredResults() {
-            const form = document.getElementById('filterForm');
-            const params = new URLSearchParams();
-
-            // Tour category
-            const selectedCategory = document.querySelector('.tour-option-radio:checked');
-            if (selectedCategory) {
-                params.append('category', selectedCategory.value);
-            }
-
-            // Themes
-            form.querySelectorAll('input[name="theme[]"]:checked').forEach(input => {
-                params.append('theme[]', input.value);
-            });
-
-            // Days
-            if (daysTouched) {
-                const daysInput = form.querySelector('input[name="days"]');
-                if (daysInput && daysInput.value) {
-                    params.append('days', daysInput.value);
-                }
-            }
-
-            fetch("{{ route('filter.tours') }}?" + params.toString(), {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById('tourPackageList').innerHTML = data;
-                });
-        }
-
-
-        // 🔁 Handle Radio Button Selection
-        document.querySelectorAll('.tour-option-radio').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                // ✅ Uncheck all others
-                document.querySelectorAll('.tour-option-radio').forEach(cb => {
-                    if (cb !== this) cb.checked = false;
-                });
-
-                const checkedBox = document.querySelector('.tour-option-radio:checked');
-
-                // Clear all UI sections
-                document.getElementById('all-tours').classList.add('d-none');
-                document.getElementById('single-tour-section').classList.add('d-none');
-                document.getElementById('customize-tour-form').classList.add('d-none');
-                document.getElementById('tailor-section')?.classList.add('d-none');
-                document.getElementById('selectedTourTitle').innerText = '';
-
-                if (!checkedBox) {
-                    // ✅ Nothing is selected - reset UI
-                    document.getElementById('all-tours').classList.remove('d-none');
-                    return;
-                }
-
-                const selected = checkedBox.value;
-
-                if (selected === 'customize') {
-                    document.getElementById('customize-tour-form').classList.remove('d-none');
-                } else {
-                    document.getElementById('single-tour-section').classList.remove('d-none');
-                    const label = document.querySelector(`label[for="category_${selected}"]`);
-                    document.getElementById('selectedTourTitle').innerText = label?.innerText ?? '';
-
-                    if (selected === 'tailor') {
-                        document.getElementById('tailor-section')?.classList.remove('d-none');
-                    }
-
-                    fetchCategoryTours(selected);
-                }
-            });
-        });
-
-
-
-
-        function fetchCategoryTours(category) {
-            fetch("{{ route('tours.by-category', ':category') }}".replace(':category', category), {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('tourPackageList').innerHTML = html;
-                });
-        }
-
-        // 🧹 Reset on page load
-        // 🧹 Reset on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            // Clear all checkboxes and radio buttons
-            document.querySelectorAll('#filterForm input[type=checkbox]').forEach(cb => cb.checked = false);
-            document.querySelectorAll('#filterForm input[type=radio]').forEach(rb => rb.checked = false);
-
-            // ✅ Don't set range value; show "Not selected"
-            const rangeSlider = document.getElementById('daysRangeSlider');
-            if (rangeSlider) {
-                rangeSlider.value = ""; // <-- IMPORTANT: clear default
-                updateDayLabel(""); // <-- show "Not selected"
-                rangeSlider.addEventListener('input', (e) => {
-                    daysTouched = true;
-                    updateDayLabel(e.target.value);
-                });
-            }
-
-            // Show full list by default
-            document.getElementById('all-tours').classList.remove('d-none');
-
-            // Trigger fetch on form changes
-            document.getElementById('filterForm').addEventListener('change', fetchFilteredResults);
-        });
-
-        document.getElementById('customizeForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch("{{ route('custom.tour.store') }}", {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Accept': 'application/json',
-                    },
-                    body: formData
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Request Submitted!',
-                            text: 'Your custom tour request has been successfully sent.',
-                            confirmButtonColor: '#3085d6',
-                            timer: 3000,
-                            timerProgressBar: true,
-                        });
-                        form.reset();
-                    } else {
+                    .catch(error => {
+                        console.error(error);
                         Swal.fire({
                             icon: 'error',
-                            title: 'Oops!',
-                            text: 'Something went wrong. Try again.',
+                            title: 'Server Error',
+                            text: 'Please try again later.',
                         });
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Server Error',
-                        text: 'Please try again later.',
                     });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+                const sidebar = document.getElementById('mobileSidebar');
+                const toggleBtn = document.getElementById('toggleFilterBtn');
+                const closeBtn = document.getElementById('closeSidebarBtn');
+
+                toggleBtn?.addEventListener('click', () => {
+                    sidebar.classList.add('active');
+                    document.body.classList.add('sidebar-open');
                 });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('mobileSidebar');
+
+                closeBtn?.addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
+                });
+            });
+
+            // document.getElementById('toggleFilterBtn').addEventListener('click', () => {
+            //     document.querySelector('.sidebar-container').classList.add('show');
+            // });
+            // document.getElementById('closeSidebarBtn').addEventListener('click', () => {
+            //     document.querySelector('.sidebar-container').classList.remove('show');
+            // });
+
+            const sidebar = document.querySelector('.sidebar-container');
+            const overlay = document.querySelector('.sidebar-overlay');
             const toggleBtn = document.getElementById('toggleFilterBtn');
             const closeBtn = document.getElementById('closeSidebarBtn');
 
-            toggleBtn?.addEventListener('click', () => {
-                sidebar.classList.add('active');
-                document.body.classList.add('sidebar-open');
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.add('show');
+                overlay.classList.add('active');
             });
 
-            closeBtn?.addEventListener('click', () => {
-                sidebar.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('active');
             });
-        });
 
-        // document.getElementById('toggleFilterBtn').addEventListener('click', () => {
-        //     document.querySelector('.sidebar-container').classList.add('show');
-        // });
-        // document.getElementById('closeSidebarBtn').addEventListener('click', () => {
-        //     document.querySelector('.sidebar-container').classList.remove('show');
-        // });
-
-        const sidebar = document.querySelector('.sidebar-container');
-        const overlay = document.querySelector('.sidebar-overlay');
-        const toggleBtn = document.getElementById('toggleFilterBtn');
-        const closeBtn = document.getElementById('closeSidebarBtn');
-
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.add('show');
-            overlay.classList.add('active');
-        });
-
-        closeBtn.addEventListener('click', () => {
-            sidebar.classList.remove('show');
-            overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('show');
-            overlay.classList.remove('active');
-        });
-    </script>
-    <!-- SweetAlert2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('active');
+            });
+        </script>
+        <!-- SweetAlert2 CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-@endsection
+    @endsection

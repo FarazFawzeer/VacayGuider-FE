@@ -17,5 +17,6 @@ class DrivingPermitRequest extends Model
     'license_back',
     'selfie',
     'collection_method',
+    'status',
 ];
 }

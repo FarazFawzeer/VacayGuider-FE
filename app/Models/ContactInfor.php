@@ -20,5 +20,6 @@ class ContactInfor extends Model
         'country',
         'service',
         'message',
+        'status',
     ];
 }

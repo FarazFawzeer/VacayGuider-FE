@@ -180,9 +180,7 @@
             /* background-color: var(--secondary); */
             /* background:  url('/assets/img/map-bg-3.jpg'); */
 
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-                url('/assets/img/map-bg8.jpg');
+          
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -398,16 +396,11 @@
             padding: 25px;
             background: rgba(52, 152, 219, 0.1);
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #3498db;
-            border-right: 4px solid #3498db;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
 
-        .feature-item:hover {
-            transform: translateY(-5px);
-        }
+     
 
         .feature-icon {
             font-size: 36px;
@@ -528,7 +521,7 @@
                     {{-- <span class="sub-title"
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
                     <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                         We Deliver Comfort Every
                         Mile</h2>
                 </div>
@@ -742,7 +735,7 @@
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium
                             Vehicles</span>
                         <h2 class="sec-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                             Find Your Perfect Ride </h2>
                     </div>
                 </div>
@@ -929,11 +922,11 @@
 
 
                 <div class="title-area text-center " style="">
-                    <span class="sub-title"
+                    {{-- <span class="sub-title"
                         style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
-                        Services</span>
+                        Services</span> --}}
                     <h2 class="sec-title"
-                        style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                        style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                         Pre-Booking Transportation </h2>
                 </div>
                 <p class="text-center mt-3 mb-3"> Ensure a smooth start to your journey with our <strong>Pre-Booking

@@ -22,5 +22,6 @@ class AirlineBooking extends Model
     'return_date',
     'passengers',
     'message',
+    'status',
 ];
 }

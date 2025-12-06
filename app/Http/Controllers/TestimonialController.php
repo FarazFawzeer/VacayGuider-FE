@@ -45,7 +45,44 @@ public function index(Request $request)
 }
 
 
+  public function filterPosts(Request $request)
+    {
+        $blogTypeFilter = $request->input('blog_type', []);
+        $blogQuery = BlogPost::query();
 
+        if (!empty($blogTypeFilter)) {
+            $blogQuery->whereIn('type', $blogTypeFilter);
+        }
+
+        $blogPosts = $blogQuery->orderBy('posted_time', 'desc')->get();
+
+        $html = view('frontend.pages.partials.blog_list', compact('blogPosts'))->render();
+
+        return response()->json(['html' => $html]);
+    }
+
+    /**
+     * Returns rendered testimonials partial HTML according to source[] filter + page param.
+     * AJAX GET
+     */
+    public function filterTestimonials(Request $request)
+    {
+        $sourceFilter = $request->input('source', []);
+        $page = $request->input('page', 1);
+
+        $testimonialQuery = Testimonial::query();
+
+        if (!empty($sourceFilter)) {
+            $sourceFilterNormalized = array_map(fn($s) => strtolower(trim($s)), (array)$sourceFilter);
+            $testimonialQuery->whereIn(DB::raw('LOWER(TRIM(source))'), $sourceFilterNormalized);
+        }
+
+        $testimonials = $testimonialQuery->orderBy('postedate', 'desc')->paginate(4, ['*'], 'page', $page);
+
+        $html = view('frontend.pages.partials.testimonial_list', compact('testimonials'))->render();
+
+        return response()->json(['html' => $html]);
+    }
 
 
 

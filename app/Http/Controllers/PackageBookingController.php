@@ -46,6 +46,7 @@ class PackageBookingController extends Controller
         $validated['end_date']   = $validated['check_out'];
         $validated['package_id'] = $validated['package'];
         unset($validated['check_in'], $validated['check_out'], $validated['package']);
+        $validated['status'] = 'pending';
 
         // Save booking
         $booking = PackageBooking::create($validated);

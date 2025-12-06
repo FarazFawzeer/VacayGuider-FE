@@ -15,5 +15,6 @@ class CustomTourRequest extends Model
         'message',
         'preferred_dates',
         'travelers',
+        'status',
     ];
 }

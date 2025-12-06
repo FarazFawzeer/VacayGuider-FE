@@ -6,6 +6,623 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
+        /* Basic Reset & Font Consistency */
+        .client-review-design {
+            background-color: #000;
+            color: #fff;
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            /* Using a more modern sans-serif, adjust if needed */
+            padding-top: 5rem;
+            /* Adjust overall section padding as needed */
+            padding-bottom: 5rem;
+            overflow: hidden;
+            /* Prevent overflow issues with absolute positioning */
+        }
+
+        /* Header Styling */
+        .client-review-header {
+            max-width: 650px;
+            /* Slightly wider for the header text */
+            margin: 0 auto 4rem;
+            /* More space below header */
+            padding: 0 15px;
+            /* Add horizontal padding */
+        }
+
+        .client-review-header .white-heading {
+            font-size: 2.8rem;
+            /* Slightly larger heading */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .client-review-header .sub-text {
+            font-size: 1rem;
+            /* Slightly larger sub-text */
+            color: rgba(255, 255, 255, 0.7);
+            /* Lighter grey for sub-text */
+            line-height: 1.6;
+        }
+
+        /* Review Grid - The main circular layout area */
+        .review-grid {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0;
+            /* More vertical padding for the grid */
+            min-height: 600px;
+            /* Ensure enough height for the circle */
+            /* Updated radial gradient for a smoother, darker green glow */
+
+            border-radius: 50%;
+            /* Make the background slightly circular */
+            margin: 0 auto;
+            width: 90%;
+            /* Responsive width */
+            max-width: 1000px;
+            /* Max width for the entire circular grid area */
+            box-sizing: border-box;
+            /* Include padding/border in element's total width/height */
+        }
+
+        /* Main Review Card Styling */
+        .main-review {
+            text-align: center;
+            max-width: 450px;
+            /* Slightly narrower central review for tighter focus */
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+            /* Internal padding */
+        }
+
+        .main-avatar-wrapper {
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            border-radius: 50%;
+            /* More pronounced, glowing green border */
+            border: 3px solid #939594;
+
+            box-shadow: 0 0 15px rgba(16, 140, 74, 0.6);
+            /* Green glow effect */
+        }
+
+        .main-avatar {
+            width: 110px;
+            /* Slightly larger main avatar */
+            height: 110px !important;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .reviewer-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .reviewer-location {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            /* Lighter grey for location */
+            margin-bottom: 1rem;
+            /* Space below location, before source/text */
+        }
+
+        /* Source Icon Styling */
+        .source-icon {
+            width: 30px;
+            /* Slightly larger source icon */
+            height: 30px;
+            object-fit: contain;
+            margin: 0.5rem auto 1rem;
+            /* Center and add vertical spacing */
+
+        }
+
+        .review-text-center {
+            font-size: 1.05rem;
+            /* Slightly larger and distinct review text */
+            color: rgba(255, 255, 255, 0.8);
+            /* Closer to the image's text color */
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-style: italic;
+            /* Often reviews are italic */
+        }
+
+        .stars-center i {
+            font-size: 1.4rem;
+            /* Larger stars */
+            margin: 0 2px;
+            color: #ffc107;
+            /* Bootstrap's warning yellow */
+        }
+
+        /* Surrounding Avatars Wrapper */
+        .secondary-avatars-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            /* Occupy full width of review-grid */
+            height: 100%;
+            /* Occupy full height of review-grid */
+            pointer-events: none;
+            max-width: 900px;
+            /* Restrict max size */
+            max-height: 900px;
+            /* Restrict max size */
+            aspect-ratio: 1 / 1;
+        }
+
+        .secondary-avatar {
+            position: absolute;
+            width: 65px !important;
+            /* Slightly larger secondary avatars */
+            height: 65px !important;
+            pointer-events: auto;
+            cursor: pointer;
+            /* Indicate they are clickable */
+            transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border-radius: 50%;
+            /* Ensure circular shape */
+        }
+
+        .secondary-avatar:hover {
+            transform: scale(1.1) translate(-50%, -50%) !important;
+            /* Scale on hover, maintain position */
+            border-color: #38c172;
+            /* Lighter green on hover */
+        }
+
+        .secondary-avatar-img {
+            width: 65px !important;
+            height: 65px !important;
+            object-fit: cover;
+            border-radius: 50%;
+
+        }
+
+        /* Positioning for secondary avatars (using percentage for responsiveness) */
+        .avatar-1 {
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .avatar-2 {
+            top: 25%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+        }
+
+        .avatar-3 {
+            top: 60%;
+            left: 5%;
+            transform: translate(-50%, -50%);
+        }
+
+        .avatar-4 {
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+
+        .avatar-5 {
+            top: 60%;
+            right: 5%;
+            transform: translate(50%, -50%);
+        }
+
+        .avatar-6 {
+            top: 25%;
+            right: 10%;
+            transform: translate(50%, -50%);
+        }
+
+        /* Dotted Connecting Lines */
+        .secondary-avatar::after {
+            content: '';
+            position: absolute;
+            background-color: transparent;
+            border: 1px dashed rgba(16, 140, 74, 0.7);
+            /* Slightly transparent green dotted line */
+            opacity: 0.7;
+            z-index: -1;
+            transform-origin: center center;
+            /* Ensure rotation is from the center of the avatar */
+        }
+
+        /* Adjusted line lengths and rotations (these are trial-and-error values) */
+        /* Adjust 'height' for vertical lines and 'width' for horizontal/angled lines */
+
+        .avatar-1::after {
+            top: 100%;
+            left: 50%;
+            width: 1px;
+            height: 15vw;
+            /* Adjust length relative to viewport */
+            transform-origin: top;
+            transform: translateX(-50%);
+        }
+
+        .avatar-2::after {
+            top: 50%;
+            left: 100%;
+            width: 20vw;
+            /* Adjust length relative to viewport */
+            height: 1px;
+            transform-origin: left;
+            transform: rotate(135deg) translateY(-50%);
+            /* Adjusted angle */
+        }
+
+        .avatar-3::after {
+            top: 50%;
+            left: 100%;
+            width: 20vw;
+            /* Adjust length relative to viewport */
+            height: 1px;
+            transform-origin: left;
+            transform: rotate(60deg) translateY(-50%);
+            /* Adjusted angle */
+        }
+
+        .avatar-4::after {
+            bottom: 100%;
+            left: 50%;
+            width: 1px;
+            height: 15vw;
+            /* Adjust length relative to viewport */
+            transform-origin: bottom;
+            transform: translateX(-50%);
+        }
+
+        .avatar-5::after {
+            top: 50%;
+            right: 100%;
+            width: 20vw;
+            /* Adjust length relative to viewport */
+            height: 1px;
+            transform-origin: right;
+            transform: rotate(-60deg) translateY(-50%);
+            /* Adjusted angle */
+        }
+
+        .avatar-6::after {
+            top: 50%;
+            right: 100%;
+            width: 20vw;
+            /* Adjust length relative to viewport */
+            height: 1px;
+            transform-origin: right;
+            transform: rotate(-135deg) translateY(-50%);
+            /* Adjusted angle */
+        }
+
+        /* Pagination Dots Styling */
+        .pagination-dots {
+            position: absolute;
+            bottom: -40px;
+            /* Position below the main review */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            /* Space between dots */
+            z-index: 20;
+            /* Ensure dots are visible */
+        }
+
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            /* Inactive dot color */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .pagination-dot.active {
+            background-color: #108c4a;
+            /* Active dot color (green) */
+            transform: scale(1.2);
+            /* Slightly larger active dot */
+        }
+
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1200px) {
+            .client-review-header .white-heading {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            
+        .secondary-avatar-img {
+            width: 40px !important;
+            height: 40px !important;
+            object-fit: cover;
+            border-radius: 50%;
+
+        }
+
+
+            .pagination-dots {
+                position: absolute;
+                bottom: -80px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 8px;
+                z-index: 20;
+            }
+
+            .client-review-design {
+                padding-top: 3rem;
+                padding-bottom: 8rem;
+                padding-right: 1rem;
+                padding-left: 1rem;
+            }
+
+            .review-grid {
+                min-height: 450px;
+                padding: 50px 0;
+            }
+
+            .client-review-header .white-heading {
+                font-size: 2rem;
+            }
+
+            .main-avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .reviewer-name {
+                font-size: 1.3rem;
+            }
+
+            .review-text-center {
+                font-size: 0.95rem;
+                padding: 14px;
+            }
+
+            .stars-center i {
+                font-size: 1.1rem;
+            }
+
+            .secondary-avatar {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            /* Adjust avatar positioning and line lengths for smaller screens */
+            .avatar-1 {
+                top: 5%;
+                left: 50%;
+            }
+
+            .avatar-2 {
+                top: 20%;
+                left: 5%;
+            }
+
+            .avatar-3 {
+                top: 60%;
+                left: 0%;
+            }
+
+            .avatar-4 {
+                bottom: 5%;
+                left: 50%;
+            }
+
+            .avatar-5 {
+                top: 60%;
+                right: 0%;
+            }
+
+            .avatar-6 {
+                top: 20%;
+                right: 5%;
+            }
+
+            /* Adjust line lengths/transforms for smaller screens to connect correctly */
+            .avatar-1::after {
+                height: 12vw;
+            }
+
+            .avatar-2::after {
+                width: 15vw;
+            }
+
+            .avatar-3::after {
+                width: 15vw;
+            }
+
+            .avatar-4::after {
+                height: 12vw;
+            }
+
+            .avatar-5::after {
+                width: 15vw;
+            }
+
+            .avatar-6::after {
+                width: 15vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .main-avatar {
+                width: 100px;
+                /* Slightly larger main avatar */
+                height: 70px !important;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+
+            .second-avatar {
+                width: 70px !important;
+                /* Slightly larger main avatar */
+                height: 50px !important;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            .client-review-header {
+                margin-bottom: 2rem;
+            }
+
+            .client-review-header .white-heading {
+                font-size: 1.8rem;
+            }
+
+            .review-grid {
+                min-height: 400px;
+                padding: 30px 0;
+            }
+
+            .main-review {
+                max-width: 300px;
+            }
+
+            .main-avatar {
+                width: 70px;
+                height: 70px;
+            }
+
+            .reviewer-name {
+                font-size: 1.1rem;
+            }
+
+            .reviewer-location {
+                font-size: 0.8rem;
+            }
+
+            .review-text-center {
+                font-size: 0.9rem;
+            }
+
+            .stars-center i {
+                font-size: 1rem;
+            }
+
+            .secondary-avatar {
+                width: 40px;
+                height: 40px;
+
+            }
+
+            /* Further adjust avatar positions for very small screens */
+            .avatar-1 {
+                top: 0%;
+                left: 50%;
+            }
+
+            .avatar-2 {
+                top: 15%;
+                left: 0%;
+            }
+
+            .avatar-3 {
+                top: 60%;
+                left: -5%;
+            }
+
+            .avatar-4 {
+                bottom: 0%;
+                left: 50%;
+            }
+
+            .avatar-5 {
+                top: 60%;
+                right: -5%;
+            }
+
+            .avatar-6 {
+                top: 15%;
+                right: 0%;
+            }
+
+            /* And line lengths/transforms */
+            .avatar-1::after {
+                height: 10vw;
+            }
+
+            .avatar-2::after {
+                width: 10vw;
+                transform: rotate(150deg) translateY(-50%);
+            }
+
+            .avatar-3::after {
+                width: 10vw;
+                transform: rotate(45deg) translateY(-50%);
+            }
+
+            .avatar-4::after {
+                height: 10vw;
+            }
+
+            .avatar-5::after {
+                width: 10vw;
+                transform: rotate(-45deg) translateY(-50%);
+            }
+
+            .avatar-6::after {
+                width: 10vw;
+                transform: rotate(-150deg) translateY(-50%);
+            }
+
+            .source-icon {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    </style>
+    <style>
+        /* Smooth transition */
+        .th-slider .swiper-slide {
+            transition: transform .45s ease, opacity .45s ease;
+        }
+
+        /* Active slide - front 3D pop */
+        .th-slider .slide-active .cars-slider__item {
+            transform: scale(1.06) translateZ(40px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+            opacity: 1;
+        }
+
+        /* Next + Previous slides - depth effect */
+        .th-slider .slide-next .cars-slider__item,
+        .th-slider .slide-prev .cars-slider__item {
+            transform: scale(0.9) translateZ(-40px);
+            opacity: 0.7;
+        }
+
+        /* Default cards */
+        .cars-slider__item {
+            transition: .45s ease;
+            border-radius: 20px;
+        }
+    </style>
+    <style>
+        .text-muted {
+            color: #4c4e51 !important;
+        }
+
         .home-head {
             font-size: 22px !important;
         }
@@ -15,7 +632,7 @@
         }
 
         .features-section {
-            background-color: #F5F5F5;
+            background-color: rgb(239 245 255);
             border-radius: 30px;
             padding: 48px;
             font-family: monospace;
@@ -24,6 +641,10 @@
         @media (max-width: 768px) {
             .features-section {
                 padding: 24px;
+            }
+
+            .new-feature-row {
+                margin-top: -30px;
             }
         }
 
@@ -48,7 +669,7 @@
         }
 
         .feature-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: inherit;
             margin-bottom: 15px;
             color: #2c3e50;
@@ -859,8 +1480,10 @@
 
 
         .testimonials-section {
-            background-color: var(--secondary);
-            background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
+            background-image:
+                radial-gradient(circle at center, rgba(0, 100, 0, 0.15) 0%, rgba(0, 0, 0, 0.9) 70%),
+                linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%);
+            /* background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg); */
         }
 
 
@@ -1079,9 +1702,8 @@
             justify-content: center;
             cursor: pointer;
             font-size: 32px;
-            box-shadow: 0 10px 30px rgba(2, 140, 204, 0.4);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 4px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             outline: none;
             backdrop-filter: blur(10px);
         }
@@ -1251,7 +1873,6 @@
             max-width: 88%;
             margin-left: auto;
             text-align: right;
-            box-shadow: 0 4px 15px rgba(2, 140, 204, 0.3);
             position: relative;
             font-size: 14px;
             line-height: 1.5;
@@ -1300,7 +1921,6 @@
 
         #send-btn:hover {
             transform: scale(1.1) translateY(-2px);
-            box-shadow: 0 8px 25px rgba(2, 140, 204, 0.4);
             background: linear-gradient(135deg, #0a3d52 0%, #028ccc 100%);
         }
 
@@ -1572,14 +2192,14 @@
 
 
         .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
-            background-color: #000000;
+            background-color: #0d4e6b;
 
-            border-color: #000000;
+            border-color: #0d4e6b;
 
         }
 
         .swiper-pagination-bullets .swiper-pagination-bullet {
-            border-color: #000000;
+            border-color: #0d4e6b;
         }
     </style>
 
@@ -1616,11 +2236,11 @@
                         </div>
                         <div class="container">
                             <!-- <div class="hero-style1">
-                                                                                                                                                                                                                                                                        <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                                                            unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                                                        <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                                                            Let’s make your best trip with us </h1>
-                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                                                                Let’s make your best trip with us </h1>
+                                                                                                                                                                                                                                                                                        </div> -->
                             <div class="hero-style1 d-flex flex-column justify-content-center align-items-center text-center"
                                 style="min-height: 750px; max-width: 100%;">
                                 <span class="sub-title" data-ani="slideinup" data-ani-delay="0.2s"
@@ -1637,28 +2257,28 @@
                     </div>
                 </div>
                 <!--  <div class="swiper-slide">
-                                                                                                                                                                                                                                                            <div class="hero-inner">
-                                                                                                                                                                                                                                                                <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
-                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                <div class="container">
-                                                                                                                                                                                                                                                                    <div class="hero-style1">
-                                                                                                                                                                                                                                                                        <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
-                                                                                                                                                                                                                                                                            unforgetable pleasure with us</span>
-                                                                                                                                                                                                                                                                        <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
-                                                                                                                                                                                                                                                                            Explore beauty of the whole world </h1>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                <div class="hero-inner">
+                                                                                                                                                                                                                                                                                    <div class="th-hero-bg" data-bg-src="assets/img/hero/hero_bg_1_3.jpg">
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="container">
+                                                                                                                                                                                                                                                                                        <div class="hero-style1">
+                                                                                                                                                                                                                                                                                            <span class="sub-title style1" data-ani="slideinup" data-ani-delay="0.2s">Get
+                                                                                                                                                                                                                                                                                                unforgetable pleasure with us</span>
+                                                                                                                                                                                                                                                                                            <h1 class="hero-title" data-ani="slideinup" data-ani-delay="0.4s">
+                                                                                                                                                                                                                                                                                                Explore beauty of the whole world </h1>
+                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                            </div> -->
 
             </div>
-            <div class="th-swiper-custom">
+            {{-- <div class="th-swiper-custom">
                 <button data-slider-prev="#heroSlide1" class="slider-arrow slider-prev"><img
                         src="assets/img/icon/right-arrow.svg" alt=""></button>
                 <div class="slider-pagination"></div>
                 <button data-slider-next="#heroSlide1" class="slider-arrow slider-next"><img
                         src="assets/img/icon/left-arrow.svg" alt=""></button>
-            </div>
+            </div> --}}
 
         </div>
     </div>
@@ -1853,7 +2473,7 @@
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Discover
                             the Wonders of Sri Lanka </span> --}}
                         <h2 class="sec-title"
-                            style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                            style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                             Inbound Tours</h2>
                     </div>
                 </div>
@@ -1863,124 +2483,149 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade active show" id="nav-step1" role="tabpanel">
                             <div class="slider-area tour-slider slider-drag-wrap position-relative">
-                                <div class="swiper-button-prev-inbound ">
+                                <div class="swiper-button-prev-inbound">
                                     <i class="fas fa-chevron-left"></i>
                                 </div>
                                 <div class="swiper-button-next-inbound">
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
 
-                                <div class="swiper th-slider has-shadow"
+                                <div class="swiper th-slider"
                                     data-slider-options='{ "navigation": {
-                                "nextEl": ".swiper-button-next-inbound",
-                                "prevEl": ".swiper-button-prev-inbound"
-                            },"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"},"1400":{"slidesPerView":"4"}}}'>
+                        "nextEl": ".swiper-button-next-inbound",
+                        "prevEl": ".swiper-button-prev-inbound"
+                    },"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"},"1400":{"slidesPerView":"4"}}}'>
                                     <div class="swiper-wrapper">
-
 
                                         @foreach ($inboundPackages as $inboundPackage)
                                             <div class="swiper-slide">
                                                 <a href="{{ route('tour.details', $inboundPackage->id) }}"
-                                                    class="tour-box-link" style="text-decoration: none; color: inherit;">
-                                                    <div class="tour-box style2 th-ani shadow"
-                                                        style="cursor: pointer; transition: transform 0.3s ease; border-radius: 0px; overflow: hidden; min-height: 320px; position: relative;border-radius: 10px;">
+                                                    class="group block relative overflow-hidden rounded-2xl transition-all duration-500 no-underline"
+                                                    style="height: 500px; display:block; text-decoration: none; color: inherit;">
+                                                    @php
+                                                        $backendBaseUrl = config('app.backend_url');
+                                                        $imageUrl = $inboundPackage->picture
+                                                            ? $backendBaseUrl .
+                                                                '/storage/' .
+                                                                ltrim($inboundPackage->picture, '/')
+                                                            : asset('assets/img/tour/yala.jpg');
+                                                    @endphp
 
-                                                        @php
-                                                            $backendBaseUrl = config('app.backend_url');
-                                                            $imageUrl = $inboundPackage->picture
-                                                                ? $backendBaseUrl .
-                                                                    '/storage/' .
-                                                                    ltrim($inboundPackage->picture, '/')
-                                                                : asset('assets/img/tour/yala.jpg');
-                                                        @endphp
+                                                    <!-- Full Image Background -->
+                                                    <div class="absolute inset-0"
+                                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                                                        <img src="{{ $imageUrl }}"
+                                                            alt="{{ $inboundPackage->place ?? $inboundPackage->heading }}"
+                                                            style="width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform 0.7s ease;"
+                                                            class="group-hover:scale-110" />
+                                                        <!-- Gradient Overlay -->
+                                                        <div
+                                                            style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), transparent);">
+                                                        </div>
+                                                    </div>
 
+                                                    <!-- Content Container -->
+                                                    <div class="relative h-full"
+                                                        style="position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
 
+                                                        <!-- Top Section: Location & Rating -->
+                                                        <div
+                                                            style="display: flex; align-items: flex-start; justify-content: space-between;">
+                                                            <!-- Location Badge -->
+                                                            <div
+                                                                style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 9999px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3);">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="white"
+                                                                    width="16" height="16" viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5z" />
+                                                                </svg>
+                                                                {{--  <span
+                                                                    style="color: white; font-size: 14px; font-weight: 500;">{{ $inboundPackage->place ?? 'Sri Lanka' }}</span> --}}
+                                                            </div>
 
-                                                        <!-- Image Section -->
-                                                        <div class="tour-box_img global-img" style="position: relative;">
-                                                            <img src="{{ $imageUrl }}"
-                                                                alt="{{ $inboundPackage->place ?? 'Tour Image' }}"
-                                                                style="width: 100%; height: 200px; object-fit: cover; ">
+                                                            <!-- Rating Badge -->
+                                                            <div
+                                                                style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 9999px; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                                                                <i class="fas fa-star"
+                                                                    style="color: white; font-size: 14px;"></i>
+                                                                <span
+                                                                    style="color: white; font-size: 14px; font-weight: 700;">{{ number_format($inboundPackage->ratings, 1) }}</span>
+                                                            </div>
                                                         </div>
 
-                                                        <!-- Content Section -->
-                                                        <div class="tour-content" style="padding: 15px;">
-                                                            <!-- Country & Rating -->
-                                                            <div class="tour-header d-flex align-items-center justify-content-between"
-                                                                style="margin-top: -12px; margin-bottom: -8px;">
-                                                                <p class="tour-country m-0 d-flex align-items-center"
-                                                                    style="color: #3596d3;">Sri Lanka</p>
-                                                                <div class="tour-rating d-flex align-items-center px-2  rounded"
-                                                                    style="margin-top: 13px; padding: 3px; background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);">
-                                                                    <i class="fas fa-star text-white  fa-sm"></i>
-                                                                    <span class=""
-                                                                        style="font-weight: 700; font-size: 12px; color: #fff;">
-                                                                        {{ round($inboundPackage->ratings) }}
-                                                                    </span>
+                                                        <!-- Bottom Section: Details & CTA -->
+                                                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                                                            <!-- Title & Description -->
+                                                            <div>
+                                                                <h3 style="color: white; font-size: 20px; font-weight: 700; margin: 0 0 8px 0; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s ease;"
+                                                                    class="group-hover:text-blue-300">
+                                                                    {{ $inboundPackage->heading }}
+                                                                </h3>
+                                                                {{-- <p
+                                                                    style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                                    {{ Str::limit($inboundPackage->description, 90) }}
+                                                                </p> --}}
+                                                            </div>
+
+                                                            <!-- Duration & Price Section -->
+                                                            <div
+                                                                style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                                                                <!-- Duration -->
+                                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                                    <div
+                                                                        style="padding: 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px);">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            fill="white" width="20" height="20"
+                                                                            viewBox="0 0 24 24">
+                                                                            <path
+                                                                                d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3a.75.75 0 0 1 1.5 0v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" />
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p
+                                                                            style="color: rgba(255, 255, 255, 0.7); font-size: 12px; margin: 0;">
+                                                                            Duration</p>
+                                                                        <p
+                                                                            style="color: white; font-weight: 600; font-size: 14px; margin: 0;">
+                                                                            {{ $inboundPackage->days }}D /
+                                                                            {{ $inboundPackage->nights }}N
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Price -->
+                                                                <div style="text-align: right;">
+                                                                    <p
+                                                                        style="color: rgba(255, 255, 255, 0.7); font-size: 12px; margin: 0 0 4px 0;">
+                                                                        From</p>
+                                                                    <p
+                                                                        style="color: white; font-size: 28px; font-weight: 700; margin: 0;">
+                                                                        ${{ number_format($inboundPackage->price, 0) }}
+                                                                    </p>
                                                                 </div>
                                                             </div>
 
-                                                            <!-- Title -->
-                                                            <h3 class="box-title mt-2"
-                                                                style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
-                                                                {{ $inboundPackage->heading }}
-                                                            </h3>
-
-                                                            <!-- Small Description -->
-                                                            <p class="text-dark  small mt-1 mb-1"
-                                                                style="line-height: 1.4; max-height: 40px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                                                {{ Str::limit($inboundPackage->description, 90) }}
-                                                            </p>
-
-
-                                                            <a href="{{ route('tour.details', $inboundPackage->id) }}"
-                                                                class="small"
-                                                                style="font-weight: 500; color:#3596d3; font-size: 12px;">View
-                                                                More</a>
-
-                                                            <!-- Days/Nights Section with Icon -->
-                                                            <div class="d-flex align-items-center mt-3"
-                                                                style="color: black;">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="black"
-                                                                    width="18" height="18" class="me-2"
-                                                                    viewBox="0 0 24 24">
-                                                                    <path
-                                                                        d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3a.75.75 0 0 1 1.5 0v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z">
-                                                                    </path>
-                                                                </svg>
-
-                                                                <p class="text-sm m-0 text-dark"
-                                                                    style="font-size: 14px; font-weight: 500;">
-                                                                    {{ $inboundPackage->days }} Days
-                                                                    {{ $inboundPackage->nights }} Nights
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <!-- Price in Bottom Right -->
-                                                        <div class="text-end px-3 pb-3">
-                                                            <p class="text-lg m-0 text-dark"
-                                                                style="font-size: 24px; font-weight: 600;">
-                                                                USD ${{ number_format($inboundPackage->price, 0) }}
-                                                            </p>
+                                                            {{-- <!-- View Details Button -->
+                                                            <button
+                                                                style="width: 100%; background: white; color: #111827; font-weight: 600; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer; transition: all 0.3s ease; font-size: 16px; transform: scale(1);"
+                                                                class="group-hover:bg-blue-400 group-hover:text-white group-hover:scale-105">
+                                                                View Details
+                                                            </button> --}}
                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
                                         @endforeach
 
-
-
                                     </div>
-                                    {{-- <div class="slider-pagination" style="margin-top: 20px;margin-bottom: 58px;"></div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+
+
 
             <div class="text-center ">
                 <a href="{{ url('/inbound-tours') }}" class="th-btn "
@@ -1999,7 +2644,7 @@
             <div class="title-area text-center mb-5" style="">
 
                 <h2 class="sec-title"
-                    style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                     Transport Solutions </h2>
             </div>
 
@@ -2039,7 +2684,7 @@
                         <!-- Feature 3 -->
                         <div class="d-flex mb-4">
                             <div class="flex-shrink-0">
-                                <i class="bi bi-calendar-check feature-icon"></i>
+                                <i class="bi bi-journal-richtext feature-icon"></i>
                             </div>
                             <div class="ms-3">
                                 <h3 class="feature-title" style="color: #000;"><b>Booking</b> Made Easy</h3>
@@ -2100,7 +2745,7 @@
 
 
                 <h2 class="sec-title vehicle-title"
-                    style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                    style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                     Vehicle Rentals</h2>
             </div>
 
@@ -2150,21 +2795,21 @@
                                                 <!-- Left Section -->
                                                 <div class="content-section" style="flex: 1; padding-right: 20px;">
                                                     <div
-                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 8px 14px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(0,162,255,0.3);">
+                                                        style="display: inline-block; background: linear-gradient(135deg, rgb(53, 150, 211) 0%, rgb(37, 111, 157) 100%); padding: 8px 14px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; ">
                                                         {{ $vehicle->label ?? 'Premium ' }}
                                                     </div>
 
                                                     <h3
-                                                        style="margin-bottom: 8px; font-family: 'Montserrat', sans-serif; color: #ffffff; font-weight: 700; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
+                                                        style="margin-bottom: 8px; font-family: 'Montserrat', sans-serif; color: #ffffff; font-weight: 700; font-size: 44px;">
                                                         {{ $vehicle->make }}
                                                     </h3>
                                                     <h3
-                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; text-shadow: 0 2px 10px rgba(0,162,255,0.4);">
+                                                        style="margin-bottom: 15px; font-family: 'Montserrat', sans-serif; color: #3596d3; font-weight: 800; font-size: 44px; ">
                                                         {{ $vehicle->name }}
                                                     </h3>
 
                                                     <div class="rent-undrline"
-                                                        style="width: 60px; height: 6px; background: linear-gradient(90deg, #3596d3, #0069d9); margin: 10px 0 20px; border-radius: 3px;">
+                                                        style="width: 60px; height: 6px; background:  #e91e22; margin: 10px 0 20px; border-radius: 3px;">
                                                     </div>
                                                 </div>
 
@@ -2215,7 +2860,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; color: #3596D2;font-weight: 700; font-size: 18px;">
                                                     <i class="fas fa-helmet-safety"
-                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D2;font-size: 20px;  border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Helmets</span>
@@ -2229,7 +2874,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-kit-medical"
-                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
+                                                        style="color: #3596D2;font-size: 20px;  border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; "></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">First-Aid
@@ -2244,8 +2889,8 @@
                                                 <!-- Transmission -->
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
-                                                    <i class="fas fa-cogs"
-                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                    <i class="fas fa-cogs" aria-hidden="true"
+                                                        style="color: #3596D2;font-size: 20px; background:  border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Transmission</span>
@@ -2260,7 +2905,7 @@
                                                 <div class="specification-item"
                                                     style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; min-width: 120px; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 15px; text-align: left; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 18px; color: #00A2FF;">
                                                     <i class="fas fa-road"
-                                                        style="color: #3596D2;font-size: 20px; background: linear-gradient(135deg, rgba(0,162,255,0.15) 0%, rgba(0,105,217,0.15) 100%); border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
+                                                        style="color: #3596D2;font-size: 20px;  border-radius: 50%; padding: 12px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;"></i>
                                                     <div style="display: flex; flex-direction: column;">
                                                         <span
                                                             style="color: #AAAAAA; font-weight: 600; font-size: 14px;">Mileage</span>
@@ -2294,7 +2939,9 @@
     </section>
     <!-- Ari Line -->
 
-    <section class=" overflow-hidden space bg-smoke" id="blog-sec">
+
+
+    <section class=" overflow-hidden space " id="blog-sec" style="background: rgb(245 245 245);">
         <div class="container-fluid">
             <div class="mb-30 text-center text-md-start" style="margin-top: -60px;">
                 <div class="row align-items-center justify-content-between">
@@ -2306,7 +2953,7 @@
                                 style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">
                                 Your Gateway to the World</span>
                             <h2 class="sec-title"
-                                style="font-family: 'monospace';font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
+                                style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;margin-bottom: 0.5rem;">
                                 Air Ticketing</h2>
 
 
@@ -2318,10 +2965,10 @@
 
                     </div>
                     <!-- <div class="col-md-auto">
-                                                                                                                                                                                                                <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
-                                                                                                                                                                                                                    Get Tickets
-                                                                                                                                                                                                                </a>
-                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                <a href="tours.html" class="th-btn" style="outline: 2px solid #60D522; background-color: white; color: black;">
+                                                                                                                                                                                                                                    Get Tickets
+                                                                                                                                                                                                                                </a>
+                                                                                                                                                                                                                            </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
                         <a class="fancy" href="air-line.html">
@@ -2536,61 +3183,52 @@
     </section>
 
 
+    {{-- Remove the inline style from the section for cleaner CSS --}}
+    <div class="container my-5">
+        <div class="client-review-design testimonials-section">
+            <div class="container-fluid client-review-container ">
+                <div class="text-center client-review-header">
+                    <h2 class="white-heading" style="font-family: monospace;">Loved By Over Thousand Travelers</h2>
+                    <p class="text-white-50 sub-text">
+                        Our travelers consistently enjoy unforgettable experiences with seamless bookings, exceptional
+                        support,
+                        and personalized journeys tailored to every adventure.
+                    </p>
+                </div>
 
-    <section class="testimonials-section py-5">
-        <div class="container-fluid">
-            <div class="heading white-heading text-center mb-4">What Pepole Say</div>
-
-            <div id="testimonial4"
-                class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
-                data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
-
-                <div class="row">
-                    <div class="col-12" style="margin-top: 34px;">
-                        <div class="slider-area testimonial-slider slider-drag-wrap">
-                            <div class="swiper th-slider"
-                                data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}}'>
-                                <div class="swiper-wrapper">
-                                    @foreach ($testimonials as $testimonial)
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-card card h-100">
-                                                <div class="card-body" style="height: 240px;">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <img src="{{ $testimonial->image ? 'https://test.admin/' . $testimonial->image : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=random' }}"
-                                                            class="avatar rounded-circle me-3"
-                                                            alt="{{ $testimonial->name }}" style="height: 48px;">
-                                                        <div>
-                                                            <h6 class="mb-0">{{ $testimonial->name }}</h6>
-                                                            <small class="text-muted">
-                                                                <i
-                                                                    class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
-                                                                {{ $testimonial->source }}
-                                                            </small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="stars mb-3">
-                                                        @for ($i = 1; $i <= 5; $i++)
-                                                            <i
-                                                                class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"></i>
-                                                        @endfor
-                                                    </div>
-                                                    <p class="review-text">"{{ $testimonial->message }}"</p>
-                                                    <small class="text-muted">Posted on:
-                                                        {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                <!-- Pagination -->
-                                <div class="slider-pagination mt-4"></div>
-                            </div>
+                <div class="review-grid">
+                    <div class="main-review">
+                        {{-- Content will be dynamically loaded here by JavaScript --}}
+                        <div class="main-avatar-wrapper">
+                            <img id="main-avatar-img" src="" class="main-avatar" alt="">
                         </div>
+                        <h4 id="main-reviewer-name" class="reviewer-name text-white"></h4>
+                        <p id="main-reviewer-location" class="reviewer-location text-white-50"></p>
+                        <div id="main-reviewer-source" class="reviewer-source text-center">
+                            <img id="main-source-icon" src="" alt=""
+                                class="source-icon mx-auto d-block">
+                        </div>
+                        <p id="main-review-text" class="review-text-center text-white-50"></p>
+                        <div id="main-stars-center" class="stars-center">
+                            {{-- Stars will be dynamically loaded --}}
+                        </div>
+                    </div>
+
+                    <div class="secondary-avatars-wrapper" id="secondary-avatars-wrapper">
+                        {{-- Secondary avatars will be dynamically loaded here by JavaScript --}}
+                    </div>
+
+                    {{-- Pagination Dots --}}
+                    <div class="pagination-dots" id="pagination-dots">
+                        {{-- Dots will be dynamically generated here --}}
                     </div>
                 </div>
             </div>
-    </section>
+        </div>
+    </div>
+
+
+
 
     <div id="chatbot-container">
         <!-- Floating Toggle Button -->
@@ -2654,6 +3292,218 @@
 
     </div>
 
+    {{-- Pass testimonials data to JavaScript --}}
+    <script>
+        window.testimonialsData = @json($allTestimonials);
+        window.backendUrl = "{{ rtrim(config('app.backend_url'), '/') }}";
+    </script>
+
+    {{-- Your custom JavaScript for handling the dynamic testimonials --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testimonials = window.testimonialsData;
+            const backendUrl = window.backendUrl;
+            const sourceLogos = {
+                'Google': '/images/sources/google.jpg',
+                'Meta': '/images/sources/meta.png', // Assuming 'meta' is for Facebook/Instagram
+                'X': '/images/sources/x.png', // Assuming 'x' is for Twitter
+                'Trip Advisor': '/images/sources/tripadvisor.png',
+                'default': '/images/sources/default.png' // Fallback
+            };
+
+            if (!testimonials || testimonials.length === 0) {
+                console.warn("No testimonials data found.");
+                return;
+            }
+
+            let currentIndex = 0;
+            const displayDuration = 5000; // 5 seconds per testimonial
+            let autoSlideInterval;
+
+            // Elements to update
+            const mainAvatarImg = document.getElementById('main-avatar-img');
+            const mainReviewerName = document.getElementById('main-reviewer-name');
+            const mainReviewerLocation = document.getElementById('main-reviewer-location');
+            const mainSourceIcon = document.getElementById('main-source-icon');
+            const mainReviewText = document.getElementById('main-review-text');
+            const mainStarsCenter = document.getElementById('main-stars-center');
+            const secondaryAvatarsWrapper = document.getElementById('secondary-avatars-wrapper');
+            const paginationDotsContainer = document.getElementById('pagination-dots');
+
+            function getImageUrl(testimonial) {
+                if (testimonial.image) {
+                    // Ensure proper URL construction for backend storage
+                    return `${backendUrl}/storage/${testimonial.image.replace(/^\//, '')}`;
+                }
+                return `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`;
+            }
+
+            function updateMainTestimonial(testimonial) {
+                if (!testimonial) {
+                    // Provide default/placeholder content if no testimonial is available
+                    mainAvatarImg.src = `https://ui-avatars.com/api/?name=N+H&background=random`;
+                    mainAvatarImg.alt = "No Testimonial";
+                    mainReviewerName.textContent = "No Reviews Yet";
+                    mainReviewerLocation.textContent = ""; // Hide location
+                    mainSourceIcon.style.display = 'none'; // Hide source icon
+                    mainReviewText.textContent = "Stay tuned for amazing reviews from our travelers!";
+                    mainStarsCenter.innerHTML = ''; // Clear stars
+                    return;
+                }
+
+                mainAvatarImg.src = getImageUrl(testimonial);
+                mainAvatarImg.alt = testimonial.name;
+                mainReviewerName.textContent = testimonial.name;
+
+                // Display location if available, otherwise hide
+                if (testimonial.location) {
+                    mainReviewerLocation.textContent = testimonial.location;
+                    mainReviewerLocation.style.display = ''; // Show
+                } else {
+                    mainReviewerLocation.style.display = 'none'; // Hide
+                }
+
+                // Handle source logo
+                const sourceName = testimonial.source || 'default';
+                const logoPath = sourceLogos[sourceName] || sourceLogos['default'];
+                mainSourceIcon.src = logoPath;
+                mainSourceIcon.alt = sourceName;
+                mainSourceIcon.style.display = ''; // Ensure it's visible
+
+                mainReviewText.textContent = testimonial.message;
+
+                mainStarsCenter.innerHTML = ''; // Clear existing stars
+                for (let i = 1; i <= 5; i++) {
+                    const starIcon = document.createElement('i');
+                    starIcon.classList.add('bi', i <= testimonial.rating ? 'bi-star-fill' : 'bi-star',
+                        'text-warning');
+                    mainStarsCenter.appendChild(starIcon);
+                }
+            }
+
+            function updateSecondaryAvatars(mainIndex) {
+                secondaryAvatarsWrapper.innerHTML = ''; // Clear existing avatars
+
+                // Get testimonials excluding the current main one
+                const availableTestimonials = testimonials.filter((_, index) => index !== mainIndex);
+
+                // Randomly select up to 6 unique testimonials for secondary display
+                const shuffled = availableTestimonials.sort(() => 0.5 - Math.random());
+                const secondary = shuffled.slice(0, 6);
+
+                // If there are fewer than 6, fill with placeholders
+                for (let i = 0; i < 6; i++) {
+                    const testimonial = secondary[i];
+                    const div = document.createElement('div');
+                    div.classList.add('secondary-avatar', `avatar-${i + 1}`);
+
+                    if (testimonial) {
+                        div.innerHTML =
+                            `<img src="${getImageUrl(testimonial)}" class="secondary-avatar-img" alt="${testimonial.name}">`;
+                        div.addEventListener('click', () => {
+                            // When a secondary avatar is clicked, make it the main one
+                            currentIndex = testimonials.indexOf(testimonial);
+                            renderCarousel(currentIndex);
+                            resetAutoSlide();
+                        });
+                    } else {
+                        // Placeholder avatar if not enough testimonials
+                        div.classList.add('placeholder');
+                        div.innerHTML =
+                            `<img src="https://ui-avatars.com/api/?name=P&background=random" class="secondary-avatar-img" alt="Placeholder">`;
+                    }
+                    secondaryAvatarsWrapper.appendChild(div);
+                }
+            }
+
+            function updatePaginationDots(activeIndex) {
+                paginationDotsContainer.innerHTML = ''; // Clear existing dots
+                testimonials.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('pagination-dot');
+                    if (index === activeIndex) {
+                        dot.classList.add('active');
+                    }
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        renderCarousel(currentIndex);
+                        resetAutoSlide();
+                    });
+                    paginationDotsContainer.appendChild(dot);
+                });
+            }
+
+            function renderCarousel(index) {
+                if (testimonials.length === 0) {
+                    updateMainTestimonial(null); // Show placeholder if no testimonials
+                    secondaryAvatarsWrapper.innerHTML = '';
+                    paginationDotsContainer.innerHTML = '';
+                    return;
+                }
+
+                updateMainTestimonial(testimonials[index]);
+                updateSecondaryAvatars(index);
+                updatePaginationDots(index);
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                renderCarousel(currentIndex);
+            }
+
+            function startAutoSlide() {
+                if (testimonials.length > 1) { // Only auto-slide if more than one testimonial
+                    autoSlideInterval = setInterval(nextSlide, displayDuration);
+                }
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Initial render and start auto-sliding
+            renderCarousel(currentIndex);
+            startAutoSlide();
+        });
+    </script>
+
+
+    <script>
+        var swiper = new Swiper(".th-slider", {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 1.2, // visible but never cut
+            spaceBetween: 30,
+            grabCursor: true,
+
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+
+            navigation: {
+                nextEl: ".swiper-button-next-rental",
+                prevEl: ".swiper-button-prev-rental",
+            },
+
+            on: {
+                slideChangeTransitionStart: function() {
+                    document.querySelectorAll('.swiper-slide').forEach(slide => {
+                        slide.classList.remove('slide-active', 'slide-next', 'slide-prev');
+                    });
+
+                    let active = swiper.slides[swiper.activeIndex];
+                    let next = swiper.slides[swiper.activeIndex + 1];
+                    let prev = swiper.slides[swiper.activeIndex - 1];
+
+                    active?.classList.add('slide-active');
+                    next?.classList.add('slide-next');
+                    prev?.classList.add('slide-prev');
+                }
+            }
+        });
+    </script>
     <script>
         // Chatbot functionality
         const toggleBtn = document.getElementById('chatbot-toggle');

@@ -32,6 +32,7 @@ class PackageBooking extends Model
         'travel_reason',
         'theme',
         'message',
+        'status',
         'invoice_id',
         'payment_status',
         'transaction_id',

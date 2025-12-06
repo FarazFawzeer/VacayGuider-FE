@@ -3,7 +3,678 @@
 @section('title', 'VacayGuider | Contact Us')
 
 @section('content')
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
 
+        @media (max-width: 576px) {
+
+            .breadcrumb-mobile {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                margin-top: 80px !important;
+            }
+
+            /* ol,
+                        ul {
+                            padding-left: 2rem !important;
+                        } */
+
+            .inbound-title {
+                margin-top: 32px !important;
+                margin-block: 20px;
+                margin-bottom: 16px;
+            }
+
+            /* Reduce container padding */
+            .booking-container {
+                padding: 15px;
+                
+            }
+
+            /* Header text */
+            .booking-header h1 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            .booking-header p {
+                font-size: 14px;
+                line-height: 20px;
+                margin-top: 20px !important;
+            }
+
+            /* Step Progress Bar */
+            .step-progress {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .step-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .step-title {
+                font-size: 14px;
+                margin-left: 10px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+
+            /* Form Inputs */
+            .form-control,
+            .form-select {
+                width: 100% !important;
+            }
+
+            /* Fix Phone + WhatsApp fields */
+            #phone,
+            #whatsapp {
+                width: 100% !important;
+            }
+
+            .row>div {
+                margin-bottom: 15px;
+            }
+
+            /* Review Page Fix */
+            #reviewGreeting {
+                font-size: 20px;
+            }
+
+            #reviewSummary {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            /* Navigation Buttons */
+            .navigation-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .navigation-buttons button {
+                width: 48%;
+            }
+        }
+
+        .message {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .message.success {
+            background-color: #e6ffed;
+            s color: #155724;
+        }
+
+        .message.error {
+            background-color: #fdecea;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .message.warning {
+            background-color: #fff4e5;
+            border-left: 4px solid #f0ad4e;
+            color: #856404;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .booking-header {
+
+            color: rgb(0, 0, 0);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .booking-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .booking-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .booking-header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            color: rgb(0, 0, 0);
+        }
+
+        .progress-section {
+            padding: 2rem;
+
+            position: relative;
+        }
+
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.active .step-number {
+            background: #3596d3;
+            color: white;
+            transform: scale(1.1);
+
+        }
+
+        .step-item.completed .step-number {
+            background: #96c93e;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .step-title {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step-item.active .step-title {
+            color: #3596d3;
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            right: -50%;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 1;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .step-item.completed .progress-line {
+            background: #96c93e;
+        }
+
+        .step-item:last-child .progress-line {
+            display: none;
+        }
+
+        .form-section {
+            padding: 0 2rem 2rem;
+        }
+
+        .step-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.5s ease;
+            position: relative;
+        }
+
+
+        .greeting {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0d4e6b, #1a5a78);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(13, 78, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 78, 107, 0.4);
+            background: linear-gradient(135deg, #1a5a78, #0d4e6b);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgb(37, 150, 190), rgb(150, 201, 62));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .greeting {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .summary {
+            font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-content h4 {
+            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+
+
+        .form-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #e2e8f0;
+            /* border-radius: 12px; */
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            font-weight: 500;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            outline: none;
+            background: white;
+            transform: translateY(-1px);
+        }
+
+        /* Fix Bootstrap validation icons for <select> fields */
+        select.form-select.is-valid option,
+        select.form-select.is-invalid option {
+            background-image: none !important;
+            /* remove icons from dropdown items */
+        }
+
+        /* Show icon only on the select box itself */
+        select.form-select.is-valid,
+        select.form-select.is-invalid {
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem 1rem;
+            padding-right: 2.25rem;
+            /* spacing for icon */
+        }
+
+        /* Green check for valid */
+        select.form-select.is-valid {
+            border-color: #198754;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23198754'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7' /%3e%3c/svg%3e");
+        }
+
+        /* Red cross for invalid */
+        select.form-select.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23dc3545'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 18L18 6M6 6l12 12' /%3e%3c/svg%3e");
+        }
+
+
+
+        .form-control.is-invalid {
+            border-color: #f56565;
+            box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.1);
+        }
+
+        .form-control.is-valid {
+            border-color: #96c93e;
+            box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.1);
+        }
+
+
+
+        .btn-primary {
+            background: #0d4e6b;
+            color: white;
+            border: 1px solid #0d4e6b;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+            border: none
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            color: white;
+            background: #0d4e6b;
+
+        }
+
+
+
+        .btn-primary:focus {
+
+            color: white;
+            background: #0d4e6b;
+            border: 1px solid #0d4e6b !important;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #000000 !important;
+            border: 1px solid #0d4e6b;
+            border-radius: 50px;
+        }
+
+        .btn-secondary:hover {
+            background: #0d4e6b;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-success {
+            background: #96c93e color: white;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-success:hover::before {
+            left: 100%;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(72, 187, 120, 0.4);
+            color: white;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-top: -30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .review-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .review-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #2d3748;
+            flex: 1;
+        }
+
+        .review-value {
+            color: #1a202c;
+            font-weight: 500;
+            flex: 1;
+            text-align: right;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0;
+            }
+
+            .booking-container {
+                margin: 0 1rem;
+                border-radius: 16px;
+            }
+
+            .booking-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .booking-header h1 {
+                font-size: 2rem;
+            }
+
+            .progress-section,
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .navigation-buttons {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navigation-buttons .btn {
+                width: 100%;
+            }
+
+            .step-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .step-item {
+                flex: none;
+                min-width: 80px;
+            }
+
+            .progress-line {
+                display: none;
+            }
+        }
+    </style>
     <style>
         /* Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
@@ -449,26 +1120,7 @@
 
         }
 
-        .step-number {
-            background: linear-gradient(135deg, #2596be, #96c93e);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: 20px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
-        }
 
-        .step-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
 
         .form-grid {
             display: grid;
@@ -528,7 +1180,7 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #000000, #000000);
+
             color: white;
             padding: 18px 40px;
             border: none;
@@ -540,7 +1192,7 @@
             text-decoration: none;
             display: inline-block;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+
             margin-top: 20px;
         }
 
@@ -641,7 +1293,7 @@
                             style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Get
                             In Touch</span> --}}
                         <h2 class="sec-title"
-                            style="font-family: 'Poppins', sans-serif;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
+                            style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
                             Sart Your Conversation </h2>
                     </div>
 
@@ -776,86 +1428,6 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <div class="steps-container">
-                        <div class="step-card bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                            <div class="step-header text-center mb-6">
-                                <div class="step-number">!</div>
-                                <h2 class="step-title text-blue-900 text-3xl sm:text-4xl font-extrabold">Check Your
-                                    Reservation
-                                </h2>
-                            </div>
-                            <form method="POST" action="{{ route('contact.submit') }}"
-                                class="form-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-                                @csrf
-
-                                <!-- Name -->
-                                <div class="form-group">
-                                    <label for="name" class="block font-semibold text-gray-700 mb-1">Your Name
-                                        *</label>
-                                    <input type="text" id="name" name="name" required placeholder="Your Name"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
-                                </div>
-
-                                <!-- Email -->
-                                <div class="form-group">
-                                    <label for="email" class="block font-semibold text-gray-700 mb-1">Your Email
-                                        *</label>
-                                    <input type="email" id="email" name="email" required
-                                        placeholder="Your Email"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
-                                </div>
-
-                                <!-- Phone -->
-                                <div class="form-group">
-                                    <label for="phone" class="block font-semibold text-gray-700 mb-1">Your
-                                        Phone</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="Phone"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
-                                </div>
-
-                                <!-- Country -->
-                                <div class="form-group">
-                                    <label for="country" class="block font-semibold text-gray-700 mb-1">Country</label>
-                                    <input type="text" id="country" name="country" placeholder="Country"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
-                                </div>
-
-                                <!-- Service -->
-                                <div class="form-group md:col-span-2">
-                                    <label for="service" class="block font-semibold text-gray-700 mb-1">Select a Service
-                                        *</label>
-                                    <select id="service" name="service" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
-                                        <option value="" disabled selected>Select a service</option>
-                                        <option value="Inbound tours">Inbound tours</option>
-                                        {{-- <option value="Outbound tours">Outbound tours</option> --}}
-                                        <option value="Rent Vehicles">Vehicle Renta</option>
-                                        <option value="Transportations">Transportations</option>
-
-                                        <option value="Air tickets">Air Ticketing</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-
-                                <!-- Message -->
-                                <div class="form-group md:col-span-2">
-                                    <label for="message" class="block font-semibold text-gray-700 mb-1">Message</label>
-                                    <textarea id="message" name="message" rows="5" placeholder="Leave a message here"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
-                                        style="min-height: 130px;"></textarea>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <div class="form-group md:col-span-2 text-center pt-4">
-                                    <button type="submit" class="btn btn-submit"
-                                        style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); ">
-                                        Send Message
-                                    </button>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
 
 
                 </div>
@@ -863,22 +1435,120 @@
 
 
 
+            </div>
+        </div>
+    </div>
 
+    <section style="margin-top: -100px;"  >
+        <div class="booking-container" style="background: rgb(245 245 245);padding: 12px;">
+            <!-- Header -->
+            <div class="booking-header text-center">
+                <h1 style="font-family: monospace;">Check Your Reservation</h1>
+                <p style="margin-top: 10px;">Fill in your details and submit your request. Our team will contact you
+                    shortly.</p>
+            </div>
 
-                <!-- Map -->
-                <div class="col-12 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="overflow-hidden rounded mt-4 shadow">
-                        {{-- <iframe class="w-100" style="height: 400px;"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe> --}}
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4707.183833396513!2d79.83274714459975!3d7.211837711148969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2ee997646d897%3A0x8adfcb85f471e77d!2s22%2C%2014%20Asarappa%20Rd%2C%20Negombo!5e0!3m2!1sen!2slk!4v1749652066394!5m2!1sen!2slk"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="step-progress">
+                    <div class="step-item active" id="step-indicator-1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Personal Info</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="step-indicator-2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Service Details</div>
+                        <div class="progress-line"></div>
+                    </div>
+                    <div class="step-item" id="step-indicator-3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Message</div>
                     </div>
                 </div>
             </div>
+
+            <form id="reservationForm" method="POST" action="{{ route('contact.submit') }}">
+                @csrf
+
+                <!-- Step 1: Personal Info -->
+                <div class="step-content" id="step-1">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="email">Your Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="Your Email"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="phone">Your Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Phone"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country" placeholder="Country"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Service Details -->
+                <div class="step-content hidden" id="step-2">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label for="service">Select a Service *</label>
+                            <select id="service" name="service" required class="form-control">
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="Inbound tours">Inbound tours</option>
+                                <option value="Rent Vehicles">Vehicle Rental</option>
+                                <option value="Transportations">Transportations</option>
+                                <option value="Air tickets">Air Ticketing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Message -->
+                <div class="step-content hidden" id="step-3">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Leave a message here" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="submit-btn btn btn-primary">Send Message</button>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="navigation-buttons mt-3">
+                    <button type="button" class="btn btn-secondary hidden" id="prevBtn">Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+    <!-- Map -->
+    <div class="col-12 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="overflow-hidden rounded mt-4 shadow">
+            {{-- <iframe class="w-100" style="height: 400px;"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe> --}}
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4707.183833396513!2d79.83274714459975!3d7.211837711148969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2ee997646d897%3A0x8adfcb85f471e77d!2s22%2C%2014%20Asarappa%20Rd%2C%20Negombo!5e0!3m2!1sen!2slk!4v1749652066394!5m2!1sen!2slk"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
     <!-- Contact End -->
@@ -893,5 +1563,112 @@
         }, 5000); // 5000ms = 5 seconds
     </script>
 
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    class MultiStepForm {
+        constructor() {
+            this.currentStep = 1;
+            this.totalSteps = 3;
+            this.init();
+        }
+
+        init() {
+            document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
+            document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
+
+            const formEl = document.getElementById('reservationForm');
+            formEl.addEventListener('submit', (e) => this.handleSubmit(e));
+
+            this.showStep(this.currentStep);
+        }
+
+        showStep(step) {
+            for (let i = 1; i <= this.totalSteps; i++) {
+                document.getElementById(`step-${i}`).classList.add('hidden');
+                document.getElementById(`step-indicator-${i}`).classList.remove('active', 'completed');
+            }
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            document.getElementById(`step-indicator-${step}`).classList.add('active');
+
+            for (let i = 1; i < step; i++) {
+                document.getElementById(`step-indicator-${i}`).classList.add('completed');
+            }
+
+            document.getElementById('prevBtn').classList.toggle('hidden', step === 1);
+            document.getElementById('nextBtn').classList.toggle('hidden', step === this.totalSteps);
+        }
+
+        nextStep() {
+            const fields = document.querySelectorAll(
+                `#step-${this.currentStep} input[required], #step-${this.currentStep} select[required], #step-${this.currentStep} textarea[required]`
+            );
+            let valid = true;
+            fields.forEach(f => {
+                if (!f.value.trim()) {
+                    f.classList.add('is-invalid');
+                    valid = false;
+                } else {
+                    f.classList.remove('is-invalid');
+                }
+            });
+            if (!valid) return;
+            if (this.currentStep < this.totalSteps) {
+                this.currentStep++;
+                this.showStep(this.currentStep);
+            }
+        }
+
+        prevStep() {
+            if (this.currentStep > 1) {
+                this.currentStep--;
+                this.showStep(this.currentStep);
+            }
+        }
+
+        async handleSubmit(e) {
+            e.preventDefault();
+            const formEl = e.target;
+            const formData = new FormData(formEl);
+            const btn = formEl.querySelector('.submit-btn');
+            btn.disabled = true;
+            btn.innerText = 'Submitting...';
+
+            try {
+                const res = await fetch(formEl.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': formEl.querySelector('input[name="_token"]').value,
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json',
+                    },
+                    body: formData,
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    document.querySelector('#reservationForm').innerHTML = `
+                        <div class="text-center p-5">
+                            <h3>✅ ${data.message}</h3>
+                            <p>Our team will contact you shortly.</p>
+                        </div>
+                    `;
+                } else {
+                    Swal.fire('Error', data.message || 'Please check your input fields.', 'error');
+                }
+            } catch (err) {
+                Swal.fire('Error', err.message || 'Something went wrong.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Send Message';
+            }
+        }
+    }
+
+    // Initialize after the class is defined
+    const form = new MultiStepForm();
+});
+</script>
 
 @endsection

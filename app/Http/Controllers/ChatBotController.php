@@ -34,7 +34,8 @@ class ChatBotController extends Controller
             'name'    => $request->name,
             'email'   => $request->email,
             'phone'   => $request->phone,
-            'service' => $request->service
+            'service' => $request->service,
+            'status' => 'pending',
         ]);
 
         return response()->json(['success' => true]);
