@@ -3333,7 +3333,7 @@
             function getImageUrl(testimonial) {
                 if (testimonial.image) {
                     // Ensure proper URL construction for backend storage
-                    return `${backendUrl}/storage/${testimonial.image.replace(/^\//, '')}`;
+                    return `${backendUrl}/admin/storage/${testimonial.image.replace(/^\//, '')}`;
                 }
                 return `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`;
             }

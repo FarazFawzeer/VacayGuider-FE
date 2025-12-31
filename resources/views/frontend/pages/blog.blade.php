@@ -1620,7 +1620,7 @@
 
                                     // Build full backend URLs for all images
                                     $imageUrls = array_map(function ($img) use ($backendBaseUrl) {
-                                        return $backendBaseUrl . '/storage/' . ltrim($img, '/');
+                                        return $backendBaseUrl . '/admin/storage/' . ltrim($img, '/');
                                     }, $imgArray);
 
                                     // Determine first image or fallback
@@ -1856,7 +1856,7 @@
                                                         $backendBaseUrl = config('app.backend_url');
                                                         $avatar = $testimonial->image
                                                             ? $backendBaseUrl .
-                                                                '/storage/' .
+                                                                '/admin/storage/' .
                                                                 ltrim($testimonial->image, '/')
                                                             : 'https://ui-avatars.com/api/?name=' .
                                                                 urlencode($testimonial->name);
