@@ -9,7 +9,7 @@
                     @php
                         $backendBaseUrl = config('app.backend_url');
                         $imageUrl = $package->picture
-                            ? $backendBaseUrl . '/storage/' . ltrim($package->picture, '/')
+                            ? $backendBaseUrl . '/admin/storage/' . ltrim($package->picture, '/')
                             : asset('images/no-image.jpg');
                     @endphp
 

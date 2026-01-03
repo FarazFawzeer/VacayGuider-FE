@@ -1429,7 +1429,7 @@
                         @php
                             $backendBaseUrl = config('app.backend_url');
                             $imageUrl = $package->picture
-                                ? $backendBaseUrl . '/storage/' . ltrim($package->picture, '/')
+                                ? $backendBaseUrl . '/admin/storage/' . ltrim($package->picture, '/')
                                 : asset('/images/no-image.jpg');
                         @endphp
 
@@ -1640,7 +1640,7 @@
                                     $backendBaseUrl = config('app.backend_url');
                                     $defaultImage = asset('/images/no-image.jpg');
                                     $coverImage = $itinerary->pictures
-                                        ? $backendBaseUrl . '/storage/' . ltrim($itinerary->pictures, '/')
+                                        ? $backendBaseUrl . '/admin/storage/' . ltrim($itinerary->pictures, '/')
                                         : $defaultImage;
                                 @endphp
 
@@ -1707,7 +1707,7 @@
                                                             if (Str::startsWith($img, ['http://', 'https://'])) {
                                                                 return $img;
                                                             }
-                                                            return $backendBaseUrl . '/storage/' . ltrim($img, '/');
+                                                            return $backendBaseUrl . '/admin/storage/' . ltrim($img, '/');
                                                         })
                                                         ->all();
                                                 @endphp
@@ -1779,7 +1779,7 @@
                                         $defaultMapImage = asset('assets/img/default-map.jpg');
 
                                         $mapImage = $package->map_image
-                                            ? $backendBaseUrl . '/storage/' . ltrim($package->map_image, '/')
+                                            ? $backendBaseUrl . '/admin/storage/' . ltrim($package->map_image, '/')
                                             : $defaultMapImage;
                                     @endphp
 
