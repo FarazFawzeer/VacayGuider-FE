@@ -27,7 +27,7 @@ public function index(Request $request)
         $testimonialQuery->whereIn(DB::raw('LOWER(TRIM(source))'), $sourceFilterNormalized);
     }
 
-    $testimonials = $testimonialQuery->orderBy('postedate', 'desc')->paginate(4);
+    $testimonials = $testimonialQuery->orderBy('postedate', 'desc')->paginate(6);
 
     // --- Blog Filter Logic ---
     $blogTypes = BlogPost::select('type')->distinct()->pluck('type')->filter(); // get distinct types

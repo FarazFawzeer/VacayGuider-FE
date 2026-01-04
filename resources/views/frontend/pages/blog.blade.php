@@ -6,6 +6,15 @@
 
 
     <style>
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+
         .page-item.active .page-link {
             z-index: 3;
             color: #fff;
@@ -647,25 +656,25 @@
         }
 
         /* .share-btn {
-                                                                                                        background: linear-gradient(45deg, #3498db, #028ccc);
-                                                                                                        color: white;
-                                                                                                    }
+                                                                                                                background: linear-gradient(45deg, #3498db, #028ccc);
+                                                                                                                color: white;
+                                                                                                            }
 
-                                                                                                    .share-btn:hover {
-                                                                                                        transform: translateY(-2px);
-                                                                                                        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                                                                                    }
+                                                                                                            .share-btn:hover {
+                                                                                                                transform: translateY(-2px);
+                                                                                                                box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+                                                                                                            }
 
-                                                                                                    .view-btn {
-                                                                                                        background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                                                                                        background-color: #94d106;
-                                                                                                        color: white;
-                                                                                                    }
+                                                                                                            .view-btn {
+                                                                                                                background: linear-gradient(45deg, #2ecc71, #94d106; );
+                                                                                                                background-color: #94d106;
+                                                                                                                color: white;
+                                                                                                            }
 
-                                                                                                    .view-btn:hover {
-                                                                                                        transform: translateY(-2px);
-                                                                                                        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                                                                                    } */
+                                                                                                            .view-btn:hover {
+                                                                                                                transform: translateY(-2px);
+                                                                                                                box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+                                                                                                            } */
 
         .share-btn {
             background: rgba(52, 152, 219, 0.1);
@@ -748,7 +757,7 @@
                 flex-direction: column;
             }
 
-           
+
         }
 
         /* Animation for new posts */
@@ -1669,7 +1678,8 @@
                                             <div class="card-body d-flex flex-column">
                                                 <!-- Date Badge -->
                                                 <div class="mb-3">
-                                                    <i class="bi bi-calendar-event me-2" style="font-size:16px; font-family: monospace;"></i>
+                                                    <i class="bi bi-calendar-event me-2"
+                                                        style="font-size:16px; font-family: monospace;"></i>
                                                     {{ $post->created_at->format('F j, Y') }}
                                                     </span>
                                                 </div>
@@ -1847,10 +1857,8 @@
                                     <div class="col-md-4 mb-4">
                                         <div class="card testimonial-card shadow-sm h-100 border-0"
                                             style="border-radius: 14px;">
+                                            <div class="card-body d-flex flex-column">
 
-                                            <div class="card-body d-flex flex-column" style="height: 260px;">
-
-                                                <!-- Header -->
                                                 <div class="d-flex align-items-center mb-3">
                                                     @php
                                                         $backendBaseUrl = config('app.backend_url');
@@ -1869,38 +1877,50 @@
                                                     <div>
                                                         <h6 class="mb-0" style="font-weight:600;">
                                                             {{ $testimonial->name }}</h6>
-                                                        <small class="text-muted d-flex align-items-center">
-                                                            <i
-                                                                class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
-                                                            {{ $testimonial->source }}
+                                                        <small class="text-muted">
+                                                            <a href="{{ $testimonial->link }}" target="_blank"
+                                                                class="text-decoration-none text-muted">
+                                                                <i
+                                                                    class="bi bi-{{ strtolower($testimonial->source) }} me-1"></i>
+                                                                {{ $testimonial->source }}
+                                                            </a>
                                                         </small>
                                                     </div>
                                                 </div>
 
-                                                <!-- Stars -->
-                                                <div class="stars mb-2">
+                                                <div class="stars mb-2 text-warning">
                                                     @for ($i = 1; $i <= 5; $i++)
                                                         <i class="bi {{ $i <= $testimonial->rating ? 'bi-star-fill' : 'bi-star' }}"
-                                                            style="font-size: 16px;"></i>
+                                                            style="font-size: 14px;"></i>
                                                     @endfor
                                                 </div>
 
-                                                <!-- Message -->
-                                                <p class="flex-grow-1"
-                                                    style="font-size:14px; line-height:1.6; color:#555;">
-                                                    “{{ $testimonial->message }}”
-                                                </p>
+                                                <div class="flex-grow-1 overflow-auto mb-3"
+                                                    style="max-height: 150px; scrollbar-width: thin;">
+                                                    <p
+                                                        style="font-size:14px; line-height:1.6; color:#555; font-style: italic; margin-bottom: 0;">
+                                                        “{{ $testimonial->message }}”
+                                                    </p>
+                                                </div>
 
-                                                <!-- Date -->
-                                                <small class="text-muted d-flex align-items-center ">
-                                                    <i class="bi bi-calendar-event me-2"></i>
-                                                    {{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}
-                                                </small>
+                                                <hr class="my-2 opacity-25">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">
+                                                        <i
+                                                            class="bi bi-calendar-event me-1"></i>{{ \Carbon\Carbon::parse($testimonial->postedate)->format('M d, Y') }}
+                                                    </small>
+
+                                                    @if ($testimonial->link)
+                                                        <a href="{{ $testimonial->link }}" target="_blank"
+                                                            class="text-decoration-none"
+                                                            style="font-size: 12px; font-weight: 600;color: #0d4e6b ;">
+                                                            View Original <i class="bi bi-arrow-up-right ms-1"></i>
+                                                        </a>
+                                                    @endif
+                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 @empty
                                     <div class="empty-state">
                                         <div class="empty-illustration">
