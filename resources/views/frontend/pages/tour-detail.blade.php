@@ -1950,7 +1950,7 @@
                                             <div class="flex items-start">
                                                 <div class="w-2 h-2 rounded-full mr-2 mt-2 flex-shrink-0"
                                                     style="background: #727373;"></div>
-                                                <span>Personal expenses and shopping expense</span>
+                                                <span>Personal expenses and shopping expenses</span>
                                             </div>
                                         </li>
                                         <li style="margin-bottom: 10px;">

@@ -2971,7 +2971,7 @@
                                                                                                                                                                                                                             </div> -->
                     <div class="form-btn col-md-12 col-lg-auto d-none d-md-block">
                         <!-- <button class="th-btn custom-btn" type="submit">Get Tickets</button> -->
-                        <a class="fancy" href="air-line.html">
+                        <a class="fancy" href="{{ url('/airline') }}">
                             <span class="top-key"></span>
                             <span class="text">Buy Tickets</span>
                             <span class="bottom-key-1"></span>

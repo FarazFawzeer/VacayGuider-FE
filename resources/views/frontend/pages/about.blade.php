@@ -1520,7 +1520,7 @@
                     <div class="title-area text-center " style="">
                         <h2 class="sec-title"
                             style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                            Explore the World with Vacay Guider </h2>
+                            Explore the World with VacayGuider </h2>
                     </div>
 
                     <div class="col-lg-12" style="margin-top: -25px;">
@@ -1993,7 +1993,7 @@
         </div>
     </section>
 
-    <section class="testimonials-section py-5">
+    {{-- <section class="testimonials-section py-5">
         <div class="container-fluid">
             <div class="heading white-heading text-center mb-4"  style="font-family: monospace;">What Pepole Say</div>
 
@@ -2046,7 +2046,7 @@
                     </div>
                 </div>
             </div>
-    </section>
+    </section> --}}
 
 
     <script>

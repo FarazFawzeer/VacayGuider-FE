@@ -1294,7 +1294,7 @@
                             In Touch</span> --}}
                         <h2 class="sec-title"
                             style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                            Sart Your Conversation </h2>
+                            Start Your Conversation </h2>
                     </div>
 
 

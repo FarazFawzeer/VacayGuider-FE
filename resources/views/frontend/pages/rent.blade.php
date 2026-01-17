@@ -1555,7 +1555,7 @@
 
                     <div class="overview-text">
                         <div class="info-badge">
-                            <p><strong>Important:</strong> SSri Lanka requires foreign nationals to verify their license
+                            <p><strong>Important:</strong> Sri Lanka requires foreign nationals to verify their license
                                 locally. You cannot legally drive using an IDP or foreign license alone.</p>
                         </div>
                         <p>

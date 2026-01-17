@@ -57,6 +57,7 @@ class TourPackageController extends Controller
         $query = Package::select('packages.*')
             ->where('packages.status', 1)
             ->where('packages.type', 'inbound')
+            ->whereNull('packages.deleted_at')
             ->with('tourSummaries')
             ->leftJoin('tour_summaries', 'tour_summaries.package_id', '=', 'packages.id');
 
@@ -84,7 +85,8 @@ class TourPackageController extends Controller
         $query = Package::select('packages.*')
             ->leftJoin('tour_summaries', 'tour_summaries.package_id', '=', 'packages.id')
             ->where('packages.status', 1)
-            ->where('packages.type', 'inbound');
+            ->where('packages.type', 'inbound')
+            ->whereNull('packages.deleted_at');
 
         if ($request->filled('days')) {
             $query->where('packages.days', '>=', (int) $request->days);
