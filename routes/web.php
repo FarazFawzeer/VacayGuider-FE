@@ -96,7 +96,7 @@ Route::post('/contact-submit', [ContactController::class, 'submit'])->name('cont
 Route::post('/chatbot', [ChatBotController::class, 'handle'])->name('chatbot');
 Route::post('/chatbot/save', [ChatbotController::class, 'store'])->name('chatbot.save');
 
-Route::get('/blog', [TestimonialController::class, 'index'])->name('blog');
+Route::get('/blog', [TestimonialController::class, 'index'])->name('blogs.index');
 
 Route::get('/blog/filter-posts', [TestimonialController::class, 'filterPosts'])->name('blog.filter.posts');
 Route::get('/blog/filter-testimonials', [TestimonialController::class, 'filterTestimonials'])->name('blog.filter.testimonials');

@@ -1,1975 +1,378 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'VacayGuider | Blog')
+@section('title', 'VacayGuider | Feed')
 
 @section('content')
-
-
-    <style>
-        .testimonial-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .page-item.active .page-link {
-            z-index: 3;
-            color: #fff;
-            background-color: #0a3d52 !important;
-            border-color: #0a3d52;
-        }
-
-        .page-link {
-            color: #000;
-        }
-
-        @media (max-width: 480px) {
-            .post-image {
-                height: 200px !important;
-                object-fit: contain !important;
-            }
-
-            .title-tesimonal-mob {
-                margin-top: -40px;
-
-            }
-
-            .title-bred-mob {
-                margin-top: 70px;
-            }
-
-            .hero-section {
-                padding: 0px !important;
-            }
-
-            .step-card-mob {
-                padding: 0px !important;
-            }
-
-            .permint-post-mob {
-                margin-top: -32px;
-            }
-
-            /* Mobile adjustments */
-            @media (max-width: 576px) {
-                .title-area {
-
-                    padding: 0 10px;
-                }
-
-                .sec-title {
-                    font-size: 1.75rem !important;
-                }
-
-                .hero-section .container {
-                    gap: 1rem;
-                }
-
-                .overview-text {
-                    text-align: left;
-                    font-size: 14px;
-                }
-
-                .info-badge {
-                    font-size: 13px;
-                    padding: 8px 12px;
-                }
-            }
-
-            .rent-undrline {
-                display: none !important;
-            }
-
-            .sidebar-container {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                max-height: 90%;
-                width: 90%;
-                background: transparent;
-                /* Remove background */
-                z-index: 1050;
-                overflow-y: auto;
-                transition: opacity 0.3s ease-in-out;
-                box-shadow: none;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-
-            .sidebar-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1049;
-                /* Just behind the sidebar */
-                background-color: rgba(255, 255, 255, 0.4);
-                backdrop-filter: blur(5px);
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease;
-            }
-
-            .sidebar-overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
-
-
-            #filteredResults {
-                position: relative;
-                z-index: 1;
-            }
-
-            body.sidebar-open {
-                overflow: hidden;
-            }
-
-            .sidebar-container.show {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .sidebar-container {
-                opacity: 0;
-                pointer-events: none;
-            }
-
-
-            .filter-title-mob {
-                margin-top: 22px !important;
-                margin-bottom: 25px !important;
-            }
-
-            .rvs-btn-mob {
-                margin-top: 25px !important;
-                margin-bottom: -40px !important;
-            }
-
-            .card-mob {
-                margin-top: -24px !important;
-            }
-
-            .breadcrumb-mobile {
-                overflow-x: auto;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                margin-top: 14px;
-            }
-
-            .title-mob {
-                margin-top: -38px !important;
-            }
-
-            .sub-title {
-                margin-bottom: 0px !important;
-
-            }
-
-            .filter-mob {
-                margin-top: -20px;
-                padding-bottom: 10px;
-
-            }
-
-            .title-area-mob {
-                margin-top: 14px !important;
-
-            }
-
-            .rent-sub-tittle {
-                margin-top: -60px !important;
-            }
-
-            element {}
-
-            .demo-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                text-align: center;
-            }
-
-            .demo-container {
-
-                height: 80px !important;
-
-            }
-
-        }
-
-
-        .testimonials-section {
-            background-color: var(--secondary);
-            background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
-        }
-
-
-        .card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .review-summary .card-body {
-            padding: 2rem;
-        }
-
-        .stars {
-            color: #fbbf24;
-        }
-
-        .progress {
-            background-color: var(--secondary);
-            border-radius: var(--radius);
-        }
-
-        .progress-bar {
-            background-color: var(--primary);
-            border-radius: var(--radius);
-        }
-
-        .avatar {
-            width: 48px;
-            height: 48px;
-            object-fit: cover;
-        }
-
-        .platform-item {
-            padding: 0.5rem 0;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            color: var(--primary-foreground);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        .review-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-
-
-        :root {
-            --primary: #0284c7;
-            --primary-foreground: #ffffff;
-            --secondary: #f1f5f9;
-            --secondary-foreground: #0f172a;
-            --background: #ffffff;
-            --foreground: #0f172a;
-            --card: #ffffff;
-            --card-foreground: #0f172a;
-            --border: #e2e8f0;
-            --ring: #0284c7;
-            --radius: 0.5rem;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-        }
-
-
-        .modal-content {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-        }
-
-        .modal-body {
-            padding: 0 !important;
-            min-height: 500px;
-        }
-
-        .image-section {
-            background: #000;
-            border-radius: 20px 0 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .carousel-inner {
-            height: 100%;
-            border-radius: 20px 0 0 20px;
-        }
-
-        .carousel-item {
-            height: 500px;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            border-radius: 20px 0 0 20px;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .carousel-control-prev {
-            left: 15px;
-        }
-
-        .carousel-control-next {
-            right: 15px;
-        }
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-size: 20px;
-            filter: invert(1);
-        }
-
-        .content-section {
-            padding: 40px 35px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 0 20px 20px 0;
-            position: relative;
-        }
-
-        .content-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .posted-date {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            padding: 8px 15px;
-            background: rgba(103, 126, 234, 0.1);
-            border-radius: 20px;
-            width: fit-content;
-        }
-
-        .posted-date i {
-            color: #6c757;
-        }
-
-        .modal-description {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #495057;
-            margin-bottom: 25px;
-        }
-
-        .engagement-stats {
-            display: flex;
-            gap: 20px;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #e9ecef;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-
-        .stat-item i {
-            color: #667eea;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            backdrop-filter: blur(10px);
-            z-index: 10;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 1);
-            color: #495057;
-        }
-
-        .image-counter {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            backdrop-filter: blur(10px);
-        }
-
-        @media (max-width: 768px) {
-            .modal-dialog {
-                margin: 10px;
-            }
-
-            .modal-content {
-                border-radius: 15px;
-            }
-
-            .image-section,
-            .content-section {
-                border-radius: 15px 15px 0 0;
-            }
-
-            .content-section {
-                border-radius: 0 0 15px 15px;
-                padding: 25px 20px;
-            }
-
-            .carousel-item {
-                height: 300px;
-            }
-        }
-
-        .image-count-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(0, 0, 0, 0.65);
-            color: #fff;
-            padding: 4px 10px;
-
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .image-count-badge i {
-            font-size: 13px;
-        }
-
-        .ps-2 {
-            padding-left: 0 !important;
-        }
-
-        .form-check {
-            padding-left: 0;
-        }
-
-        .breadcrumb-item {
-            transition: all 0.2s ease-in-out;
-        }
-
-        .breadcrumb-item:hover {
-            transform: translateY(-1px);
-        }
-
-        .current-page {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 640px) {
-            .breadcrumb-mobile {
-                overflow-x: auto;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-
-            .breadcrumb-mobile::-webkit-scrollbar {
-                display: none;
-            }
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            letter-spacing: -1px;
-        }
-
-        .posts-grid {
-            display: grid;
-
-            padding: 20px 0;
-        }
-
-        .post-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .post-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-        }
-
-        .post-image {
-            width: 100%;
-            height: 280px;
-            object-fit: contain;
-            background-color: #f8f8f8;
-        }
-
-        .post-card:hover .post-image {
-            transform: scale(1.05);
-        }
-
-        .post-content {
-            padding: 25px;
-        }
-
-        .post-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #000000;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .post-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-            color: #7f8c8d;
-        }
-
-        .post-date {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .post-date::before {
-            content: "📅";
-            font-size: 1rem;
-        }
-
-        .post-likes {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: rgb(0, 0, 0);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .post-likes::before {
-            content: "❤️";
-        }
-
-        .post-description {
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .post-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tag {
-
-            color: rgb(0, 0, 0);
-            padding: 6px 6x;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .post-actions {
-            display: flex;
-            gap: 12px;
-            padding-top: 15px;
-            border-top: 1px solid #ecf0f1;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        /* .share-btn {
-                                                                                                                background: linear-gradient(45deg, #3498db, #028ccc);
-                                                                                                                color: white;
-                                                                                                            }
-
-                                                                                                            .share-btn:hover {
-                                                                                                                transform: translateY(-2px);
-                                                                                                                box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-                                                                                                            }
-
-                                                                                                            .view-btn {
-                                                                                                                background: linear-gradient(45deg, #2ecc71, #94d106; );
-                                                                                                                background-color: #94d106;
-                                                                                                                color: white;
-                                                                                                            }
-
-                                                                                                            .view-btn:hover {
-                                                                                                                transform: translateY(-2px);
-                                                                                                                box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-                                                                                                            } */
-
-        .share-btn {
-            background: rgba(52, 152, 219, 0.1);
-            color: #3498db;
-            border: 1px solid rgba(52, 152, 219, 0.2);
-        }
-
-        .share-btn:hover {
-            background: rgba(52, 152, 219, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .view-btn {
-            background: rgba(46, 204, 113, 0.1);
-            color: #27ae60;
-            border: 1px solid rgba(46, 204, 113, 0.2);
-        }
-
-        .view-btn:hover {
-            background: rgba(46, 204, 113, 0.15);
-            transform: translateY(-1px);
-        }
-
-
-        .floating-add {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .floating-add:hover {
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 12px 35px rgba(238, 90, 36, 0.6);
-        }
-
-        .load-more {
-            text-align: center;
-
-        }
-
-        .load-more-btn {
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: black;
-
-        }
-
-        .load-more-btn:hover {
-            background: rgba(0, 0, 0, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .posts-grid {}
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .post-actions {
-                flex-direction: column;
-            }
-
-
-        }
-
-        /* Animation for new posts */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .post-card {
-            animation: slideInUp 0.6s ease-out;
-        }
-
-        .post-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .post-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .post-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .post-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .post-card:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .post-card:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        /* Premium Variables */
-        :root {
-            --primary-gradient: linear-gradient(135deg, #eabc66 0%, #fbbf24 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            --card-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
-            --border-radius: 20px;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Container Styling */
-        .testimonials-container {
-            padding: 20px 0;
-            position: relative;
-        }
-
-        .testimonials-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Grid Layout */
-        .testimonials-grid {
-            display: grid;
-            /* grid-template-columns: repeat(2, 1fr); */
-            gap: 32px;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 768px) {
-            .testimonials-grid {
-                /* grid-template-columns: 1fr; */
-                gap: 24px;
-            }
-        }
-
-        /* Premium Card Design */
-        .testimonial-wrapper {
-            position: relative;
-            animation: fadeInScale 0.8s ease-out;
-        }
-
-        .testimonial-card {
-            background: linear-gradient(145deg, #ffffff, #f8fafc);
-            border-radius: var(--border-radius);
-            padding: 32px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .testimonial-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--card-shadow-hover);
-            border-color: rgba(102, 126, 234, 0.2);
-        }
-
-        .testimonial-card:hover::before {
-            opacity: 0.02;
-        }
-
-        /* Decorative Elements */
-        .card-decoration {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .decoration-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-
-        .decoration-line {
-            width: 32px;
-            height: 2px;
-            background: var(--primary-gradient);
-            border-radius: 1px;
-            opacity: 0.3;
-        }
-
-        /* Quote Background */
-        .quote-background {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 40px;
-            height: 40px;
-            color: rgba(102, 126, 234, 0.08);
-            z-index: 0;
-        }
-
-        .quote-background svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Premium Header */
-        .testimonial-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .user-section {
-            display: flex;
-            align-items: center;
-            flex: 1;
-        }
-
-        /* Avatar Container */
-        .avatar-container {
-            position: relative;
-            margin-right: 20px;
-        }
-
-        .avatar-ring {
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            opacity: 0.2;
-            animation: pulse 2s infinite;
-        }
-
-        .user-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: contain !important;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            position: relative;
-            z-index: 1;
-            background-color: #028ccc;
-        }
-
-        .th-menu-toggle {
-
-            background-color: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%);
-
-        }
-
-        .avatar-status {
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            width: 18px;
-            height: 18px;
-            background: var(--success-gradient);
-            border: 3px solid #ffffff;
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        /* User Info */
-        .user-info {
-            flex: 1;
-        }
-
-        .user-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a202c;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
-        }
-
-        .source-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 6px 16px;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            font-size: 13px;
-            font-weight: 600;
-            color: #4a5568;
-            position: relative;
-        }
-
-        .source-badge i {
-            font-size: 14px;
-            color: #000000;
-        }
-
-        .verified-badge {
-            color: #38a169;
-            font-size: 12px;
-            margin-left: 4px;
-        }
-
-        /* Premium Rating System */
-        .rating-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-        }
-
-        .rating-stars {
-            display: flex;
-            gap: 4px;
-        }
-
-        .star-wrapper {
-            position: relative;
-            width: 20px;
-            height: 20px;
-        }
-
-        .star-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: #e2e8f0;
-            font-size: 20px;
-        }
-
-        .star-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 20px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-        }
-
-        .star-fill.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .rating-score {
-            display: flex;
-            align-items: baseline;
-            gap: 2px;
-            font-weight: 700;
-            color: #4a5568;
-        }
-
-        .score-number {
-            font-size: 16px;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .score-divider {
-            font-size: 12px;
-            color: #a0aec0;
-        }
-
-        .score-total {
-            font-size: 14px;
-            color: #718096;
-        }
-
-        /* Premium Content */
-        .testimonial-content {
-            flex: 1;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .content-wrapper {
-            position: relative;
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #2d3748;
-            margin: 0;
-            font-weight: 400;
-            letter-spacing: 0.01em;
-            position: relative;
-            z-index: 1;
-        }
-
-        .content-fade {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
-            pointer-events: none;
-        }
-
-        /* Elegant Footer */
-        .testimonial-footer {
-            border-top: 1px solid rgba(226, 232, 240, 0.6);
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0 20px !important;
-        }
-
-        .date-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .date-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #667eea;
-            font-size: 14px;
-        }
-
-        .date-text {
-            font-size: 14px;
-            color: #718096;
-            font-weight: 500;
-        }
-
-        .engagement-indicators {
-            display: flex;
-            gap: 12px;
-        }
-
-        .indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 16px;
-            font-size: 12px;
-            color: #667eea;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .indicator:hover {
-            background: rgba(102, 126, 234, 0.15);
-            transform: translateY(-1px);
-        }
-
-        /* Premium Empty State */
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 80px 40px;
-            background: linear-gradient(145deg, #f8fafc, #ffffff);
-            border-radius: var(--border-radius);
-            border: 2px dashed #e2e8f0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .empty-illustration {
-            position: relative;
-            margin-bottom: 32px;
-        }
-
-        .empty-circles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .circle-1 {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-gradient);
-            top: -40px;
-            left: -40px;
-            animation-delay: 0s;
-        }
-
-        .circle-2 {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary-gradient);
-            top: -30px;
-            left: -30px;
-            animation-delay: 1s;
-        }
-
-        .circle-3 {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            top: -20px;
-            left: -20px;
-            animation-delay: 2s;
-        }
-
-        .empty-icon {
-            font-size: 64px;
-            color: #cbd5e0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .empty-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 8px;
-        }
-
-        .empty-subtitle {
-            font-size: 16px;
-            color: #718096;
-            margin-bottom: 24px;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Premium Pagination */
-        .pagination-section {
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(226, 232, 240, 0.6);
-        }
-
-        .pagination-wrapper {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .pagination-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 60px;
-            background: radial-gradient(ellipse, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
-            border-radius: 30px;
-            z-index: -1;
-        }
-
-        /* Animations */
-        @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.2;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.4;
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Stagger animations */
-        .testimonial-wrapper:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .testimonial-wrapper:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .testimonial-wrapper:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .testimonial-wrapper:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .testimonial-card {
-                padding: 24px;
-                min-height: auto;
-            }
-
-            .testimonial-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .rating-container {
-                align-items: flex-start;
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-            }
-
-            .user-name {
-                font-size: 16px;
-            }
-
-            .testimonial-text {
-                font-size: 15px;
-                line-height: 1.6;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 12px;
-                align-items: flex-start;
-            }
-
-            .empty-state {
-                padding: 60px 20px;
-            }
-
-            .empty-title {
-                font-size: 20px;
-            }
-        }
-
-        /* High-end hover effects */
-        .testimonial-card:hover .user-avatar {
-            transform: scale(1.1);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .testimonial-card:hover .star-fill.active {
-            transform: scale(1.2);
-        }
-
-        .testimonial-card:hover .avatar-ring {
-            opacity: 0.4;
-            transform: scale(1.1);
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .testimonial-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        .clamp-2-lines {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            /* Limit to 2 lines */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.4em;
-            max-height: 2.8em;
-            /* 2 lines * line-height */
-        }
-
-        .indicator.helpful:hover {
-            color: #0d6efd;
-            transition: color 0.2s ease;
-        }
-
-        .indicator.helpful.clicked {
-            font-weight: bold;
-        }
-    </style>
-
-
-    <div class="w-full ">
-        <div class="mx-auto  px-4 sm:px-6 lg:px-8 title-bred-mob">
-            <div class="py-3">
-                <nav aria-label="Breadcrumb navigation" class="breadcrumb-mobile">
-                    <ol class="flex items-center space-x-1 text-sm font-medium">
-                        <!-- Home Link -->
-                        <li class="flex items-center">
-                            <a href="{{ url('/') }}"
-                                class="breadcrumb-item group flex items-center space-x-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded-lg px-2 py-1.5 transition-all duration-200">
-                                <!-- Home Icon -->
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                <span class="group-hover:text-blue-600">Home</span>
-                            </a>
-                        </li>
-
-                        <!-- Separator -->
-                        <li class="flex items-center">
-                            <svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </li>
-
-                        <!-- Current Page -->
-                        <li class="flex items-center">
-                            <span
-                                class="current-page flex items-center space-x-1.5 text-gray-800 font-semibold px-3 py-1.5 rounded-md border border-gray-200"
-                                aria-current="page">
-                                <!-- About Icon -->
-
-                                <span>Blog</span>
-                            </span>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-
-    <section class="overflow-hidden space " style="padding-top: 40px;padding-bottom: 40px; ">
-        <div class="container-fluid">
-
-
-            <div class="title-area text-center mb-5" style="margin-top: -40px;">
-
-
-                <div class="title-area text-center " style="">
-                    {{-- <span class="sub-title"
-                            style="  font-family: 'Poppins', sans-serif; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight: 500;color: #000000;">Premium Car Rentals</span> --}}
-                    <h2 class="sec-title"
-                        style="font-family: monospace;font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1a1a1a;">
-                        Social Feed</h2>
-                </div>
-
-            </div>
-
-
-            <div class="row">
-
-                <!-- Filter Toggle Button (Visible only on mobile) -->
-                <div class="d-md-none w-100 px-3 mb-3 filter-mob">
-                    <button id="toggleBlogFilterBtn" class="w-100 d-flex align-items-center gap-2 rounded-lg p-2"
-                        style="border: 1px solid #ddd; justify-content: center;background: #f8f9fa;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                        </svg>
-                        <span style="font-size: 14px;">Filter</span>
-                    </button>
-                </div>
-
-            </div> <!-- 🔹 CLOSE row for toggle button only -->
-
-
-            <div class="row">
-
-
-
-
-                <!-- Blog Sidebar -->
-                <div class="col-md-3 sidebar-container" id="blogSidebar">
-                    <div class="sidebar-content p-4" style="width: 100%;">
-                        <div class="filter-sidebar p-4"
-                            style="border-radius: 10px; border: 1px solid #dee2e6; background:#ffffff;">
-
-                            <!-- Close Button for Mobile -->
-                            <div class="d-flex justify-content-end align-items-center d-md-none mb-3">
-                                <button id="closeBlogSidebarBtn" class="btn-sm text-danger border-0 shadow-none">
-                                    <i class="fas fa-times fa-lg"></i>
-                                </button>
-                            </div>
-
-                            <form method="GET" action="{{ route('blog') }}" id="blogFilterForm">
-                                <div class="filter-section mb-4">
-                                    <h6 class="text-black" style="font-size: 16px;font-weight: 700;">
-                                        Title</h6>
-                                    <div class="ps-1">
-                                        @foreach ($blogTypes as $index => $type)
-                                            <div class="form-check mb-2 d-flex align-items-center">
-                                                <input class="form-check-input text-black" type="checkbox"
-                                                    name="blog_type[]" value="{{ $type }}"
-                                                    id="blog_type_{{ $index }}"
-                                                    {{ is_array($blogTypeFilter) && in_array($type, $blogTypeFilter) ? 'checked' : '' }}>
-                                                <label class="form-check-label ms-2 text-black"
-                                                    for="blog_type_{{ $index }}" style="font-size: 14px;">
-                                                    {{ ucfirst($type) }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="posts-grid col-md-9" id="postsGrid" style="margin-top: -20px;">
-                    @php
+    @php
+        // Define the base URL for your backend storage
+        $backendBaseUrl = 'https://your-backend-domain.com'; // Change this to your actual backend URL
+        $defaultImage = asset('frontend/images/default-placeholder.jpg');
+    @endphp
+
+    <div class="feed-container py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+  @php
                         $backendBaseUrl = config('app.backend_url');
                         $defaultImage = asset('/images/no-image.jpg');
                     @endphp
 
-                    @foreach ($blogPosts->chunk(6) as $postChunk)
-                        <div class="row g-4">
-                            @foreach ($postChunk as $index => $post)
-                                @php
-                                    $imgArray = is_array($post->image_post) ? $post->image_post : [];
-                                    $imgCount = count($imgArray);
+                <div class="col-lg-7 col-md-10">
+                    @forelse($blogs as $blog)
+                        @php
+                            // IMAGE LOGIC FROM YOUR SNIPPET
+                            $imgArray = is_array($blog->image_post) ? $blog->image_post : [];
+                            $imgCount = count($imgArray);
 
-                                    // Build full backend URLs for all images
-                                    $imageUrls = array_map(function ($img) use ($backendBaseUrl) {
-                                        return $backendBaseUrl . '/admin/storage/' . ltrim($img, '/');
-                                    }, $imgArray);
+                            // Build full backend URLs for all images
+                            $imageUrls = array_map(function ($img) use ($backendBaseUrl) {
+                                return $backendBaseUrl . '/admin/storage/' . ltrim($img, '/');
+                            }, $imgArray);
+                        @endphp
 
-                                    // Determine first image or fallback
-                                    $firstImage = $imgCount > 0 ? $imageUrls[0] : $defaultImage;
-                                @endphp
-
-                                <div class="col-md-4 mb-4">
-                                    <article
-                                        class="post-card {{ $loop->parent->index * 3 + $index >= 6 ? 'd-none extra-post' : '' }}"
-                                        data-bs-toggle="modal" data-bs-target="#postModal" data-title="{{ $post->title }}"
-                                        data-description="{{ $post->description }}"
-                                        data-date="{{ $post->created_at->format('F j, Y') }}"
-                                        data-likes="{{ $post->likes_count ?? 0 }}"
-                                        data-comments="{{ $post->comments ?? 0 }}" data-shares="{{ $post->shares ?? 0 }}"
-                                        data-images='@json($imageUrls)'
-                                        style="cursor: pointer; transition: all 0.3s ease;">
-
-                                        <div class="card h-100 border-0 shadow-sm hover-lift">
-                                            <!-- Image Container -->
-                                            <div class="position-relative overflow-hidden"
-                                                style="height: auto; max-height: 300px;">
-                                                <img src="{{ $firstImage }}" alt="{{ $post->title }}"
-                                                    class="card-img-top w-100 h-100"
-                                                    style="
-            height: auto;
-            max-height: 280px;
-       
-           
-        ">
-
-                                                @if ($imgCount > 1)
-                                                    <div class="position-absolute top-0 end-0 m-3">
-                                                        <span class="badge bg-dark bg-opacity-75 px-3 py-2">
-                                                            <i class="fas fa-images me-1"></i> {{ $imgCount }}
-                                                        </span>
-                                                    </div>
-                                                @endif
-
-                                                <!-- Hover Overlay -->
-                                                <div class="overlay-gradient position-absolute bottom-0 start-0 w-100"
-                                                    style="height: 50%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); opacity: 0; transition: opacity 0.3s ease;">
-                                                </div>
-                                            </div>
-
-                                            <!-- Card Body -->
-                                            <div class="card-body d-flex flex-column">
-                                                <!-- Date Badge -->
-                                                <div class="mb-3">
-                                                    <i class="bi bi-calendar-event me-2"
-                                                        style="font-size:16px; font-family: monospace;"></i>
-                                                    {{ $post->created_at->format('F j, Y') }}
-                                                    </span>
-                                                </div>
-
-                                                <!-- Title -->
-                                                <h3 class="card-title h5 mb-0"
-                                                    style="font-weight: 600; line-height: 1.4; color: #2c3e50;font-family: monospace;">
-                                                    {{ Str::limit($post->title, 60) }}
-                                                </h3>
-                                            </div>
+                        <div class="insta-post-card mb-4">
+                            <div class="post-header d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-ring d-flex align-items-center justify-content-center bg-white">
+                                        @php
+                                            $type = strtolower($blog->type);
+                                            $icon = 'bi-pin-map-fill';
+                                            if (str_contains($type, 'beach')) {
+                                                $icon = 'bi-sun-fill';
+                                            } elseif (str_contains($type, 'food') || str_contains($type, 'rest')) {
+                                                $icon = 'bi-egg-fried';
+                                            } elseif (str_contains($type, 'hike') || str_contains($type, 'mountain')) {
+                                                $icon = 'bi-terrain';
+                                            } elseif (str_contains($type, 'city') || str_contains($type, 'hotel')) {
+                                                $icon = 'bi-building-fill';
+                                            } elseif (str_contains($type, 'wild')) {
+                                                $icon = 'bi-tree-fill';
+                                            }
+                                        @endphp
+                                        <div class="category-icon-circle shadow-sm">
+                                            <i class="bi {{ $icon }} text-white"></i>
                                         </div>
-                                    </article>
+                                    </div>
+
+                                    <div class="ms-3">
+                                        <div class="d-flex align-items-center">
+                                            <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">
+                                                {{ $blog->type }}</h6>
+                                            <span class="mx-1 text-muted">•</span>
+                                            <small class="text-muted" style="font-size: 0.75rem;">
+                                                {{ $blog->posted_time ? $blog->posted_time->diffForHumans() : $blog->created_at->diffForHumans() }}
+                                            </small>
+                                        </div>
+                                        <p class="mb-0 text-primary fw-semibold"
+                                            style="font-size: 0.7rem; letter-spacing: 0.5px;">VACAYGUIDER EXPLORE</p>
+                                    </div>
                                 </div>
-                            @endforeach
+                                <i class="bi bi-three-dots text-muted"></i>
+                            </div>
+
+                            @if ($imgCount > 0)
+                                <div id="carousel-{{ $blog->id }}" class="carousel slide" data-bs-interval="false">
+                                    <div class="carousel-inner bg-light">
+                                        @foreach ($imageUrls as $index => $url)
+                                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                                <div class="post-image-container">
+                                                    <img src="{{ $url }}" class="d-block w-100" alt="Post Image">
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @if ($imgCount > 1)
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carousel-{{ $blog->id }}" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon rounded-circle shadow-sm"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#carousel-{{ $blog->id }}" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon rounded-circle shadow-sm"></span>
+                                        </button>
+                                    @endif
+                                </div>
+                            @else
+                                <div class="post-image-container">
+                                    <img src="{{ $defaultImage }}" class="d-block w-100" alt="Placeholder">
+                                </div>
+                            @endif
+
+                            <div class="post-body p-3">
+                                <h5 class="fw-bold mb-2 text-dark" style="font-size: 1.1rem;">{{ $blog->title }}</h5>
+                                <div class="description-content">
+                                    <p class="description-text mb-2">
+                                      
+                                        @php
+                                            $plainDescription = strip_tags($blog->description);
+                                            $limit = 120;
+                                            $isLong = strlen($plainDescription) > $limit;
+                                        @endphp
+
+                                        @if ($isLong)
+                                            <span class="desc-short">
+                                                {{ Str::limit($plainDescription, $limit, '...') }}
+                                                <a href="javascript:void(0);"
+                                                    class="show-more-link text-muted ms-1">more</a>
+                                            </span>
+                                            <span class="desc-full d-none">
+                                                {!! nl2br(e($blog->description)) !!}
+                                            </span>
+                                        @else
+                                            {!! nl2br(e($blog->description)) !!}
+                                        @endif
+                                    </p>
+                                </div>
+
+                                @if ($blog->hashtags)
+                                    <div class="hashtags mt-2">
+                                        @foreach ($blog->hashtags as $tag)
+                                            <a href="#" class="me-2">#{{ ltrim($tag, '#') }}</a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="text-center py-5 bg-white rounded border">
+                            <i class="bi bi-camera text-muted" style="font-size: 3rem;"></i>
+                            <p class="mt-3 text-muted">No posts found in this category.</p>
+                        </div>
+                    @endforelse
                 </div>
 
-                <!-- Overlay -->
-                <div id="blogSidebarOverlay" class="sidebar-overlay"></div>
-
-                <!-- Load More Button -->
-                <div class="load-more text-center my-5">
-                    <button id="togglePostsBtn" class="btn btn-lg px-5 py-3 shadow-sm" onclick="togglePosts()"
-                        style="background: linear-gradient(135deg, #0d4e6b 0%, #0a3d52 100%); 
-                   color: white; 
-                   border: none; 
-                   border-radius: 50px; 
-                   font-weight: 600;
-                   transition: all 0.3s ease;">
-                        Load More Posts
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content position-relative">
-                    <!-- Close button -->
-                    <button type="button" class="close-btn position-absolute top-0 end-0 m-3 btn btn-light"
-                        data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-
-                    <div class="modal-body d-flex flex-wrap p-4">
-                        <!-- Left: Image Slider -->
-                        <div class="col-md-6 image-section position-relative" style="padding: 0px;">
-                            <div id="imageCarousel" class="carousel slide h-100" data-bs-ride="carousel">
-                                <div class="carousel-inner h-100" id="carouselImages"></div>
-
-                                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </button>
-
-                                <!-- Image counter -->
-                                <div
-                                    class="image-counter position-absolute bottom-0 end-0 m-2 bg-dark text-white px-2 py-1 rounded">
-                                    <span id="currentImage">1</span> / <span id="totalImages">1</span>
-                                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="sidebar-sticky ps-lg-4">
+                        <div class="brand-identity-box mb-5 px-2">
+                            <h6>VacayGuider <span class="text-primary">Sri Lanka</span></h6>
+                            <div class="ps-3 border-start border-2 border-primary">
+                                <p>Your local lens on paradise. Discover curated travel stories, hidden gems, and local
+                                    secrets from across the island.</p>
                             </div>
                         </div>
 
-                        <!-- Right: Post Content -->
-                        <div class="col-md-6 content-section px-4">
-                            <h3 class="modal-title" id="modalTitle"></h3>
-
-
-
-                            <p class="modal-description" id="modalDescription"></p>
-
-                            <div class="posted-date my-2" id="postedDate">
-                                <i class="fas fa-calendar-alt me-1"></i>
-                                <span id="modalDate">Posted on --</span>
+                        <div class="suggestion-box">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>EXPLORE TOPICS</h6>
+                                @if (request('type'))
+                                    <a href="{{ route('blogs.index') }}"
+                                        class="text-decoration-none extra-small-bold text-danger hover-underline">RESET</a>
+                                @endif
                             </div>
+                            <ul class="list-unstyled mb-0">
+                                @php $allTypes = \App\Models\BlogPost::distinct()->pluck('type'); @endphp
+                                @foreach ($allTypes as $type)
+                                    <li>
+                                        <a href="{{ route('blogs.index', ['type' => $type]) }}"
+                                            class="category-link-modern {{ request('type') == $type ? 'active' : '' }}">
+                                            <div class="d-flex align-items-center">
+                                                <div class="category-dot"></div>
+                                                <span>{{ $type }}</span>
+                                            </div>
+                                            @if (request('type') == $type)
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            @endif
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="mt-5 px-2">
+                            <p class="text-muted text-uppercase fw-bold m-0"
+                                style="font-size: 0.65rem; letter-spacing: 1.2px;">
+                                © {{ date('Y') }} VACAYGUIDER • TRAVEL DISCOVERY
+                            </p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-    </section>
+    </div>
 
- 
-
-
-    {{-- Auto-submit JS --}}
-    <script>
-        // Auto-submit when radio changes
-        document.querySelectorAll('#filterForm input[name="source"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                document.getElementById('filterForm').submit();
-            });
-        });
-    </script>
-
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const posts = document.querySelectorAll('.post-card');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalDescription = document.getElementById('modalDescription');
-            const modalDate = document.getElementById('modalDate');
-            const carouselImages = document.getElementById('carouselImages');
-            const currentImage = document.getElementById('currentImage');
-            const totalImages = document.getElementById('totalImages');
-
-            posts.forEach(post => {
-                post.addEventListener('click', function() {
-                    const title = post.dataset.title;
-                    const description = post.dataset.description;
-                    const date = post.dataset.date;
-
-                    let images = [];
-                    try {
-                        images = JSON.parse(post.dataset.images);
-                    } catch (e) {
-                        console.error('Invalid image JSON');
-                    }
-
-                    if (!Array.isArray(images) || images.length === 0) {
-                        images = ['https://via.placeholder.com/600x400?text=No+Image'];
-                    }
-
-                    modalTitle.textContent = title;
-                    modalDescription.textContent = description;
-                    modalDate.textContent = `Posted on ${date}`;
-
-                    // Reset carousel content
-                    carouselImages.innerHTML = '';
-
-                    // Build carousel slides
-                    images.forEach((img, index) => {
-                        carouselImages.innerHTML += `
-                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                        <img src="${img}" class="d-block w-100" alt="Slide ${index + 1}">
-                    </div>`;
-                    });
-
-                    // Update image counter values
-                    totalImages.textContent = images.length;
-                    currentImage.textContent = 1;
-
-                    // Reinitialize the carousel
-                    const carouselElement = document.querySelector('#imageCarousel');
-                    const carousel = bootstrap.Carousel.getOrCreateInstance(carouselElement);
-
-                    // Listen for slide events to update the counter
-                    carouselElement.addEventListener('slid.bs.carousel', function(event) {
-                        currentImage.textContent = event.to + 1;
-                    });
-                });
-            });
-        });
-    </script>
-
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const posts = document.querySelectorAll('.post-card');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalDescription = document.getElementById('modalDescription');
-            const carouselImages = document.getElementById('carouselImages');
-
-            // Default images (can be one or multiple)
-            const defaultImages = [
-                'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop',
-                'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop',
-                'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=280&fit=crop'
-            ];
-
-            posts.forEach(post => {
-                post.addEventListener('click', function() {
-                    const title = post.dataset.title;
-                    const description = post.dataset.description;
-                    let images = [];
-
-                    try {
-                        images = JSON.parse(post.dataset.images);
-                    } catch (e) {
-                        console.error('Invalid image JSON');
-                    }
-
-                    // Use default if empty or invalid
-                    if (!Array.isArray(images) || images.length === 0) {
-                        images = defaultImages;
-                    }
-
-                    modalTitle.textContent = title;
-                    modalDescription.textContent = description;
-
-                    // Build image carousel
-                    carouselImages.innerHTML = '';
-                    images.forEach((img, index) => {
-                        carouselImages.innerHTML += `
-                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                        <img src="${img}" class="d-block w-100" alt="Slide ${index + 1}">
-                    </div>`;
-                    });
-                });
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('input[name="source[]"]').forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    document.getElementById('filterForm').submit();
-                });
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('input[name="blog_type[]"]').forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    document.getElementById('blogFilterForm').submit();
-                });
-            });
-        });
-    </script>
-
-
-
-    <script>
-        function togglePosts() {
-            const extraPosts = document.querySelectorAll('.extra-post');
-            extraPosts.forEach(post => {
-                post.classList.remove('d-none');
-            });
-
-            // Optionally hide the Load More button after expanding
-            document.getElementById('togglePostsBtn').style.display = 'none';
+    <style>
+        /* Paste your simplified CSS here */
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-    </script>
+
+        .brand-identity-box {
+            border-left: 2px solid #0d4e6b;
+            padding-left: 16px;
+            margin-bottom: 48px;
+        }
+
+        .brand-identity-box h6 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #262626;
+            margin-bottom: 8px;
+        }
+
+        .brand-identity-box p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #737373;
+            margin: 0;
+        }
+
+        .category-icon-circle {
+            width: 32px;
+            height: 32px;
+            background: #262626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .avatar-ring {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            padding: 2px;
+            background: #262626;
+        }
+
+        .insta-post-card {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 0;
+        }
+
+        .post-header {
+            padding: 16px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .post-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+
+        .post-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e5e5e5;
+            background-image: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-control-prev-icon::after {
+            content: '❮';
+            color: #262626;
+            font-size: 11px;
+        }
+
+        .carousel-control-next-icon::after {
+            content: '❯';
+            color: #262626;
+            font-size: 11px;
+        }
+
+        .post-body {
+            padding: 16px;
+        }
+
+        .description-text {
+            font-size: 0.9375rem;
+            line-height: 1.5;
+            color: #262626 !important;
+        }
+
+        .show-more-link {
+            color: #737373;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hashtags a {
+            color: #262626;
+            font-size: 0.875rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .suggestion-box {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            padding: 24px;
+        }
+
+        .category-link-modern {
+            padding: 12px 0;
+            text-decoration: none;
+            color: #262626;
+            font-size: 0.9375rem;
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .category-link-modern:hover {
+            padding-left: 8px;
+            color: #000;
+        }
+
+        .category-link-modern.active {
+            font-weight: 600;
+            padding-left: 8px;
+        }
+
+        .category-dot {
+            width: 4px;
+            height: 4px;
+            background: #d4d4d4;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .active .category-dot {
+            background: #262626;
+        }
+
+        .sidebar-sticky {
+            position: sticky;
+            top: 90px;
+        }
+
+        .border-primary {
+            border-color: #0d4e6b !important;
+        }
+    </style>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleBtn = document.getElementById("toggleBlogFilterBtn");
-            const sidebar = document.getElementById("blogSidebar");
-            const closeBtn = document.getElementById("closeBlogSidebarBtn");
-            const overlay = document.getElementById("blogSidebarOverlay");
-
-            toggleBtn.addEventListener("click", function() {
-                sidebar.classList.add("show");
-                overlay.classList.add("active");
-                document.body.classList.add("sidebar-open");
+        document.addEventListener('DOMContentLoaded', function() {
+            const moreLinks = document.querySelectorAll('.show-more-link');
+            moreLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const parent = this.closest('.description-text');
+                    parent.querySelector('.desc-short').classList.add('d-none');
+                    parent.querySelector('.desc-full').classList.remove('d-none');
+                });
             });
-
-            function closeSidebar() {
-                sidebar.classList.remove("show");
-                overlay.classList.remove("active");
-                document.body.classList.remove("sidebar-open");
-            }
-
-            closeBtn.addEventListener("click", closeSidebar);
-            overlay.addEventListener("click", closeSidebar);
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleBtn = document.getElementById("toggleFilterBtn");
-            const sidebar = document.getElementById("testimonialSidebar");
-            const closeBtn = document.getElementById("closeTestimonialSidebarBtn");
-            const overlay = document.getElementById("sidebarOverlay");
-
-            toggleBtn.addEventListener("click", function() {
-                sidebar.classList.add("show");
-                overlay.classList.add("active");
-                document.body.classList.add("sidebar-open");
-            });
-
-            function closeSidebar() {
-                sidebar.classList.remove("show");
-                sidebar.removeAttribute("style");
-                overlay.style.display = "none";
-                document.body.classList.remove("sidebar-open");
-            }
-
-            closeBtn.addEventListener("click", closeSidebar);
-            overlay.addEventListener("click", closeSidebar);
         });
     </script>
-
 @endsection

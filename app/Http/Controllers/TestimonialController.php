@@ -12,38 +12,19 @@ class TestimonialController extends Controller
     //
 public function index(Request $request)
 {
-    // --- Testimonial Logic ---
-    $sources = Testimonial::select(DB::raw('LOWER(TRIM(source)) as source_normalized'))
-        ->whereNotNull('source')
-        ->where('source', '!=', '')
-        ->distinct()
-        ->pluck('source_normalized');
+// Start the query
+    $query = BlogPost::query();
 
-    $sourceFilter = $request->input('source', []);
-    $testimonialQuery = Testimonial::query();
-
-    if (!empty($sourceFilter)) {
-        $sourceFilterNormalized = array_map(fn($s) => strtolower(trim($s)), $sourceFilter);
-        $testimonialQuery->whereIn(DB::raw('LOWER(TRIM(source))'), $sourceFilterNormalized);
+    // If the user clicked a category, filter by that type
+    if ($request->has('type')) {
+        $query->where('type', $request->type);
     }
 
-    $testimonials = $testimonialQuery->orderBy('postedate', 'desc')->paginate(6);
+    // Get the results (using latest to keep the 'feed' feel)
+    $blogs = $query->latest()->get();
 
-    // --- Blog Filter Logic ---
-    $blogTypes = BlogPost::select('type')->distinct()->pluck('type')->filter(); // get distinct types
-    $blogTypeFilter = $request->input('blog_type', []);
-
-    $blogQuery = BlogPost::query();
-
-    if (!empty($blogTypeFilter)) {
-        $blogQuery->whereIn('type', $blogTypeFilter);
-    }
-
-    $blogPosts = $blogQuery->orderBy('posted_time', 'desc')->get();
-
-    return view('frontend.pages.blog', compact('testimonials', 'sources', 'sourceFilter', 'blogPosts', 'blogTypes', 'blogTypeFilter'));
+    return view('frontend.pages.blog', compact('blogs'));
 }
-
 
   public function filterPosts(Request $request)
     {
