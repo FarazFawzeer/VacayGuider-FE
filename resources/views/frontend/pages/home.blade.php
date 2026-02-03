@@ -2506,7 +2506,7 @@
                                                         $backendBaseUrl = config('app.backend_url');
                                                         $imageUrl = $inboundPackage->picture
                                                             ? $backendBaseUrl .
-                                                                '/storage/' .
+                                                                '/admin/storage/' .
                                                                 ltrim($inboundPackage->picture, '/')
                                                             : asset('assets/img/tour/yala.jpg');
                                                     @endphp
